@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using OCR_dll;
 
+
 namespace Portfolio
 {
     public partial class MainForm : Form
@@ -62,6 +63,13 @@ namespace Portfolio
         {
             OCR_Form ocrForm = new OCR_Form();
             ocrForm.ShowDialog();
+        }
+
+        private void BasicPropertiesBtn_Click(object sender, EventArgs e)
+        {
+            BasicProperties_dll.Properties basicProperties_dll = new BasicProperties_dll.Properties();
+            basicProperties_dll.ShowDialog();
+
         }
     }
 

@@ -162,6 +162,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BasicProperties_dll\BasicProperties_dll.csproj">
+      <Project>{fedceb4d-4dfc-4546-af6c-3ed3eb3728b7}</Project>
+      <Name>BasicProperties_dll</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OCR_dll\OCR_dll.csproj">
       <Project>{9831f2e9-3f27-41f2-ae0d-fea6e07eb1c6}</Project>
       <Name>OCR_dll</Name>
