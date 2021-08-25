@@ -10,18 +10,20 @@ using System.Windows.Forms;
 
 namespace BasicProperties_dll
 {
-    public partial class Properties: Form
+    public partial class Properties : Form
     {
-        Color mControlColor;
+        public readonly Color mControlColor;        // 초기화 되었지만 내부에서 다시 지정되지 않으므로,
         public Properties()
         {
             InitializeComponent();
-            mControlColor = this.BackColor;
+            mControlColor = System.Drawing.SystemColors.Control;
         }
 
         private void TopMostBtn_Click(object sender, EventArgs e)
         {
-            this.TopMost = this.TopMost.Equals(true) ? false : true;
+            this.TopMost = this.TopMost == false;// false : true;
+            //this.TopMost = this.TopMost.Equals(true) ? false : true;
+
             if (this.TopMost.Equals(true))
                 this.TopMostBtn.BackColor = Color.Red;
             else
@@ -83,7 +85,7 @@ namespace BasicProperties_dll
 
         private void SetControlBoxBtn_Click(object sender, EventArgs e)
         {
-            this.ControlBox = this.ControlBox.Equals(true) ? false : true;
+            this.ControlBox = this.ControlBox == false;
             if (this.ControlBox.Equals(false))
                 this.SetControlBoxBtn.BackColor = Color.Red;
             else
@@ -95,8 +97,8 @@ namespace BasicProperties_dll
 
         private void SetMaxiMiniBtn_Click(object sender, EventArgs e)
         {
-            this.MaximizeBox = this.MaximizeBox.Equals(true) ? false : true;
-            this.MinimizeBox = this.MinimizeBox.Equals(true) ? false : true;
+            this.MaximizeBox = this.MaximizeBox == false;
+            this.MinimizeBox = this.MinimizeBox == false;
             if (this.MaximizeBox.Equals(false))
                 this.SetMaxiMiniBtn.BackColor = Color.Red;
             else
@@ -107,7 +109,7 @@ namespace BasicProperties_dll
 
         private void SetHelpIconBtn_Click(object sender, EventArgs e)
         {
-            this.HelpButton = this.HelpButton.Equals(true) ? false : true;
+            this.HelpButton = this.HelpButton == false;
             if (this.HelpButton.Equals(false))
                 this.SetHelpIconBtn.BackColor = Color.Red;
             else
@@ -180,9 +182,19 @@ namespace BasicProperties_dll
         private void PopupOpacityFormBtn_Click(object sender, EventArgs e)
         {
             this.instructionTextBox.Text = "새 창의 Opacity = 0.5, TopMost = true에 타이머를 추가하여, 불투명도가 0.1씩 증가하도록 설정합니다.";
-            OpacityForm opacityForm = new OpacityForm();
-            opacityForm.StartPosition = FormStartPosition.CenterParent;
+
+            // IDE0017 개체 초기화를 단순화할 수 있습니다.
+            OpacityForm opacityForm = new OpacityForm() { StartPosition = FormStartPosition.CenterParent };
+//            opacityForm.StartPosition = FormStartPosition.CenterParent;
             opacityForm.ShowDialog();
+        }
+
+        private void CreateTransparentFormBtn_Click(object sender, EventArgs e)
+        {
+            this.instructionTextBox.Text = "새 창의 Paint이벤트에서 그리도록 설정하고, TransParencyKey값을 .BackColor속성 값 System.Drawing.SystemColors.Control과 같게 설정.\r\nFormBorderStyle을 None으로 설정. MouseMove등 따로 설정.";
+
+            TransparentForm transparentForm = new TransparentForm();
+            transparentForm.ShowDialog();
         }
     }
 }

@@ -39,6 +39,7 @@
             this.SetSizeGripStyleBtn = new System.Windows.Forms.Button();
             this.SetShowInTaskbarBtn = new System.Windows.Forms.Button();
             this.PopupOpacityFormBtn = new System.Windows.Forms.Button();
+            this.CreateTransparentFormBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TopMostBtn
@@ -149,11 +150,22 @@
             this.PopupOpacityFormBtn.UseVisualStyleBackColor = true;
             this.PopupOpacityFormBtn.Click += new System.EventHandler(this.PopupOpacityFormBtn_Click);
             // 
+            // CreateTransparentFormBtn
+            // 
+            this.CreateTransparentFormBtn.Location = new System.Drawing.Point(40, 366);
+            this.CreateTransparentFormBtn.Name = "CreateTransparentFormBtn";
+            this.CreateTransparentFormBtn.Size = new System.Drawing.Size(200, 23);
+            this.CreateTransparentFormBtn.TabIndex = 12;
+            this.CreateTransparentFormBtn.Text = "TransparentForm 생성";
+            this.CreateTransparentFormBtn.UseVisualStyleBackColor = true;
+            this.CreateTransparentFormBtn.Click += new System.EventHandler(this.CreateTransparentFormBtn_Click);
+            // 
             // Properties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.CreateTransparentFormBtn);
             this.Controls.Add(this.PopupOpacityFormBtn);
             this.Controls.Add(this.SetShowInTaskbarBtn);
             this.Controls.Add(this.SetSizeGripStyleBtn);
@@ -187,5 +199,6 @@
         private System.Windows.Forms.Button SetSizeGripStyleBtn;
         private System.Windows.Forms.Button SetShowInTaskbarBtn;
         private System.Windows.Forms.Button PopupOpacityFormBtn;
+        private System.Windows.Forms.Button CreateTransparentFormBtn;
     }
 }

@@ -32,16 +32,16 @@ namespace BasicProperties_dll
             this.Text = "Opacity = " + this.Opacity.ToString();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void CenterBtn_Click(object sender, EventArgs e)
+        {
+            this.Opacity = 0.5;
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             if (this.Opacity < 1.0) this.Opacity += 0.1;
 //            if (this.Opacity >= 1.0) this.Opacity = 0.5;
             this.Text = "Timer is Enabled" + "Opacity = " + this.Opacity.ToString();
-        }
-
-        private void CenterBtn_Click(object sender, EventArgs e)
-        {
-            this.Opacity = 0.5;
         }
     }
 

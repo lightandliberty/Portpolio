@@ -42,6 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TransparentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TransparentForm.Designer.cs">
+      <DependentUpon>TransparentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="OpacityForm1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties.resx">
       <DependentUpon>Properties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TransparentForm.resx">
+      <DependentUpon>TransparentForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
