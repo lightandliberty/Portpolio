@@ -35,6 +35,9 @@
             this.SetControlBoxBtn = new System.Windows.Forms.Button();
             this.SetMaxiMiniBtn = new System.Windows.Forms.Button();
             this.instructionTextBox = new System.Windows.Forms.TextBox();
+            this.SetHelpIconBtn = new System.Windows.Forms.Button();
+            this.SetSizeGripStyleBtn = new System.Windows.Forms.Button();
+            this.SetShowInTaskbarBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TopMostBtn
@@ -105,11 +108,44 @@
             this.instructionTextBox.Size = new System.Drawing.Size(660, 54);
             this.instructionTextBox.TabIndex = 7;
             // 
+            // SetHelpIconBtn
+            // 
+            this.SetHelpIconBtn.Location = new System.Drawing.Point(40, 250);
+            this.SetHelpIconBtn.Name = "SetHelpIconBtn";
+            this.SetHelpIconBtn.Size = new System.Drawing.Size(200, 23);
+            this.SetHelpIconBtn.TabIndex = 8;
+            this.SetHelpIconBtn.Text = "HelpButton 속성";
+            this.SetHelpIconBtn.UseVisualStyleBackColor = true;
+            this.SetHelpIconBtn.Click += new System.EventHandler(this.SetHelpIconBtn_Click);
+            // 
+            // SetSizeGripStyleBtn
+            // 
+            this.SetSizeGripStyleBtn.Location = new System.Drawing.Point(40, 279);
+            this.SetSizeGripStyleBtn.Name = "SetSizeGripStyleBtn";
+            this.SetSizeGripStyleBtn.Size = new System.Drawing.Size(200, 23);
+            this.SetSizeGripStyleBtn.TabIndex = 9;
+            this.SetSizeGripStyleBtn.Text = "SetSizeGripStyle 속성";
+            this.SetSizeGripStyleBtn.UseVisualStyleBackColor = true;
+            this.SetSizeGripStyleBtn.Click += new System.EventHandler(this.SetSizeGripStyleBtn_Click);
+            // 
+            // SetShowInTaskbarBtn
+            // 
+            this.SetShowInTaskbarBtn.Location = new System.Drawing.Point(40, 308);
+            this.SetShowInTaskbarBtn.Name = "SetShowInTaskbarBtn";
+            this.SetShowInTaskbarBtn.Size = new System.Drawing.Size(200, 23);
+            this.SetShowInTaskbarBtn.TabIndex = 10;
+            this.SetShowInTaskbarBtn.Text = "ShowInTaskbar 속성";
+            this.SetShowInTaskbarBtn.UseVisualStyleBackColor = true;
+            this.SetShowInTaskbarBtn.Click += new System.EventHandler(this.SetShowInTaskbarBtn_Click);
+            // 
             // Properties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.SetShowInTaskbarBtn);
+            this.Controls.Add(this.SetSizeGripStyleBtn);
+            this.Controls.Add(this.SetHelpIconBtn);
             this.Controls.Add(this.instructionTextBox);
             this.Controls.Add(this.SetMaxiMiniBtn);
             this.Controls.Add(this.SetControlBoxBtn);
@@ -117,7 +153,10 @@
             this.Controls.Add(this.LoadBitmapBtn);
             this.Controls.Add(this.ReadFromAppConfigBtn);
             this.Controls.Add(this.TopMostBtn);
+            this.KeyPreview = true;
             this.Name = "Properties";
+            this.ShowInTaskbar = false;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Properties_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -132,5 +171,8 @@
         private System.Windows.Forms.Button SetControlBoxBtn;
         private System.Windows.Forms.Button SetMaxiMiniBtn;
         private System.Windows.Forms.TextBox instructionTextBox;
+        private System.Windows.Forms.Button SetHelpIconBtn;
+        private System.Windows.Forms.Button SetSizeGripStyleBtn;
+        private System.Windows.Forms.Button SetShowInTaskbarBtn;
     }
 }

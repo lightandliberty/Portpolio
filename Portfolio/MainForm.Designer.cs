@@ -72,6 +72,7 @@
             this.Controls.Add(this.OCRBtn);
             this.Controls.Add(this.RawInputBtn);
             this.Name = "MainForm";
+            this.ShowInTaskbar = false;
             this.Text = "MainForm";
             this.ResumeLayout(false);
 

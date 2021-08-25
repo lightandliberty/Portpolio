@@ -104,5 +104,77 @@ namespace BasicProperties_dll
             this.Text = "this.MaximizeBox = " + this.MaximizeBox.ToString() + ", this.MinimizeBox = " + this.MinimizeBox.ToString();
             instructionTextBox.Text = "최소화, 최대화 버튼 표시";
         }
+
+        private void SetHelpIconBtn_Click(object sender, EventArgs e)
+        {
+            this.HelpButton = this.HelpButton.Equals(true) ? false : true;
+            if (this.HelpButton.Equals(false))
+                this.SetHelpIconBtn.BackColor = Color.Red;
+            else
+                this.SetHelpIconBtn.BackColor = mControlColor;
+            this.Text = "this.HelpButton = " + this.HelpButton.ToString();
+            this.instructionTextBox.Text = "우측 상단에 ?표시의 버튼 표시.(단, ControlBox는 true, Maximize, Minimize는 false여야 함. \r\n?클릭시 HelpRequested이벤트 발생.\r\nfalse여도 <F1>키를 누르면 HelpRequested 이벤트 발생";
+        }
+
+        private void Properties_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                this.Close();
+        }
+
+        private void SetSizeGripStyleBtn_Click(object sender, EventArgs e)
+        {
+            this.SizeGripStyle =
+                this.SizeGripStyle.Equals(SizeGripStyle.Auto) ? SizeGripStyle.Hide :
+                this.SizeGripStyle.Equals(SizeGripStyle.Hide) ? SizeGripStyle.Show :
+                SizeGripStyle.Auto;
+            switch(this.SizeGripStyle)
+            {
+                case SizeGripStyle.Auto:
+                    this.SetSizeGripStyleBtn.BackColor = mControlColor;
+                    break;
+                case SizeGripStyle.Hide:
+                    this.SetSizeGripStyleBtn.BackColor = Color.Red;
+                    break;
+                case SizeGripStyle.Show:
+                    this.SetSizeGripStyleBtn.BackColor = Color.FromArgb(255, 150, 150, 0);
+                    break;
+                default:
+                    this.SetSizeGripStyleBtn.BackColor = mControlColor;
+                    break;
+            };
+
+            this.Text = "this.SizeGripStyle = " + this.SizeGripStyle.ToString();
+            this.instructionTextBox.Text = "폼의 우측 하단 크기 조정 그립을 보여주거나 감추거나 함.\r\n폼에 상태 표시줄(status bar) 컨트롤이 있는 경우, 상태 표시줄 자체 속성의 SizingGrip속성에 의해 조정 그립을 보이거나 감춤.";
+        }
+
+        private void SetShowInTaskbarBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.ShowInTaskbar.Equals(false))
+                {
+                    this.ShowInTaskbar = true;
+                }
+                else if (this.ShowInTaskbar.Equals(true))
+                {
+                    this.ShowInTaskbar = false;
+                }
+
+                if (this.ShowInTaskbar.Equals(false))
+                    this.SetShowInTaskbarBtn.BackColor = Color.Red;
+                else
+                    this.SetShowInTaskbarBtn.BackColor = mControlColor;
+                this.Text = "this.ShowInTaskbar = " + this.ShowInTaskbar.ToString();
+                this.instructionTextBox.Text = "폼을 최소화 시켰을 때, 폼의 타이틀을 작업 표시줄에 버튼형태로 나타낼지 여부\r\n그런데, this.ShowInTaskbar = true로 하면 예외 메시지를 보내지 않고 충돌하므로,\r\nHide()를 사용합니다.";
+                MessageBox.Show("런타임에 this.ShowInTaskbar가 false가 되면, 프로그램이 충돌하여 종료됩니다.\r\n" +
+                    "MainForm.cs에서 ShowInTaskbar속성을 바꿔본 후 관찰해 보세요.");
+                ////    this.ShowInTaskbar = this.ShowInTaskbar.Equals(true) ? false : true;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("예외가 발생했습니다." + ex.ToString());
+            }
+        }
     }
 }
