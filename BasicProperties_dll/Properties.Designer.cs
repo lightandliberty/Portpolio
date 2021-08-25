@@ -38,6 +38,7 @@
             this.SetHelpIconBtn = new System.Windows.Forms.Button();
             this.SetSizeGripStyleBtn = new System.Windows.Forms.Button();
             this.SetShowInTaskbarBtn = new System.Windows.Forms.Button();
+            this.PopupOpacityFormBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TopMostBtn
@@ -138,11 +139,22 @@
             this.SetShowInTaskbarBtn.UseVisualStyleBackColor = true;
             this.SetShowInTaskbarBtn.Click += new System.EventHandler(this.SetShowInTaskbarBtn_Click);
             // 
+            // PopupOpacityFormBtn
+            // 
+            this.PopupOpacityFormBtn.Location = new System.Drawing.Point(40, 337);
+            this.PopupOpacityFormBtn.Name = "PopupOpacityFormBtn";
+            this.PopupOpacityFormBtn.Size = new System.Drawing.Size(200, 23);
+            this.PopupOpacityFormBtn.TabIndex = 11;
+            this.PopupOpacityFormBtn.Text = "Popup Opacity속성 Form";
+            this.PopupOpacityFormBtn.UseVisualStyleBackColor = true;
+            this.PopupOpacityFormBtn.Click += new System.EventHandler(this.PopupOpacityFormBtn_Click);
+            // 
             // Properties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.PopupOpacityFormBtn);
             this.Controls.Add(this.SetShowInTaskbarBtn);
             this.Controls.Add(this.SetSizeGripStyleBtn);
             this.Controls.Add(this.SetHelpIconBtn);
@@ -174,5 +186,6 @@
         private System.Windows.Forms.Button SetHelpIconBtn;
         private System.Windows.Forms.Button SetSizeGripStyleBtn;
         private System.Windows.Forms.Button SetShowInTaskbarBtn;
+        private System.Windows.Forms.Button PopupOpacityFormBtn;
     }
 }

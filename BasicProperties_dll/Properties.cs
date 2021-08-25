@@ -176,5 +176,13 @@ namespace BasicProperties_dll
                 MessageBox.Show("예외가 발생했습니다." + ex.ToString());
             }
         }
+
+        private void PopupOpacityFormBtn_Click(object sender, EventArgs e)
+        {
+            this.instructionTextBox.Text = "새 창의 Opacity = 0.5, TopMost = true에 타이머를 추가하여, 불투명도가 0.1씩 증가하도록 설정합니다.";
+            OpacityForm opacityForm = new OpacityForm();
+            opacityForm.StartPosition = FormStartPosition.CenterParent;
+            opacityForm.ShowDialog();
+        }
     }
 }
