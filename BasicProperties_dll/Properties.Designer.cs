@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.TopMostBtn = new System.Windows.Forms.Button();
             this.ReadFromAppConfigBtn = new System.Windows.Forms.Button();
             this.LoadBitmapBtn = new System.Windows.Forms.Button();
@@ -40,11 +41,22 @@
             this.SetShowInTaskbarBtn = new System.Windows.Forms.Button();
             this.PopupOpacityFormBtn = new System.Windows.Forms.Button();
             this.CreateTransparentFormBtn = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.파일ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.새파일ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.도움말ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.버전정보ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.foreColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TopMostBtn
             // 
-            this.TopMostBtn.Location = new System.Drawing.Point(40, 105);
+            this.TopMostBtn.Location = new System.Drawing.Point(40, 132);
             this.TopMostBtn.Name = "TopMostBtn";
             this.TopMostBtn.Size = new System.Drawing.Size(200, 23);
             this.TopMostBtn.TabIndex = 0;
@@ -54,7 +66,7 @@
             // 
             // ReadFromAppConfigBtn
             // 
-            this.ReadFromAppConfigBtn.Location = new System.Drawing.Point(40, 76);
+            this.ReadFromAppConfigBtn.Location = new System.Drawing.Point(40, 103);
             this.ReadFromAppConfigBtn.Name = "ReadFromAppConfigBtn";
             this.ReadFromAppConfigBtn.Size = new System.Drawing.Size(200, 23);
             this.ReadFromAppConfigBtn.TabIndex = 2;
@@ -64,7 +76,7 @@
             // 
             // LoadBitmapBtn
             // 
-            this.LoadBitmapBtn.Location = new System.Drawing.Point(40, 134);
+            this.LoadBitmapBtn.Location = new System.Drawing.Point(40, 161);
             this.LoadBitmapBtn.Name = "LoadBitmapBtn";
             this.LoadBitmapBtn.Size = new System.Drawing.Size(200, 23);
             this.LoadBitmapBtn.TabIndex = 3;
@@ -74,7 +86,7 @@
             // 
             // ChangeFormBorderStyleBtn
             // 
-            this.ChangeFormBorderStyleBtn.Location = new System.Drawing.Point(40, 163);
+            this.ChangeFormBorderStyleBtn.Location = new System.Drawing.Point(40, 190);
             this.ChangeFormBorderStyleBtn.Name = "ChangeFormBorderStyleBtn";
             this.ChangeFormBorderStyleBtn.Size = new System.Drawing.Size(200, 23);
             this.ChangeFormBorderStyleBtn.TabIndex = 4;
@@ -84,7 +96,7 @@
             // 
             // SetControlBoxBtn
             // 
-            this.SetControlBoxBtn.Location = new System.Drawing.Point(40, 192);
+            this.SetControlBoxBtn.Location = new System.Drawing.Point(40, 219);
             this.SetControlBoxBtn.Name = "SetControlBoxBtn";
             this.SetControlBoxBtn.Size = new System.Drawing.Size(200, 23);
             this.SetControlBoxBtn.TabIndex = 5;
@@ -94,7 +106,7 @@
             // 
             // SetMaxiMiniBtn
             // 
-            this.SetMaxiMiniBtn.Location = new System.Drawing.Point(40, 221);
+            this.SetMaxiMiniBtn.Location = new System.Drawing.Point(40, 248);
             this.SetMaxiMiniBtn.Name = "SetMaxiMiniBtn";
             this.SetMaxiMiniBtn.Size = new System.Drawing.Size(200, 23);
             this.SetMaxiMiniBtn.TabIndex = 6;
@@ -104,7 +116,7 @@
             // 
             // instructionTextBox
             // 
-            this.instructionTextBox.Location = new System.Drawing.Point(40, 13);
+            this.instructionTextBox.Location = new System.Drawing.Point(40, 40);
             this.instructionTextBox.Multiline = true;
             this.instructionTextBox.Name = "instructionTextBox";
             this.instructionTextBox.Size = new System.Drawing.Size(660, 54);
@@ -112,7 +124,7 @@
             // 
             // SetHelpIconBtn
             // 
-            this.SetHelpIconBtn.Location = new System.Drawing.Point(40, 250);
+            this.SetHelpIconBtn.Location = new System.Drawing.Point(40, 277);
             this.SetHelpIconBtn.Name = "SetHelpIconBtn";
             this.SetHelpIconBtn.Size = new System.Drawing.Size(200, 23);
             this.SetHelpIconBtn.TabIndex = 8;
@@ -122,7 +134,7 @@
             // 
             // SetSizeGripStyleBtn
             // 
-            this.SetSizeGripStyleBtn.Location = new System.Drawing.Point(40, 279);
+            this.SetSizeGripStyleBtn.Location = new System.Drawing.Point(40, 306);
             this.SetSizeGripStyleBtn.Name = "SetSizeGripStyleBtn";
             this.SetSizeGripStyleBtn.Size = new System.Drawing.Size(200, 23);
             this.SetSizeGripStyleBtn.TabIndex = 9;
@@ -132,7 +144,7 @@
             // 
             // SetShowInTaskbarBtn
             // 
-            this.SetShowInTaskbarBtn.Location = new System.Drawing.Point(40, 308);
+            this.SetShowInTaskbarBtn.Location = new System.Drawing.Point(40, 335);
             this.SetShowInTaskbarBtn.Name = "SetShowInTaskbarBtn";
             this.SetShowInTaskbarBtn.Size = new System.Drawing.Size(200, 23);
             this.SetShowInTaskbarBtn.TabIndex = 10;
@@ -142,7 +154,7 @@
             // 
             // PopupOpacityFormBtn
             // 
-            this.PopupOpacityFormBtn.Location = new System.Drawing.Point(40, 337);
+            this.PopupOpacityFormBtn.Location = new System.Drawing.Point(40, 364);
             this.PopupOpacityFormBtn.Name = "PopupOpacityFormBtn";
             this.PopupOpacityFormBtn.Size = new System.Drawing.Size(200, 23);
             this.PopupOpacityFormBtn.TabIndex = 11;
@@ -152,7 +164,7 @@
             // 
             // CreateTransparentFormBtn
             // 
-            this.CreateTransparentFormBtn.Location = new System.Drawing.Point(40, 366);
+            this.CreateTransparentFormBtn.Location = new System.Drawing.Point(40, 393);
             this.CreateTransparentFormBtn.Name = "CreateTransparentFormBtn";
             this.CreateTransparentFormBtn.Size = new System.Drawing.Size(200, 23);
             this.CreateTransparentFormBtn.TabIndex = 12;
@@ -160,11 +172,78 @@
             this.CreateTransparentFormBtn.UseVisualStyleBackColor = true;
             this.CreateTransparentFormBtn.Click += new System.EventHandler(this.CreateTransparentFormBtn_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.파일ToolStripMenuItem,
+            this.도움말ToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 13;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // 파일ToolStripMenuItem
+            // 
+            this.파일ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.새파일ToolStripMenuItem,
+            this.종료ToolStripMenuItem});
+            this.파일ToolStripMenuItem.Name = "파일ToolStripMenuItem";
+            this.파일ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.파일ToolStripMenuItem.Text = "파일";
+            // 
+            // 새파일ToolStripMenuItem
+            // 
+            this.새파일ToolStripMenuItem.Name = "새파일ToolStripMenuItem";
+            this.새파일ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.새파일ToolStripMenuItem.Text = "새 파일";
+            // 
+            // 종료ToolStripMenuItem
+            // 
+            this.종료ToolStripMenuItem.Name = "종료ToolStripMenuItem";
+            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.종료ToolStripMenuItem.Text = "종료";
+            // 
+            // 도움말ToolStripMenuItem
+            // 
+            this.도움말ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.버전정보ToolStripMenuItem});
+            this.도움말ToolStripMenuItem.Name = "도움말ToolStripMenuItem";
+            this.도움말ToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.도움말ToolStripMenuItem.Text = "도움말";
+            // 
+            // 버전정보ToolStripMenuItem
+            // 
+            this.버전정보ToolStripMenuItem.Name = "버전정보ToolStripMenuItem";
+            this.버전정보ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.버전정보ToolStripMenuItem.Text = "버전 정보";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.foreColorToolStripMenuItem,
+            this.backColorToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(129, 48);
+            // 
+            // foreColorToolStripMenuItem
+            // 
+            this.foreColorToolStripMenuItem.Name = "foreColorToolStripMenuItem";
+            this.foreColorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.foreColorToolStripMenuItem.Text = "ForeColor";
+            // 
+            // backColorToolStripMenuItem
+            // 
+            this.backColorToolStripMenuItem.Name = "backColorToolStripMenuItem";
+            this.backColorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.backColorToolStripMenuItem.Text = "BackColor";
+            // 
             // Properties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.CreateTransparentFormBtn);
             this.Controls.Add(this.PopupOpacityFormBtn);
             this.Controls.Add(this.SetShowInTaskbarBtn);
@@ -177,10 +256,15 @@
             this.Controls.Add(this.LoadBitmapBtn);
             this.Controls.Add(this.ReadFromAppConfigBtn);
             this.Controls.Add(this.TopMostBtn);
+            this.Controls.Add(this.menuStrip1);
             this.KeyPreview = true;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Properties";
             this.ShowInTaskbar = false;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Properties_KeyDown);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -200,5 +284,14 @@
         private System.Windows.Forms.Button SetShowInTaskbarBtn;
         private System.Windows.Forms.Button PopupOpacityFormBtn;
         private System.Windows.Forms.Button CreateTransparentFormBtn;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 파일ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 새파일ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 종료ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 도움말ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 버전정보ToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem foreColorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backColorToolStripMenuItem;
     }
 }
