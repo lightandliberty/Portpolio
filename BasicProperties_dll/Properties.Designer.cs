@@ -43,7 +43,6 @@
             this.CreateTransparentFormBtn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.파일ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.새파일ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.도움말ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.버전정보ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -186,23 +185,17 @@
             // 파일ToolStripMenuItem
             // 
             this.파일ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.새파일ToolStripMenuItem,
             this.종료ToolStripMenuItem});
             this.파일ToolStripMenuItem.Name = "파일ToolStripMenuItem";
             this.파일ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.파일ToolStripMenuItem.Text = "파일";
-            // 
-            // 새파일ToolStripMenuItem
-            // 
-            this.새파일ToolStripMenuItem.Name = "새파일ToolStripMenuItem";
-            this.새파일ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.새파일ToolStripMenuItem.Text = "새 파일";
             // 
             // 종료ToolStripMenuItem
             // 
             this.종료ToolStripMenuItem.Name = "종료ToolStripMenuItem";
             this.종료ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.종료ToolStripMenuItem.Text = "종료";
+            this.종료ToolStripMenuItem.Click += new System.EventHandler(this.종료ToolStripMenuItem_Click);
             // 
             // 도움말ToolStripMenuItem
             // 
@@ -217,6 +210,7 @@
             this.버전정보ToolStripMenuItem.Name = "버전정보ToolStripMenuItem";
             this.버전정보ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.버전정보ToolStripMenuItem.Text = "버전 정보";
+            this.버전정보ToolStripMenuItem.Click += new System.EventHandler(this.버전정보ToolStripMenuItem_Click);
             // 
             // contextMenuStrip1
             // 
@@ -224,19 +218,21 @@
             this.foreColorToolStripMenuItem,
             this.backColorToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(129, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
             // 
             // foreColorToolStripMenuItem
             // 
             this.foreColorToolStripMenuItem.Name = "foreColorToolStripMenuItem";
             this.foreColorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.foreColorToolStripMenuItem.Text = "ForeColor";
+            this.foreColorToolStripMenuItem.Click += new System.EventHandler(this.foreColorToolStripMenuItem_Click);
             // 
             // backColorToolStripMenuItem
             // 
             this.backColorToolStripMenuItem.Name = "backColorToolStripMenuItem";
             this.backColorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.backColorToolStripMenuItem.Text = "BackColor";
+            this.backColorToolStripMenuItem.Click += new System.EventHandler(this.backColorToolStripMenuItem_Click);
             // 
             // Properties
             // 
@@ -286,7 +282,6 @@
         private System.Windows.Forms.Button CreateTransparentFormBtn;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 파일ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 새파일ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 종료ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 도움말ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 버전정보ToolStripMenuItem;

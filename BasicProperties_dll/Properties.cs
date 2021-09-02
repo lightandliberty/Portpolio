@@ -196,5 +196,35 @@ namespace BasicProperties_dll
             TransparentForm transparentForm = new TransparentForm();
             transparentForm.ShowDialog();
         }
+
+        private void 종료ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void 버전정보ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("포트폴리오 버전 1.0");
+        }
+
+        private void foreColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            colorDialog.FullOpen = true;
+            if (DialogResult.OK == colorDialog.ShowDialog())
+            {
+                this.ForeColor = colorDialog.Color;
+            }
+        }
+
+        private void backColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            colorDialog.FullOpen = true;
+            if(DialogResult.OK ==  colorDialog.ShowDialog())
+            {
+                this.BackColor = colorDialog.Color;
+            }
+        }
     }
 }

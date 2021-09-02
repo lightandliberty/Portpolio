@@ -148,10 +148,10 @@
             this.Height,
             this.Label,
             this.Result});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 281);
+            this.dataGridView1.Location = new System.Drawing.Point(13, 214);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(644, 136);
+            this.dataGridView1.Size = new System.Drawing.Size(640, 82);
             this.dataGridView1.TabIndex = 9;
             // 
             // Top
