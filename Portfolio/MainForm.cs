@@ -71,6 +71,16 @@ namespace Portfolio
             basicProperties_dll.ShowDialog();
 
         }
+
+        private void 종료ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void 버전정보ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("포트폴리오 V1.0");
+        }
     }
 
 
