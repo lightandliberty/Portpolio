@@ -49,6 +49,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.foreColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SetFlatAppearenceBtn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -218,21 +219,31 @@
             this.foreColorToolStripMenuItem,
             this.backColorToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(129, 48);
             // 
             // foreColorToolStripMenuItem
             // 
             this.foreColorToolStripMenuItem.Name = "foreColorToolStripMenuItem";
-            this.foreColorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.foreColorToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.foreColorToolStripMenuItem.Text = "ForeColor";
             this.foreColorToolStripMenuItem.Click += new System.EventHandler(this.foreColorToolStripMenuItem_Click);
             // 
             // backColorToolStripMenuItem
             // 
             this.backColorToolStripMenuItem.Name = "backColorToolStripMenuItem";
-            this.backColorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.backColorToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.backColorToolStripMenuItem.Text = "BackColor";
             this.backColorToolStripMenuItem.Click += new System.EventHandler(this.backColorToolStripMenuItem_Click);
+            // 
+            // SetFlatAppearenceBtn
+            // 
+            this.SetFlatAppearenceBtn.Location = new System.Drawing.Point(295, 103);
+            this.SetFlatAppearenceBtn.Name = "SetFlatAppearenceBtn";
+            this.SetFlatAppearenceBtn.Size = new System.Drawing.Size(200, 23);
+            this.SetFlatAppearenceBtn.TabIndex = 14;
+            this.SetFlatAppearenceBtn.Text = "SetFlatAppearenceBtn";
+            this.SetFlatAppearenceBtn.UseVisualStyleBackColor = true;
+            this.SetFlatAppearenceBtn.Click += new System.EventHandler(this.SetFlatAppearenceBtn_Click);
             // 
             // Properties
             // 
@@ -240,6 +251,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.SetFlatAppearenceBtn);
             this.Controls.Add(this.CreateTransparentFormBtn);
             this.Controls.Add(this.PopupOpacityFormBtn);
             this.Controls.Add(this.SetShowInTaskbarBtn);
@@ -288,5 +300,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem foreColorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backColorToolStripMenuItem;
+        private System.Windows.Forms.Button SetFlatAppearenceBtn;
     }
 }

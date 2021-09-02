@@ -226,5 +226,11 @@ namespace BasicProperties_dll
                 this.BackColor = colorDialog.Color;
             }
         }
+
+        private void SetFlatAppearenceBtn_Click(object sender, EventArgs e)
+        {
+            FlatAppearanceForm flatAppearanceForm = new FlatAppearanceForm();
+            flatAppearanceForm.ShowDialog();
+        }
     }
 }
