@@ -67,7 +67,7 @@ namespace BasicProperties_dll
 
         private void SystemBtn_Click(object sender, EventArgs e)
         {
-            this.StandardBtn.FlatStyle = FlatStyle.System;
+            this.SystemBtn.FlatStyle = FlatStyle.System;
             this.SetApplicationEnableVisualStylesBtn.FlatStyle = FlatStyle.System;
         }
 
@@ -122,5 +122,52 @@ namespace BasicProperties_dll
             }
             colorDialog.Dispose();
         }
+
+        private void SetFlatStyleAllBtn_Click(object sender, EventArgs e)
+        {
+            if (this.SetFlatStyleAllBtn.FlatStyle == FlatStyle.Flat)
+            {
+                SetFlatStyleSystem(this);
+            }
+            else if (this.SetFlatStyleAllBtn.FlatStyle != FlatStyle.Flat)
+            { 
+                SetFlatStyleFlat(this);
+            }
+        }
+
+        void SetFlatStyleFlat(Control parent)
+        {
+            foreach(Control control in parent.Controls)
+            {
+                // 다음 컨트롤에만 FlatStyle 속성이 있으므로
+                Button button = control as Button;
+                GroupBox group = control as GroupBox;
+                Label label = control as Label;
+                if (button != null) button.FlatStyle    = FlatStyle.Flat;
+                else if (group != null) group.FlatStyle = FlatStyle.Flat;
+                else if (label != null) label.FlatStyle = FlatStyle.Flat;
+
+                // 컨트롤이 또 다른 컨트롤을 포함하고 있을 경우에 대해서도 FlatStyle을 설정
+                SetFlatStyleFlat(control);
+            }
+        }
+
+        void SetFlatStyleSystem(Control parent)
+        {
+            foreach(Control control in parent.Controls)
+            {
+                // 다음 컨트롤에만 FlatStyle 속성이 있으므로
+                Button button = control as Button;
+                GroupBox group = control as GroupBox;
+                Label label = control as Label;
+                if (button != null) button.FlatStyle    = FlatStyle.System;
+                else if (group != null) group.FlatStyle = FlatStyle.System;
+                else if (label != null) label.FlatStyle = FlatStyle.System;
+
+                // 컨트롤이 또 다른 컨트롤을 포함하고 있을 경우에 대해서도 FlatStyle을 설정
+                SetFlatStyleSystem(control);
+            }
+        }
+
     }
 }

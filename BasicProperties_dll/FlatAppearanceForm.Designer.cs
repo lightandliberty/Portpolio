@@ -40,6 +40,7 @@
             this.SetFlatAppearanceLabel = new System.Windows.Forms.Label();
             this.SetFlatStyleLabel = new System.Windows.Forms.Label();
             this.BorderSizeNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.SetFlatStyleAllBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.BorderSizeNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
@@ -164,11 +165,22 @@
             this.BorderSizeNumericUpDown.ValueChanged += new System.EventHandler(this.BorderSizeNumericUpDown_ValueChanged);
             this.BorderSizeNumericUpDown.Enter += new System.EventHandler(this.BorderSizeNumericUpDown_Enter);
             // 
+            // SetFlatStyleAllBtn
+            // 
+            this.SetFlatStyleAllBtn.Location = new System.Drawing.Point(556, 185);
+            this.SetFlatStyleAllBtn.Name = "SetFlatStyleAllBtn";
+            this.SetFlatStyleAllBtn.Size = new System.Drawing.Size(232, 23);
+            this.SetFlatStyleAllBtn.TabIndex = 12;
+            this.SetFlatStyleAllBtn.Text = "SetFlatStyleAll";
+            this.SetFlatStyleAllBtn.UseVisualStyleBackColor = true;
+            this.SetFlatStyleAllBtn.Click += new System.EventHandler(this.SetFlatStyleAllBtn_Click);
+            // 
             // FlatAppearanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.SetFlatStyleAllBtn);
             this.Controls.Add(this.BorderSizeNumericUpDown);
             this.Controls.Add(this.SetFlatStyleLabel);
             this.Controls.Add(this.SetFlatAppearanceLabel);
@@ -204,5 +216,6 @@
         private System.Windows.Forms.Label SetFlatAppearanceLabel;
         private System.Windows.Forms.Label SetFlatStyleLabel;
         private System.Windows.Forms.NumericUpDown BorderSizeNumericUpDown;
+        private System.Windows.Forms.Button SetFlatStyleAllBtn;
     }
 }
