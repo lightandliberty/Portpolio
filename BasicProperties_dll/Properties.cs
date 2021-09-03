@@ -19,6 +19,12 @@ namespace BasicProperties_dll
             mControlColor = System.Drawing.SystemColors.Control;
         }
 
+        private void Properties_Load(object sender, EventArgs e)
+        {
+            this.TopMostBtn.ContextMenuStrip = contextMenuStrip2;
+        }
+
+
         private void TopMostBtn_Click(object sender, EventArgs e)
         {
             this.TopMost = this.TopMost == false;// false : true;
@@ -231,6 +237,17 @@ namespace BasicProperties_dll
         {
             FlatAppearanceForm flatAppearanceForm = new FlatAppearanceForm();
             flatAppearanceForm.ShowDialog();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("TopMost의 컨텍스트 메뉴입니다.");
+        }
+
+        private void ProcessLayoutEventBtn_Click(object sender, EventArgs e)
+        {
+            ProcessLayoutEventForm processLayoutEventForm = new ProcessLayoutEventForm();
+            processLayoutEventForm.ShowDialog();
         }
     }
 }

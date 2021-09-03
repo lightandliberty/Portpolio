@@ -48,6 +48,12 @@
     <Compile Include="FlatAppearanceForm.Designer.cs">
       <DependentUpon>FlatAppearanceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProcessLayoutEventForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProcessLayoutEventForm.Designer.cs">
+      <DependentUpon>ProcessLayoutEventForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TransparentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,12 +82,51 @@
     <EmbeddedResource Include="OpacityForm1.resx">
       <DependentUpon>OpacityForm1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProcessLayoutEventForm.resx">
+      <DependentUpon>ProcessLayoutEventForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties.resx">
       <DependentUpon>Properties.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TransparentForm.resx">
       <DependentUpon>TransparentForm.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxAcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

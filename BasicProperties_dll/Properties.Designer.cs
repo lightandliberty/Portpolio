@@ -50,12 +50,20 @@
             this.foreColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SetFlatAppearenceBtn = new System.Windows.Forms.Button();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.IsAnchorLabel = new System.Windows.Forms.Label();
+            this.ProcessLayoutEventBtn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // TopMostBtn
             // 
+            this.TopMostBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TopMostBtn.Location = new System.Drawing.Point(40, 132);
             this.TopMostBtn.Name = "TopMostBtn";
             this.TopMostBtn.Size = new System.Drawing.Size(200, 23);
@@ -66,6 +74,9 @@
             // 
             // ReadFromAppConfigBtn
             // 
+            this.ReadFromAppConfigBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ReadFromAppConfigBtn.Location = new System.Drawing.Point(40, 103);
             this.ReadFromAppConfigBtn.Name = "ReadFromAppConfigBtn";
             this.ReadFromAppConfigBtn.Size = new System.Drawing.Size(200, 23);
@@ -76,6 +87,9 @@
             // 
             // LoadBitmapBtn
             // 
+            this.LoadBitmapBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.LoadBitmapBtn.Location = new System.Drawing.Point(40, 161);
             this.LoadBitmapBtn.Name = "LoadBitmapBtn";
             this.LoadBitmapBtn.Size = new System.Drawing.Size(200, 23);
@@ -86,6 +100,9 @@
             // 
             // ChangeFormBorderStyleBtn
             // 
+            this.ChangeFormBorderStyleBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ChangeFormBorderStyleBtn.Location = new System.Drawing.Point(40, 190);
             this.ChangeFormBorderStyleBtn.Name = "ChangeFormBorderStyleBtn";
             this.ChangeFormBorderStyleBtn.Size = new System.Drawing.Size(200, 23);
@@ -96,6 +113,9 @@
             // 
             // SetControlBoxBtn
             // 
+            this.SetControlBoxBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SetControlBoxBtn.Location = new System.Drawing.Point(40, 219);
             this.SetControlBoxBtn.Name = "SetControlBoxBtn";
             this.SetControlBoxBtn.Size = new System.Drawing.Size(200, 23);
@@ -106,6 +126,9 @@
             // 
             // SetMaxiMiniBtn
             // 
+            this.SetMaxiMiniBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SetMaxiMiniBtn.Location = new System.Drawing.Point(40, 248);
             this.SetMaxiMiniBtn.Name = "SetMaxiMiniBtn";
             this.SetMaxiMiniBtn.Size = new System.Drawing.Size(200, 23);
@@ -116,6 +139,9 @@
             // 
             // instructionTextBox
             // 
+            this.instructionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.instructionTextBox.Location = new System.Drawing.Point(40, 40);
             this.instructionTextBox.Multiline = true;
             this.instructionTextBox.Name = "instructionTextBox";
@@ -124,6 +150,9 @@
             // 
             // SetHelpIconBtn
             // 
+            this.SetHelpIconBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SetHelpIconBtn.Location = new System.Drawing.Point(40, 277);
             this.SetHelpIconBtn.Name = "SetHelpIconBtn";
             this.SetHelpIconBtn.Size = new System.Drawing.Size(200, 23);
@@ -134,6 +163,9 @@
             // 
             // SetSizeGripStyleBtn
             // 
+            this.SetSizeGripStyleBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SetSizeGripStyleBtn.Location = new System.Drawing.Point(40, 306);
             this.SetSizeGripStyleBtn.Name = "SetSizeGripStyleBtn";
             this.SetSizeGripStyleBtn.Size = new System.Drawing.Size(200, 23);
@@ -144,6 +176,9 @@
             // 
             // SetShowInTaskbarBtn
             // 
+            this.SetShowInTaskbarBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SetShowInTaskbarBtn.Location = new System.Drawing.Point(40, 335);
             this.SetShowInTaskbarBtn.Name = "SetShowInTaskbarBtn";
             this.SetShowInTaskbarBtn.Size = new System.Drawing.Size(200, 23);
@@ -154,6 +189,9 @@
             // 
             // PopupOpacityFormBtn
             // 
+            this.PopupOpacityFormBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PopupOpacityFormBtn.Location = new System.Drawing.Point(40, 364);
             this.PopupOpacityFormBtn.Name = "PopupOpacityFormBtn";
             this.PopupOpacityFormBtn.Size = new System.Drawing.Size(200, 23);
@@ -164,6 +202,9 @@
             // 
             // CreateTransparentFormBtn
             // 
+            this.CreateTransparentFormBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CreateTransparentFormBtn.Location = new System.Drawing.Point(40, 393);
             this.CreateTransparentFormBtn.Name = "CreateTransparentFormBtn";
             this.CreateTransparentFormBtn.Size = new System.Drawing.Size(200, 23);
@@ -194,7 +235,7 @@
             // 종료ToolStripMenuItem
             // 
             this.종료ToolStripMenuItem.Name = "종료ToolStripMenuItem";
-            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.종료ToolStripMenuItem.Text = "종료";
             this.종료ToolStripMenuItem.Click += new System.EventHandler(this.종료ToolStripMenuItem_Click);
             // 
@@ -209,7 +250,7 @@
             // 버전정보ToolStripMenuItem
             // 
             this.버전정보ToolStripMenuItem.Name = "버전정보ToolStripMenuItem";
-            this.버전정보ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.버전정보ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.버전정보ToolStripMenuItem.Text = "버전 정보";
             this.버전정보ToolStripMenuItem.Click += new System.EventHandler(this.버전정보ToolStripMenuItem_Click);
             // 
@@ -237,6 +278,9 @@
             // 
             // SetFlatAppearenceBtn
             // 
+            this.SetFlatAppearenceBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SetFlatAppearenceBtn.Location = new System.Drawing.Point(295, 103);
             this.SetFlatAppearenceBtn.Name = "SetFlatAppearenceBtn";
             this.SetFlatAppearenceBtn.Size = new System.Drawing.Size(200, 23);
@@ -245,12 +289,53 @@
             this.SetFlatAppearenceBtn.UseVisualStyleBackColor = true;
             this.SetFlatAppearenceBtn.Click += new System.EventHandler(this.SetFlatAppearenceBtn_Click);
             // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(108, 26);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // IsAnchorLabel
+            // 
+            this.IsAnchorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.IsAnchorLabel.AutoSize = true;
+            this.IsAnchorLabel.Location = new System.Drawing.Point(40, 426);
+            this.IsAnchorLabel.Name = "IsAnchorLabel";
+            this.IsAnchorLabel.Size = new System.Drawing.Size(77, 12);
+            this.IsAnchorLabel.TabIndex = 16;
+            this.IsAnchorLabel.Text = "All Anchored";
+            // 
+            // ProcessLayoutEventBtn
+            // 
+            this.ProcessLayoutEventBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProcessLayoutEventBtn.Location = new System.Drawing.Point(295, 132);
+            this.ProcessLayoutEventBtn.Name = "ProcessLayoutEventBtn";
+            this.ProcessLayoutEventBtn.Size = new System.Drawing.Size(200, 23);
+            this.ProcessLayoutEventBtn.TabIndex = 17;
+            this.ProcessLayoutEventBtn.Text = "ProcessLayoutEvent";
+            this.ProcessLayoutEventBtn.UseVisualStyleBackColor = true;
+            this.ProcessLayoutEventBtn.Click += new System.EventHandler(this.ProcessLayoutEventBtn_Click);
+            // 
             // Properties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.ProcessLayoutEventBtn);
+            this.Controls.Add(this.IsAnchorLabel);
             this.Controls.Add(this.SetFlatAppearenceBtn);
             this.Controls.Add(this.CreateTransparentFormBtn);
             this.Controls.Add(this.PopupOpacityFormBtn);
@@ -269,10 +354,12 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Properties";
             this.ShowInTaskbar = false;
+            this.Load += new System.EventHandler(this.Properties_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Properties_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -301,5 +388,9 @@
         private System.Windows.Forms.ToolStripMenuItem foreColorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backColorToolStripMenuItem;
         private System.Windows.Forms.Button SetFlatAppearenceBtn;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.Label IsAnchorLabel;
+        private System.Windows.Forms.Button ProcessLayoutEventBtn;
     }
 }

@@ -115,9 +115,10 @@
             // 
             // StandardBtn
             // 
-            this.StandardBtn.Location = new System.Drawing.Point(314, 243);
+            this.StandardBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.StandardBtn.Location = new System.Drawing.Point(0, 427);
             this.StandardBtn.Name = "StandardBtn";
-            this.StandardBtn.Size = new System.Drawing.Size(232, 23);
+            this.StandardBtn.Size = new System.Drawing.Size(800, 23);
             this.StandardBtn.TabIndex = 7;
             this.StandardBtn.Text = "Standard";
             this.StandardBtn.UseVisualStyleBackColor = true;
@@ -125,9 +126,10 @@
             // 
             // SystemBtn
             // 
-            this.SystemBtn.Location = new System.Drawing.Point(314, 272);
+            this.SystemBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.SystemBtn.Location = new System.Drawing.Point(0, 404);
             this.SystemBtn.Name = "SystemBtn";
-            this.SystemBtn.Size = new System.Drawing.Size(232, 23);
+            this.SystemBtn.Size = new System.Drawing.Size(800, 23);
             this.SystemBtn.TabIndex = 8;
             this.SystemBtn.Text = "System";
             this.SystemBtn.UseVisualStyleBackColor = true;
@@ -184,8 +186,6 @@
             this.Controls.Add(this.BorderSizeNumericUpDown);
             this.Controls.Add(this.SetFlatStyleLabel);
             this.Controls.Add(this.SetFlatAppearanceLabel);
-            this.Controls.Add(this.SystemBtn);
-            this.Controls.Add(this.StandardBtn);
             this.Controls.Add(this.PopupBtn);
             this.Controls.Add(this.FlatBtn);
             this.Controls.Add(this.SetMouseOverBackColorBtn);
@@ -193,6 +193,8 @@
             this.Controls.Add(this.SetBorderSizeBtn);
             this.Controls.Add(this.SetBorderColorBtn);
             this.Controls.Add(this.SetApplicationEnableVisualStylesBtn);
+            this.Controls.Add(this.SystemBtn);
+            this.Controls.Add(this.StandardBtn);
             this.Name = "FlatAppearanceForm";
             this.Text = "FlatAppearanceForm";
             this.Load += new System.EventHandler(this.FlatAppearanceForm_Load);
