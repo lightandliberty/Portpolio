@@ -249,5 +249,38 @@ namespace BasicProperties_dll
             ProcessLayoutEventForm processLayoutEventForm = new ProcessLayoutEventForm();
             processLayoutEventForm.ShowDialog();
         }
+
+        private void MDIBtn_Click(object sender, EventArgs e)
+        {
+            // 부모폼을 컨테이너로 설정
+            MDIForm mdiForm = new MDIForm();
+            mdiForm.IsMdiContainer = true;  // 첫번째 폼을 parentContainer로 설정
+
+            Form childForm1 = new Form();
+            Form childForm2 = new Form();
+            Form childForm3 = new Form();
+            Form childForm4 = new Form();
+
+            // 자식 폼의 부모 폼을 설정
+            childForm1.MdiParent = mdiForm;
+            childForm2.MdiParent = mdiForm;
+            childForm3.MdiParent = mdiForm;
+            childForm4.MdiParent = mdiForm;
+
+            childForm1.Show();
+            childForm2.Show();
+            childForm3.Show();
+            childForm4.Show();
+
+            // 부모 폼의 SplitContainer.Panel1에 자식 폼을 붙임.
+            mdiForm.MainSplitContainer.Panel1.Controls.Add(childForm1);
+            mdiForm.MainSplitContainer.Panel1.Controls.Add(childForm2);
+            mdiForm.MainSplitContainer.Panel1.Controls.Add(childForm3);
+            mdiForm.MainSplitContainer.Panel1.Controls.Add(childForm4);
+
+            // 부모 폼 안의 MDI를 정렬
+
+            mdiForm.ShowDialog();
+        }
     }
 }

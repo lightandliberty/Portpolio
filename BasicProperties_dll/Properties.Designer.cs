@@ -54,6 +54,7 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.IsAnchorLabel = new System.Windows.Forms.Label();
             this.ProcessLayoutEventBtn = new System.Windows.Forms.Button();
+            this.MDIBtn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
@@ -64,9 +65,10 @@
             this.TopMostBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TopMostBtn.Location = new System.Drawing.Point(40, 132);
+            this.TopMostBtn.Location = new System.Drawing.Point(57, 198);
+            this.TopMostBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TopMostBtn.Name = "TopMostBtn";
-            this.TopMostBtn.Size = new System.Drawing.Size(200, 23);
+            this.TopMostBtn.Size = new System.Drawing.Size(286, 34);
             this.TopMostBtn.TabIndex = 0;
             this.TopMostBtn.Text = "최상위창";
             this.TopMostBtn.UseVisualStyleBackColor = true;
@@ -77,9 +79,10 @@
             this.ReadFromAppConfigBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ReadFromAppConfigBtn.Location = new System.Drawing.Point(40, 103);
+            this.ReadFromAppConfigBtn.Location = new System.Drawing.Point(57, 154);
+            this.ReadFromAppConfigBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ReadFromAppConfigBtn.Name = "ReadFromAppConfigBtn";
-            this.ReadFromAppConfigBtn.Size = new System.Drawing.Size(200, 23);
+            this.ReadFromAppConfigBtn.Size = new System.Drawing.Size(286, 34);
             this.ReadFromAppConfigBtn.TabIndex = 2;
             this.ReadFromAppConfigBtn.Text = "App.config에서 값 읽어오기";
             this.ReadFromAppConfigBtn.UseVisualStyleBackColor = true;
@@ -90,9 +93,10 @@
             this.LoadBitmapBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.LoadBitmapBtn.Location = new System.Drawing.Point(40, 161);
+            this.LoadBitmapBtn.Location = new System.Drawing.Point(57, 242);
+            this.LoadBitmapBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.LoadBitmapBtn.Name = "LoadBitmapBtn";
-            this.LoadBitmapBtn.Size = new System.Drawing.Size(200, 23);
+            this.LoadBitmapBtn.Size = new System.Drawing.Size(286, 34);
             this.LoadBitmapBtn.TabIndex = 3;
             this.LoadBitmapBtn.Text = "c:\\cocoa.png 파일 나타내기";
             this.LoadBitmapBtn.UseVisualStyleBackColor = true;
@@ -103,9 +107,10 @@
             this.ChangeFormBorderStyleBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ChangeFormBorderStyleBtn.Location = new System.Drawing.Point(40, 190);
+            this.ChangeFormBorderStyleBtn.Location = new System.Drawing.Point(57, 285);
+            this.ChangeFormBorderStyleBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ChangeFormBorderStyleBtn.Name = "ChangeFormBorderStyleBtn";
-            this.ChangeFormBorderStyleBtn.Size = new System.Drawing.Size(200, 23);
+            this.ChangeFormBorderStyleBtn.Size = new System.Drawing.Size(286, 34);
             this.ChangeFormBorderStyleBtn.TabIndex = 4;
             this.ChangeFormBorderStyleBtn.Text = "FormBorderStyle속성 설정";
             this.ChangeFormBorderStyleBtn.UseVisualStyleBackColor = true;
@@ -116,9 +121,10 @@
             this.SetControlBoxBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SetControlBoxBtn.Location = new System.Drawing.Point(40, 219);
+            this.SetControlBoxBtn.Location = new System.Drawing.Point(57, 328);
+            this.SetControlBoxBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SetControlBoxBtn.Name = "SetControlBoxBtn";
-            this.SetControlBoxBtn.Size = new System.Drawing.Size(200, 23);
+            this.SetControlBoxBtn.Size = new System.Drawing.Size(286, 34);
             this.SetControlBoxBtn.TabIndex = 5;
             this.SetControlBoxBtn.Text = "ControlBox 속성 변경";
             this.SetControlBoxBtn.UseVisualStyleBackColor = true;
@@ -129,9 +135,10 @@
             this.SetMaxiMiniBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SetMaxiMiniBtn.Location = new System.Drawing.Point(40, 248);
+            this.SetMaxiMiniBtn.Location = new System.Drawing.Point(57, 372);
+            this.SetMaxiMiniBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SetMaxiMiniBtn.Name = "SetMaxiMiniBtn";
-            this.SetMaxiMiniBtn.Size = new System.Drawing.Size(200, 23);
+            this.SetMaxiMiniBtn.Size = new System.Drawing.Size(286, 34);
             this.SetMaxiMiniBtn.TabIndex = 6;
             this.SetMaxiMiniBtn.Text = "MaximizeBox MinimizeBox 속성";
             this.SetMaxiMiniBtn.UseVisualStyleBackColor = true;
@@ -142,10 +149,11 @@
             this.instructionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.instructionTextBox.Location = new System.Drawing.Point(40, 40);
+            this.instructionTextBox.Location = new System.Drawing.Point(57, 60);
+            this.instructionTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.instructionTextBox.Multiline = true;
             this.instructionTextBox.Name = "instructionTextBox";
-            this.instructionTextBox.Size = new System.Drawing.Size(660, 54);
+            this.instructionTextBox.Size = new System.Drawing.Size(941, 79);
             this.instructionTextBox.TabIndex = 7;
             // 
             // SetHelpIconBtn
@@ -153,9 +161,10 @@
             this.SetHelpIconBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SetHelpIconBtn.Location = new System.Drawing.Point(40, 277);
+            this.SetHelpIconBtn.Location = new System.Drawing.Point(57, 416);
+            this.SetHelpIconBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SetHelpIconBtn.Name = "SetHelpIconBtn";
-            this.SetHelpIconBtn.Size = new System.Drawing.Size(200, 23);
+            this.SetHelpIconBtn.Size = new System.Drawing.Size(286, 34);
             this.SetHelpIconBtn.TabIndex = 8;
             this.SetHelpIconBtn.Text = "HelpButton 속성";
             this.SetHelpIconBtn.UseVisualStyleBackColor = true;
@@ -166,9 +175,10 @@
             this.SetSizeGripStyleBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SetSizeGripStyleBtn.Location = new System.Drawing.Point(40, 306);
+            this.SetSizeGripStyleBtn.Location = new System.Drawing.Point(57, 459);
+            this.SetSizeGripStyleBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SetSizeGripStyleBtn.Name = "SetSizeGripStyleBtn";
-            this.SetSizeGripStyleBtn.Size = new System.Drawing.Size(200, 23);
+            this.SetSizeGripStyleBtn.Size = new System.Drawing.Size(286, 34);
             this.SetSizeGripStyleBtn.TabIndex = 9;
             this.SetSizeGripStyleBtn.Text = "SetSizeGripStyle 속성";
             this.SetSizeGripStyleBtn.UseVisualStyleBackColor = true;
@@ -179,9 +189,10 @@
             this.SetShowInTaskbarBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SetShowInTaskbarBtn.Location = new System.Drawing.Point(40, 335);
+            this.SetShowInTaskbarBtn.Location = new System.Drawing.Point(57, 502);
+            this.SetShowInTaskbarBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SetShowInTaskbarBtn.Name = "SetShowInTaskbarBtn";
-            this.SetShowInTaskbarBtn.Size = new System.Drawing.Size(200, 23);
+            this.SetShowInTaskbarBtn.Size = new System.Drawing.Size(286, 34);
             this.SetShowInTaskbarBtn.TabIndex = 10;
             this.SetShowInTaskbarBtn.Text = "ShowInTaskbar 속성";
             this.SetShowInTaskbarBtn.UseVisualStyleBackColor = true;
@@ -192,9 +203,10 @@
             this.PopupOpacityFormBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PopupOpacityFormBtn.Location = new System.Drawing.Point(40, 364);
+            this.PopupOpacityFormBtn.Location = new System.Drawing.Point(57, 546);
+            this.PopupOpacityFormBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PopupOpacityFormBtn.Name = "PopupOpacityFormBtn";
-            this.PopupOpacityFormBtn.Size = new System.Drawing.Size(200, 23);
+            this.PopupOpacityFormBtn.Size = new System.Drawing.Size(286, 34);
             this.PopupOpacityFormBtn.TabIndex = 11;
             this.PopupOpacityFormBtn.Text = "Popup Opacity속성 Form";
             this.PopupOpacityFormBtn.UseVisualStyleBackColor = true;
@@ -205,9 +217,10 @@
             this.CreateTransparentFormBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CreateTransparentFormBtn.Location = new System.Drawing.Point(40, 393);
+            this.CreateTransparentFormBtn.Location = new System.Drawing.Point(57, 590);
+            this.CreateTransparentFormBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CreateTransparentFormBtn.Name = "CreateTransparentFormBtn";
-            this.CreateTransparentFormBtn.Size = new System.Drawing.Size(200, 23);
+            this.CreateTransparentFormBtn.Size = new System.Drawing.Size(286, 34);
             this.CreateTransparentFormBtn.TabIndex = 12;
             this.CreateTransparentFormBtn.Text = "TransparentForm 생성";
             this.CreateTransparentFormBtn.UseVisualStyleBackColor = true;
@@ -220,7 +233,8 @@
             this.도움말ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
+            this.menuStrip1.Size = new System.Drawing.Size(1143, 25);
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -229,7 +243,7 @@
             this.파일ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.종료ToolStripMenuItem});
             this.파일ToolStripMenuItem.Name = "파일ToolStripMenuItem";
-            this.파일ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.파일ToolStripMenuItem.Size = new System.Drawing.Size(43, 19);
             this.파일ToolStripMenuItem.Text = "파일";
             // 
             // 종료ToolStripMenuItem
@@ -244,7 +258,7 @@
             this.도움말ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.버전정보ToolStripMenuItem});
             this.도움말ToolStripMenuItem.Name = "도움말ToolStripMenuItem";
-            this.도움말ToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.도움말ToolStripMenuItem.Size = new System.Drawing.Size(55, 19);
             this.도움말ToolStripMenuItem.Text = "도움말";
             // 
             // 버전정보ToolStripMenuItem
@@ -281,9 +295,10 @@
             this.SetFlatAppearenceBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SetFlatAppearenceBtn.Location = new System.Drawing.Point(295, 103);
+            this.SetFlatAppearenceBtn.Location = new System.Drawing.Point(421, 154);
+            this.SetFlatAppearenceBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SetFlatAppearenceBtn.Name = "SetFlatAppearenceBtn";
-            this.SetFlatAppearenceBtn.Size = new System.Drawing.Size(200, 23);
+            this.SetFlatAppearenceBtn.Size = new System.Drawing.Size(286, 34);
             this.SetFlatAppearenceBtn.TabIndex = 14;
             this.SetFlatAppearenceBtn.Text = "SetFlatAppearenceBtn";
             this.SetFlatAppearenceBtn.UseVisualStyleBackColor = true;
@@ -309,9 +324,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.IsAnchorLabel.AutoSize = true;
-            this.IsAnchorLabel.Location = new System.Drawing.Point(40, 426);
+            this.IsAnchorLabel.Location = new System.Drawing.Point(57, 639);
+            this.IsAnchorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.IsAnchorLabel.Name = "IsAnchorLabel";
-            this.IsAnchorLabel.Size = new System.Drawing.Size(77, 12);
+            this.IsAnchorLabel.Size = new System.Drawing.Size(111, 18);
             this.IsAnchorLabel.TabIndex = 16;
             this.IsAnchorLabel.Text = "All Anchored";
             // 
@@ -320,20 +336,36 @@
             this.ProcessLayoutEventBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProcessLayoutEventBtn.Location = new System.Drawing.Point(295, 132);
+            this.ProcessLayoutEventBtn.Location = new System.Drawing.Point(421, 198);
+            this.ProcessLayoutEventBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ProcessLayoutEventBtn.Name = "ProcessLayoutEventBtn";
-            this.ProcessLayoutEventBtn.Size = new System.Drawing.Size(200, 23);
+            this.ProcessLayoutEventBtn.Size = new System.Drawing.Size(286, 34);
             this.ProcessLayoutEventBtn.TabIndex = 17;
             this.ProcessLayoutEventBtn.Text = "ProcessLayoutEvent";
             this.ProcessLayoutEventBtn.UseVisualStyleBackColor = true;
             this.ProcessLayoutEventBtn.Click += new System.EventHandler(this.ProcessLayoutEventBtn_Click);
             // 
+            // MDIBtn
+            // 
+            this.MDIBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MDIBtn.Location = new System.Drawing.Point(421, 242);
+            this.MDIBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.MDIBtn.Name = "MDIBtn";
+            this.MDIBtn.Size = new System.Drawing.Size(286, 34);
+            this.MDIBtn.TabIndex = 18;
+            this.MDIBtn.Text = "CreateMDI";
+            this.MDIBtn.UseVisualStyleBackColor = true;
+            this.MDIBtn.Click += new System.EventHandler(this.MDIBtn_Click);
+            // 
             // Properties
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1143, 675);
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.MDIBtn);
             this.Controls.Add(this.ProcessLayoutEventBtn);
             this.Controls.Add(this.IsAnchorLabel);
             this.Controls.Add(this.SetFlatAppearenceBtn);
@@ -352,6 +384,7 @@
             this.Controls.Add(this.menuStrip1);
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Properties";
             this.ShowInTaskbar = false;
             this.Load += new System.EventHandler(this.Properties_Load);
@@ -392,5 +425,6 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Label IsAnchorLabel;
         private System.Windows.Forms.Button ProcessLayoutEventBtn;
+        private System.Windows.Forms.Button MDIBtn;
     }
 }
