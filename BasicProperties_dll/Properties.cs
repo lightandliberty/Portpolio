@@ -250,37 +250,61 @@ namespace BasicProperties_dll
             processLayoutEventForm.ShowDialog();
         }
 
-        private void MDIBtn_Click(object sender, EventArgs e)
+        private void CreateMDIBtn_Click(object sender, EventArgs e)
         {
             // 부모폼을 컨테이너로 설정
             MDIForm mdiForm = new MDIForm();
-            mdiForm.IsMdiContainer = true;  // 첫번째 폼을 parentContainer로 설정
+            //mdiForm.IsMdiContainer = true;  // 첫번째 폼을 parentContainer로 설정
 
-            Form childForm1 = new Form();
-            Form childForm2 = new Form();
-            Form childForm3 = new Form();
-            Form childForm4 = new Form();
+            //Form childForm1 = new Form();
+            //Form childForm2 = new Form();
+            //Form childForm3 = new Form();
+            //Form childForm4 = new Form();
 
-            // 자식 폼의 부모 폼을 설정
-            childForm1.MdiParent = mdiForm;
-            childForm2.MdiParent = mdiForm;
-            childForm3.MdiParent = mdiForm;
-            childForm4.MdiParent = mdiForm;
+            //childForm1.Text = "child1";
+            //childForm2.Text = "child2";
+            //childForm3.Text = "child3";
+            //childForm4.Text = "child4";
+            //childForm1.Owner = null;
+            //childForm2.Owner = null;
+            //childForm3.Owner = null;
+            //childForm4.Owner = null;
+            //childForm1.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            //childForm1.ControlBox = true;
+            //childForm2.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            //childForm2.ControlBox = true;
+            //childForm3.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            //childForm3.ControlBox = true;
+            //childForm4.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            //childForm4.ControlBox = true;
 
-            childForm1.Show();
-            childForm2.Show();
-            childForm3.Show();
-            childForm4.Show();
+            //// 자식 폼의 부모 폼을 설정
+            //childForm1.MdiParent = mdiForm;
+            //childForm2.MdiParent = mdiForm;
+            //childForm3.MdiParent = mdiForm;
+            //childForm4.MdiParent = mdiForm;
+            //MessageBox.Show("자식 폼이 하나 이상인지? = " + mdiForm.HasChildren.ToString());
 
-            // 부모 폼의 SplitContainer.Panel1에 자식 폼을 붙임.
-            mdiForm.MainSplitContainer.Panel1.Controls.Add(childForm1);
-            mdiForm.MainSplitContainer.Panel1.Controls.Add(childForm2);
-            mdiForm.MainSplitContainer.Panel1.Controls.Add(childForm3);
-            mdiForm.MainSplitContainer.Panel1.Controls.Add(childForm4);
+            //childForm1.Show();
+            //childForm2.Show();
+            //childForm3.Show();
+            //childForm4.Show();
 
-            // 부모 폼 안의 MDI를 정렬
+            //// 부모 폼의 SplitContainer.Panel1에 자식 폼을 붙임.
+            //mdiForm.MainSplitContainer.Panel1.Controls.Add(childForm1);
+            //mdiForm.MainSplitContainer.Panel1.Controls.Add(childForm2);
+            //mdiForm.MainSplitContainer.Panel1.Controls.Add(childForm3);
+            //mdiForm.MainSplitContainer.Panel1.Controls.Add(childForm4);
+            ////mdiForm.Controls.Add(childForm1);
+            ////mdiForm.Controls.Add(childForm2);
+            ////mdiForm.Controls.Add(childForm3);
+            ////mdiForm.Controls.Add(childForm4);
+
+            //// 부모 폼 안의 MDI를 정렬
+            //mdiForm.LayoutMdi(MdiLayout.TileVertical);
 
             mdiForm.ShowDialog();
         }
+
     }
 }
