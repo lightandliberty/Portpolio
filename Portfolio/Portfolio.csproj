@@ -15,7 +15,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\portfolio2021\</PublishUrl>
+    <PublishUrl>C:\portfolio2021_install\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -165,10 +165,6 @@
     <ProjectReference Include="..\BasicProperties_dll\BasicProperties_dll.csproj">
       <Project>{fedceb4d-4dfc-4546-af6c-3ed3eb3728b7}</Project>
       <Name>BasicProperties_dll</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\OCR_dll\OCR_dll.csproj">
-      <Project>{9831f2e9-3f27-41f2-ae0d-fea6e07eb1c6}</Project>
-      <Name>OCR_dll</Name>
     </ProjectReference>
     <ProjectReference Include="..\RawInput\RawInput_dll.csproj">
       <Project>{7151da05-6e9c-40ba-82c7-407760b03b80}</Project>

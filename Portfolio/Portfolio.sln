@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portfolio", "Portfolio.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RawInput_dll", "..\RawInput\RawInput_dll.csproj", "{7151DA05-6E9C-40BA-82C7-407760B03B80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OCR_dll", "..\OCR_dll\OCR_dll.csproj", "{9831F2E9-3F27-41F2-AE0D-FEA6E07EB1C6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicProperties_dll", "..\BasicProperties_dll\BasicProperties_dll.csproj", "{FEDCEB4D-4DFC-4546-AF6C-3ED3EB3728B7}"
 EndProject
 Global
@@ -35,14 +33,6 @@ Global
 		{7151DA05-6E9C-40BA-82C7-407760B03B80}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7151DA05-6E9C-40BA-82C7-407760B03B80}.Release|x64.ActiveCfg = Release|x64
 		{7151DA05-6E9C-40BA-82C7-407760B03B80}.Release|x64.Build.0 = Release|x64
-		{9831F2E9-3F27-41F2-AE0D-FEA6E07EB1C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9831F2E9-3F27-41F2-AE0D-FEA6E07EB1C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9831F2E9-3F27-41F2-AE0D-FEA6E07EB1C6}.Debug|x64.ActiveCfg = Debug|x64
-		{9831F2E9-3F27-41F2-AE0D-FEA6E07EB1C6}.Debug|x64.Build.0 = Debug|x64
-		{9831F2E9-3F27-41F2-AE0D-FEA6E07EB1C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9831F2E9-3F27-41F2-AE0D-FEA6E07EB1C6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9831F2E9-3F27-41F2-AE0D-FEA6E07EB1C6}.Release|x64.ActiveCfg = Release|x64
-		{9831F2E9-3F27-41F2-AE0D-FEA6E07EB1C6}.Release|x64.Build.0 = Release|x64
 		{FEDCEB4D-4DFC-4546-AF6C-3ED3EB3728B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FEDCEB4D-4DFC-4546-AF6C-3ED3EB3728B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEDCEB4D-4DFC-4546-AF6C-3ED3EB3728B7}.Debug|x64.ActiveCfg = Debug|Any CPU

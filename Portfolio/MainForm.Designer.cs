@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.RawInputBtn = new System.Windows.Forms.Button();
-            this.OCRBtn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,16 +46,6 @@
             this.RawInputBtn.Text = "RawInput";
             this.RawInputBtn.UseVisualStyleBackColor = true;
             this.RawInputBtn.Click += new System.EventHandler(this.RawInputBtn_Click);
-            // 
-            // OCRBtn
-            // 
-            this.OCRBtn.Location = new System.Drawing.Point(671, 81);
-            this.OCRBtn.Name = "OCRBtn";
-            this.OCRBtn.Size = new System.Drawing.Size(117, 36);
-            this.OCRBtn.TabIndex = 1;
-            this.OCRBtn.Text = "OCR";
-            this.OCRBtn.UseVisualStyleBackColor = true;
-            this.OCRBtn.Click += new System.EventHandler(this.OCRBtn_Click);
             // 
             // button1
             // 
@@ -97,7 +86,7 @@
             // 버전정보ToolStripMenuItem
             // 
             this.버전정보ToolStripMenuItem.Name = "버전정보ToolStripMenuItem";
-            this.버전정보ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.버전정보ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.버전정보ToolStripMenuItem.Text = "버전 정보";
             this.버전정보ToolStripMenuItem.Click += new System.EventHandler(this.버전정보ToolStripMenuItem_Click);
             // 
@@ -107,7 +96,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.OCRBtn);
             this.Controls.Add(this.RawInputBtn);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -124,7 +112,6 @@
         #endregion
 
         private System.Windows.Forms.Button RawInputBtn;
-        private System.Windows.Forms.Button OCRBtn;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 종료ToolStripMenuItem;

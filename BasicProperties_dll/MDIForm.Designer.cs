@@ -81,28 +81,28 @@
             this.arrangeIconsToolStripMenuItem.Name = "arrangeIconsToolStripMenuItem";
             this.arrangeIconsToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.arrangeIconsToolStripMenuItem.Text = "ArrangeIcons";
-            this.arrangeIconsToolStripMenuItem.Click += new System.EventHandler(this.arrangeIconsToolStripMenuItem_Click);
+            this.arrangeIconsToolStripMenuItem.Click += new System.EventHandler(this.ArrangeIconsToolStripMenuItem_Click);
             // 
             // cascadeToolStripMenuItem
             // 
             this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
             this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.cascadeToolStripMenuItem.Text = "Cascade";
-            this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.cascadeToolStripMenuItem_Click);
+            this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.CascadeToolStripMenuItem_Click);
             // 
             // tileChildrenVerticallyToolStripMenuItem
             // 
             this.tileChildrenVerticallyToolStripMenuItem.Name = "tileChildrenVerticallyToolStripMenuItem";
             this.tileChildrenVerticallyToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.tileChildrenVerticallyToolStripMenuItem.Text = "Tile Children Vertically";
-            this.tileChildrenVerticallyToolStripMenuItem.Click += new System.EventHandler(this.tileChildrenVerticallyToolStripMenuItem_Click);
+            this.tileChildrenVerticallyToolStripMenuItem.Click += new System.EventHandler(this.TileChildrenVerticallyToolStripMenuItem_Click);
             // 
             // tileChildrenHorizontallyToolStripMenuItem
             // 
             this.tileChildrenHorizontallyToolStripMenuItem.Name = "tileChildrenHorizontallyToolStripMenuItem";
             this.tileChildrenHorizontallyToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.tileChildrenHorizontallyToolStripMenuItem.Text = "Tile Children Horizontally";
-            this.tileChildrenHorizontallyToolStripMenuItem.Click += new System.EventHandler(this.tileChildrenHorizontallyToolStripMenuItem_Click);
+            this.tileChildrenHorizontallyToolStripMenuItem.Click += new System.EventHandler(this.TileChildrenHorizontallyToolStripMenuItem_Click);
             // 
             // MDIForm
             // 

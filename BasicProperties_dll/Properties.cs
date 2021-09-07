@@ -213,20 +213,18 @@ namespace BasicProperties_dll
             MessageBox.Show("포트폴리오 버전 1.0");
         }
 
-        private void foreColorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ForeColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ColorDialog colorDialog = new ColorDialog();
-            colorDialog.FullOpen = true;
+            ColorDialog colorDialog = new ColorDialog { FullOpen = true };
             if (DialogResult.OK == colorDialog.ShowDialog())
             {
                 this.ForeColor = colorDialog.Color;
             }
         }
 
-        private void backColorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void BackColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ColorDialog colorDialog = new ColorDialog();
-            colorDialog.FullOpen = true;
+            ColorDialog colorDialog = new ColorDialog { FullOpen = true };
             if(DialogResult.OK ==  colorDialog.ShowDialog())
             {
                 this.BackColor = colorDialog.Color;
@@ -239,7 +237,7 @@ namespace BasicProperties_dll
             flatAppearanceForm.ShowDialog();
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("TopMost의 컨텍스트 메뉴입니다.");
         }

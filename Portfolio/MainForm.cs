@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OCR_dll;
 
 
 namespace Portfolio
@@ -59,11 +58,6 @@ namespace Portfolio
                 mMouseDeviceName = e.mKeyPressInfo.mDeviceName;
         }
 
-        private void OCRBtn_Click(object sender, EventArgs e)
-        {
-            OCR_Form ocrForm = new OCR_Form();
-            ocrForm.ShowDialog();
-        }
 
         private void BasicPropertiesBtn_Click(object sender, EventArgs e)
         {
