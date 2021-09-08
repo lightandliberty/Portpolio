@@ -22,6 +22,13 @@ namespace BasicProperties_dll
         private void Properties_Load(object sender, EventArgs e)
         {
             this.TopMostBtn.ContextMenuStrip = contextMenuStrip2;
+            this.ControlBoxPropLabel.Text = this.ControlBox.ToString();
+            this.FormBorderStylePropLabel.Text = this.FormBorderStyle.ToString();
+            this.HelpButtonPropLabel.Text = this.HelpButton.ToString();
+            this.MinimizeBoxPropLabel.Text = this.MinimizeBox.ToString();
+            this.MaximizePropLabel.Text = this.MaximizeBox.ToString();
+            this.ShowInTaskBarPropLabel.Text = this.ShowInTaskbar.ToString();
+            this.SizeGripStylePropLabel.Text = this.SizeGripStyle.ToString();
         }
 
 
@@ -87,6 +94,7 @@ namespace BasicProperties_dll
             this.Text = "this.FormBorderStyle = " + this.FormBorderStyle.ToString();
             instructionTextBox.Text = "폼에 테두리가 있는지, 크기 조정이 가능한지\r\n보통크기의 캡션 표시줄인지, 작은 크기의 캡션 표시줄인지";
 
+            this.FormBorderStylePropLabel.Text = this.FormBorderStyle.ToString();
         }
 
         private void SetControlBoxBtn_Click(object sender, EventArgs e)
@@ -99,6 +107,8 @@ namespace BasicProperties_dll
 
             this.Text = "this.ControlBox = " + this.ControlBox.ToString();
             instructionTextBox.Text = "폼의 좌측 상단에 아이콘을 위치시킬지, 우측상단에 종료 버튼을 위치시킬지,\r\n왼쪽상단 왼쪽버튼 클릭시 또는 오른쪽 상단 오른쪽 버튼 클릭시 메뉴 안 뜸";
+            this.ControlBoxPropLabel.Text = this.ControlBox.ToString();
+
         }
 
         private void SetMaxiMiniBtn_Click(object sender, EventArgs e)
@@ -111,6 +121,9 @@ namespace BasicProperties_dll
                 this.SetMaxiMiniBtn.BackColor = mControlColor;
             this.Text = "this.MaximizeBox = " + this.MaximizeBox.ToString() + ", this.MinimizeBox = " + this.MinimizeBox.ToString();
             instructionTextBox.Text = "최소화, 최대화 버튼 표시";
+            this.MinimizeBoxPropLabel.Text = this.MinimizeBox.ToString();
+            this.MaximizePropLabel.Text = this.MaximizeBox.ToString();
+
         }
 
         private void SetHelpIconBtn_Click(object sender, EventArgs e)
@@ -122,6 +135,9 @@ namespace BasicProperties_dll
                 this.SetHelpIconBtn.BackColor = mControlColor;
             this.Text = "this.HelpButton = " + this.HelpButton.ToString();
             this.instructionTextBox.Text = "우측 상단에 ?표시의 버튼 표시.(단, ControlBox는 true, Maximize, Minimize는 false여야 함. \r\n?클릭시 HelpRequested이벤트 발생.\r\nfalse여도 <F1>키를 누르면 HelpRequested 이벤트 발생";
+
+            this.HelpButtonPropLabel.Text = this.HelpButton.ToString();
+
         }
 
         private void Properties_KeyDown(object sender, KeyEventArgs e)
@@ -154,6 +170,8 @@ namespace BasicProperties_dll
 
             this.Text = "this.SizeGripStyle = " + this.SizeGripStyle.ToString();
             this.instructionTextBox.Text = "폼의 우측 하단 크기 조정 그립을 보여주거나 감추거나 함.\r\n폼에 상태 표시줄(status bar) 컨트롤이 있는 경우, 상태 표시줄 자체 속성의 SizingGrip속성에 의해 조정 그립을 보이거나 감춤.";
+            this.SizeGripStylePropLabel.Text = this.SizeGripStyle.ToString();
+
         }
 
         private void SetShowInTaskbarBtn_Click(object sender, EventArgs e)
@@ -183,14 +201,19 @@ namespace BasicProperties_dll
             {
                 MessageBox.Show("예외가 발생했습니다." + ex.ToString());
             }
+            this.ShowInTaskBarPropLabel.Text = this.ShowInTaskbar.ToString();
         }
 
         private void PopupOpacityFormBtn_Click(object sender, EventArgs e)
         {
-            this.instructionTextBox.Text = "새 창의 Opacity = 0.5, TopMost = true에 타이머를 추가하여, 불투명도가 0.1씩 증가하도록 설정합니다.";
+            this.instructionTextBox.Text = "새 창의 Opacity = 0.5, TopMost = true에 타이머를 추가하여, 불투명도가 0.1씩 증가하도록 설정합니다." +
+                "\r\n폼의 종료버튼이 폼의 .CancelButton에, 폼의 센터 버튼이 .AcceptButton에 연결되어 있습니다.";
 
             // IDE0017 개체 초기화를 단순화할 수 있습니다.
-            OpacityForm opacityForm = new OpacityForm() { StartPosition = FormStartPosition.CenterParent };
+            OpacityForm opacityForm = new OpacityForm() {
+                StartPosition = FormStartPosition.CenterParent,
+            };
+            
 //            opacityForm.StartPosition = FormStartPosition.CenterParent;
             opacityForm.ShowDialog();
         }
@@ -250,59 +273,9 @@ namespace BasicProperties_dll
 
         private void CreateMDIBtn_Click(object sender, EventArgs e)
         {
-            // 부모폼을 컨테이너로 설정
+            // 부모폼을 컨테이너로 설정. // SplitContainer에 창들을 넣으면 정렬 안 됨.
             MDIForm mdiForm = new MDIForm();
-            //mdiForm.IsMdiContainer = true;  // 첫번째 폼을 parentContainer로 설정
-
-            //Form childForm1 = new Form();
-            //Form childForm2 = new Form();
-            //Form childForm3 = new Form();
-            //Form childForm4 = new Form();
-
-            //childForm1.Text = "child1";
-            //childForm2.Text = "child2";
-            //childForm3.Text = "child3";
-            //childForm4.Text = "child4";
-            //childForm1.Owner = null;
-            //childForm2.Owner = null;
-            //childForm3.Owner = null;
-            //childForm4.Owner = null;
-            //childForm1.FormBorderStyle = FormBorderStyle.SizableToolWindow;
-            //childForm1.ControlBox = true;
-            //childForm2.FormBorderStyle = FormBorderStyle.SizableToolWindow;
-            //childForm2.ControlBox = true;
-            //childForm3.FormBorderStyle = FormBorderStyle.SizableToolWindow;
-            //childForm3.ControlBox = true;
-            //childForm4.FormBorderStyle = FormBorderStyle.SizableToolWindow;
-            //childForm4.ControlBox = true;
-
-            //// 자식 폼의 부모 폼을 설정
-            //childForm1.MdiParent = mdiForm;
-            //childForm2.MdiParent = mdiForm;
-            //childForm3.MdiParent = mdiForm;
-            //childForm4.MdiParent = mdiForm;
-            //MessageBox.Show("자식 폼이 하나 이상인지? = " + mdiForm.HasChildren.ToString());
-
-            //childForm1.Show();
-            //childForm2.Show();
-            //childForm3.Show();
-            //childForm4.Show();
-
-            //// 부모 폼의 SplitContainer.Panel1에 자식 폼을 붙임.
-            //mdiForm.MainSplitContainer.Panel1.Controls.Add(childForm1);
-            //mdiForm.MainSplitContainer.Panel1.Controls.Add(childForm2);
-            //mdiForm.MainSplitContainer.Panel1.Controls.Add(childForm3);
-            //mdiForm.MainSplitContainer.Panel1.Controls.Add(childForm4);
-            ////mdiForm.Controls.Add(childForm1);
-            ////mdiForm.Controls.Add(childForm2);
-            ////mdiForm.Controls.Add(childForm3);
-            ////mdiForm.Controls.Add(childForm4);
-
-            //// 부모 폼 안의 MDI를 정렬
-            //mdiForm.LayoutMdi(MdiLayout.TileVertical);
-
             mdiForm.ShowDialog();
         }
-
     }
 }

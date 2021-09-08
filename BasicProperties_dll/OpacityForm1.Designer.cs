@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.CenterBtn = new System.Windows.Forms.Button();
+            this.FormCloseBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // timer1
@@ -47,11 +48,24 @@
             this.CenterBtn.UseVisualStyleBackColor = true;
             this.CenterBtn.Click += new System.EventHandler(this.CenterBtn_Click);
             // 
+            // FormCloseBtn
+            // 
+            this.FormCloseBtn.Location = new System.Drawing.Point(333, 12);
+            this.FormCloseBtn.Name = "FormCloseBtn";
+            this.FormCloseBtn.Size = new System.Drawing.Size(75, 23);
+            this.FormCloseBtn.TabIndex = 1;
+            this.FormCloseBtn.Text = "종료";
+            this.FormCloseBtn.UseVisualStyleBackColor = true;
+            this.FormCloseBtn.Click += new System.EventHandler(this.FormCloseBtn_Click);
+            // 
             // OpacityForm
             // 
+            this.AcceptButton = this.CenterBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.FormCloseBtn;
             this.ClientSize = new System.Drawing.Size(420, 112);
+            this.Controls.Add(this.FormCloseBtn);
             this.Controls.Add(this.CenterBtn);
             this.Name = "OpacityForm";
             this.Text = "Form1";
@@ -64,5 +78,6 @@
         #endregion
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button CenterBtn;
+        private System.Windows.Forms.Button FormCloseBtn;
     }
 }

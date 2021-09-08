@@ -115,10 +115,9 @@
             // 
             // StandardBtn
             // 
-            this.StandardBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.StandardBtn.Location = new System.Drawing.Point(0, 427);
+            this.StandardBtn.Location = new System.Drawing.Point(314, 276);
             this.StandardBtn.Name = "StandardBtn";
-            this.StandardBtn.Size = new System.Drawing.Size(800, 23);
+            this.StandardBtn.Size = new System.Drawing.Size(232, 19);
             this.StandardBtn.TabIndex = 7;
             this.StandardBtn.Text = "Standard";
             this.StandardBtn.UseVisualStyleBackColor = true;
@@ -126,10 +125,9 @@
             // 
             // SystemBtn
             // 
-            this.SystemBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SystemBtn.Location = new System.Drawing.Point(0, 404);
+            this.SystemBtn.Location = new System.Drawing.Point(314, 243);
             this.SystemBtn.Name = "SystemBtn";
-            this.SystemBtn.Size = new System.Drawing.Size(800, 23);
+            this.SystemBtn.Size = new System.Drawing.Size(232, 23);
             this.SystemBtn.TabIndex = 8;
             this.SystemBtn.Text = "System";
             this.SystemBtn.UseVisualStyleBackColor = true;

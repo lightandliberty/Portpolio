@@ -43,6 +43,11 @@ namespace BasicProperties_dll
 //            if (this.Opacity >= 1.0) this.Opacity = 0.5;
             this.Text = "Timer is Enabled" + "Opacity = " + this.Opacity.ToString();
         }
+
+        private void FormCloseBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 
 

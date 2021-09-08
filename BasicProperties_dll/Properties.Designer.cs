@@ -55,6 +55,20 @@
             this.IsAnchorLabel = new System.Windows.Forms.Label();
             this.ProcessLayoutEventBtn = new System.Windows.Forms.Button();
             this.CreateMDIBtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.ControlBoxPropLabel = new System.Windows.Forms.Label();
+            this.FormBorderStylePropLabel = new System.Windows.Forms.Label();
+            this.HelpButtonPropLabel = new System.Windows.Forms.Label();
+            this.MinimizeBoxPropLabel = new System.Windows.Forms.Label();
+            this.MaximizePropLabel = new System.Windows.Forms.Label();
+            this.ShowInTaskBarPropLabel = new System.Windows.Forms.Label();
+            this.SizeGripStylePropLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
@@ -104,7 +118,7 @@
             this.ChangeFormBorderStyleBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ChangeFormBorderStyleBtn.Location = new System.Drawing.Point(40, 190);
+            this.ChangeFormBorderStyleBtn.Location = new System.Drawing.Point(42, 219);
             this.ChangeFormBorderStyleBtn.Name = "ChangeFormBorderStyleBtn";
             this.ChangeFormBorderStyleBtn.Size = new System.Drawing.Size(200, 23);
             this.ChangeFormBorderStyleBtn.TabIndex = 4;
@@ -117,7 +131,7 @@
             this.SetControlBoxBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SetControlBoxBtn.Location = new System.Drawing.Point(40, 219);
+            this.SetControlBoxBtn.Location = new System.Drawing.Point(40, 190);
             this.SetControlBoxBtn.Name = "SetControlBoxBtn";
             this.SetControlBoxBtn.Size = new System.Drawing.Size(200, 23);
             this.SetControlBoxBtn.TabIndex = 5;
@@ -282,7 +296,7 @@
             this.SetFlatAppearenceBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SetFlatAppearenceBtn.Location = new System.Drawing.Point(295, 103);
+            this.SetFlatAppearenceBtn.Location = new System.Drawing.Point(277, 103);
             this.SetFlatAppearenceBtn.Name = "SetFlatAppearenceBtn";
             this.SetFlatAppearenceBtn.Size = new System.Drawing.Size(200, 23);
             this.SetFlatAppearenceBtn.TabIndex = 14;
@@ -321,7 +335,7 @@
             this.ProcessLayoutEventBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProcessLayoutEventBtn.Location = new System.Drawing.Point(295, 132);
+            this.ProcessLayoutEventBtn.Location = new System.Drawing.Point(277, 132);
             this.ProcessLayoutEventBtn.Name = "ProcessLayoutEventBtn";
             this.ProcessLayoutEventBtn.Size = new System.Drawing.Size(200, 23);
             this.ProcessLayoutEventBtn.TabIndex = 17;
@@ -334,7 +348,7 @@
             this.CreateMDIBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CreateMDIBtn.Location = new System.Drawing.Point(295, 161);
+            this.CreateMDIBtn.Location = new System.Drawing.Point(277, 161);
             this.CreateMDIBtn.Name = "CreateMDIBtn";
             this.CreateMDIBtn.Size = new System.Drawing.Size(200, 23);
             this.CreateMDIBtn.TabIndex = 18;
@@ -342,12 +356,152 @@
             this.CreateMDIBtn.UseVisualStyleBackColor = true;
             this.CreateMDIBtn.Click += new System.EventHandler(this.CreateMDIBtn_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(511, 108);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 12);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "ControlBox";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(511, 137);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 12);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "FormBorderStyle";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(511, 166);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 12);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "HelpButton";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(511, 195);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 12);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "MinimizeBox";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(511, 224);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(83, 12);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "MaximizeBox";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(511, 253);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(94, 12);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "ShowInTaskBar";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(511, 282);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(81, 12);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "SizeGripStyle";
+            // 
+            // ControlBoxPropLabel
+            // 
+            this.ControlBoxPropLabel.AutoSize = true;
+            this.ControlBoxPropLabel.Location = new System.Drawing.Point(647, 108);
+            this.ControlBoxPropLabel.Name = "ControlBoxPropLabel";
+            this.ControlBoxPropLabel.Size = new System.Drawing.Size(93, 12);
+            this.ControlBoxPropLabel.TabIndex = 32;
+            this.ControlBoxPropLabel.Text = "ControlBoxProp";
+            // 
+            // FormBorderStylePropLabel
+            // 
+            this.FormBorderStylePropLabel.AutoSize = true;
+            this.FormBorderStylePropLabel.Location = new System.Drawing.Point(647, 137);
+            this.FormBorderStylePropLabel.Name = "FormBorderStylePropLabel";
+            this.FormBorderStylePropLabel.Size = new System.Drawing.Size(125, 12);
+            this.FormBorderStylePropLabel.TabIndex = 31;
+            this.FormBorderStylePropLabel.Text = "FormBorderStyleProp";
+            // 
+            // HelpButtonPropLabel
+            // 
+            this.HelpButtonPropLabel.AutoSize = true;
+            this.HelpButtonPropLabel.Location = new System.Drawing.Point(647, 166);
+            this.HelpButtonPropLabel.Name = "HelpButtonPropLabel";
+            this.HelpButtonPropLabel.Size = new System.Drawing.Size(91, 12);
+            this.HelpButtonPropLabel.TabIndex = 30;
+            this.HelpButtonPropLabel.Text = "HelpButtonProp";
+            // 
+            // MinimizeBoxPropLabel
+            // 
+            this.MinimizeBoxPropLabel.AutoSize = true;
+            this.MinimizeBoxPropLabel.Location = new System.Drawing.Point(647, 195);
+            this.MinimizeBoxPropLabel.Name = "MinimizeBoxPropLabel";
+            this.MinimizeBoxPropLabel.Size = new System.Drawing.Size(105, 12);
+            this.MinimizeBoxPropLabel.TabIndex = 29;
+            this.MinimizeBoxPropLabel.Text = "MinimizeBoxProp";
+            // 
+            // MaximizePropLabel
+            // 
+            this.MaximizePropLabel.AutoSize = true;
+            this.MaximizePropLabel.Location = new System.Drawing.Point(647, 224);
+            this.MaximizePropLabel.Name = "MaximizePropLabel";
+            this.MaximizePropLabel.Size = new System.Drawing.Size(87, 12);
+            this.MaximizePropLabel.TabIndex = 28;
+            this.MaximizePropLabel.Text = "MaximizeProp";
+            // 
+            // ShowInTaskBarPropLabel
+            // 
+            this.ShowInTaskBarPropLabel.AutoSize = true;
+            this.ShowInTaskBarPropLabel.Location = new System.Drawing.Point(647, 253);
+            this.ShowInTaskBarPropLabel.Name = "ShowInTaskBarPropLabel";
+            this.ShowInTaskBarPropLabel.Size = new System.Drawing.Size(120, 12);
+            this.ShowInTaskBarPropLabel.TabIndex = 27;
+            this.ShowInTaskBarPropLabel.Text = "ShowInTaskBarProp";
+            // 
+            // SizeGripStylePropLabel
+            // 
+            this.SizeGripStylePropLabel.AutoSize = true;
+            this.SizeGripStylePropLabel.Location = new System.Drawing.Point(647, 282);
+            this.SizeGripStylePropLabel.Name = "SizeGripStylePropLabel";
+            this.SizeGripStylePropLabel.Size = new System.Drawing.Size(107, 12);
+            this.SizeGripStylePropLabel.TabIndex = 26;
+            this.SizeGripStylePropLabel.Text = "SizeGripStyleProp";
+            // 
             // Properties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.ControlBoxPropLabel);
+            this.Controls.Add(this.FormBorderStylePropLabel);
+            this.Controls.Add(this.HelpButtonPropLabel);
+            this.Controls.Add(this.MinimizeBoxPropLabel);
+            this.Controls.Add(this.MaximizePropLabel);
+            this.Controls.Add(this.ShowInTaskBarPropLabel);
+            this.Controls.Add(this.SizeGripStylePropLabel);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.CreateMDIBtn);
             this.Controls.Add(this.ProcessLayoutEventBtn);
             this.Controls.Add(this.IsAnchorLabel);
@@ -369,6 +523,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Properties";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.Properties_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Properties_KeyDown);
             this.menuStrip1.ResumeLayout(false);
@@ -408,5 +563,19 @@
         private System.Windows.Forms.Label IsAnchorLabel;
         private System.Windows.Forms.Button ProcessLayoutEventBtn;
         private System.Windows.Forms.Button CreateMDIBtn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label ControlBoxPropLabel;
+        private System.Windows.Forms.Label FormBorderStylePropLabel;
+        private System.Windows.Forms.Label HelpButtonPropLabel;
+        private System.Windows.Forms.Label MinimizeBoxPropLabel;
+        private System.Windows.Forms.Label MaximizePropLabel;
+        private System.Windows.Forms.Label ShowInTaskBarPropLabel;
+        private System.Windows.Forms.Label SizeGripStylePropLabel;
     }
 }
