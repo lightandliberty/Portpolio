@@ -69,6 +69,7 @@
             this.MaximizePropLabel = new System.Windows.Forms.Label();
             this.ShowInTaskBarPropLabel = new System.Windows.Forms.Label();
             this.SizeGripStylePropLabel = new System.Windows.Forms.Label();
+            this.PopupOpacityFormModallessBtn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
@@ -482,12 +483,26 @@
             this.SizeGripStylePropLabel.TabIndex = 26;
             this.SizeGripStylePropLabel.Text = "SizeGripStyleProp";
             // 
+            // PopupOpacityFormModallessBtn
+            // 
+            this.PopupOpacityFormModallessBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PopupOpacityFormModallessBtn.Location = new System.Drawing.Point(277, 364);
+            this.PopupOpacityFormModallessBtn.Name = "PopupOpacityFormModallessBtn";
+            this.PopupOpacityFormModallessBtn.Size = new System.Drawing.Size(200, 23);
+            this.PopupOpacityFormModallessBtn.TabIndex = 33;
+            this.PopupOpacityFormModallessBtn.Text = "Popup Opacity속성 Modalless";
+            this.PopupOpacityFormModallessBtn.UseVisualStyleBackColor = true;
+            this.PopupOpacityFormModallessBtn.Click += new System.EventHandler(this.PopupOpacityFormModallessBtn_Click);
+            // 
             // Properties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.PopupOpacityFormModallessBtn);
             this.Controls.Add(this.ControlBoxPropLabel);
             this.Controls.Add(this.FormBorderStylePropLabel);
             this.Controls.Add(this.HelpButtonPropLabel);
@@ -577,5 +592,6 @@
         private System.Windows.Forms.Label MaximizePropLabel;
         private System.Windows.Forms.Label ShowInTaskBarPropLabel;
         private System.Windows.Forms.Label SizeGripStylePropLabel;
+        private System.Windows.Forms.Button PopupOpacityFormModallessBtn;
     }
 }

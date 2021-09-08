@@ -54,6 +54,12 @@
     <Compile Include="MDIForm.Designer.cs">
       <DependentUpon>MDIForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="OpacityForm_Modalless.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpacityForm_Modalless.Designer.cs">
+      <DependentUpon>OpacityForm_Modalless.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProcessLayoutEventForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OpacityForm1.resx">
       <DependentUpon>OpacityForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpacityForm_Modalless.resx">
+      <DependentUpon>OpacityForm_Modalless.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProcessLayoutEventForm.resx">
       <DependentUpon>ProcessLayoutEventForm.cs</DependentUpon>

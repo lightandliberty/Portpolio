@@ -20,34 +20,44 @@ namespace BasicProperties_dll
             this.Text = "Opacity = " + this.Opacity.ToString();
         }
 
-        private void OpacityForm_Activated(object sender, EventArgs e)
+        private void OpacityForm_Load(object sender, EventArgs e)
+        {
+            // 이렇게 설정하면, Click이벤트 없이도, Enter와 ESC로 Click이벤트 처리 가능
+            this.ConfirmBtn.DialogResult = DialogResult.OK;
+            this.CloseBtn.DialogResult = DialogResult.Cancel;
+            this.AcceptButton = this.ConfirmBtn;
+            this.CancelButton = this.CloseBtn;
+        }
+
+        public void OpacityForm_Activated(object sender, EventArgs e)
         {
             timer1.Enabled = true;
         }
 
-        private void OpacityForm_Deactivate(object sender, EventArgs e)
+        public void OpacityForm_Deactivate(object sender, EventArgs e)
         {
             timer1.Enabled = false;
             this.Opacity = 0.5;
             this.Text = "Opacity = " + this.Opacity.ToString();
         }
 
-        private void CenterBtn_Click(object sender, EventArgs e)
+        public void CenterBtn_Click(object sender, EventArgs e)
         {
             this.Opacity = 0.5;
         }
 
-        private void Timer1_Tick(object sender, EventArgs e)
+        public void Timer1_Tick(object sender, EventArgs e)
         {
             if (this.Opacity < 1.0) this.Opacity += 0.1;
 //            if (this.Opacity >= 1.0) this.Opacity = 0.5;
             this.Text = "Timer is Enabled" + "Opacity = " + this.Opacity.ToString();
         }
 
-        private void FormCloseBtn_Click(object sender, EventArgs e)
+        virtual public void FormCloseBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
     }
 
 

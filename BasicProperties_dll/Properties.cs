@@ -207,7 +207,9 @@ namespace BasicProperties_dll
         private void PopupOpacityFormBtn_Click(object sender, EventArgs e)
         {
             this.instructionTextBox.Text = "새 창의 Opacity = 0.5, TopMost = true에 타이머를 추가하여, 불투명도가 0.1씩 증가하도록 설정합니다." +
-                "\r\n폼의 종료버튼이 폼의 .CancelButton에, 폼의 센터 버튼이 .AcceptButton에 연결되어 있습니다.";
+                "\r\n폼의 종료버튼이 폼의 .CancelButton에, 폼의 센터 버튼이 .AcceptButton에 연결되어 있습니다." +
+                "\r\nthis.CenterBtn.DialogResult = DialogResult.OK;로 설정하고" +
+                "\r\nthis.FormCloseBtn.DialogResult = DialogResult.Cancel;로 설정하면, Click이벤트 없이도 처리됩니다.";
 
             // IDE0017 개체 초기화를 단순화할 수 있습니다.
             OpacityForm opacityForm = new OpacityForm() {
@@ -277,5 +279,59 @@ namespace BasicProperties_dll
             MDIForm mdiForm = new MDIForm();
             mdiForm.ShowDialog();
         }
+
+
+        // 모달리스는 사용자가 원하는 동안은 유지되어야 하므로, 지역변수로 있어선 안 되므로, 멤버 변수로 선언
+        public OpacityForm_Modalless opacityForm_Modalless
+        {
+            get;
+            set;
+        }
+
+        public void PopupOpacityFormModallessBtn_Click(object sender, EventArgs e)
+        {
+            this.instructionTextBox.Text = "새 창의 Opacity = 0.5, TopMost = true에 타이머를 추가하여, 불투명도가 0.1씩 증가하도록 설정합니다." +
+                "\r\n 모달리스 폼입니다." +
+                "\r\n폼에 Accept버튼 이벤트를 등록하고, Close 메서드를 이용해서, Close버튼을 만듦." +
+                "\r\n그냥 <Enter>키와 <ESC>키를 누르면 적용 됨.";
+
+            // IDE0017 개체 초기화를 단순화할 수 있습니다.
+            // 모달리스 폼 초기화
+            opacityForm_Modalless = new OpacityForm_Modalless()
+            {
+                StartPosition = FormStartPosition.CenterParent,
+//                Owner = this,   // 나중에 해제를 위해
+            };
+            // 현재(부모) 폼의 이벤트 함수를 -> (자식)모달리스 폼의 이벤트 함수에 전달.(추가)
+            opacityForm_Modalless.Accept += new EventHandler(OpacityFormModalless_WhenSonAccept);  // 대화상자에서 Accept버튼이 눌려지면, 그 값에 접근하기 위해.
+            opacityForm_Modalless.NowClose += new EventHandler(OpacityFormModalless_WhenSonClose);
+            opacityForm_Modalless.Show();
+
+        }
+
+        // 모달리스 폼의 객체에 접근
+        void OpacityFormModalless_WhenSonAccept(object sender, EventArgs e)
+        {
+            // 자식 폼을 부모 폼에서 복사
+            OpacityForm_Modalless copiedForm = sender as OpacityForm_Modalless;
+            // 자식 폼의 property에 접근
+            MessageBox.Show(copiedForm.Text);
+            copiedForm.Close();
+            //copiedForm.Dispose();
+        }
+
+        void OpacityFormModalless_WhenSonClose(object sender, EventArgs e)
+        {
+            // 대화 상자에서 얻어 온 결과 값을 저장하고, 자식 폼을 해제
+            DialogResult dr = (sender as OpacityForm_Modalless).DialogResult;
+            this.Focus();   // 부모 폼으로 포커스를 맞추지 않으면 에러 남.
+            opacityForm_Modalless.Close();
+            opacityForm_Modalless.Dispose() ;
+            MessageBox.Show(dr.ToString());
+            //            this.opacityForm_Modalless.Close();
+            //this.opacityForm_Modalless.Dispose();
+            //this.opacityForm_Modalless = null;
+        }
+
     }
 }
