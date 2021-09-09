@@ -276,6 +276,7 @@ namespace BasicProperties_dll
         private void CreateMDIBtn_Click(object sender, EventArgs e)
         {
             // 부모폼을 컨테이너로 설정. // SplitContainer에 창들을 넣으면 정렬 안 됨.
+            this.instructionTextBox.Text = "SplitContainer에 창들을 넣으면 정렬 안 됨.";
             MDIForm mdiForm = new MDIForm();
             mdiForm.ShowDialog();
         }
@@ -320,6 +321,7 @@ namespace BasicProperties_dll
             //copiedForm.Dispose();
         }
 
+        // 모달리스 폼을 닫기 위해, 부모 폼에 포커스를 맞추고, 닫음.
         void OpacityFormModalless_WhenSonClose(object sender, EventArgs e)
         {
             // 대화 상자에서 얻어 온 결과 값을 저장하고, 자식 폼을 해제
@@ -328,10 +330,17 @@ namespace BasicProperties_dll
             opacityForm_Modalless.Close();
             opacityForm_Modalless.Dispose() ;
             MessageBox.Show(dr.ToString());
-            //            this.opacityForm_Modalless.Close();
-            //this.opacityForm_Modalless.Dispose();
-            //this.opacityForm_Modalless = null;
         }
 
+        private void ErrorProviderBtn_Click(object sender, EventArgs e)
+        {
+            ErrorProviderExampleForm errorProviderExampleForm = new ErrorProviderExampleForm()
+            {
+                Text = "Loan Application",
+            };
+
+            this.instructionTextBox.Text = "TextBox의 Validating()이벤트를 처리합니다.";
+            errorProviderExampleForm.ShowDialog();
+        }
     }
 }

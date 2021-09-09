@@ -70,6 +70,7 @@
             this.ShowInTaskBarPropLabel = new System.Windows.Forms.Label();
             this.SizeGripStylePropLabel = new System.Windows.Forms.Label();
             this.PopupOpacityFormModallessBtn = new System.Windows.Forms.Button();
+            this.ErrorProviderBtn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
@@ -161,7 +162,7 @@
             this.instructionTextBox.Location = new System.Drawing.Point(40, 40);
             this.instructionTextBox.Multiline = true;
             this.instructionTextBox.Name = "instructionTextBox";
-            this.instructionTextBox.Size = new System.Drawing.Size(660, 54);
+            this.instructionTextBox.Size = new System.Drawing.Size(714, 54);
             this.instructionTextBox.TabIndex = 7;
             // 
             // SetHelpIconBtn
@@ -496,12 +497,26 @@
             this.PopupOpacityFormModallessBtn.UseVisualStyleBackColor = true;
             this.PopupOpacityFormModallessBtn.Click += new System.EventHandler(this.PopupOpacityFormModallessBtn_Click);
             // 
+            // ErrorProviderBtn
+            // 
+            this.ErrorProviderBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ErrorProviderBtn.Location = new System.Drawing.Point(277, 190);
+            this.ErrorProviderBtn.Name = "ErrorProviderBtn";
+            this.ErrorProviderBtn.Size = new System.Drawing.Size(200, 23);
+            this.ErrorProviderBtn.TabIndex = 34;
+            this.ErrorProviderBtn.Text = "ErrorProvider";
+            this.ErrorProviderBtn.UseVisualStyleBackColor = true;
+            this.ErrorProviderBtn.Click += new System.EventHandler(this.ErrorProviderBtn_Click);
+            // 
             // Properties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.ErrorProviderBtn);
             this.Controls.Add(this.PopupOpacityFormModallessBtn);
             this.Controls.Add(this.ControlBoxPropLabel);
             this.Controls.Add(this.FormBorderStylePropLabel);
@@ -593,5 +608,6 @@
         private System.Windows.Forms.Label ShowInTaskBarPropLabel;
         private System.Windows.Forms.Label SizeGripStylePropLabel;
         private System.Windows.Forms.Button PopupOpacityFormModallessBtn;
+        private System.Windows.Forms.Button ErrorProviderBtn;
     }
 }

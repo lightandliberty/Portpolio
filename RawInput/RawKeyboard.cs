@@ -30,7 +30,7 @@ namespace RawInput_dll
         // 장치 리스트 생성(_rawBuffer.header.hdevice)가 key값, KeyPressInfo(이벤트 객체 매개변수)가 value
         public readonly Dictionary<IntPtr, KeyPressInfo> mDeviceList = new Dictionary<IntPtr, KeyPressInfo>();
         // WM_INPUT에서 얻은 정보를 저장할 객체(키보드에서 발생한 신호인지, 마우스에서 발생한 신호인지)
-        static InputData _rawBuffer;
+        public static InputData _rawBuffer;
         
         // 쓰레드 락 매개변수 객체
         readonly object _padLock = new object();    // 한 번에 하나의 쓰레드만 사용하도록. lock(매개변수)
