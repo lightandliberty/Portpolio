@@ -36,6 +36,8 @@
             this.applicantPhoneTextBox = new System.Windows.Forms.TextBox();
             this.loanAmountTextBox = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.okBtn = new System.Windows.Forms.Button();
+            this.cancelBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,11 +97,35 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // okBtn
+            // 
+            this.okBtn.Location = new System.Drawing.Point(130, 117);
+            this.okBtn.Name = "okBtn";
+            this.okBtn.Size = new System.Drawing.Size(75, 23);
+            this.okBtn.TabIndex = 6;
+            this.okBtn.Text = "OK";
+            this.okBtn.UseVisualStyleBackColor = true;
+            this.okBtn.Click += new System.EventHandler(this.OkBtn_Click);
+            this.okBtn.Paint += new System.Windows.Forms.PaintEventHandler(this.OkBtn_Paint);
+            // 
+            // cancelBtn
+            // 
+            this.cancelBtn.Location = new System.Drawing.Point(222, 117);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(75, 23);
+            this.cancelBtn.TabIndex = 7;
+            this.cancelBtn.Text = "Cancel";
+            this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
+            this.cancelBtn.Paint += new System.Windows.Forms.PaintEventHandler(this.CancelBtn_Paint);
+            // 
             // ErrorProviderExampleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(349, 124);
+            this.ClientSize = new System.Drawing.Size(349, 163);
+            this.Controls.Add(this.cancelBtn);
+            this.Controls.Add(this.okBtn);
             this.Controls.Add(this.loanAmountTextBox);
             this.Controls.Add(this.applicantPhoneTextBox);
             this.Controls.Add(this.applicantNameTextBox);
@@ -123,5 +149,7 @@
         private System.Windows.Forms.TextBox applicantPhoneTextBox;
         private System.Windows.Forms.TextBox loanAmountTextBox;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button cancelBtn;
+        private System.Windows.Forms.Button okBtn;
     }
 }

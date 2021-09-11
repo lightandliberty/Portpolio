@@ -43,5 +43,51 @@ namespace BasicProperties_dll
             // error가 null이면 오류 아이콘 표시 안 됨.
             errorProvider1.SetError((Control)sender, error);
         }
+
+        private void OkBtn_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            //if(MyFormInvalid())
+            //g.DrawString("This is a diagonal line drawn on the control",
+            //    new Font("Arial", 10), System.Drawing.Brushes.Blue, new Point(30,30));
+            //g.DrawLine(System.Drawing.Pens.Red, okBtn.Left, okBtn.Top, okBtn.Right, okBtn.Bottom);
+            //else
+            //g.FillRectangle(
+            //    new System.Drawing.Drawing2D.LinearGradientBrush(PointF.Empty, new PointF(0, okBtn.Height/2), Color.White, Color.White),
+            //    new RectangleF(Point.Empty, new Size(okBtn.Size.Width, okBtn.Size.Height/2)));
+            g.FillRectangle(
+                new System.Drawing.Drawing2D.LinearGradientBrush(PointF.Empty, new Point(0, okBtn.Height), Color.White, Color.LightGray),
+                new RectangleF(new Point(0, 0), new Size(okBtn.Size.Width, okBtn.Size.Height)));
+            StringFormat sf = new StringFormat();
+            sf.LineAlignment = StringAlignment.Center;
+            sf.Alignment = StringAlignment.Center;
+            g.DrawString((sender as Button).Text,
+                new Font((sender as Button).Font.Name, 10), System.Drawing.Brushes.Black,
+                new Rectangle(new Point(0, 0), new Size(okBtn.Size.Width, okBtn.Size.Height)),
+                sf);
+            
+        }
+
+        private void OkBtn_Click(object sender, EventArgs e)
+        {
+            // 유효성 검사
+            // DoValidations();
+            // okBtn.Invalidate();
+            this.Text = "Clicked";
+        }
+
+        private void CancelBtn_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void CancelBtn_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+//            if (MyFormInvalid())
+                g.DrawString("This is a diagonal line drawn on the control",
+                    new Font("Arial", 10), System.Drawing.Brushes.Blue, new Point(30, 30));
+                g.DrawLine(System.Drawing.Pens.Red, cancelBtn.Left, cancelBtn.Top, cancelBtn.Right, cancelBtn.Bottom);
+        }
+
     }
 }
