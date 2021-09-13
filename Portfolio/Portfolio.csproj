@@ -166,6 +166,10 @@
       <Project>{fedceb4d-4dfc-4546-af6c-3ed3eb3728b7}</Project>
       <Name>BasicProperties_dll</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CustomControls_dll\CustomControls_dll.csproj">
+      <Project>{C6320FC3-6F95-487F-8F27-0ED27ABE8EE6}</Project>
+      <Name>CustomControls_dll</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RawInput\RawInput_dll.csproj">
       <Project>{7151da05-6e9c-40ba-82c7-407760b03b80}</Project>
       <Name>RawInput_dll</Name>

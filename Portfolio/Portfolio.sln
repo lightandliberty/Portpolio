@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RawInput_dll", "..\RawInput
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicProperties_dll", "..\BasicProperties_dll\BasicProperties_dll.csproj", "{FEDCEB4D-4DFC-4546-AF6C-3ED3EB3728B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControls_dll", "..\CustomControls_dll\CustomControls_dll.csproj", "{C6320FC3-6F95-487F-8F27-0ED27ABE8EE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,14 @@ Global
 		{FEDCEB4D-4DFC-4546-AF6C-3ED3EB3728B7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FEDCEB4D-4DFC-4546-AF6C-3ED3EB3728B7}.Release|x64.ActiveCfg = Release|Any CPU
 		{FEDCEB4D-4DFC-4546-AF6C-3ED3EB3728B7}.Release|x64.Build.0 = Release|Any CPU
+		{C6320FC3-6F95-487F-8F27-0ED27ABE8EE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6320FC3-6F95-487F-8F27-0ED27ABE8EE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6320FC3-6F95-487F-8F27-0ED27ABE8EE6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C6320FC3-6F95-487F-8F27-0ED27ABE8EE6}.Debug|x64.Build.0 = Debug|Any CPU
+		{C6320FC3-6F95-487F-8F27-0ED27ABE8EE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6320FC3-6F95-487F-8F27-0ED27ABE8EE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6320FC3-6F95-487F-8F27-0ED27ABE8EE6}.Release|x64.ActiveCfg = Release|Any CPU
+		{C6320FC3-6F95-487F-8F27-0ED27ABE8EE6}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

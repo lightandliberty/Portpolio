@@ -28,35 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.RawInputBtn = new System.Windows.Forms.Button();
-            this.BasicPropertiesBtn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.도움말ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.버전정보ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.CloseFormBtn = new System.Windows.Forms.Button();
+            this.CloseFormBtn = new CustomControls_dll.MetalButton();
+            this.RawInputBtn = new CustomControls_dll.MetalButton();
+            this.BasicPropertiesBtn = new CustomControls_dll.MetalButton();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // RawInputBtn
-            // 
-            this.RawInputBtn.Location = new System.Drawing.Point(671, 39);
-            this.RawInputBtn.Name = "RawInputBtn";
-            this.RawInputBtn.Size = new System.Drawing.Size(117, 36);
-            this.RawInputBtn.TabIndex = 0;
-            this.RawInputBtn.Text = "RawInput";
-            this.RawInputBtn.UseVisualStyleBackColor = true;
-            this.RawInputBtn.Click += new System.EventHandler(this.RawInputBtn_Click);
-            // 
-            // BasicPropertiesBtn
-            // 
-            this.BasicPropertiesBtn.Location = new System.Drawing.Point(26, 39);
-            this.BasicPropertiesBtn.Name = "BasicPropertiesBtn";
-            this.BasicPropertiesBtn.Size = new System.Drawing.Size(112, 36);
-            this.BasicPropertiesBtn.TabIndex = 2;
-            this.BasicPropertiesBtn.Text = "BasicProperties";
-            this.BasicPropertiesBtn.UseVisualStyleBackColor = true;
-            this.BasicPropertiesBtn.Click += new System.EventHandler(this.BasicPropertiesBtn_Click);
             // 
             // menuStrip1
             // 
@@ -94,24 +74,43 @@
             // CloseFormBtn
             // 
             this.CloseFormBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CloseFormBtn.Location = new System.Drawing.Point(713, 415);
+            this.CloseFormBtn.Location = new System.Drawing.Point(676, 402);
             this.CloseFormBtn.Name = "CloseFormBtn";
-            this.CloseFormBtn.Size = new System.Drawing.Size(75, 23);
-            this.CloseFormBtn.TabIndex = 4;
+            this.CloseFormBtn.Size = new System.Drawing.Size(112, 36);
+            this.CloseFormBtn.TabIndex = 7;
             this.CloseFormBtn.Text = "종료";
             this.CloseFormBtn.UseVisualStyleBackColor = true;
             this.CloseFormBtn.Click += new System.EventHandler(this.CloseFormBtn_Click);
             // 
+            // RawInputBtn
+            // 
+            this.RawInputBtn.Location = new System.Drawing.Point(676, 39);
+            this.RawInputBtn.Name = "RawInputBtn";
+            this.RawInputBtn.Size = new System.Drawing.Size(112, 36);
+            this.RawInputBtn.TabIndex = 6;
+            this.RawInputBtn.Text = "RawInput";
+            this.RawInputBtn.UseVisualStyleBackColor = true;
+            this.RawInputBtn.Click += new System.EventHandler(this.RawInputBtn_Click);
+            // 
+            // BasicPropertiesBtn
+            // 
+            this.BasicPropertiesBtn.Location = new System.Drawing.Point(12, 39);
+            this.BasicPropertiesBtn.Name = "BasicPropertiesBtn";
+            this.BasicPropertiesBtn.Size = new System.Drawing.Size(112, 36);
+            this.BasicPropertiesBtn.TabIndex = 5;
+            this.BasicPropertiesBtn.Text = "BasicProperties";
+            this.BasicPropertiesBtn.UseVisualStyleBackColor = true;
+            this.BasicPropertiesBtn.Click += new System.EventHandler(this.BasicPropertiesBtn_Click);
+            // 
             // MainForm
             // 
-            this.AcceptButton = this.BasicPropertiesBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CloseFormBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.CloseFormBtn);
-            this.Controls.Add(this.BasicPropertiesBtn);
             this.Controls.Add(this.RawInputBtn);
+            this.Controls.Add(this.BasicPropertiesBtn);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
@@ -125,13 +124,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button RawInputBtn;
-        private System.Windows.Forms.Button BasicPropertiesBtn;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 종료ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 도움말ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 버전정보ToolStripMenuItem;
-        private System.Windows.Forms.Button CloseFormBtn;
+        private CustomControls_dll.MetalButton BasicPropertiesBtn;
+        private CustomControls_dll.MetalButton RawInputBtn;
+        private CustomControls_dll.MetalButton CloseFormBtn;
     }
 }

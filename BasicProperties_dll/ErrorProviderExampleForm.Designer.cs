@@ -36,8 +36,8 @@
             this.applicantPhoneTextBox = new System.Windows.Forms.TextBox();
             this.loanAmountTextBox = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.okBtn = new System.Windows.Forms.Button();
-            this.cancelBtn = new System.Windows.Forms.Button();
+            this.okMetalBtn = new CustomControls_dll.MetalButton();
+            this.cancelMetalBtn = new CustomControls_dll.MetalButton();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,6 +85,7 @@
             this.applicantPhoneTextBox.Name = "applicantPhoneTextBox";
             this.applicantPhoneTextBox.Size = new System.Drawing.Size(146, 21);
             this.applicantPhoneTextBox.TabIndex = 4;
+            this.applicantPhoneTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
             // 
             // loanAmountTextBox
             // 
@@ -92,40 +93,43 @@
             this.loanAmountTextBox.Name = "loanAmountTextBox";
             this.loanAmountTextBox.Size = new System.Drawing.Size(146, 21);
             this.loanAmountTextBox.TabIndex = 5;
+            this.loanAmountTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // okBtn
+            // okMetalBtn
             // 
-            this.okBtn.Location = new System.Drawing.Point(130, 117);
-            this.okBtn.Name = "okBtn";
-            this.okBtn.Size = new System.Drawing.Size(75, 23);
-            this.okBtn.TabIndex = 6;
-            this.okBtn.Text = "OK";
-            this.okBtn.UseVisualStyleBackColor = true;
-            this.okBtn.Click += new System.EventHandler(this.OkBtn_Click);
-            this.okBtn.Paint += new System.Windows.Forms.PaintEventHandler(this.OkBtn_Paint);
+            this.okMetalBtn.Location = new System.Drawing.Point(123, 116);
+            this.okMetalBtn.Name = "okMetalBtn";
+            this.okMetalBtn.Size = new System.Drawing.Size(97, 23);
+            this.okMetalBtn.TabIndex = 8;
+            this.okMetalBtn.Text = "OK";
+            this.okMetalBtn.UseVisualStyleBackColor = true;
+            this.okMetalBtn.Click += new System.EventHandler(this.OKMetalBtn_Click);
             // 
-            // cancelBtn
+            // cancelMetalBtn
             // 
-            this.cancelBtn.Location = new System.Drawing.Point(222, 117);
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(75, 23);
-            this.cancelBtn.TabIndex = 7;
-            this.cancelBtn.Text = "Cancel";
-            this.cancelBtn.UseVisualStyleBackColor = true;
-            this.cancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
-            this.cancelBtn.Paint += new System.Windows.Forms.PaintEventHandler(this.CancelBtn_Paint);
+            this.cancelMetalBtn.CausesValidation = false;
+            this.cancelMetalBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelMetalBtn.Location = new System.Drawing.Point(226, 116);
+            this.cancelMetalBtn.Name = "cancelMetalBtn";
+            this.cancelMetalBtn.Size = new System.Drawing.Size(97, 23);
+            this.cancelMetalBtn.TabIndex = 9;
+            this.cancelMetalBtn.Text = "Cancel";
+            this.cancelMetalBtn.UseVisualStyleBackColor = true;
+            this.cancelMetalBtn.Click += new System.EventHandler(this.CancelMetalBtn_Click);
             // 
             // ErrorProviderExampleForm
             // 
+            this.AcceptButton = this.okMetalBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.cancelMetalBtn;
             this.ClientSize = new System.Drawing.Size(349, 163);
-            this.Controls.Add(this.cancelBtn);
-            this.Controls.Add(this.okBtn);
+            this.Controls.Add(this.cancelMetalBtn);
+            this.Controls.Add(this.okMetalBtn);
             this.Controls.Add(this.loanAmountTextBox);
             this.Controls.Add(this.applicantPhoneTextBox);
             this.Controls.Add(this.applicantNameTextBox);
@@ -134,6 +138,7 @@
             this.Controls.Add(this.applicantNameLabel);
             this.Name = "ErrorProviderExampleForm";
             this.Text = "ErrorProviderExampleForm";
+            this.Load += new System.EventHandler(this.ErrorProviderExampleForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -149,7 +154,7 @@
         private System.Windows.Forms.TextBox applicantPhoneTextBox;
         private System.Windows.Forms.TextBox loanAmountTextBox;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.Button cancelBtn;
-        private System.Windows.Forms.Button okBtn;
+        private CustomControls_dll.MetalButton okMetalBtn;
+        private CustomControls_dll.MetalButton cancelMetalBtn;
     }
 }

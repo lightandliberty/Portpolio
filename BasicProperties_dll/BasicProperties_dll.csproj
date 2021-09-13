@@ -164,5 +164,11 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CustomControls_dll\CustomControls_dll.csproj">
+      <Project>{C6320FC3-6F95-487F-8F27-0ED27ABE8EE6}</Project>
+      <Name>CustomControls_dll</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

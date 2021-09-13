@@ -76,7 +76,7 @@ namespace Portfolio
             MessageBox.Show("포트폴리오 V1.0");
         }
 
-        private void CloseFormBtn_Click(object sender, EventArgs e)
+        public void CloseFormBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
