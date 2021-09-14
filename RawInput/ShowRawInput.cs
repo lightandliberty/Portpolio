@@ -25,19 +25,19 @@ namespace RawInput_dll
         public KeyMouseFlags mKeyMouseFlags = new KeyMouseFlags();
 
         // 메인에 있는 키보드, 마우스 문자열에 문자가 입력되어 있으면 마우스를 움직이거나 키보드를 누르라는 메시지가 나오지 않기 위해 delegate작성.
-        public delegate void SetKeyboardMouseLabel(object sender, ref SetKeyboardMouseEventArgs e);
-        public event SetKeyboardMouseLabel SetKeyboardMouseLBL;
-        public class SetKeyboardMouseEventArgs : EventArgs
+        public delegate void SetKeyboardMouseLabel(object sender, ref SetKeyboardMouseEventArgs e);         // delegate로 함수 형태 정의
+        public event SetKeyboardMouseLabel SetKeyboardMouseLBL;     // delegate로 정의한 함수 객체 생성.(이 객체에 함수를 += 하거나 -= 함)
+        public class SetKeyboardMouseEventArgs : EventArgs          // 정보를 전달할, delegate에 정의된 이벤트 전달 객체
         {
-            public SetKeyboardMouseEventArgs(KeyMouseFlags e)
+            public KeyMouseFlags keyMouseFlags { get; set; }        // 이벤트 객체의 속성
+            public SetKeyboardMouseEventArgs(KeyMouseFlags e)       // 이벤트 객체의 속성을 전달된 정보를 가진 매개변수로 설정.
             {
                 keyMouseFlags = e;
             }
-            public KeyMouseFlags keyMouseFlags { get; set; }
         }
 
         // 처음에 키보드이름을 얻었는지, 마우스 이름을 얻었는지 값은 false이지만, 한 번 움직이거나 키를 눌러 메인의 변수에 등록되어 있으면 delegate에서 처리하여 안내 문자가 나오지 않음.
-        public class KeyMouseFlags
+        public class KeyMouseFlags   // 이벤트 객체의 속성에 전달할 매개변수인 정보 객체. (이벤트 객체가 바로 이벤트가 발생했을 때 전달되는 게 아니라, 정보를 가진 매개변수로 이벤트 객체를 채우고 전달함)
         {
             public bool gotKeyboardName = false;
             public bool gotMouseName = false;
@@ -48,8 +48,10 @@ namespace RawInput_dll
             }
         }
 
-
+        // 본격적으로 RawInput을 캐치할 프로그램
         public ProcessingRawInputting processingRawInputting = null;
+
+        // RawInput을 클릭하면 보여줄 폼 생성자
         public ShowRawInput()
         {
             InitializeComponent();
@@ -73,6 +75,7 @@ namespace RawInput_dll
                 infoMouseNullLabel.Visible = false;
         }
 
+        // 가운데 원시 입력 얻기 버튼
         private void button1_Click(object sender, EventArgs e)
         {
             if (!mProcessing)

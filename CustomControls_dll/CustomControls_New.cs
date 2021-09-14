@@ -12,6 +12,7 @@ namespace CustomControls_dll
     public class MetalButton : Button
     {
         private bool isLeftMouseButtonDown = false;
+
         public MetalButton()
         {
             MouseDown += new MouseEventHandler(Button_MouseDown);
@@ -123,6 +124,8 @@ namespace CustomControls_dll
     public class NeonButton : Button
     {
         private bool isLeftMouseButtonDown = false;
+        private bool isHover = false;
+
         public NeonButton()
         {
             MouseDown += new MouseEventHandler(NeonButton_MouseDown);
@@ -149,37 +152,48 @@ namespace CustomControls_dll
             if (e.Button == MouseButtons.Left)
             {
                 isLeftMouseButtonDown = true;
+                isHover = true;
                 DrawThisButtonColorToClickedNeon(sender, (sender as NeonButton).CreateGraphics());
                 //DrawThisButtonColorToClickedMetal(sender, (sender as NeonButton).CreateGraphics());
             }
         }
 
+        // 마우스가 버튼 위에 있으면
         public void NeonButton_MouseHover(object sender, EventArgs e)
         {
-//                isLeftMouseButtonDown = true;
-                DrawThisButtonColorToHoverNeon(sender, (sender as NeonButton).CreateGraphics());
+            //                isLeftMouseButtonDown = true;
+            isHover = true;
+            DrawThisButtonColorToHoverNeon(sender, (sender as NeonButton).CreateGraphics());
         }
 
+        // 버튼 위에서 마우스를 떼면
         public void NeonButton_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
                 isLeftMouseButtonDown = false;
-                DrawThisButtonColorToNeon(sender, (sender as NeonButton).CreateGraphics());
+                DrawThisButtonColorToHoverNeon(sender, (sender as NeonButton).CreateGraphics());
             }
         }
 
+        // 버튼 밖으로 마우스가 나가면
         public void NeonButton_MouseLeave(object sender, EventArgs e)
         {
             isLeftMouseButtonDown = false;
+            isHover = false;
             DrawThisButtonColorToNeon(sender, (sender as NeonButton).CreateGraphics());
         }
 
+        // 버튼 그리기.
         public void NeonButton_Paint(object sender, PaintEventArgs e)
         {
-            if (isLeftMouseButtonDown == true)         // 마우스 버튼이 눌렸으면
+            if (isLeftMouseButtonDown)         // 마우스 버튼이 눌렸으면
             {
                 DrawThisButtonColorToClickedNeon(sender, e.Graphics);
+            }
+            else if(isHover)// 마우스가 위에 있는 거면,
+            {
+                DrawThisButtonColorToHoverNeon(sender, e.Graphics);
             }
             else
             {
@@ -244,25 +258,35 @@ namespace CustomControls_dll
         #endregion
         
         #region 버튼색을 네온색으로 설정
-        public Color mBeforeNeonColor;  // 네온 불빛이 들어오기 전의 색상
-        public Color mForeColor;
-        public Dictionary<Color, Color> neonClickedPairs;
-        public Dictionary<Color, Color> neonHoverPairs;
+        public Color mKeyColor;  // 네온 불빛이 들어오기 전의 색상
+        public Color mForeColor;        // 네온 불빛이 들어오거나 할 때의 글자색. 현재 안 쓰임.
+        public Dictionary<Color, Color> neonClickedPairs;   // 네온 버튼을 클릭했을 때 글자색
+        public Dictionary<Color, Color> neonHoverPairs;     // 네온 버튼 위에 올려 놓았을 때 글자색.
+        public Dictionary<Color, Color> neonNormalPairs;     // 네온 버튼의 클릭하기 전 글자색.
+
+        
+        // 어떤 컬러에 대한 클릭하기 전의 색, 마우스를 올렸을 때의 색, 클릭했을 때의 색 등을 배열에 저장.
         public void InitNeonPairs()
         {
+            // 객체에 메모리 할당.
             neonClickedPairs = new Dictionary<Color, Color>();
             neonHoverPairs = new Dictionary<Color, Color>();
+            neonNormalPairs = new Dictionary<Color, Color>();
 
-            mBeforeNeonColor = Color.Blue;
-            AddHoverAndNeonColorsFromBeforeColor(mBeforeNeonColor);
+            // 클릭 전, 마우스 위에 있을 때, 클릭했을 때의 색을 자동으로 지정.
+            mKeyColor = Color.Blue;
+            AddHoverAndNeonColorsFromBeforeColor(mKeyColor);
 
-            mBeforeNeonColor = Color.Yellow;
-            AddHoverAndNeonColorsFromBeforeColor(mBeforeNeonColor);
+            mKeyColor = Color.Yellow;
+            AddHoverAndNeonColorsFromBeforeColor(mKeyColor);
 
-            mBeforeNeonColor = Color.Violet;
-            neonClickedPairs.Add(mBeforeNeonColor, Color.Pink);
-            neonHoverPairs.Add(mBeforeNeonColor, Color.HotPink);
+            // 클릭 전, 마우스 위에 있을 때, 클릭했을 때의 색을 각각 지정
+            mKeyColor = Color.Violet;
+            neonNormalPairs.Add(mKeyColor, Color.Violet);
+            neonClickedPairs.Add(mKeyColor, Color.Pink);
+            neonHoverPairs.Add(mKeyColor, Color.HotPink);
 
+            // KeyColor로 버튼 색을 변경.
             SetBeforeNeonColor(Color.Yellow);
 
         }
@@ -278,11 +302,19 @@ namespace CustomControls_dll
         // 기본 버튼 색상으로 마우스를 위에 올릴 때의 색상 및 반짝일 때의 색상을 얻는다.
         public void AddHoverAndNeonColorsFromBeforeColor(Color beforeColor)
         {
+            // 클릭하기 전의 색
+            neonNormalPairs[beforeColor] = Color.FromArgb(
+                Clamp0255(beforeColor.R),
+                Clamp0255(beforeColor.G),
+                Clamp0255(beforeColor.B));
+            
+            // 클릭했을 때의 색
             neonClickedPairs[beforeColor] = Color.FromArgb(
                 Clamp0255(beforeColor.R + 50), 
                 Clamp0255(beforeColor.G + 50),
                 Clamp0255(beforeColor.B + 50));
-
+            
+            // 마우스를 위에 올려 놓았을 때의 색
             neonHoverPairs[beforeColor] = Color.FromArgb(
                 Clamp0255(beforeColor.R - 50), 
                 Clamp0255(beforeColor.G - 50),
@@ -292,9 +324,9 @@ namespace CustomControls_dll
         // 네온 불빛이 들어오기 전 색상을 설정한다.
         public void SetBeforeNeonColor(System.Drawing.Color neonColor)
         {
-            // 불빛이 들어오기 전 색상이 Dictionary<Color,Color>에 있으면 변경.
-            if(neonClickedPairs.ContainsKey(neonColor))
-                mBeforeNeonColor = neonColor;
+            // 불빛이 들어오기 전 색상이, 클릭하기 전, 마우스 올려 놓았을 때, 클릭했을 때의 배열 Dictionary<Color,Color>에 있으면 변경.
+            if (neonClickedPairs.ContainsKey(neonColor) && neonHoverPairs.ContainsKey(neonColor) && neonNormalPairs.ContainsKey(neonColor))
+                mKeyColor = neonColor;
         }
 
         // 글자 색상을 버튼의 밝기에 따라 변경한다.
@@ -315,12 +347,13 @@ namespace CustomControls_dll
                 return Brushes.White;
         }
 
+        // 클릭하기 전 버튼의 배경 색을 그라데이션으로 그리고, 글씨를 가운데로 정렬해서 밝기에 맞게 그림.
         public void DrawThisButtonColorToNeon(object sender, Graphics gra)
         {
             // 전달된 버튼의 색을 변경
             Graphics g = gra;
             g.FillRectangle(
-                new System.Drawing.Drawing2D.LinearGradientBrush(PointF.Empty, new Point(0, (sender as NeonButton).Height), Color.White, mBeforeNeonColor),
+                new System.Drawing.Drawing2D.LinearGradientBrush(PointF.Empty, new Point(0, (sender as NeonButton).Height), Color.White, this.neonNormalPairs[mKeyColor]),
                 new RectangleF(new Point(0, 0), new Size((sender as NeonButton).Size.Width, (sender as NeonButton).Size.Height)));
             // 버튼에 표시할 Text 중앙 정렬
             StringFormat sf = new StringFormat()
@@ -329,17 +362,18 @@ namespace CustomControls_dll
                 Alignment = StringAlignment.Center,
             };
             g.DrawString((sender as NeonButton).Text,
-                new Font((sender as NeonButton).Font.Name, 10), SetBrushColorFromBackColor(mBeforeNeonColor),
+                new Font((sender as NeonButton).Font.Name, 10), SetBrushColorFromBackColor(this.neonNormalPairs[mKeyColor]),
                 new Rectangle(new Point(0, 0), new Size((sender as NeonButton).Size.Width, (sender as NeonButton).Size.Height)),
                 sf);
         }
 
+        // 마우스를 올려 놓았을 때의 버튼의 배경 색을 그라데이션으로 그리고, 글씨를 가운데로 정렬해서 밝기에 맞게 그림.
         public void DrawThisButtonColorToHoverNeon(object sender, Graphics gra)
         {
             // 전달된 버튼의 색을 변경
             Graphics g = gra;
             g.FillRectangle(
-                new System.Drawing.Drawing2D.LinearGradientBrush(PointF.Empty, new Point(0, (sender as NeonButton).Height), Color.White, this.neonHoverPairs[mBeforeNeonColor]),
+                new System.Drawing.Drawing2D.LinearGradientBrush(PointF.Empty, new Point(0, (sender as NeonButton).Height), Color.White, this.neonHoverPairs[mKeyColor]),
                 new RectangleF(new Point(0, 0), new Size((sender as NeonButton).Size.Width, (sender as NeonButton).Size.Height)));
             // 버튼에 표시할 Text 중앙 정렬
             StringFormat sf = new StringFormat()
@@ -348,17 +382,18 @@ namespace CustomControls_dll
                 Alignment = StringAlignment.Center,
             };
             g.DrawString((sender as NeonButton).Text,
-                new Font((sender as NeonButton).Font.Name, 10), SetBrushColorFromBackColor(this.neonHoverPairs[mBeforeNeonColor]),
+                new Font((sender as NeonButton).Font.Name, 10), SetBrushColorFromBackColor(this.neonHoverPairs[mKeyColor]),
                 new Rectangle(new Point(0, 0), new Size((sender as NeonButton).Size.Width, (sender as NeonButton).Size.Height)),
                 sf);
         }
 
+        // 클릭할 때의 배경 색을 그라데이션으로 그리고, 글씨를 가운데로 정렬해서 밝기에 맞게 그림.
         public void DrawThisButtonColorToClickedNeon(object sender, Graphics gra)
         {
             // 전달된 버튼의 색을 변경
             Graphics g = gra;
             g.FillRectangle(
-                new System.Drawing.Drawing2D.LinearGradientBrush(PointF.Empty, new Point(0, (sender as NeonButton).Height), Color.White, this.neonClickedPairs[mBeforeNeonColor]),
+                new System.Drawing.Drawing2D.LinearGradientBrush(PointF.Empty, new Point(0, (sender as NeonButton).Height), Color.White, this.neonClickedPairs[mKeyColor]),
                 new RectangleF(new Point(0, 0), new Size((sender as NeonButton).Size.Width, (sender as NeonButton).Size.Height)));
             // 버튼에 표시할 Text 중앙 정렬
             StringFormat sf = new StringFormat()
@@ -367,7 +402,7 @@ namespace CustomControls_dll
                 Alignment = StringAlignment.Center
             };
             g.DrawString((sender as NeonButton).Text,
-                new Font((sender as NeonButton).Font.Name, 10), SetBrushColorFromBackColor(this.neonClickedPairs[mBeforeNeonColor]),
+                new Font((sender as NeonButton).Font.Name, 10), SetBrushColorFromBackColor(this.neonClickedPairs[mKeyColor]),
                 new Rectangle(new Point(0, 0), new Size((sender as NeonButton).Size.Width, (sender as NeonButton).Size.Height)),
                 sf);
         }
