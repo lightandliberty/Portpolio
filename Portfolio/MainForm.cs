@@ -80,6 +80,12 @@ namespace Portfolio
         {
             this.Close();
         }
+
+        private void NeonButtonProjectBtn_Click(object sender, EventArgs e)
+        {
+            NeonButtonProject_Dll.NeonButtonMain neonButtonProject_dll = new NeonButtonProject_Dll.NeonButtonMain();
+            neonButtonProject_dll.ShowDialog();
+        }
     }
 
 

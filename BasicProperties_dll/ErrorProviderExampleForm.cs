@@ -44,7 +44,7 @@ namespace BasicProperties_dll
         }
 
         // 첫번째 텍스트 유효성 검사
-        private void textBox1_Validating(object sender, CancelEventArgs e)
+        private void TextBox1_Validating(object sender, CancelEventArgs e)
         {
             string error = null;
             if ((sender as TextBox).Text.Length == 0)
@@ -78,9 +78,11 @@ namespace BasicProperties_dll
                 new System.Drawing.Drawing2D.LinearGradientBrush(PointF.Empty, new Point(0, (sender as Button).Height), Color.White, Color.LightGray),
                 new RectangleF(new Point(0, 0), new Size((sender as Button).Size.Width, (sender as Button).Size.Height)));
             // 버튼에 표시할 Text 중앙 정렬
-            StringFormat sf = new StringFormat();
-            sf.LineAlignment = StringAlignment.Center;
-            sf.Alignment = StringAlignment.Center;
+            StringFormat sf = new StringFormat()
+            {
+                LineAlignment = StringAlignment.Center,
+            Alignment = StringAlignment.Center
+            };
             g.DrawString((sender as Button).Text,
                 new Font((sender as Button).Font.Name, 10), System.Drawing.Brushes.Black,
                 new Rectangle(new Point(0, 0), new Size((sender as Button).Size.Width, (sender as Button).Size.Height)),
@@ -95,9 +97,11 @@ namespace BasicProperties_dll
                 new System.Drawing.Drawing2D.LinearGradientBrush(PointF.Empty, new Point(0, (sender as Button).Height), Color.LightGray, Color.White),
                 new RectangleF(new Point(0, 0), new Size((sender as Button).Size.Width, (sender as Button).Size.Height)));
             // 버튼에 표시할 Text 중앙 정렬
-            StringFormat sf = new StringFormat();
-            sf.LineAlignment = StringAlignment.Center;
-            sf.Alignment = StringAlignment.Center;
+            StringFormat sf = new StringFormat()
+            {
+                LineAlignment = StringAlignment.Center,
+            Alignment = StringAlignment.Center
+            };
             g.DrawString((sender as Button).Text,
                 new Font((sender as Button).Font.Name, 10), System.Drawing.Brushes.Black,
                 new Rectangle(new Point(0, 0), new Size((sender as Button).Size.Width, (sender as Button).Size.Height)),
@@ -160,9 +164,5 @@ namespace BasicProperties_dll
             return (Control[])allControls.ToArray(typeof(Control));
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

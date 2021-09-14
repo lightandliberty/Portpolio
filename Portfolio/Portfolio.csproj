@@ -170,6 +170,10 @@
       <Project>{C6320FC3-6F95-487F-8F27-0ED27ABE8EE6}</Project>
       <Name>CustomControls_dll</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NeonButtonProject\NeonButtonProject_Dll.csproj">
+      <Project>{ced45074-4339-4bf3-b509-0039d27efa64}</Project>
+      <Name>NeonButtonProject_Dll</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RawInput\RawInput_dll.csproj">
       <Project>{7151da05-6e9c-40ba-82c7-407760b03b80}</Project>
       <Name>RawInput_dll</Name>

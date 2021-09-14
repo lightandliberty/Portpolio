@@ -35,6 +35,7 @@
             this.CloseFormBtn = new CustomControls_dll.MetalButton();
             this.RawInputBtn = new CustomControls_dll.MetalButton();
             this.BasicPropertiesBtn = new CustomControls_dll.MetalButton();
+            this.neonButtonProjectBtn = new CustomControls_dll.MetalButton();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,12 +103,23 @@
             this.BasicPropertiesBtn.UseVisualStyleBackColor = true;
             this.BasicPropertiesBtn.Click += new System.EventHandler(this.BasicPropertiesBtn_Click);
             // 
+            // neonButtonProjectBtn
+            // 
+            this.neonButtonProjectBtn.Location = new System.Drawing.Point(12, 90);
+            this.neonButtonProjectBtn.Name = "neonButtonProjectBtn";
+            this.neonButtonProjectBtn.Size = new System.Drawing.Size(112, 36);
+            this.neonButtonProjectBtn.TabIndex = 8;
+            this.neonButtonProjectBtn.Text = "Neon Buttons";
+            this.neonButtonProjectBtn.UseVisualStyleBackColor = true;
+            this.neonButtonProjectBtn.Click += new System.EventHandler(this.NeonButtonProjectBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CloseFormBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.neonButtonProjectBtn);
             this.Controls.Add(this.CloseFormBtn);
             this.Controls.Add(this.RawInputBtn);
             this.Controls.Add(this.BasicPropertiesBtn);
@@ -131,5 +143,6 @@
         private CustomControls_dll.MetalButton BasicPropertiesBtn;
         private CustomControls_dll.MetalButton RawInputBtn;
         private CustomControls_dll.MetalButton CloseFormBtn;
+        private CustomControls_dll.MetalButton neonButtonProjectBtn;
     }
 }

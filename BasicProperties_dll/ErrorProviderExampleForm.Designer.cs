@@ -38,6 +38,7 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.okMetalBtn = new CustomControls_dll.MetalButton();
             this.cancelMetalBtn = new CustomControls_dll.MetalButton();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,7 +78,7 @@
             this.applicantNameTextBox.Name = "applicantNameTextBox";
             this.applicantNameTextBox.Size = new System.Drawing.Size(146, 21);
             this.applicantNameTextBox.TabIndex = 3;
-            this.applicantNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
+            this.applicantNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox1_Validating);
             // 
             // applicantPhoneTextBox
             // 
@@ -85,7 +86,7 @@
             this.applicantPhoneTextBox.Name = "applicantPhoneTextBox";
             this.applicantPhoneTextBox.Size = new System.Drawing.Size(146, 21);
             this.applicantPhoneTextBox.TabIndex = 4;
-            this.applicantPhoneTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
+            this.applicantPhoneTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox1_Validating);
             // 
             // loanAmountTextBox
             // 
@@ -93,7 +94,7 @@
             this.loanAmountTextBox.Name = "loanAmountTextBox";
             this.loanAmountTextBox.Size = new System.Drawing.Size(146, 21);
             this.loanAmountTextBox.TabIndex = 5;
-            this.loanAmountTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
+            this.loanAmountTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox1_Validating);
             // 
             // errorProvider1
             // 
@@ -156,5 +157,6 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private CustomControls_dll.MetalButton okMetalBtn;
         private CustomControls_dll.MetalButton cancelMetalBtn;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
