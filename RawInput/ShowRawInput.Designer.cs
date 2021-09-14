@@ -1,4 +1,4 @@
-﻿namespace Portfolio
+﻿namespace RawInput_dll
 {
     partial class ShowRawInput
     {

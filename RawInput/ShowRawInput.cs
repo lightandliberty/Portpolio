@@ -7,11 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using RawInput_dll;
 using System.Diagnostics; // Debug를 위해
 
 
-namespace Portfolio
+namespace RawInput_dll
 {
     public partial class ShowRawInput : Form
     {
