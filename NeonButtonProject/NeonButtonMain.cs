@@ -17,14 +17,31 @@ namespace NeonButtonProject_Dll
             InitializeComponent();
         }
 
+        public int colorNum = 0;
+
         private void NeonButtonBtn_Click(object sender, EventArgs e)
         {
-            ColorDialog colorDialog = new ColorDialog()
+            switch (colorNum)
             {
-                AllowFullOpen = true,
-            };
+                case 11:
+                    colorNum = 0;
+                    break;
+                default:
+                    colorNum++;
+                    break;
+            }
+            (sender as CustomControls_dll.NeonButton).ButtonColor = (CustomControls_dll.NeonButton.KeyColor)colorNum;
+            //CustomControls_dll.NeonButton btn = sender as CustomControls_dll.NeonButton;
+            //btn.ButtonColor = (CustomControls_dll.NeonButton.KeyColor)colorNum;
+            //btn.ButtonColor = CustomControls_dll.NeonButton.KeyColor.Pink;
         }
 
+
+
+        //ColorDialog colorDialog = new ColorDialog()
+        //{
+        //    AllowFullOpen = true,
+        //};
         //if (DialogResult.OK == colorDialog.ShowDialog())
         //{
         //    int[] customColors = colorDialog.CustomColors;
