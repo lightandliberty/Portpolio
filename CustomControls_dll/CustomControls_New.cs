@@ -321,6 +321,31 @@ namespace CustomControls_dll
                 Clamp0255(beforeColor.B - 50));
         }
 
+        // 기본 버튼 색상으로 마우스를 위에 올릴 때의 색상 및 반짝일 때의 색상을 얻는다.
+        public void AddHoverAndNeonColorsFrom4Color(Color keyColor, Color normalColor, Color hoverColor, Color clickedColor)
+        {
+            // 클릭하기 전의 색
+            neonNormalPairs[keyColor] = normalColor;
+
+            // 마우스를 위에 올려 놓았을 때의 색
+            neonHoverPairs[keyColor] = hoverColor;
+
+            // 클릭했을 때의 색
+            neonClickedPairs[keyColor] = clickedColor;
+
+        }
+
+        // 버튼의 색 지정. 나중에 Enum으로 해야 할 듯.
+        public Color ButtonColor
+        {
+            get { return mKeyColor; }
+            set
+            {
+            if (neonClickedPairs.ContainsKey(value) && neonHoverPairs.ContainsKey(value) && neonNormalPairs.ContainsKey(value))
+                mKeyColor = value;
+            }
+        }
+
         // 네온 불빛이 들어오기 전 색상을 설정한다.
         public void SetBeforeNeonColor(System.Drawing.Color neonColor)
         {
