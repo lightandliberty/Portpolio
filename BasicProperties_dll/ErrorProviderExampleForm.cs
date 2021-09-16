@@ -20,7 +20,13 @@ namespace BasicProperties_dll
 
         private void ErrorProviderExampleForm_Load(object sender, EventArgs e)
         {
-
+            // 폼 최초 로드시, 모든 컨트롤에 대해 툴팁을 보여 준다.(infoProvider사용)
+            foreach(Control control in GetAllControls(this))
+            {
+                string savedToolTip = toolTip1.GetToolTip(control);  // 툴팁을 얻어서,
+                if (savedToolTip.Length == 0) continue;      // 툴팁이 등록되어 있지 않으면, 다음 컨트롤로 넘김.
+                infoProvider.SetError(control, savedToolTip);
+            }
         }
         #endregion
 
@@ -44,16 +50,35 @@ namespace BasicProperties_dll
         }
 
         // 첫번째 텍스트 유효성 검사
-        private void TextBox1_Validating(object sender, CancelEventArgs e)
+        private void TextBox_Validating(object sender, CancelEventArgs e)
         {
-            string error = null;
-            if ((sender as TextBox).Text.Length == 0)
+            string savedToolTip = toolTip1.GetToolTip((Control)sender); // 툴팁을 저장
+            
+            // 유효성 검사.(ToolTip과 ErrorProvider는 별개의 객체임)
+            // 1. TextBox의 칸이 빈칸이면, 2.툴팁의 문자열을 3. ErrorProvider에 전달해서 표시.
+            // 2. TextBox의 칸이 빈칸이 아니면, 2.툴팁의 문자열을 3. infoProvider에 전달해서 표시.
+            if((sender as TextBox).Text.Length == 0)    // 실패하면
             {
-                error = "Please enter a name";
+                errorProvider1.SetError((sender as TextBox), savedToolTip);     // 에러 provider 켬
+                infoProvider.SetError((sender as TextBox), null);               // 정보 provider 끔
                 e.Cancel = true;
             }
-            // error가 null이면 오류 아이콘 표시 안 됨.
-            errorProvider1.SetError((Control)sender, error);
+            else
+            {
+                errorProvider1.SetError((sender as TextBox), null);             // 에러 provider 끔
+                infoProvider.SetError((sender as TextBox), savedToolTip);       // 정보 provider 켬.
+            }
+
+
+
+            //string error = null;
+            //if ((sender as TextBox).Text.Length == 0)
+            //{
+            //    error = "Please enter a name";
+            //    e.Cancel = true;
+            //}
+            //// error가 null이면 오류 아이콘 표시 안 됨.
+            //errorProvider1.SetError((Control)sender, error);
         }
         #endregion
 
@@ -110,22 +135,18 @@ namespace BasicProperties_dll
         #endregion
         private void OKMetalBtn_Click(object sender, EventArgs e)
         {
-
+            this.DialogResult = DialogResult.OK;
             // 모든 자식 컨트롤에 대해 직접적으로 유효성 검사를 한다.
             foreach (Control control in GetAllControls(this))
             {
                 // 이 컨트롤에 대해 유효성 검사를 한다.
                 control.Focus();
-                if (!this.Validate())   // 유효성 검사의 함수 deligate 객체 배열 실행. 결과. 즉 e.Cancel == false이면,
+                if (!this.Validate())    //마지막으로 포커스를 잃은 컨트롤에 대해서만 유효성 검사를 한다. // 유효성 검사의 함수 deligate 객체 배열 실행. 결과. 즉 e.Cancel == false이면,
                 {
                     this.DialogResult = DialogResult.None;
                     break;
                 }
             }
-
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-
         }
 
         private void CancelMetalBtn_Click(object sender, EventArgs e)
@@ -164,31 +185,40 @@ namespace BasicProperties_dll
             return (Control[])allControls.ToArray(typeof(Control));
         }
 
+        // HelpButton == true로 했을 때, 발생하는 HelpRequested이벤트
         private void ErrorProviderExampleForm_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
-            // 화면 좌표를 클라이언트 좌표로 변환한다.
-            Point pt = this.PointToClient(hlpevent.MousePos);
-
-            // 사용자가 어느 컨트롤을 클릭했는지 찾는다.
-            // 주의: GetChildAtPoint 메서드는 (그룹 상자 안에 있는 컨트롤처럼)
-            // 다른 컨트롤에 포함된 컨트롤을 제대로 처리하지 못한다.
-            Control controlNeedingHelp = null;
-            foreach (Control control in GetAllControls(this))
+            // 만약 마우스를 클릭한 것이 아니라 <F1>키를 눌렀다면. (Control클래스의 MouseButtons속성 : 이벤트가 발생했을 때, 어느 마우스 버튼이 눌렸는지 알 수 있음.)
+            if (Control.MouseButtons == MouseButtons.None)
             {
-                // 컨트롤의 영역 안에 클라이언트 마우스 좌표가 포함되어 있으면,
-                if (control.Bounds.Contains(pt))
-                {
-                    // 도움말이 필요한 컨트롤에 컨트롤을 복사하고, 루프를 끝냄.(마우스 포인터가 동시에 두 군데에 있을 수는 없으므로)
-                    controlNeedingHelp = control;
-                    break;
-                }
+                // 도움말 파일을 연다.
             }
+            else // 도움말 버튼을 이용해서 컨트롤을 클릭한 거면,
+            {
+                // 화면 좌표를 클라이언트 좌표로 변환한다.
+                Point pt = this.PointToClient(hlpevent.MousePos);
 
-            // 도움말을 보여준다.
-            string help = toolTip1.GetToolTip(controlNeedingHelp);
-            if (help.Length == 0) return;
-            MessageBox.Show(help, "Help");
-            hlpevent.Handled = true;        // Handled속성은 help이벤트를 종료시키는 역할을 함.
+                // 사용자가 어느 컨트롤을 클릭했는지 찾는다.
+                // 주의: GetChildAtPoint 메서드는 (그룹 상자 안에 있는 컨트롤처럼)
+                // 다른 컨트롤에 포함된 컨트롤을 제대로 처리하지 못한다.
+                Control controlNeedingHelp = null;
+                foreach (Control control in GetAllControls(this))
+                {
+                    // 컨트롤의 영역 안에 클라이언트 마우스 좌표가 포함되어 있으면,
+                    if (control.Bounds.Contains(pt))
+                    {
+                        // 도움말이 필요한 컨트롤에 컨트롤을 복사하고, 루프를 끝냄.(마우스 포인터가 동시에 두 군데에 있을 수는 없으므로)
+                        controlNeedingHelp = control;
+                        break;
+                    }
+                }
+
+                // 도움말을 보여준다.
+                string help = toolTip1.GetToolTip(controlNeedingHelp);
+                if (help.Length == 0) return;
+                MessageBox.Show(help, "Help");
+                hlpevent.Handled = true;        // Handled속성은 help이벤트를 종료시키는 역할을 함.
+            }
         }
     }
 }

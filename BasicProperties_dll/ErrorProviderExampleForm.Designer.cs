@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ErrorProviderExampleForm));
             this.applicantNameLabel = new System.Windows.Forms.Label();
             this.applicantPhoneLabel = new System.Windows.Forms.Label();
             this.aoanAmountLabel = new System.Windows.Forms.Label();
@@ -39,7 +40,9 @@
             this.okMetalBtn = new CustomControls_dll.MetalButton();
             this.cancelMetalBtn = new CustomControls_dll.MetalButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.infoProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.infoProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // applicantNameLabel
@@ -78,7 +81,8 @@
             this.applicantNameTextBox.Name = "applicantNameTextBox";
             this.applicantNameTextBox.Size = new System.Drawing.Size(146, 21);
             this.applicantNameTextBox.TabIndex = 3;
-            this.applicantNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox1_Validating);
+            this.toolTip1.SetToolTip(this.applicantNameTextBox, "이름을 넣어주세요");
+            this.applicantNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
             // 
             // applicantPhoneTextBox
             // 
@@ -86,7 +90,8 @@
             this.applicantPhoneTextBox.Name = "applicantPhoneTextBox";
             this.applicantPhoneTextBox.Size = new System.Drawing.Size(146, 21);
             this.applicantPhoneTextBox.TabIndex = 4;
-            this.applicantPhoneTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox1_Validating);
+            this.toolTip1.SetToolTip(this.applicantPhoneTextBox, "전화 번호");
+            this.applicantPhoneTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
             // 
             // loanAmountTextBox
             // 
@@ -94,11 +99,13 @@
             this.loanAmountTextBox.Name = "loanAmountTextBox";
             this.loanAmountTextBox.Size = new System.Drawing.Size(146, 21);
             this.loanAmountTextBox.TabIndex = 5;
-            this.loanAmountTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox1_Validating);
+            this.toolTip1.SetToolTip(this.loanAmountTextBox, "대출금");
+            this.loanAmountTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider1.Icon")));
             // 
             // okMetalBtn
             // 
@@ -121,6 +128,20 @@
             this.cancelMetalBtn.Text = "Cancel";
             this.cancelMetalBtn.UseVisualStyleBackColor = true;
             this.cancelMetalBtn.Click += new System.EventHandler(this.CancelMetalBtn_Click);
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.AutomaticDelay = 0;
+            this.toolTip1.AutoPopDelay = 4800;
+            this.toolTip1.InitialDelay = 0;
+            this.toolTip1.IsBalloon = true;
+            this.toolTip1.ReshowDelay = 96;
+            this.toolTip1.ShowAlways = true;
+            // 
+            // infoProvider
+            // 
+            this.infoProvider.ContainerControl = this;
+            this.infoProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("infoProvider.Icon")));
             // 
             // ErrorProviderExampleForm
             // 
@@ -145,6 +166,7 @@
             this.Load += new System.EventHandler(this.ErrorProviderExampleForm_Load);
             this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.ErrorProviderExampleForm_HelpRequested);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.infoProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,5 +184,6 @@
         private CustomControls_dll.MetalButton okMetalBtn;
         private CustomControls_dll.MetalButton cancelMetalBtn;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ErrorProvider infoProvider;
     }
 }
