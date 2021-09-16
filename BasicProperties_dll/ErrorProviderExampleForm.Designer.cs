@@ -137,9 +137,13 @@
             this.Controls.Add(this.aoanAmountLabel);
             this.Controls.Add(this.applicantPhoneLabel);
             this.Controls.Add(this.applicantNameLabel);
+            this.HelpButton = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ErrorProviderExampleForm";
             this.Text = "ErrorProviderExampleForm";
             this.Load += new System.EventHandler(this.ErrorProviderExampleForm_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.ErrorProviderExampleForm_HelpRequested);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -253,6 +253,7 @@ namespace CustomControls_dll
             Cyan,
             Blue,
             Green,
+            Green2,
             LightGreen,
             Yellow,
             Orange,
@@ -260,6 +261,7 @@ namespace CustomControls_dll
             Gray1,
             Gray2,
             Gray3,
+            Count,
         }
 
         
@@ -296,20 +298,23 @@ namespace CustomControls_dll
             neonHoverPairs = new Dictionary<KeyColor, Color>();
             neonNormalPairs = new Dictionary<KeyColor, Color>();
             
-            // 일단 기본 네온 컬러들을 배열에 복사
-            List<NeonColors> colorList = new List<NeonColors>();
-            colorList.Add(new NeonColors(KeyColor.Pink, Color.FromArgb(238, 196, 241), Color.FromArgb(141, 074, 178), Color.FromArgb(253, 233, 255)));
-            colorList.Add(new NeonColors(KeyColor.Red,  Color.FromArgb(225,036,100), Color.FromArgb(068,003,047), Color.FromArgb(247,231,242)));
-            colorList.Add(new NeonColors(KeyColor.Cyan, Color.FromArgb(100, 202, 249), Color.FromArgb(037,155, 231), Color.FromArgb(122,244,253)));
-            colorList.Add(new NeonColors(KeyColor.Blue, Color.FromArgb(141,164,242), Color.FromArgb(046,043,244), Color.FromArgb(171,197,247)));
-            colorList.Add(new NeonColors(KeyColor.Green, Color.FromArgb(168,203,163), Color.FromArgb(009,125,026), Color.FromArgb(220,246,215)));
-            colorList.Add(new NeonColors(KeyColor.LightGreen, Color.FromArgb(035,229,141), Color.FromArgb(000,055,027), Color.FromArgb(246,255,255)));
-            colorList.Add(new NeonColors(KeyColor.Yellow, Color.FromArgb(230,206,013), Color.FromArgb(183,156,000), Color.FromArgb(240,232,006)));
-            colorList.Add(new NeonColors(KeyColor.Orange, Color.FromArgb(214,170,140), Color.FromArgb(159,111,083), Color.FromArgb(247,223,187)));
-            colorList.Add(new NeonColors(KeyColor.Brown, Color.FromArgb(195,172,165), Color.FromArgb(100,078,075), Color.FromArgb(224,205,192)));
-            colorList.Add(new NeonColors(KeyColor.Gray1, Color.FromArgb(153,171,187), Color.FromArgb(079,098,105), Color.FromArgb(206,230,241)));
-            colorList.Add(new NeonColors(KeyColor.Gray2, Color.FromArgb(169,155,159), Color.FromArgb(085,073,077), Color.FromArgb(229,215,220)));
-            colorList.Add(new NeonColors(KeyColor.Gray3, Color.FromArgb(217,210,214), Color.FromArgb(137,127,123), Color.FromArgb(241,236,243)));
+            // 일단 기본 네온 컬러들을 배열에 복사. (Hover(가장 어두운 색), 기본색(중간 밝은 색), 네온 색(클릭 했을 때의 가장 밝은 색))
+            List<NeonColors> colorList = new List<NeonColors>()
+            {
+                new NeonColors(KeyColor.Pink, Color.FromArgb(238, 196, 241), Color.FromArgb(141, 074, 178), Color.FromArgb(253, 233, 255)),
+                new NeonColors(KeyColor.Red, Color.FromArgb(225, 036, 100), Color.FromArgb(068, 003, 047), Color.FromArgb(247, 231, 242)),
+                new NeonColors(KeyColor.Cyan, Color.FromArgb(100, 202, 249), Color.FromArgb(037, 155, 231), Color.FromArgb(122, 244, 253)),
+                new NeonColors(KeyColor.Blue, Color.FromArgb(141, 164, 242), Color.FromArgb(046, 043, 244), Color.FromArgb(171, 197, 247)),
+                new NeonColors(KeyColor.Green, Color.FromArgb(168, 203, 163), Color.FromArgb(009, 125, 026), Color.FromArgb(220, 246, 215)),
+                new NeonColors(KeyColor.Green2, Color.FromArgb(014,114,018), Color.FromArgb(010,065,008), Color.FromArgb(232,250,243)),
+                new NeonColors(KeyColor.LightGreen, Color.FromArgb(035, 229, 141), Color.FromArgb(000, 055, 027), Color.FromArgb(246, 255, 255)),
+                new NeonColors(KeyColor.Yellow, Color.FromArgb(230, 206, 013), Color.FromArgb(183, 156, 000), Color.FromArgb(240, 232, 006)),
+                new NeonColors(KeyColor.Orange, Color.FromArgb(214, 170, 140), Color.FromArgb(159, 111, 083), Color.FromArgb(247, 223, 187)),
+                new NeonColors(KeyColor.Brown, Color.FromArgb(195, 172, 165), Color.FromArgb(100, 078, 075), Color.FromArgb(224, 205, 192)),
+                new NeonColors(KeyColor.Gray1, Color.FromArgb(153, 171, 187), Color.FromArgb(079, 098, 105), Color.FromArgb(206, 230, 241)),
+                new NeonColors(KeyColor.Gray2, Color.FromArgb(169, 155, 159), Color.FromArgb(085, 073, 077), Color.FromArgb(229, 215, 220)),
+                new NeonColors(KeyColor.Gray3, Color.FromArgb(217, 210, 214), Color.FromArgb(137, 127, 123), Color.FromArgb(241, 236, 243)),
+            };
 
             // 클릭 전, 마우스 위에 있을 때, 클릭했을 때의 색을 각각 지정
             for (int i = 0; i < colorList.Count; i++)

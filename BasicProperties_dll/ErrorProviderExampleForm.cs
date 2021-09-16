@@ -164,5 +164,31 @@ namespace BasicProperties_dll
             return (Control[])allControls.ToArray(typeof(Control));
         }
 
+        private void ErrorProviderExampleForm_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            // 화면 좌표를 클라이언트 좌표로 변환한다.
+            Point pt = this.PointToClient(hlpevent.MousePos);
+
+            // 사용자가 어느 컨트롤을 클릭했는지 찾는다.
+            // 주의: GetChildAtPoint 메서드는 (그룹 상자 안에 있는 컨트롤처럼)
+            // 다른 컨트롤에 포함된 컨트롤을 제대로 처리하지 못한다.
+            Control controlNeedingHelp = null;
+            foreach (Control control in GetAllControls(this))
+            {
+                // 컨트롤의 영역 안에 클라이언트 마우스 좌표가 포함되어 있으면,
+                if (control.Bounds.Contains(pt))
+                {
+                    // 도움말이 필요한 컨트롤에 컨트롤을 복사하고, 루프를 끝냄.(마우스 포인터가 동시에 두 군데에 있을 수는 없으므로)
+                    controlNeedingHelp = control;
+                    break;
+                }
+            }
+
+            // 도움말을 보여준다.
+            string help = toolTip1.GetToolTip(controlNeedingHelp);
+            if (help.Length == 0) return;
+            MessageBox.Show(help, "Help");
+            hlpevent.Handled = true;        // Handled속성은 help이벤트를 종료시키는 역할을 함.
+        }
     }
 }

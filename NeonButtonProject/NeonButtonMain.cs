@@ -23,7 +23,7 @@ namespace NeonButtonProject_Dll
         {
             switch (colorNum)
             {
-                case 11:
+                case (int)CustomControls_dll.NeonButton.KeyColor.Count:     // 색의 수에 도달하면, 인덱스를 넘어간 것이므로, 0으로 되돌림.
                     colorNum = 0;
                     break;
                 default:
