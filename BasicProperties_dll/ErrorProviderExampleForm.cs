@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,9 @@ namespace BasicProperties_dll
                 if (savedToolTip.Length == 0) continue;      // 툴팁이 등록되어 있지 않으면, 다음 컨트롤로 넘김.
                 infoProvider.SetError(control, savedToolTip);
             }
+            textBox1.Text =
+                "x64/Release폴더에 html파일이 있으면 F1키를 눌렀을 때 표시됩니다." +
+                "\r\n리소소에 포함시켜서는 표시되지 않습니다.";
         }
         #endregion
 
@@ -191,7 +195,25 @@ namespace BasicProperties_dll
             // 만약 마우스를 클릭한 것이 아니라 <F1>키를 눌렀다면. (Control클래스의 MouseButtons속성 : 이벤트가 발생했을 때, 어느 마우스 버튼이 눌렸는지 알 수 있음.)
             if (Control.MouseButtons == MouseButtons.None)
             {
+                
                 // 도움말 파일을 연다.
+                string file = Path.GetFullPath("errorproviderexampleform.html");
+                //MessageBox.Show(file.ToString());
+                //MessageBox.Show(Application.StartupPath);
+                //                this.Focus();
+                try
+                {
+                    // HTML파일을 열어 도움말을 보여 줌.
+                    Help.ShowHelp(this, file);
+                }
+                catch (Exception e)
+                {
+                    //MessageBox.Show("멈췄습니다.\n" + file + "이 있는지 확인해 보세요.");
+                    Help.ShowPopup(this, "도움말 HTML파일이 없습니다.\n" + file + "이 있는지 확인해 보세요.", hlpevent.MousePos);
+//                    this.applicantNameTextBox.Focus();
+                }
+
+                hlpevent.Handled = true;
             }
             else // 도움말 버튼을 이용해서 컨트롤을 클릭한 거면,
             {
@@ -216,7 +238,18 @@ namespace BasicProperties_dll
                 // 도움말을 보여준다.
                 string help = toolTip1.GetToolTip(controlNeedingHelp);
                 if (help.Length == 0) return;
-                MessageBox.Show(help, "Help");
+
+                // ?를 누르고, 칸을 눌렀을 경우, 팝업 도움말로 보여 준다.
+                try
+                {
+                    // 표시할 부모 컨트롤, 메시지, 마우스 포인터 위치
+                    Help.ShowPopup(this, help, hlpevent.MousePos);
+                }
+                catch ( Exception e)
+                {
+                    MessageBox.Show("멈췄습니다.\n");
+                }
+
                 hlpevent.Handled = true;        // Handled속성은 help이벤트를 종료시키는 역할을 함.
             }
         }

@@ -72,6 +72,11 @@
     <Compile Include="ProcessLayoutEventForm.Designer.cs">
       <DependentUpon>ProcessLayoutEventForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="StandardWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,11 +95,11 @@
     <Compile Include="OpacityForm1.Designer.cs">
       <DependentUpon>OpacityForm1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Properties.cs">
+    <Compile Include="BasicProperties_MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Properties.Designer.cs">
-      <DependentUpon>Properties.cs</DependentUpon>
+    <Compile Include="BasicProperties_MainForm.Designer.cs">
+      <DependentUpon>BasicProperties_MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
@@ -118,8 +123,12 @@
     <EmbeddedResource Include="ProcessLayoutEventForm.resx">
       <DependentUpon>ProcessLayoutEventForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties.resx">
-      <DependentUpon>Properties.cs</DependentUpon>
+    <EmbeddedResource Include="BasicProperties_MainForm.resx">
+      <DependentUpon>BasicProperties_MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="StandardWindow.resx">
       <DependentUpon>StandardWindow.cs</DependentUpon>
@@ -170,5 +179,9 @@
       <Name>CustomControls_dll</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="errorproviderexampleform.html" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

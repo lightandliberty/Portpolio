@@ -27,6 +27,7 @@ namespace Portfolio
         public MainForm()
         {
             InitializeComponent();
+            
         }
 
         private void RawInputBtn_Click(object sender, EventArgs e)
@@ -62,7 +63,7 @@ namespace Portfolio
 
         private void BasicPropertiesBtn_Click(object sender, EventArgs e)
         {
-            BasicProperties_dll.Properties basicProperties_dll = new BasicProperties_dll.Properties();
+            BasicProperties_dll.BasicProperties_MainForm basicProperties_dll = new BasicProperties_dll.BasicProperties_MainForm();
             basicProperties_dll.ShowDialog();
 
         }
