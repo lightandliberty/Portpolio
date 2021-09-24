@@ -1,0 +1,15 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=aNameProjectFile.chm
+Contents file=C:\HtmlHelpWorkshop\createNewContentFile.hhc
+Display compile progress=No
+Full-text search=Yes
+Index file=C:\HtmlHelpWorkshop\CreateNewIndexFile.hhk
+Language=0x412 한국어(대한민국)
+
+
+[FILES]
+C:\HtmlHelpWorkshop\newHTMLFileFrom3setp.htm
+
+[INFOTYPES]
+

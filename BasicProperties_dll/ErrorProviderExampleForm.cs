@@ -13,7 +13,7 @@ namespace BasicProperties_dll
 {
     public partial class ErrorProviderExampleForm : Form
     {
-        #region 생성자, 초기화
+        #region 생성자, 초기화 ( HelpProvider, .Text, infoProvider 설정 등)
         public ErrorProviderExampleForm()
         {
             InitializeComponent();
@@ -28,9 +28,21 @@ namespace BasicProperties_dll
                 if (savedToolTip.Length == 0) continue;      // 툴팁이 등록되어 있지 않으면, 다음 컨트롤로 넘김.
                 infoProvider.SetError(control, savedToolTip);
             }
+
             textBox1.Text =
                 "x64/Release폴더에 html파일이 있으면 F1키를 눌렀을 때 표시됩니다." +
-                "\r\n리소소에 포함시켜서는 표시되지 않습니다.";
+                "\r\n리소소에 포함시켜서는 표시되지 않습니다." +
+                "\r\nMessageBox.Show로 팝업 후 F1키를 누르면 오류가 나므로, ShowPopup으로 ?클릭 도움말을 처리합니다." +
+                "\r\nHelpProvider사용법은 HelpProvider를 드래그 앤 드롭 후, .HelpNamespace에 .chm파일을 연결 후," +
+                "\r\n컨트롤의 HelpProvider의 속성 .ShowHelp = true; .HelpNavigator을 설정하면," +
+                "\r\n .HelpKeyword속성이 비어있으므로, .HelpString속성 값을 팝업 도움말로 보낸다.고 하는데," +
+                "\r\n 현재 웹 주소 //ieframe.dll/dnserrordiagoff.htm# 이(가) 올바른지 확인하세요. 에러가 나기도 하고," +
+                "\r\n 할 게 많은데 시간이 없으므로, 추후 연구해 보기로 한다. 일단 추가는 해 놓았음. .ShowHelp = false;상태";
+
+
+            // HTML Help타입 aNameProjectFile.chm은 C:\CSharp\Portfolio2021\Portfolio\bin\x64\Release에 있음"
+//            helpProvider1.HelpNamespace = @"aNameProjectFile.chm";
+            
         }
         #endregion
 
@@ -89,54 +101,6 @@ namespace BasicProperties_dll
 
         #region OK 버튼 설정
         // OK버튼
-
-        #endregion
-
-        #region Cancel 버튼 설정
-        // OK버튼
-
-        #endregion
-
-
-        #region 버튼색을 메탈색으로 설정
-        public static void DrawThisButtonColorToMetal(object sender, Graphics gra)
-        {
-            // 전달된 버튼의 색을 변경
-            Graphics g = gra;
-            g.FillRectangle(
-                new System.Drawing.Drawing2D.LinearGradientBrush(PointF.Empty, new Point(0, (sender as Button).Height), Color.White, Color.LightGray),
-                new RectangleF(new Point(0, 0), new Size((sender as Button).Size.Width, (sender as Button).Size.Height)));
-            // 버튼에 표시할 Text 중앙 정렬
-            StringFormat sf = new StringFormat()
-            {
-                LineAlignment = StringAlignment.Center,
-            Alignment = StringAlignment.Center
-            };
-            g.DrawString((sender as Button).Text,
-                new Font((sender as Button).Font.Name, 10), System.Drawing.Brushes.Black,
-                new Rectangle(new Point(0, 0), new Size((sender as Button).Size.Width, (sender as Button).Size.Height)),
-                sf);
-        }
-
-        public static void DrawThisButtonColorToClickedMetal(object sender, Graphics gra)
-        {
-            // 전달된 버튼의 색을 변경
-            Graphics g = gra;
-            g.FillRectangle(
-                new System.Drawing.Drawing2D.LinearGradientBrush(PointF.Empty, new Point(0, (sender as Button).Height), Color.LightGray, Color.White),
-                new RectangleF(new Point(0, 0), new Size((sender as Button).Size.Width, (sender as Button).Size.Height)));
-            // 버튼에 표시할 Text 중앙 정렬
-            StringFormat sf = new StringFormat()
-            {
-                LineAlignment = StringAlignment.Center,
-            Alignment = StringAlignment.Center
-            };
-            g.DrawString((sender as Button).Text,
-                new Font((sender as Button).Font.Name, 10), System.Drawing.Brushes.Black,
-                new Rectangle(new Point(0, 0), new Size((sender as Button).Size.Width, (sender as Button).Size.Height)),
-                sf);
-        }
-        #endregion
         private void OKMetalBtn_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
@@ -153,12 +117,19 @@ namespace BasicProperties_dll
             }
         }
 
+        #endregion
+
+        #region Cancel 버튼 설정
+        // Cancel버튼
         private void CancelMetalBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        #endregion
 
+
+        #region GetAllControls 메서드 구현
         // 모든 컨트롤과 모든 자식 컨트롤을 얻는 메서드 (컬렉션은 queue에만 저장하고, 컨트롤 각각은 ArrayList에 저장 및 리턴)
         public static Control[] GetAllControls(Form form)
         {
@@ -188,23 +159,48 @@ namespace BasicProperties_dll
 
             return (Control[])allControls.ToArray(typeof(Control));
         }
+        #endregion
 
+
+        #region HelpRequest 이벤트 처리
         // HelpButton == true로 했을 때, 발생하는 HelpRequested이벤트
         private void ErrorProviderExampleForm_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
             // 만약 마우스를 클릭한 것이 아니라 <F1>키를 눌렀다면. (Control클래스의 MouseButtons속성 : 이벤트가 발생했을 때, 어느 마우스 버튼이 눌렸는지 알 수 있음.)
             if (Control.MouseButtons == MouseButtons.None)
             {
-                
+
                 // 도움말 파일을 연다.
-                string file = Path.GetFullPath("errorproviderexampleform.html");
+
+                //string file = Path.GetFullPath("errorproviderexampleform.html");
+
                 //MessageBox.Show(file.ToString());
                 //MessageBox.Show(Application.StartupPath);
                 //                this.Focus();
+                MessageBox.Show("현재 HelpRequest이벤트 처리 중입니다.");
+                string file = Path.GetFullPath("aNameProjectFile.chm");
+                string subtopic = null;
+                if(this.ActiveControl == this.applicantNameTextBox)
+                {
+                    subtopic = "name";   // <a name = "name">Applicant Name</a>아래의 Please enter a name. 부분
+                }
+                else if(this.ActiveControl == this.applicantPhoneTextBox)
+                {
+                    subtopic = "phoneNo"; // <a name = "phoneno">Applicant Phone</a>아래의 Please enter a phone number. 부분
+                }
+                else if(this.ActiveControl == this.loanAmountTextBox)
+                {
+                    subtopic = "loanAmount";   // <a name = "loanamount">Applicant Loan Amount</a>아래의 Please enter a loan amount. 부분
+                }
+                this.Text = file.ToString();
                 try
                 {
+                    // <F1>키를 눌렀을 때 활성상태인 컨트롤을 그에 맞는 하위 주제로 연결해서 .chm파일의 도움말을 보여 줌.
+                    Help.ShowHelp(this, file, @"C:\CSharp\Portfolio2021\HtmlHelpWorkshop\newHTMLFileFrom3setp.htm#" + subtopic);
+                    //Help.ShowHelp(this, file, @"C:\HtmlHelpWorkshop\newHTMLFileFrom3setp.Htm#" + subtopic);
+
                     // HTML파일을 열어 도움말을 보여 줌.
-                    Help.ShowHelp(this, file);
+//                    Help.ShowHelp(this, file);
                 }
                 catch (Exception e)
                 {
@@ -253,5 +249,6 @@ namespace BasicProperties_dll
                 hlpevent.Handled = true;        // Handled속성은 help이벤트를 종료시키는 역할을 함.
             }
         }
+        #endregion
     }
 }

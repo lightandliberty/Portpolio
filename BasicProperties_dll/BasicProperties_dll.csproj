@@ -182,6 +182,5 @@
   <ItemGroup>
     <Content Include="errorproviderexampleform.html" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

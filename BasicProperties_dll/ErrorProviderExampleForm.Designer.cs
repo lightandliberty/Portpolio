@@ -42,6 +42,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.infoProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.infoProvider)).BeginInit();
             this.SuspendLayout();
@@ -90,9 +91,12 @@
             this.applicantNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.helpProvider1.SetHelpKeyword(this.applicantNameTextBox, "aNameProjectFile.htm#name");
+            this.helpProvider1.SetHelpNavigator(this.applicantNameTextBox, System.Windows.Forms.HelpNavigator.Topic);
             this.applicantNameTextBox.Location = new System.Drawing.Point(151, 19);
             this.applicantNameTextBox.Name = "applicantNameTextBox";
-            this.applicantNameTextBox.Size = new System.Drawing.Size(146, 21);
+            this.helpProvider1.SetShowHelp(this.applicantNameTextBox, false);
+            this.applicantNameTextBox.Size = new System.Drawing.Size(325, 21);
             this.applicantNameTextBox.TabIndex = 3;
             this.toolTip1.SetToolTip(this.applicantNameTextBox, "이름을 넣어주세요");
             this.applicantNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
@@ -102,9 +106,11 @@
             this.applicantPhoneTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.helpProvider1.SetHelpNavigator(this.applicantPhoneTextBox, System.Windows.Forms.HelpNavigator.Topic);
             this.applicantPhoneTextBox.Location = new System.Drawing.Point(151, 49);
             this.applicantPhoneTextBox.Name = "applicantPhoneTextBox";
-            this.applicantPhoneTextBox.Size = new System.Drawing.Size(146, 21);
+            this.helpProvider1.SetShowHelp(this.applicantPhoneTextBox, false);
+            this.applicantPhoneTextBox.Size = new System.Drawing.Size(325, 21);
             this.applicantPhoneTextBox.TabIndex = 4;
             this.toolTip1.SetToolTip(this.applicantPhoneTextBox, "전화 번호");
             this.applicantPhoneTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
@@ -114,9 +120,11 @@
             this.loanAmountTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.helpProvider1.SetHelpNavigator(this.loanAmountTextBox, System.Windows.Forms.HelpNavigator.Topic);
             this.loanAmountTextBox.Location = new System.Drawing.Point(151, 79);
             this.loanAmountTextBox.Name = "loanAmountTextBox";
-            this.loanAmountTextBox.Size = new System.Drawing.Size(146, 21);
+            this.helpProvider1.SetShowHelp(this.loanAmountTextBox, false);
+            this.loanAmountTextBox.Size = new System.Drawing.Size(325, 21);
             this.loanAmountTextBox.TabIndex = 5;
             this.toolTip1.SetToolTip(this.loanAmountTextBox, "대출금");
             this.loanAmountTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
@@ -128,12 +136,10 @@
             // 
             // okMetalBtn
             // 
-            this.okMetalBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.okMetalBtn.Location = new System.Drawing.Point(123, 116);
+            this.okMetalBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.okMetalBtn.Location = new System.Drawing.Point(318, 116);
             this.okMetalBtn.Name = "okMetalBtn";
-            this.okMetalBtn.Size = new System.Drawing.Size(97, 23);
+            this.okMetalBtn.Size = new System.Drawing.Size(81, 16);
             this.okMetalBtn.TabIndex = 8;
             this.okMetalBtn.Text = "OK";
             this.okMetalBtn.UseVisualStyleBackColor = true;
@@ -141,14 +147,12 @@
             // 
             // cancelMetalBtn
             // 
-            this.cancelMetalBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelMetalBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelMetalBtn.CausesValidation = false;
             this.cancelMetalBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelMetalBtn.Location = new System.Drawing.Point(226, 116);
+            this.cancelMetalBtn.Location = new System.Drawing.Point(421, 116);
             this.cancelMetalBtn.Name = "cancelMetalBtn";
-            this.cancelMetalBtn.Size = new System.Drawing.Size(97, 23);
+            this.cancelMetalBtn.Size = new System.Drawing.Size(81, 16);
             this.cancelMetalBtn.TabIndex = 9;
             this.cancelMetalBtn.Text = "Cancel";
             this.cancelMetalBtn.UseVisualStyleBackColor = true;
@@ -176,7 +180,8 @@
             this.textBox1.Location = new System.Drawing.Point(18, 150);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(305, 66);
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox1.Size = new System.Drawing.Size(484, 175);
             this.textBox1.TabIndex = 10;
             // 
             // ErrorProviderExampleForm
@@ -185,7 +190,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelMetalBtn;
-            this.ClientSize = new System.Drawing.Size(339, 228);
+            this.ClientSize = new System.Drawing.Size(518, 337);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.cancelMetalBtn);
             this.Controls.Add(this.okMetalBtn);
@@ -223,5 +228,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ErrorProvider infoProvider;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }
