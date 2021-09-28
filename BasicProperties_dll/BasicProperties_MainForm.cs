@@ -42,8 +42,14 @@ namespace BasicProperties_dll
             else
                 this.TopMostBtn.BackColor = mControlColor;
             this.Text = "this.TopMost = " + this.TopMost.ToString();
+        }
+
+        private void TopMostBtn_MouseEnter(object sender, EventArgs e)
+        {
             this.instructionTextBox.Text = "다른 창들보다 항상 위에 있도록 설정";
         }
+
+
 
         private void ReadFromAppConfigBtn_Click(object sender, EventArgs e)
         {
@@ -58,8 +64,13 @@ namespace BasicProperties_dll
             {
                 MessageBox.Show(ex.ToString());
                 MessageBox.Show("각 프로젝트의 App.config파일 안에 <configuration>안에 <appSettings> </appSettings>사이에 <add key = \"MainFormOpacity\" value=\".5\" /> 를 추가해 주세요.");
-                instructionTextBox.Text = "프로젝트 폴더에 App.config파일안에 key값으로 접근하여 프로그램에서 적재 가능한데\r\n없을 경우, 예외 메시지 표시하고, 설명 표시";
             }
+        }
+
+        private void ReadFromAppConfigBtn_MouseEnter(object sender, EventArgs e)
+        {
+                instructionTextBox.Text = "프로젝트 폴더에 App.config파일안에 key값으로 접근하여 프로그램에서 적재 가능한데\r\n없을 경우, 예외 메시지 표시하고, 설명 표시";
+
         }
 
         private void LoadBitmapBtn_Click(object sender, EventArgs e)
@@ -71,6 +82,10 @@ namespace BasicProperties_dll
                 MessageBox.Show("1. 추가_기존항목으로 추가. 2.파일 오른쪽 클릭_속성_빌드작업_포함 리소스 선택 후, new Bitmap(this.GetType(), \"cocoa.png\" 하면 됩니다. 그러면, 리소스 이름은 Properties.cocoa.png이 된다.");
                 MessageBox.Show("아니면 디자이너에서 [속성]_BackgroundImage옆 ... 을 누른뒤에 선택한다.");
             }
+        }
+
+        private void LoadBitmapBtn_MouseEnter(object sender, EventArgs e)
+        {
             instructionTextBox.Text = "C:\\cocoa.png파일이 없으면, 예외 메시지를 표시하고, Bitmap 객체로 적재하는 법 설명";
         }
 
@@ -92,10 +107,15 @@ namespace BasicProperties_dll
             else
                 ChangeFormBorderStyleBtn.BackColor = Color.Silver;
             this.Text = "this.FormBorderStyle = " + this.FormBorderStyle.ToString();
-            instructionTextBox.Text = "폼에 테두리가 있는지, 크기 조정이 가능한지\r\n보통크기의 캡션 표시줄인지, 작은 크기의 캡션 표시줄인지";
 
             this.FormBorderStylePropLabel.Text = this.FormBorderStyle.ToString();
         }
+
+        private void ChangeFormBorderStyleBtn_MouseEnter(object sender, EventArgs e)
+        {
+            instructionTextBox.Text = "폼에 테두리가 있는지, 크기 조정이 가능한지\r\n보통크기의 캡션 표시줄인지, 작은 크기의 캡션 표시줄인지";
+        }
+
 
         private void SetControlBoxBtn_Click(object sender, EventArgs e)
         {
@@ -106,10 +126,17 @@ namespace BasicProperties_dll
                 this.SetControlBoxBtn.BackColor = mControlColor;
 
             this.Text = "this.ControlBox = " + this.ControlBox.ToString();
-            instructionTextBox.Text = "폼의 좌측 상단에 아이콘을 위치시킬지, 우측상단에 종료 버튼을 위치시킬지,\r\n왼쪽상단 왼쪽버튼 클릭시 또는 오른쪽 상단 오른쪽 버튼 클릭시 메뉴 안 뜸";
             this.ControlBoxPropLabel.Text = this.ControlBox.ToString();
 
         }
+
+
+        private void SetControlBoxBtn_MouseEnter(object sender, EventArgs e)
+        {
+            instructionTextBox.Text = "폼의 좌측 상단에 아이콘을 위치시킬지, 우측상단에 종료 버튼을 위치시킬지,\r\n왼쪽상단 왼쪽버튼 클릭시 또는 오른쪽 상단 오른쪽 버튼 클릭시 메뉴 안 뜸";
+        }
+
+
 
         private void SetMaxiMiniBtn_Click(object sender, EventArgs e)
         {
@@ -120,11 +147,16 @@ namespace BasicProperties_dll
             else
                 this.SetMaxiMiniBtn.BackColor = mControlColor;
             this.Text = "this.MaximizeBox = " + this.MaximizeBox.ToString() + ", this.MinimizeBox = " + this.MinimizeBox.ToString();
-            instructionTextBox.Text = "최소화, 최대화 버튼 표시";
             this.MinimizeBoxPropLabel.Text = this.MinimizeBox.ToString();
             this.MaximizePropLabel.Text = this.MaximizeBox.ToString();
 
         }
+
+        private void SetMaxiMiniBtn_MouseEnter(object sender, EventArgs e)
+        {
+            instructionTextBox.Text = "최소화, 최대화 버튼 표시";
+        }
+
 
         private void SetHelpIconBtn_Click(object sender, EventArgs e)
         {
@@ -134,11 +166,16 @@ namespace BasicProperties_dll
             else
                 this.SetHelpIconBtn.BackColor = mControlColor;
             this.Text = "this.HelpButton = " + this.HelpButton.ToString();
-            this.instructionTextBox.Text = "우측 상단에 ?표시의 버튼 표시.(단, ControlBox는 true, Maximize, Minimize는 false여야 함. \r\n?클릭시 HelpRequested이벤트 발생.\r\nfalse여도 <F1>키를 누르면 HelpRequested 이벤트 발생";
 
             this.HelpButtonPropLabel.Text = this.HelpButton.ToString();
 
         }
+
+        private void SetHelpIconBtn_MouseEnter(object sender, EventArgs e)
+        {
+            this.instructionTextBox.Text = "우측 상단에 ?표시의 버튼 표시.(단, ControlBox는 true, Maximize, Minimize는 false여야 함. \r\n?클릭시 HelpRequested이벤트 발생.\r\nfalse여도 <F1>키를 누르면 HelpRequested 이벤트 발생";
+        }
+
 
         private void Properties_KeyDown(object sender, KeyEventArgs e)
         {
@@ -169,9 +206,13 @@ namespace BasicProperties_dll
             };
 
             this.Text = "this.SizeGripStyle = " + this.SizeGripStyle.ToString();
-            this.instructionTextBox.Text = "폼의 우측 하단 크기 조정 그립을 보여주거나 감추거나 함.\r\n폼에 상태 표시줄(status bar) 컨트롤이 있는 경우, 상태 표시줄 자체 속성의 SizingGrip속성에 의해 조정 그립을 보이거나 감춤.";
             this.SizeGripStylePropLabel.Text = this.SizeGripStyle.ToString();
 
+        }
+
+        private void SetSizeGripStyleBtn_MouseEnter(object sender, EventArgs e)
+        {
+            this.instructionTextBox.Text = "폼의 우측 하단 크기 조정 그립을 보여주거나 감추거나 함.\r\n폼에 상태 표시줄(status bar) 컨트롤이 있는 경우, 상태 표시줄 자체 속성의 SizingGrip속성에 의해 조정 그립을 보이거나 감춤.";
         }
 
         private void SetShowInTaskbarBtn_Click(object sender, EventArgs e)
@@ -192,7 +233,6 @@ namespace BasicProperties_dll
                 else
                     this.SetShowInTaskbarBtn.BackColor = mControlColor;
                 this.Text = "this.ShowInTaskbar = " + this.ShowInTaskbar.ToString();
-                this.instructionTextBox.Text = "폼을 최소화 시켰을 때, 폼의 타이틀을 작업 표시줄에 버튼형태로 나타낼지 여부\r\n그런데, this.ShowInTaskbar = true로 하면 예외 메시지를 보내지 않고 충돌하므로,\r\nHide()를 사용합니다.";
                 MessageBox.Show("런타임에 this.ShowInTaskbar가 false가 되면, 프로그램이 충돌하여 종료됩니다.\r\n" +
                     "MainForm.cs에서 ShowInTaskbar속성을 바꿔본 후 관찰해 보세요.");
                 ////    this.ShowInTaskbar = this.ShowInTaskbar.Equals(true) ? false : true;
@@ -202,6 +242,11 @@ namespace BasicProperties_dll
                 MessageBox.Show("예외가 발생했습니다." + ex.ToString());
             }
             this.ShowInTaskBarPropLabel.Text = this.ShowInTaskbar.ToString();
+        }
+
+        private void SetShowInTaskbarBtn_MouseEnter(object sender, EventArgs e)
+        {
+            this.instructionTextBox.Text = "폼을 최소화 시켰을 때, 폼의 타이틀을 작업 표시줄에 버튼형태로 나타낼지 여부\r\n그런데, this.ShowInTaskbar = true로 하면 예외 메시지를 보내지 않고 충돌하므로,\r\nHide()를 사용합니다.";
         }
 
         private void PopupOpacityFormBtn_Click(object sender, EventArgs e)
@@ -222,10 +267,15 @@ namespace BasicProperties_dll
 
         private void CreateTransparentFormBtn_Click(object sender, EventArgs e)
         {
-            this.instructionTextBox.Text = "새 창의 Paint이벤트에서 그리도록 설정하고, TransParencyKey값을 .BackColor속성 값 System.Drawing.SystemColors.Control과 같게 설정.\r\nFormBorderStyle을 None으로 설정. MouseMove등 따로 설정.";
 
             TransparentForm transparentForm = new TransparentForm();
             transparentForm.ShowDialog();
+        }
+
+
+        private void CreateTransparentFormBtn_MouseEnter(object sender, EventArgs e)
+        {
+            this.instructionTextBox.Text = "새 창의 Paint이벤트에서 그리도록 설정하고, TransParencyKey값을 .BackColor속성 값 System.Drawing.SystemColors.Control과 같게 설정.\r\nFormBorderStyle을 None으로 설정. MouseMove등 따로 설정.";
         }
 
         private void 종료ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -256,16 +306,21 @@ namespace BasicProperties_dll
             }
         }
 
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string controlName = FindControlAtCursor(this)?.Name + "의 contextMenu입니다.";
+            MessageBox.Show(controlName);
+        }
+
         private void SetFlatAppearenceBtn_Click(object sender, EventArgs e)
         {
             FlatAppearanceForm flatAppearanceForm = new FlatAppearanceForm();
             flatAppearanceForm.ShowDialog();
         }
 
-        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SetFlatAppearenceBtn_MouseEnter(object sender, EventArgs e)
         {
-            string controlName = FindControlAtCursor(this)?.Name + "의 contextMenu입니다.";
-            MessageBox.Show( controlName);
+            instructionTextBox.Text = "ClientAndNonClientAreasEnabled옵션과 SetFlatAppearance옵션\r\nSetFlatStyle스타일의 조합을 실험해 보는 창을 띄웁니다";
         }
 
         private void ProcessLayoutEventBtn_Click(object sender, EventArgs e)
@@ -274,14 +329,24 @@ namespace BasicProperties_dll
             processLayoutEventForm.ShowDialog();
         }
 
+        private void ProcessLayoutEventBtn_MouseEnter(object sender, EventArgs e)
+        {
+            instructionTextBox.Text = "버튼 컨트롤을 배열로 담아, 버튼 컨트롤의 폭과 높이로부터 폼 클라이언트 크기를 설정한다.";
+
+        }
+
         private void CreateMDIBtn_Click(object sender, EventArgs e)
         {
             // 부모폼을 컨테이너로 설정. // SplitContainer에 창들을 넣으면 정렬 안 됨.
-            this.instructionTextBox.Text = "SplitContainer에 창들을 넣으면 정렬 안 됨.";
             MDIForm mdiForm = new MDIForm();
             mdiForm.ShowDialog();
         }
 
+
+        private void CreateMDIBtn_MouseEnter(object sender, EventArgs e)
+        {
+            this.instructionTextBox.Text = "Multi Document Interface\r\nSplitContainer에 창들을 넣으면 정렬 안 됨.";
+        }
 
         // 모달리스는 사용자가 원하는 동안은 유지되어야 하므로, 지역변수로 있어선 안 되므로, 멤버 변수로 선언
         public OpacityForm_Modalless opacityForm_Modalless;
@@ -289,13 +354,21 @@ namespace BasicProperties_dll
         //    get;
         //    set;
         //}
-
-        public void PopupOpacityFormModallessBtn_Click(object sender, EventArgs e)
+        private void PopupOpacityFormModallessBtn_MouseEnter(object sender, EventArgs e)
         {
             this.instructionTextBox.Text = "새 창의 Opacity = 0.5, TopMost = true에 타이머를 추가하여, 불투명도가 0.1씩 증가하도록 설정합니다." +
                 "\r\n 모달리스 폼입니다." +
                 "\r\n폼에 Accept버튼 이벤트를 등록하고, Close 메서드를 이용해서, Close버튼을 만듦." +
                 "\r\n그냥 <Enter>키와 <ESC>키를 누르면 적용 됨.";
+        }
+
+        private void PopupOpacityFormBtn_MouseEnter(object sender, EventArgs e)
+        {
+            instructionTextBox.Text = "불투명도 0.5에서 1.0까지 변화하는 모달리스 팝업 창을 띄우고, Accept 버튼과 Cancel버튼 구현";
+        }
+
+        public void PopupOpacityFormModallessBtn_Click(object sender, EventArgs e)
+        {
 
             // IDE0017 개체 초기화를 단순화할 수 있습니다.
             // 모달리스 폼 초기화
@@ -340,12 +413,18 @@ namespace BasicProperties_dll
                 Text = "Loan Application",
             };
 
-            this.instructionTextBox.Text = "TextBox의 Validating()이벤트를 처리합니다.";
             errorProviderExampleForm.ShowDialog();
         }
 
+        private void ErrorProviderBtn_MouseEnter(object sender, EventArgs e)
+        {
+            this.instructionTextBox.Text = "TextBox의 Validating()이벤트를 처리합니다.";
+        }
+
+
+
         // 마우스 커서 위치에 있는 컨트롤 찾기.
-        // 폼 안에 커서가 있을 때 실행되므로, 클라이 언트 영역 안에서만 비교하면 됨.
+        // 폼 안에 커서가 있을 때 실행되므로, 클라이 언트 영역 안에서만 커서 아래에 있는 컨트롤인지 비교하면 됨.
         public static Control FindControlAtPoint(Control container, Point mouseClientPosition)
         {
             Control child;
@@ -363,6 +442,7 @@ namespace BasicProperties_dll
                 //MessageBox.Show("c.Bounds.Width = " + c.Bounds.Width.ToString());
                 //MessageBox.Show("c.Bounds.Height = " + c.Bounds.Height.ToString());
 
+                // c.Bound가 Client영역이므로, 클라이언트 영역으로 비교 함.
                 if (c.Visible && c.Bounds.Contains(mouseClientPosition))   // .Bounds는 컨트롤의 크기와 위치를 나타내는 Rectangle
                 {
                     // 마우스 위치를 포함하는 자식 컨트롤이 없으면 child가 null, 있으면 child가 컨트롤을 가짐.
@@ -403,6 +483,15 @@ namespace BasicProperties_dll
         {
             Point pos = Cursor.Position;
             // 폼이 커서 위치를 포함하고 있으면,
+
+            MessageBox.Show("pos.X = " + MousePosition.X.ToString());
+            MessageBox.Show("pos.Y = " + MousePosition.Y.ToString());
+            MessageBox.Show("form.Bounds.X = " + form.Bounds.X.ToString());
+            MessageBox.Show("form.Bounds.Y = " + form.Bounds.Y.ToString());
+            MessageBox.Show("form.Bounds.Width = " + form.Bounds.Width.ToString());
+            MessageBox.Show("form.Bounds.Height = " + form.Bounds.Height.ToString());
+
+            // form.Bounds는 x,y의 위치가 클라이언트 영역이 아니므로 절대 위치 pos로 검색.
             if (form.Bounds.Contains(pos)) // 그러니까 이 .Bounds는 커서의 절대 위치를 포함해야 하는데,
                 // 위에서 child옆 FindControlAtPoint(c, 여기는 상대 위치가 들어가는데...)
                 // 그러니까 이게, Cursor.Position이 화면의 좌표가 아니라,
@@ -418,5 +507,6 @@ namespace BasicProperties_dll
             }
             return null;
         }
+
     }
 }

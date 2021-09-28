@@ -36,6 +36,9 @@
             this.종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.종료ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.drawEllipseBtn = new CustomControls_dll.MetalButton();
+            this.instructionTextBox = new System.Windows.Forms.TextBox();
+            this.drawBrushesBtn = new CustomControls_dll.MetalButton();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -85,7 +88,7 @@
             // 종료ToolStripMenuItem
             // 
             this.종료ToolStripMenuItem.Name = "종료ToolStripMenuItem";
-            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.종료ToolStripMenuItem.Text = "종료";
             this.종료ToolStripMenuItem.Click += new System.EventHandler(this.종료ToolStripMenuItem_Click);
             // 
@@ -99,9 +102,38 @@
             // 종료ToolStripMenuItem1
             // 
             this.종료ToolStripMenuItem1.Name = "종료ToolStripMenuItem1";
-            this.종료ToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.종료ToolStripMenuItem1.Size = new System.Drawing.Size(98, 22);
             this.종료ToolStripMenuItem1.Text = "종료";
             this.종료ToolStripMenuItem1.Click += new System.EventHandler(this.종료ToolStripMenuItem1_Click);
+            // 
+            // drawEllipseBtn
+            // 
+            this.drawEllipseBtn.Location = new System.Drawing.Point(32, 120);
+            this.drawEllipseBtn.Name = "drawEllipseBtn";
+            this.drawEllipseBtn.Size = new System.Drawing.Size(112, 36);
+            this.drawEllipseBtn.TabIndex = 13;
+            this.drawEllipseBtn.Text = "DrawEllipse";
+            this.drawEllipseBtn.UseVisualStyleBackColor = true;
+            this.drawEllipseBtn.Click += new System.EventHandler(this.DrawEllipseBtn_Click);
+            this.drawEllipseBtn.MouseEnter += new System.EventHandler(this.DrawEllipseBtn_MouseEnter);
+            // 
+            // instructionTextBox
+            // 
+            this.instructionTextBox.Location = new System.Drawing.Point(32, 39);
+            this.instructionTextBox.Multiline = true;
+            this.instructionTextBox.Name = "instructionTextBox";
+            this.instructionTextBox.Size = new System.Drawing.Size(740, 64);
+            this.instructionTextBox.TabIndex = 14;
+            // 
+            // drawBrushesBtn
+            // 
+            this.drawBrushesBtn.Location = new System.Drawing.Point(32, 173);
+            this.drawBrushesBtn.Name = "drawBrushesBtn";
+            this.drawBrushesBtn.Size = new System.Drawing.Size(112, 36);
+            this.drawBrushesBtn.TabIndex = 15;
+            this.drawBrushesBtn.Text = "DrawBrushes";
+            this.drawBrushesBtn.UseVisualStyleBackColor = true;
+            this.drawBrushesBtn.Click += new System.EventHandler(this.DrawBrushesBtn_Click);
             // 
             // BasicDrawingForm
             // 
@@ -110,6 +142,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelMetalBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.drawBrushesBtn);
+            this.Controls.Add(this.instructionTextBox);
+            this.Controls.Add(this.drawEllipseBtn);
             this.Controls.Add(this.cancelMetalBtn);
             this.Controls.Add(this.okMetalBtn);
             this.Controls.Add(this.menuStrip1);
@@ -117,6 +152,7 @@
             this.Name = "BasicDrawingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "BasicDrawingForm";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.BasicDrawingForm_Paint);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
@@ -134,5 +170,8 @@
         private System.Windows.Forms.ToolStripMenuItem 종료ToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 종료ToolStripMenuItem1;
+        private CustomControls_dll.MetalButton drawEllipseBtn;
+        private System.Windows.Forms.TextBox instructionTextBox;
+        private CustomControls_dll.MetalButton drawBrushesBtn;
     }
 }

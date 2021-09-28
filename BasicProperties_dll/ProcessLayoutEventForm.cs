@@ -27,10 +27,12 @@ namespace BasicProperties_dll
             // 모든 사항이 변경되지 전까지 레이아웃 변경을 보류시킨다.
             this.SuspendLayout();
 
+            MessageBox.Show("버튼을 배열에 넣습니다.");
             // 폼 안의 그리드 형태로 버튼을 정렬한다.
             Button[] buttons = new Button[] { button1, button2, button3, button4, button5, button6, button7, button8, button9 };
             int cx = ClientRectangle.Width / 3;
             int cy = ClientRectangle.Height / 3;
+            MessageBox.Show(".SetBounds를 사용해서, 컨트롤의 위치를 지정된 위치로 조절합니다.");
             for(int row = 0; row < 3; ++row)
             {
                 for(int col = 0; col < 3; ++col)
@@ -40,6 +42,7 @@ namespace BasicProperties_dll
                 }
             }
 
+            MessageBox.Show("버튼 컨트롤의 폭과 높이로부터 폼 클라이언트 크기를 설정합니다.");
             // 버튼 컨트롤의 폭과 높이로부터 폼 클라이언트 크기를 설정한다.
             SetClientSizeCore(cx * 3, cy * 3);
 

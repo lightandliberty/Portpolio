@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.TopMostBtn = new System.Windows.Forms.Button();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ReadFromAppConfigBtn = new System.Windows.Forms.Button();
             this.LoadBitmapBtn = new System.Windows.Forms.Button();
             this.ChangeFormBorderStyleBtn = new System.Windows.Forms.Button();
@@ -50,8 +52,6 @@
             this.foreColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SetFlatAppearenceBtn = new System.Windows.Forms.Button();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.IsAnchorLabel = new System.Windows.Forms.Label();
             this.ProcessLayoutEventBtn = new System.Windows.Forms.Button();
             this.CreateMDIBtn = new System.Windows.Forms.Button();
@@ -71,9 +71,9 @@
             this.SizeGripStylePropLabel = new System.Windows.Forms.Label();
             this.PopupOpacityFormModallessBtn = new System.Windows.Forms.Button();
             this.ErrorProviderBtn = new System.Windows.Forms.Button();
+            this.contextMenuStrip2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // TopMostBtn
@@ -89,6 +89,22 @@
             this.TopMostBtn.Text = "최상위창";
             this.TopMostBtn.UseVisualStyleBackColor = true;
             this.TopMostBtn.Click += new System.EventHandler(this.TopMostBtn_Click);
+            this.TopMostBtn.MouseEnter += new System.EventHandler(this.TopMostBtn_MouseEnter);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.ShowImageMargin = false;
+            this.contextMenuStrip2.Size = new System.Drawing.Size(83, 26);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(82, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // ReadFromAppConfigBtn
             // 
@@ -103,6 +119,7 @@
             this.ReadFromAppConfigBtn.Text = "App.config에서 값 읽어오기";
             this.ReadFromAppConfigBtn.UseVisualStyleBackColor = true;
             this.ReadFromAppConfigBtn.Click += new System.EventHandler(this.ReadFromAppConfigBtn_Click);
+            this.ReadFromAppConfigBtn.MouseEnter += new System.EventHandler(this.ReadFromAppConfigBtn_MouseEnter);
             // 
             // LoadBitmapBtn
             // 
@@ -117,6 +134,7 @@
             this.LoadBitmapBtn.Text = "c:\\cocoa.png 파일 나타내기";
             this.LoadBitmapBtn.UseVisualStyleBackColor = true;
             this.LoadBitmapBtn.Click += new System.EventHandler(this.LoadBitmapBtn_Click);
+            this.LoadBitmapBtn.MouseEnter += new System.EventHandler(this.LoadBitmapBtn_MouseEnter);
             // 
             // ChangeFormBorderStyleBtn
             // 
@@ -131,6 +149,7 @@
             this.ChangeFormBorderStyleBtn.Text = "FormBorderStyle속성 설정";
             this.ChangeFormBorderStyleBtn.UseVisualStyleBackColor = true;
             this.ChangeFormBorderStyleBtn.Click += new System.EventHandler(this.ChangeFormBorderStyleBtn_Click);
+            this.ChangeFormBorderStyleBtn.MouseEnter += new System.EventHandler(this.ChangeFormBorderStyleBtn_MouseEnter);
             // 
             // SetControlBoxBtn
             // 
@@ -145,6 +164,7 @@
             this.SetControlBoxBtn.Text = "ControlBox 속성 변경";
             this.SetControlBoxBtn.UseVisualStyleBackColor = true;
             this.SetControlBoxBtn.Click += new System.EventHandler(this.SetControlBoxBtn_Click);
+            this.SetControlBoxBtn.MouseEnter += new System.EventHandler(this.SetControlBoxBtn_MouseEnter);
             // 
             // SetMaxiMiniBtn
             // 
@@ -159,6 +179,7 @@
             this.SetMaxiMiniBtn.Text = "MaximizeBox MinimizeBox 속성";
             this.SetMaxiMiniBtn.UseVisualStyleBackColor = true;
             this.SetMaxiMiniBtn.Click += new System.EventHandler(this.SetMaxiMiniBtn_Click);
+            this.SetMaxiMiniBtn.MouseEnter += new System.EventHandler(this.SetMaxiMiniBtn_MouseEnter);
             // 
             // instructionTextBox
             // 
@@ -184,6 +205,7 @@
             this.SetHelpIconBtn.Text = "HelpButton 속성";
             this.SetHelpIconBtn.UseVisualStyleBackColor = true;
             this.SetHelpIconBtn.Click += new System.EventHandler(this.SetHelpIconBtn_Click);
+            this.SetHelpIconBtn.MouseEnter += new System.EventHandler(this.SetHelpIconBtn_MouseEnter);
             // 
             // SetSizeGripStyleBtn
             // 
@@ -198,6 +220,7 @@
             this.SetSizeGripStyleBtn.Text = "SetSizeGripStyle 속성";
             this.SetSizeGripStyleBtn.UseVisualStyleBackColor = true;
             this.SetSizeGripStyleBtn.Click += new System.EventHandler(this.SetSizeGripStyleBtn_Click);
+            this.SetSizeGripStyleBtn.MouseEnter += new System.EventHandler(this.SetSizeGripStyleBtn_MouseEnter);
             // 
             // SetShowInTaskbarBtn
             // 
@@ -212,6 +235,7 @@
             this.SetShowInTaskbarBtn.Text = "ShowInTaskbar 속성";
             this.SetShowInTaskbarBtn.UseVisualStyleBackColor = true;
             this.SetShowInTaskbarBtn.Click += new System.EventHandler(this.SetShowInTaskbarBtn_Click);
+            this.SetShowInTaskbarBtn.MouseEnter += new System.EventHandler(this.SetShowInTaskbarBtn_MouseEnter);
             // 
             // PopupOpacityFormBtn
             // 
@@ -226,6 +250,7 @@
             this.PopupOpacityFormBtn.Text = "Popup Opacity속성 Form";
             this.PopupOpacityFormBtn.UseVisualStyleBackColor = true;
             this.PopupOpacityFormBtn.Click += new System.EventHandler(this.PopupOpacityFormBtn_Click);
+            this.PopupOpacityFormBtn.MouseEnter += new System.EventHandler(this.PopupOpacityFormBtn_MouseEnter);
             // 
             // CreateTransparentFormBtn
             // 
@@ -240,6 +265,7 @@
             this.CreateTransparentFormBtn.Text = "TransparentForm 생성";
             this.CreateTransparentFormBtn.UseVisualStyleBackColor = true;
             this.CreateTransparentFormBtn.Click += new System.EventHandler(this.CreateTransparentFormBtn_Click);
+            this.CreateTransparentFormBtn.MouseEnter += new System.EventHandler(this.CreateTransparentFormBtn_MouseEnter);
             // 
             // menuStrip1
             // 
@@ -317,21 +343,7 @@
             this.SetFlatAppearenceBtn.Text = "SetFlatAppearenceBtn";
             this.SetFlatAppearenceBtn.UseVisualStyleBackColor = true;
             this.SetFlatAppearenceBtn.Click += new System.EventHandler(this.SetFlatAppearenceBtn_Click);
-            // 
-            // contextMenuStrip2
-            // 
-            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
-            this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.ShowImageMargin = false;
-            this.contextMenuStrip2.Size = new System.Drawing.Size(156, 48);
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
+            this.SetFlatAppearenceBtn.MouseEnter += new System.EventHandler(this.SetFlatAppearenceBtn_MouseEnter);
             // 
             // IsAnchorLabel
             // 
@@ -359,6 +371,7 @@
             this.ProcessLayoutEventBtn.Text = "ProcessLayoutEvent";
             this.ProcessLayoutEventBtn.UseVisualStyleBackColor = true;
             this.ProcessLayoutEventBtn.Click += new System.EventHandler(this.ProcessLayoutEventBtn_Click);
+            this.ProcessLayoutEventBtn.MouseEnter += new System.EventHandler(this.ProcessLayoutEventBtn_MouseEnter);
             // 
             // CreateMDIBtn
             // 
@@ -373,6 +386,7 @@
             this.CreateMDIBtn.Text = "CreateMDI";
             this.CreateMDIBtn.UseVisualStyleBackColor = true;
             this.CreateMDIBtn.Click += new System.EventHandler(this.CreateMDIBtn_Click);
+            this.CreateMDIBtn.MouseEnter += new System.EventHandler(this.CreateMDIBtn_MouseEnter);
             // 
             // label1
             // 
@@ -527,6 +541,7 @@
             this.PopupOpacityFormModallessBtn.Text = "Popup Opacity속성 Modalless";
             this.PopupOpacityFormModallessBtn.UseVisualStyleBackColor = true;
             this.PopupOpacityFormModallessBtn.Click += new System.EventHandler(this.PopupOpacityFormModallessBtn_Click);
+            this.PopupOpacityFormModallessBtn.MouseEnter += new System.EventHandler(this.PopupOpacityFormModallessBtn_MouseEnter);
             // 
             // ErrorProviderBtn
             // 
@@ -541,6 +556,7 @@
             this.ErrorProviderBtn.Text = "ErrorProvider";
             this.ErrorProviderBtn.UseVisualStyleBackColor = true;
             this.ErrorProviderBtn.Click += new System.EventHandler(this.ErrorProviderBtn_Click);
+            this.ErrorProviderBtn.MouseEnter += new System.EventHandler(this.ErrorProviderBtn_MouseEnter);
             // 
             // BasicProperties_MainForm
             // 
@@ -588,10 +604,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.Properties_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Properties_KeyDown);
+            this.contextMenuStrip2.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
-            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
