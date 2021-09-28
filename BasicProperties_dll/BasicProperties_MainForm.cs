@@ -264,7 +264,8 @@ namespace BasicProperties_dll
 
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("TopMost의 컨텍스트 메뉴입니다.");
+            string controlName = FindControlAtCursor(this)?.Name + "의 contextMenu입니다.";
+            MessageBox.Show( controlName);
         }
 
         private void ProcessLayoutEventBtn_Click(object sender, EventArgs e)
@@ -341,6 +342,81 @@ namespace BasicProperties_dll
 
             this.instructionTextBox.Text = "TextBox의 Validating()이벤트를 처리합니다.";
             errorProviderExampleForm.ShowDialog();
+        }
+
+        // 마우스 커서 위치에 있는 컨트롤 찾기.
+        // 폼 안에 커서가 있을 때 실행되므로, 클라이 언트 영역 안에서만 비교하면 됨.
+        public static Control FindControlAtPoint(Control container, Point mouseClientPosition)
+        {
+            Control child;
+            foreach (Control c in container.Controls)
+            {
+                // 자식 컨트롤들이 있고, 자식 컨트롤들 중에 마우스 위치를 포함하는 자식컨트롤이 있는 경우,
+                // 처음으로 발견하는 자식 컨트롤을 리턴. 그런데, 마지막까지 파고들어 감.
+                //MessageBox.Show((c.Visible && c.Bounds.Contains(mouseClientPosition)).ToString());
+                //// c.Bound가 Client영역인데?
+                //MessageBox.Show("c.Visible = " + c.Visible.ToString());
+                //MessageBox.Show("pos.X = " + MousePosition.X.ToString());
+                //MessageBox.Show("pos.Y = " + MousePosition.Y.ToString());
+                //MessageBox.Show("c.Bounds.X = " + c.Bounds.X.ToString());
+                //MessageBox.Show("c.Bounds.Y = " + c.Bounds.Y.ToString());
+                //MessageBox.Show("c.Bounds.Width = " + c.Bounds.Width.ToString());
+                //MessageBox.Show("c.Bounds.Height = " + c.Bounds.Height.ToString());
+
+                if (c.Visible && c.Bounds.Contains(mouseClientPosition))   // .Bounds는 컨트롤의 크기와 위치를 나타내는 Rectangle
+                {
+                    // 마우스 위치를 포함하는 자식 컨트롤이 없으면 child가 null, 있으면 child가 컨트롤을 가짐.
+                    child = FindControlAtPoint(c, mouseClientPosition);
+                    // 마우스 위치를 포함하는 자식 컨트롤이 없으면, 상위 컨트롤을 리턴.
+                    if (child == null) return c;
+                    // 마우스 위치를 포함하는 자식 컨트롤이 있으면, 자식 컨트롤을 리턴.
+                    else return child;
+                }
+            }
+            // 마우스 위치를 포함하는 자식 컨트롤이 없는 경우 null을 리턴.
+            return null;
+        }
+
+        //}        // 마우스 커서 위치에 있는 컨트롤 찾기. // 사실상 pos는 안 쓰이는 거 아닌가?
+        //public static Control FindControlAtPoint(Control container, Point pos)
+        //{
+        //    Control child;
+        //    foreach(Control c in container.Controls)
+        //    {
+        //        // 자식 컨트롤들이 있고, 자식 컨트롤들 중에 마우스 위치를 포함하는 자식컨트롤이 있는 경우,
+        //        // 처음으로 발견하는 자식 컨트롤을 리턴. 그런데, 마지막까지 파고들어 감.
+        //        if (c.Visible && c.Bounds.Contains(MousePosition))   // .Bounds는 컨트롤의 크기와 위치를 나타내는 Rectangle
+        //        {
+        //            // 마우스 위치를 포함하는 자식 컨트롤이 없으면 child가 null, 있으면 child가 컨트롤을 가짐.
+        //            child = FindControlAtPoint(c, new Point(pos.X - c.Left, pos.Y - c.Top));
+        //            // 마우스 위치를 포함하는 자식 컨트롤이 없으면, 상위 컨트롤을 리턴.
+        //            if (child == null) return c;
+        //            // 마우스 위치를 포함하는 자식 컨트롤이 있으면, 자식 컨트롤을 리턴.
+        //            else return child;
+        //        }
+        //    }
+        //    // 마우스 위치를 포함하는 자식 컨트롤이 없는 경우 null을 리턴.
+        //    return null;
+        //}
+
+        public static Control FindControlAtCursor(Form form)
+        {
+            Point pos = Cursor.Position;
+            // 폼이 커서 위치를 포함하고 있으면,
+            if (form.Bounds.Contains(pos)) // 그러니까 이 .Bounds는 커서의 절대 위치를 포함해야 하는데,
+                // 위에서 child옆 FindControlAtPoint(c, 여기는 상대 위치가 들어가는데...)
+                // 그러니까 이게, Cursor.Position이 화면의 좌표가 아니라,
+                // Form에서의 좌표이고,
+                // form.Bounds.Contains가 클라이언트 좌표이면 말이되는데,
+                // 그런데, 그려면 의미가 없는데,... 사각형 범위가 벗어나는 곳만 체크하므로,
+                // c.Left가 컨테이너의 가장자리와 컨트롤의 가장자리 사이의 거리라고 하므로,
+                // 
+            {
+//                MessageBox.Show("form.Bounds.Contains(Cursor.Position)실행중입니다.");
+                return FindControlAtPoint(form, form.PointToClient(Cursor.Position));
+                //return FindControlAtPoint(form, form.PointToClient(Cursor.Position));
+            }
+            return null;
         }
     }
 }

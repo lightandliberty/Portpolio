@@ -81,6 +81,7 @@
             this.TopMostBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.TopMostBtn.ContextMenuStrip = this.contextMenuStrip2;
             this.TopMostBtn.Location = new System.Drawing.Point(40, 132);
             this.TopMostBtn.Name = "TopMostBtn";
             this.TopMostBtn.Size = new System.Drawing.Size(200, 23);
@@ -94,6 +95,7 @@
             this.ReadFromAppConfigBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReadFromAppConfigBtn.ContextMenuStrip = this.contextMenuStrip2;
             this.ReadFromAppConfigBtn.Location = new System.Drawing.Point(40, 103);
             this.ReadFromAppConfigBtn.Name = "ReadFromAppConfigBtn";
             this.ReadFromAppConfigBtn.Size = new System.Drawing.Size(200, 23);
@@ -107,6 +109,7 @@
             this.LoadBitmapBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.LoadBitmapBtn.ContextMenuStrip = this.contextMenuStrip2;
             this.LoadBitmapBtn.Location = new System.Drawing.Point(40, 161);
             this.LoadBitmapBtn.Name = "LoadBitmapBtn";
             this.LoadBitmapBtn.Size = new System.Drawing.Size(200, 23);
@@ -120,6 +123,7 @@
             this.ChangeFormBorderStyleBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ChangeFormBorderStyleBtn.ContextMenuStrip = this.contextMenuStrip2;
             this.ChangeFormBorderStyleBtn.Location = new System.Drawing.Point(42, 219);
             this.ChangeFormBorderStyleBtn.Name = "ChangeFormBorderStyleBtn";
             this.ChangeFormBorderStyleBtn.Size = new System.Drawing.Size(200, 23);
@@ -133,6 +137,7 @@
             this.SetControlBoxBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.SetControlBoxBtn.ContextMenuStrip = this.contextMenuStrip2;
             this.SetControlBoxBtn.Location = new System.Drawing.Point(40, 190);
             this.SetControlBoxBtn.Name = "SetControlBoxBtn";
             this.SetControlBoxBtn.Size = new System.Drawing.Size(200, 23);
@@ -146,6 +151,7 @@
             this.SetMaxiMiniBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.SetMaxiMiniBtn.ContextMenuStrip = this.contextMenuStrip2;
             this.SetMaxiMiniBtn.Location = new System.Drawing.Point(40, 248);
             this.SetMaxiMiniBtn.Name = "SetMaxiMiniBtn";
             this.SetMaxiMiniBtn.Size = new System.Drawing.Size(200, 23);
@@ -170,6 +176,7 @@
             this.SetHelpIconBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.SetHelpIconBtn.ContextMenuStrip = this.contextMenuStrip2;
             this.SetHelpIconBtn.Location = new System.Drawing.Point(40, 277);
             this.SetHelpIconBtn.Name = "SetHelpIconBtn";
             this.SetHelpIconBtn.Size = new System.Drawing.Size(200, 23);
@@ -183,6 +190,7 @@
             this.SetSizeGripStyleBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.SetSizeGripStyleBtn.ContextMenuStrip = this.contextMenuStrip2;
             this.SetSizeGripStyleBtn.Location = new System.Drawing.Point(40, 306);
             this.SetSizeGripStyleBtn.Name = "SetSizeGripStyleBtn";
             this.SetSizeGripStyleBtn.Size = new System.Drawing.Size(200, 23);
@@ -196,6 +204,7 @@
             this.SetShowInTaskbarBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.SetShowInTaskbarBtn.ContextMenuStrip = this.contextMenuStrip2;
             this.SetShowInTaskbarBtn.Location = new System.Drawing.Point(40, 335);
             this.SetShowInTaskbarBtn.Name = "SetShowInTaskbarBtn";
             this.SetShowInTaskbarBtn.Size = new System.Drawing.Size(200, 23);
@@ -209,6 +218,7 @@
             this.PopupOpacityFormBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PopupOpacityFormBtn.ContextMenuStrip = this.contextMenuStrip2;
             this.PopupOpacityFormBtn.Location = new System.Drawing.Point(40, 364);
             this.PopupOpacityFormBtn.Name = "PopupOpacityFormBtn";
             this.PopupOpacityFormBtn.Size = new System.Drawing.Size(200, 23);
@@ -222,6 +232,7 @@
             this.CreateTransparentFormBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.CreateTransparentFormBtn.ContextMenuStrip = this.contextMenuStrip2;
             this.CreateTransparentFormBtn.Location = new System.Drawing.Point(40, 393);
             this.CreateTransparentFormBtn.Name = "CreateTransparentFormBtn";
             this.CreateTransparentFormBtn.Size = new System.Drawing.Size(200, 23);
@@ -298,6 +309,7 @@
             this.SetFlatAppearenceBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.SetFlatAppearenceBtn.ContextMenuStrip = this.contextMenuStrip2;
             this.SetFlatAppearenceBtn.Location = new System.Drawing.Point(277, 103);
             this.SetFlatAppearenceBtn.Name = "SetFlatAppearenceBtn";
             this.SetFlatAppearenceBtn.Size = new System.Drawing.Size(200, 23);
@@ -311,7 +323,8 @@
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(108, 26);
+            this.contextMenuStrip2.ShowImageMargin = false;
+            this.contextMenuStrip2.Size = new System.Drawing.Size(156, 48);
             // 
             // aboutToolStripMenuItem
             // 
@@ -326,6 +339,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.IsAnchorLabel.AutoSize = true;
+            this.IsAnchorLabel.ContextMenuStrip = this.contextMenuStrip2;
             this.IsAnchorLabel.Location = new System.Drawing.Point(40, 426);
             this.IsAnchorLabel.Name = "IsAnchorLabel";
             this.IsAnchorLabel.Size = new System.Drawing.Size(77, 12);
@@ -337,6 +351,7 @@
             this.ProcessLayoutEventBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProcessLayoutEventBtn.ContextMenuStrip = this.contextMenuStrip2;
             this.ProcessLayoutEventBtn.Location = new System.Drawing.Point(277, 132);
             this.ProcessLayoutEventBtn.Name = "ProcessLayoutEventBtn";
             this.ProcessLayoutEventBtn.Size = new System.Drawing.Size(200, 23);
@@ -350,6 +365,7 @@
             this.CreateMDIBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.CreateMDIBtn.ContextMenuStrip = this.contextMenuStrip2;
             this.CreateMDIBtn.Location = new System.Drawing.Point(277, 161);
             this.CreateMDIBtn.Name = "CreateMDIBtn";
             this.CreateMDIBtn.Size = new System.Drawing.Size(200, 23);
@@ -361,6 +377,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ContextMenuStrip = this.contextMenuStrip2;
             this.label1.Location = new System.Drawing.Point(511, 108);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 12);
@@ -370,6 +387,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ContextMenuStrip = this.contextMenuStrip2;
             this.label2.Location = new System.Drawing.Point(511, 137);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 12);
@@ -379,6 +397,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ContextMenuStrip = this.contextMenuStrip2;
             this.label3.Location = new System.Drawing.Point(511, 166);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 12);
@@ -388,6 +407,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ContextMenuStrip = this.contextMenuStrip2;
             this.label4.Location = new System.Drawing.Point(511, 195);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(79, 12);
@@ -397,6 +417,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.ContextMenuStrip = this.contextMenuStrip2;
             this.label5.Location = new System.Drawing.Point(511, 224);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 12);
@@ -406,6 +427,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.ContextMenuStrip = this.contextMenuStrip2;
             this.label6.Location = new System.Drawing.Point(511, 253);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(94, 12);
@@ -415,6 +437,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.ContextMenuStrip = this.contextMenuStrip2;
             this.label7.Location = new System.Drawing.Point(511, 282);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(81, 12);
@@ -424,6 +447,7 @@
             // ControlBoxPropLabel
             // 
             this.ControlBoxPropLabel.AutoSize = true;
+            this.ControlBoxPropLabel.ContextMenuStrip = this.contextMenuStrip2;
             this.ControlBoxPropLabel.Location = new System.Drawing.Point(647, 108);
             this.ControlBoxPropLabel.Name = "ControlBoxPropLabel";
             this.ControlBoxPropLabel.Size = new System.Drawing.Size(93, 12);
@@ -433,6 +457,7 @@
             // FormBorderStylePropLabel
             // 
             this.FormBorderStylePropLabel.AutoSize = true;
+            this.FormBorderStylePropLabel.ContextMenuStrip = this.contextMenuStrip2;
             this.FormBorderStylePropLabel.Location = new System.Drawing.Point(647, 137);
             this.FormBorderStylePropLabel.Name = "FormBorderStylePropLabel";
             this.FormBorderStylePropLabel.Size = new System.Drawing.Size(125, 12);
@@ -442,6 +467,7 @@
             // HelpButtonPropLabel
             // 
             this.HelpButtonPropLabel.AutoSize = true;
+            this.HelpButtonPropLabel.ContextMenuStrip = this.contextMenuStrip2;
             this.HelpButtonPropLabel.Location = new System.Drawing.Point(647, 166);
             this.HelpButtonPropLabel.Name = "HelpButtonPropLabel";
             this.HelpButtonPropLabel.Size = new System.Drawing.Size(91, 12);
@@ -451,6 +477,7 @@
             // MinimizeBoxPropLabel
             // 
             this.MinimizeBoxPropLabel.AutoSize = true;
+            this.MinimizeBoxPropLabel.ContextMenuStrip = this.contextMenuStrip2;
             this.MinimizeBoxPropLabel.Location = new System.Drawing.Point(647, 195);
             this.MinimizeBoxPropLabel.Name = "MinimizeBoxPropLabel";
             this.MinimizeBoxPropLabel.Size = new System.Drawing.Size(105, 12);
@@ -460,6 +487,7 @@
             // MaximizePropLabel
             // 
             this.MaximizePropLabel.AutoSize = true;
+            this.MaximizePropLabel.ContextMenuStrip = this.contextMenuStrip2;
             this.MaximizePropLabel.Location = new System.Drawing.Point(647, 224);
             this.MaximizePropLabel.Name = "MaximizePropLabel";
             this.MaximizePropLabel.Size = new System.Drawing.Size(87, 12);
@@ -469,6 +497,7 @@
             // ShowInTaskBarPropLabel
             // 
             this.ShowInTaskBarPropLabel.AutoSize = true;
+            this.ShowInTaskBarPropLabel.ContextMenuStrip = this.contextMenuStrip2;
             this.ShowInTaskBarPropLabel.Location = new System.Drawing.Point(647, 253);
             this.ShowInTaskBarPropLabel.Name = "ShowInTaskBarPropLabel";
             this.ShowInTaskBarPropLabel.Size = new System.Drawing.Size(120, 12);
@@ -478,6 +507,7 @@
             // SizeGripStylePropLabel
             // 
             this.SizeGripStylePropLabel.AutoSize = true;
+            this.SizeGripStylePropLabel.ContextMenuStrip = this.contextMenuStrip2;
             this.SizeGripStylePropLabel.Location = new System.Drawing.Point(647, 282);
             this.SizeGripStylePropLabel.Name = "SizeGripStylePropLabel";
             this.SizeGripStylePropLabel.Size = new System.Drawing.Size(107, 12);
@@ -489,6 +519,7 @@
             this.PopupOpacityFormModallessBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PopupOpacityFormModallessBtn.ContextMenuStrip = this.contextMenuStrip2;
             this.PopupOpacityFormModallessBtn.Location = new System.Drawing.Point(277, 364);
             this.PopupOpacityFormModallessBtn.Name = "PopupOpacityFormModallessBtn";
             this.PopupOpacityFormModallessBtn.Size = new System.Drawing.Size(200, 23);
@@ -502,6 +533,7 @@
             this.ErrorProviderBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ErrorProviderBtn.ContextMenuStrip = this.contextMenuStrip2;
             this.ErrorProviderBtn.Location = new System.Drawing.Point(277, 190);
             this.ErrorProviderBtn.Name = "ErrorProviderBtn";
             this.ErrorProviderBtn.Size = new System.Drawing.Size(200, 23);
@@ -510,7 +542,7 @@
             this.ErrorProviderBtn.UseVisualStyleBackColor = true;
             this.ErrorProviderBtn.Click += new System.EventHandler(this.ErrorProviderBtn_Click);
             // 
-            // Properties
+            // BasicProperties_MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -551,7 +583,7 @@
             this.Controls.Add(this.menuStrip1);
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Properties";
+            this.Name = "BasicProperties_MainForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.Properties_Load);

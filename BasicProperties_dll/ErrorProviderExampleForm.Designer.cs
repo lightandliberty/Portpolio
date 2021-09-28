@@ -137,9 +137,9 @@
             // okMetalBtn
             // 
             this.okMetalBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.okMetalBtn.Location = new System.Drawing.Point(318, 116);
+            this.okMetalBtn.Location = new System.Drawing.Point(317, 112);
             this.okMetalBtn.Name = "okMetalBtn";
-            this.okMetalBtn.Size = new System.Drawing.Size(81, 16);
+            this.okMetalBtn.Size = new System.Drawing.Size(81, 28);
             this.okMetalBtn.TabIndex = 8;
             this.okMetalBtn.Text = "OK";
             this.okMetalBtn.UseVisualStyleBackColor = true;
@@ -150,9 +150,9 @@
             this.cancelMetalBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelMetalBtn.CausesValidation = false;
             this.cancelMetalBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelMetalBtn.Location = new System.Drawing.Point(421, 116);
+            this.cancelMetalBtn.Location = new System.Drawing.Point(420, 112);
             this.cancelMetalBtn.Name = "cancelMetalBtn";
-            this.cancelMetalBtn.Size = new System.Drawing.Size(81, 16);
+            this.cancelMetalBtn.Size = new System.Drawing.Size(81, 28);
             this.cancelMetalBtn.TabIndex = 9;
             this.cancelMetalBtn.Text = "Cancel";
             this.cancelMetalBtn.UseVisualStyleBackColor = true;

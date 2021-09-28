@@ -1,0 +1,138 @@
+﻿namespace DrawingProject_Dll
+{
+    partial class BasicDrawingForm
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            this.cancelMetalBtn = new CustomControls_dll.MetalButton();
+            this.okMetalBtn = new CustomControls_dll.MetalButton();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.파일ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.종료ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // cancelMetalBtn
+            // 
+            this.cancelMetalBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelMetalBtn.CausesValidation = false;
+            this.cancelMetalBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelMetalBtn.Location = new System.Drawing.Point(691, 399);
+            this.cancelMetalBtn.Name = "cancelMetalBtn";
+            this.cancelMetalBtn.Size = new System.Drawing.Size(81, 28);
+            this.cancelMetalBtn.TabIndex = 11;
+            this.cancelMetalBtn.Text = "Cancel";
+            this.cancelMetalBtn.UseVisualStyleBackColor = true;
+            this.cancelMetalBtn.Click += new System.EventHandler(this.CancelMetalBtn_Click);
+            // 
+            // okMetalBtn
+            // 
+            this.okMetalBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.okMetalBtn.Location = new System.Drawing.Point(588, 399);
+            this.okMetalBtn.Name = "okMetalBtn";
+            this.okMetalBtn.Size = new System.Drawing.Size(81, 28);
+            this.okMetalBtn.TabIndex = 10;
+            this.okMetalBtn.Text = "OK";
+            this.okMetalBtn.UseVisualStyleBackColor = true;
+            this.okMetalBtn.Click += new System.EventHandler(this.OkMetalBtn_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.파일ToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 12;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // 파일ToolStripMenuItem
+            // 
+            this.파일ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.종료ToolStripMenuItem});
+            this.파일ToolStripMenuItem.Name = "파일ToolStripMenuItem";
+            this.파일ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.파일ToolStripMenuItem.Text = "파일";
+            // 
+            // 종료ToolStripMenuItem
+            // 
+            this.종료ToolStripMenuItem.Name = "종료ToolStripMenuItem";
+            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.종료ToolStripMenuItem.Text = "종료";
+            this.종료ToolStripMenuItem.Click += new System.EventHandler(this.종료ToolStripMenuItem_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.종료ToolStripMenuItem1});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(99, 26);
+            // 
+            // 종료ToolStripMenuItem1
+            // 
+            this.종료ToolStripMenuItem1.Name = "종료ToolStripMenuItem1";
+            this.종료ToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.종료ToolStripMenuItem1.Text = "종료";
+            this.종료ToolStripMenuItem1.Click += new System.EventHandler(this.종료ToolStripMenuItem1_Click);
+            // 
+            // BasicDrawingForm
+            // 
+            this.AcceptButton = this.okMetalBtn;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.cancelMetalBtn;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cancelMetalBtn);
+            this.Controls.Add(this.okMetalBtn);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
+            this.Name = "BasicDrawingForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "BasicDrawingForm";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private CustomControls_dll.MetalButton cancelMetalBtn;
+        private CustomControls_dll.MetalButton okMetalBtn;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 파일ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 종료ToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 종료ToolStripMenuItem1;
+    }
+}

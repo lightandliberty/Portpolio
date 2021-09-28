@@ -88,6 +88,15 @@ namespace Portfolio
             NeonButtonProject_Dll.NeonButtonMain neonButtonProject_dll = new NeonButtonProject_Dll.NeonButtonMain();
             neonButtonProject_dll.ShowDialog();
         }
+
+        private void DrawingMetalBtn_Click(object sender, EventArgs e)
+        {
+            DrawingProject_Dll.DrawingMain drawingMain = new DrawingProject_Dll.DrawingMain()
+            {
+                StartPosition = FormStartPosition.CenterParent,
+            };
+            drawingMain.ShowDialog();
+        }
     }
 
 
