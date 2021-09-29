@@ -68,6 +68,7 @@ namespace DrawingProject_Dll
             instructionTextBox.Text += "\r\n현재 설정되어 타원을 지울 색의 HTML 문자 값은 " + ColorTranslator.ToHtml(Color.FromKnownColor(KnownColor.Control));
             mEllipseColor2 = Color.FromKnownColor(KnownColor.Control);
             instructionTextBox.Text += "\r\n현재 설정되어 타원을 지울 색을 저장한 후의 HTML 문자 값은 " + ColorTranslator.ToHtml(mEllipseColor2);
+            instructionTextBox.Text += "\r\n한번 더 클릭하면 지워지고, 다시 클릭하면 나타난다. ";
             this.Invalidate(true);      // true : 자식 컨트롤을 무효화 함.
             this.Update();
             //this.Refresh();     // Invalidate(true) + Update()
@@ -222,7 +223,7 @@ namespace DrawingProject_Dll
                 }
 
                 // TextureBrush
-                using (Brush brush = new TextureBrush(Resource1.textureBrushImage))
+                using (Brush brush = new TextureBrush(Resource1.flipTest))
                 {
                     g.FillRectangle(brush, x, y, width, height);
                     g.DrawString(brush.ToString(), this.Font, blackBrush, x, y+3);  // 위에서 3만큼 띄움. y값에 저장 안 함.
@@ -287,7 +288,14 @@ namespace DrawingProject_Dll
             }
             drawBrushes = !drawBrushes;
             Invalidate(true);
+            DrawHatchBrushes drawHatBrushes = new DrawHatchBrushes();
+            drawHatBrushes.ShowDialog();
+        }
 
+        private void DrawBrushesBtn_MouseMove(object sender, MouseEventArgs e)
+        {
+            instructionTextBox.Text = "5가지 브러쉬로 각각 사각형을 그린다." +
+                "\r\n새 창을 띄워 HatchBrushes 스타일을 보여 준다.";
         }
     }
 }

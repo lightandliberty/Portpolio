@@ -36,6 +36,12 @@ namespace NeonButtonProject_Dll
             //btn.ButtonColor = CustomControls_dll.NeonButton.KeyColor.Pink;
         }
 
+        private void NeonButtonMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                this.Close();
+        }
+
 
 
         //ColorDialog colorDialog = new ColorDialog()

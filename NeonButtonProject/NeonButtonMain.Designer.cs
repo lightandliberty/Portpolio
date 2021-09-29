@@ -33,6 +33,7 @@
             // 
             // neonButtonBtn
             // 
+            this.neonButtonBtn.ButtonColor = CustomControls_dll.NeonButton.KeyColor.Pink;
             this.neonButtonBtn.Location = new System.Drawing.Point(328, 180);
             this.neonButtonBtn.Name = "neonButtonBtn";
             this.neonButtonBtn.Size = new System.Drawing.Size(131, 52);
@@ -45,9 +46,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(784, 411);
             this.Controls.Add(this.neonButtonBtn);
+            this.KeyPreview = true;
             this.Name = "NeonButtonMain";
-            this.Size = new System.Drawing.Size(800, 450);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NeonButtonMain_KeyDown);
             this.ResumeLayout(false);
 
         }

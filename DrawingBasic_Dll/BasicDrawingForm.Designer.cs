@@ -134,6 +134,7 @@
             this.drawBrushesBtn.Text = "DrawBrushes";
             this.drawBrushesBtn.UseVisualStyleBackColor = true;
             this.drawBrushesBtn.Click += new System.EventHandler(this.DrawBrushesBtn_Click);
+            this.drawBrushesBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawBrushesBtn_MouseMove);
             // 
             // BasicDrawingForm
             // 
