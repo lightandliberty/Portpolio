@@ -288,14 +288,18 @@ namespace DrawingProject_Dll
             }
             drawBrushes = !drawBrushes;
             Invalidate(true);
-            DrawHatchBrushes drawHatBrushes = new DrawHatchBrushes();
-            drawHatBrushes.ShowDialog();
+            if (drawBrushes)
+            {
+                DrawHatchBrushes drawHatBrushes = new DrawHatchBrushes();
+                drawHatBrushes.ShowDialog();
+            }
         }
 
         private void DrawBrushesBtn_MouseMove(object sender, MouseEventArgs e)
         {
             instructionTextBox.Text = "5가지 브러쉬로 각각 사각형을 그린다." +
-                "\r\n새 창을 띄워 HatchBrushes 스타일을 보여 준다.";
+                "\r\n새 창을 띄워 HatchBrushes 스타일을 보여 준다." +
+                "\r\n한번 더 클릭하면, 메인에 띄워진 그림은 지워진다.";
         }
     }
 }

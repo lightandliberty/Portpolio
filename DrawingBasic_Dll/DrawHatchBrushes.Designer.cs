@@ -36,7 +36,7 @@
             this.cancelMetalBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelMetalBtn.CausesValidation = false;
             this.cancelMetalBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelMetalBtn.Location = new System.Drawing.Point(707, 410);
+            this.cancelMetalBtn.Location = new System.Drawing.Point(291, 410);
             this.cancelMetalBtn.Name = "cancelMetalBtn";
             this.cancelMetalBtn.Size = new System.Drawing.Size(0, 0);
             this.cancelMetalBtn.TabIndex = 12;
@@ -49,10 +49,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelMetalBtn;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(384, 361);
             this.Controls.Add(this.cancelMetalBtn);
+            this.Location = new System.Drawing.Point(-200, -400);
             this.Name = "DrawHatchBrushes";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HatchBrushes";
             this.Load += new System.EventHandler(this.HatchBrushes_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawHatchBrushes_Paint);
