@@ -80,7 +80,14 @@ namespace Portfolio
 
         public void CloseFormBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (NeonMode)
+            {
+                NeonMode = false;
+                this.BackColor = SystemColors.Control;
+                this.Invalidate(true);
+            }
+            else
+                this.Close();
         }
 
         private void NeonButtonProjectBtn_Click(object sender, EventArgs e)
@@ -96,6 +103,118 @@ namespace Portfolio
                 StartPosition = FormStartPosition.CenterParent,
             };
             drawingMain.ShowDialog();
+        }
+
+        public bool mNeonMode = false;
+        
+        // 속성은 메서드
+        public bool NeonMode 
+        {
+            get => mNeonMode;
+            set
+            {
+                mNeonMode = value;
+                this.BasicPropertiesBtn.Visible = !mNeonMode;
+                this.RawInputBtn.Visible = !mNeonMode;
+                this.DrawingMetalBtn.Visible = !mNeonMode;
+                this.neonButtonProjectBtn.Visible = !mNeonMode;
+                
+                this.CloseFormBtn.Size = mNeonMode ? new Size(0,0) : neonCloseBtn.Size; // Visible을 false로 하면 ESC가 작동 안하므로, 크기를 줄임.
+                this.neonCloseBtn.Visible = mNeonMode;
+            }
+        }
+        public Color bColor = DefaultBackColor;
+        public int colorNum = 0;
+
+        private void EnterNeonModeBtn_Click(object sender, EventArgs e)
+        {
+            // 처음 버튼을 눌렀으면,
+            if (NeonMode == false)
+            {
+                NeonMode = true;
+                using (Graphics g = this.CreateGraphics())
+                {
+                    this.BackColor = Color.Black;
+                    StringFormat sf = new StringFormat()
+                    {
+                        LineAlignment = StringAlignment.Center,     // 세로 맞춤
+                        Alignment = StringAlignment.Center,         // 가로 맞춤
+                    };
+
+                    this.Refresh();     // 이걸 안하면 배경이 나중에 검게 칠해지므로, 생각한대로 표시되지 않는다.
+
+                    g.DrawString("새벽 공기 속에 흔들리는 네온",
+                        new Font(this.Font.Name, 40, FontStyle.Bold), new SolidBrush((sender as CustomControls_dll.NeonButton).neonHoverPairs[(sender as CustomControls_dll.NeonButton).mKeyColor]),
+                        new Rectangle(new Point(0, 0), new Size(this.ClientSize.Width, this.ClientSize.Height)),
+                        sf);
+                    g.DrawString("새벽 공기 속에 흔들리는 네온",
+                        new Font(this.Font.Name, 40, FontStyle.Bold), new SolidBrush((sender as CustomControls_dll.NeonButton).neonNormalPairs[(sender as CustomControls_dll.NeonButton).mKeyColor]),
+                        new Rectangle(new Point(3, 3), new Size(this.ClientSize.Width, this.ClientSize.Height)),
+                        sf);
+                    g.DrawString("새벽 공기 속에 흔들리는 네온",
+                        new Font(this.Font.Name, 40, FontStyle.Bold), new SolidBrush((sender as CustomControls_dll.NeonButton).neonClickedPairs[(sender as CustomControls_dll.NeonButton).mKeyColor]),
+                        new Rectangle(new Point(3, 3), new Size(this.ClientSize.Width, this.ClientSize.Height)),
+                        sf);
+                }
+            }
+            switch (colorNum)
+            {
+                case (int)CustomControls_dll.NeonButton.KeyColor.Count:     // 색의 수에 도달하면, 인덱스를 넘어간 것이므로, 0으로 되돌림.
+                    colorNum = 0;
+                    break;
+                default:
+                    colorNum++;
+                    break;
+            }
+            (sender as CustomControls_dll.NeonButton).ButtonColor = (CustomControls_dll.NeonButton.KeyColor)colorNum;   // 버튼의 색을 바꾼다. ButtonColor는 속성으로 mKeyColor를 변경한다.
+            this.neonCloseBtn.ButtonColor = (CustomControls_dll.NeonButton.KeyColor)colorNum;   // 버튼의 색을 바꾼다. ButtonColor는 속성으로 mKeyColor를 변경한다.
+            this.neonCloseBtn.Refresh();
+        }
+
+        private void enterNeonModeBtn_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (NeonMode)
+            {
+                using (Graphics g = this.CreateGraphics())
+                {
+                    this.BackColor = Color.Black;
+//                    g.FillRectangle(Brushes.Black, this.ClientRectangle);
+                    //g.FillRectangle(
+                    //    new System.Drawing.Drawing2D.LinearGradientBrush(PointF.Empty, new Point(0, this.ClientSize.Height), Color.White, (sender as CustomControls_dll.NeonButton).neonClickedPairs[(sender as CustomControls_dll.NeonButton).mKeyColor]),
+                    //    new RectangleF(new Point(0, 0), new Size(this.ClientSize.Width, this.ClientSize.Height)));
+                    StringFormat sf = new StringFormat()
+                    {
+                        LineAlignment = StringAlignment.Center,     // 세로 맞춤
+                        Alignment = StringAlignment.Center,         // 가로 맞춤
+                    };
+
+                    // 글자색을 neon색으로 할 경우,
+                    //g.DrawString("새벽 공기 속에 흔들리는 네온",
+                    //    new Font(this.Font.Name, 40, FontStyle.Bold), new SolidBrush((sender as CustomControls_dll.NeonButton).neonNormalPairs[(sender as CustomControls_dll.NeonButton).mKeyColor]),
+                    //    new Rectangle(new Point(0, 0), new Size(this.ClientSize.Width, this.ClientSize.Height)),
+                    //    sf);
+                    g.DrawString("새벽 공기 속에 흔들리는 네온",
+                        new Font(this.Font.Name, 40, FontStyle.Bold), new SolidBrush((sender as CustomControls_dll.NeonButton).neonHoverPairs[(sender as CustomControls_dll.NeonButton).mKeyColor]),
+                        new Rectangle(new Point(0, 0), new Size(this.ClientSize.Width, this.ClientSize.Height)),
+                        sf);
+                    g.DrawString("새벽 공기 속에 흔들리는 네온",
+                        new Font(this.Font.Name, 40, FontStyle.Bold), new SolidBrush((sender as CustomControls_dll.NeonButton).neonNormalPairs[(sender as CustomControls_dll.NeonButton).mKeyColor]),
+                        new Rectangle(new Point(3, 3), new Size(this.ClientSize.Width, this.ClientSize.Height)),
+                        sf);
+                    g.DrawString("새벽 공기 속에 흔들리는 네온",
+                        new Font(this.Font.Name, 40, FontStyle.Bold), new SolidBrush((sender as CustomControls_dll.NeonButton).neonClickedPairs[(sender as CustomControls_dll.NeonButton).mKeyColor]),
+                        new Rectangle(new Point(3, 3), new Size(this.ClientSize.Width, this.ClientSize.Height)),
+                        sf);
+                };
+            }
+
+        }
+
+        private void neonCloseBtn_Click(object sender, EventArgs e)
+        {
+            NeonMode = !NeonMode;
+            this.BackColor = SystemColors.Control;
+            Invalidate(true);
         }
     }
 

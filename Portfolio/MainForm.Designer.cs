@@ -37,6 +37,8 @@
             this.BasicPropertiesBtn = new CustomControls_dll.MetalButton();
             this.neonButtonProjectBtn = new CustomControls_dll.MetalButton();
             this.DrawingMetalBtn = new CustomControls_dll.MetalButton();
+            this.enterNeonModeBtn = new CustomControls_dll.NeonButton();
+            this.neonCloseBtn = new CustomControls_dll.NeonButton();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,7 +88,7 @@
             // 
             // RawInputBtn
             // 
-            this.RawInputBtn.Location = new System.Drawing.Point(676, 39);
+            this.RawInputBtn.Location = new System.Drawing.Point(676, 90);
             this.RawInputBtn.Name = "RawInputBtn";
             this.RawInputBtn.Size = new System.Drawing.Size(112, 36);
             this.RawInputBtn.TabIndex = 6;
@@ -124,12 +126,38 @@
             this.DrawingMetalBtn.UseVisualStyleBackColor = true;
             this.DrawingMetalBtn.Click += new System.EventHandler(this.DrawingMetalBtn_Click);
             // 
+            // enterNeonModeBtn
+            // 
+            this.enterNeonModeBtn.ButtonColor = CustomControls_dll.NeonButton.KeyColor.Pink;
+            this.enterNeonModeBtn.Location = new System.Drawing.Point(676, 39);
+            this.enterNeonModeBtn.Name = "enterNeonModeBtn";
+            this.enterNeonModeBtn.Size = new System.Drawing.Size(112, 36);
+            this.enterNeonModeBtn.TabIndex = 10;
+            this.enterNeonModeBtn.Text = "Neon Mode";
+            this.enterNeonModeBtn.UseVisualStyleBackColor = true;
+            this.enterNeonModeBtn.Click += new System.EventHandler(this.EnterNeonModeBtn_Click);
+            this.enterNeonModeBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.enterNeonModeBtn_MouseDown);
+            // 
+            // neonCloseBtn
+            // 
+            this.neonCloseBtn.ButtonColor = CustomControls_dll.NeonButton.KeyColor.Pink;
+            this.neonCloseBtn.Location = new System.Drawing.Point(676, 402);
+            this.neonCloseBtn.Name = "neonCloseBtn";
+            this.neonCloseBtn.Size = new System.Drawing.Size(112, 36);
+            this.neonCloseBtn.TabIndex = 11;
+            this.neonCloseBtn.Text = "종료";
+            this.neonCloseBtn.UseVisualStyleBackColor = true;
+            this.neonCloseBtn.Visible = false;
+            this.neonCloseBtn.Click += new System.EventHandler(this.neonCloseBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CloseFormBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.neonCloseBtn);
+            this.Controls.Add(this.enterNeonModeBtn);
             this.Controls.Add(this.DrawingMetalBtn);
             this.Controls.Add(this.neonButtonProjectBtn);
             this.Controls.Add(this.CloseFormBtn);
@@ -157,5 +185,7 @@
         private CustomControls_dll.MetalButton CloseFormBtn;
         private CustomControls_dll.MetalButton neonButtonProjectBtn;
         private CustomControls_dll.MetalButton DrawingMetalBtn;
+        private CustomControls_dll.NeonButton enterNeonModeBtn;
+        private CustomControls_dll.NeonButton neonCloseBtn;
     }
 }
