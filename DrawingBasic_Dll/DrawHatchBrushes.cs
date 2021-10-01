@@ -10,10 +10,31 @@ using System.Windows.Forms;
 
 namespace DrawingProject_Dll
 {
+    // 이벤트 전달 객체의 매개변수에 전달할 정보
+    public class BrushInfo
+    {
+        public System.Drawing.Drawing2D.HatchBrush h;
+    }
+
+    // 이벤트 발생 시 전달할 이벤트 객체. (아까 정보 객체로부터 멤버를 채움)
+    public class HatchBrushEventArgs : EventArgs
+    {
+        public System.Drawing.Drawing2D.HatchBrush mHB { get; private set; }
+        public HatchBrushEventArgs(BrushInfo bi)
+        {
+            mHB = bi.h;
+        }
+    }
+
     public partial class DrawHatchBrushes : Form
     {
         public Dictionary<Rectangle, System.Drawing.Drawing2D.HatchBrush> mHatchRectangles;
-        
+
+        public delegate void HatchBrushSelectEventHandler(Object sender, HatchBrushEventArgs hb);   // 이벤트 함수 형태 선언
+
+        // 이벤트 함수 포인터 배열 생성. (여기에 부모 폼에서 함수를 추가함)
+        public event HatchBrushSelectEventHandler Selected;
+
         public DrawHatchBrushes()
         {
             InitializeComponent();
@@ -24,6 +45,7 @@ namespace DrawingProject_Dll
             mHatchRectangles = new Dictionary<Rectangle, System.Drawing.Drawing2D.HatchBrush>() {
             };
             this.Text = "마우스로 패턴을 선택할 수 있습니다.";
+
         }
 
         // Size를 0,0으로 하였음로, 디자인 화면에선 Ctrl + A 키로 선택할 수 있습니다.
@@ -73,6 +95,7 @@ namespace DrawingProject_Dll
             };
 
         }
+        public BrushInfo mBrushInfo;
 
         public List<Rectangle> rects = new List<Rectangle>();
         private void DrawHatchBrushes_MouseClick(object sender, MouseEventArgs e)
@@ -83,8 +106,15 @@ namespace DrawingProject_Dll
                 {
                     if(r.Contains(new Point(e.X, e.Y)))
                     {
-                        MessageBox.Show("선택하신 Brush는 " + mHatchRectangles[r].HatchStyle.ToString() + "입니다.");
+                        //                        MessageBox.Show("선택하신 Brush는 " + mHatchRectangles[r].HatchStyle.ToString() + "입니다.");
+                        if (Selected != null)
+                        {
+                            Selected(this, new HatchBrushEventArgs(new BrushInfo() { h = mHatchRectangles[r] })); // 주어진 인수로 함수 포인터 배열 실행.
+                            this.DialogResult = DialogResult.OK;
+                        }
+                        break;
                     }
+                    
                 }
             }
         }

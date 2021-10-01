@@ -153,6 +153,7 @@
             this.Name = "BasicDrawingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "BasicDrawingForm";
+            this.Load += new System.EventHandler(this.BasicDrawingForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.BasicDrawingForm_Paint);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

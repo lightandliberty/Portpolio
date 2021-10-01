@@ -12,9 +12,16 @@ namespace DrawingProject_Dll
 {
     public partial class BasicDrawingForm : Form
     {
+        public System.Drawing.Drawing2D.HatchBrush mHBrush;
+
         public BasicDrawingForm()
         {
             InitializeComponent();
+            mHBrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Divot, Color.DarkBlue, Color.White);
+        }
+
+        private void BasicDrawingForm_Load(object sender, EventArgs e)
+        {
         }
 
         private void CancelMetalBtn_Click(object sender, EventArgs e)
@@ -231,13 +238,23 @@ namespace DrawingProject_Dll
                 }
 
                 // HatchBrush
-                using (Brush brush = new System.Drawing.Drawing2D.HatchBrush
-                    (System.Drawing.Drawing2D.HatchStyle.Divot, Color.DarkBlue, Color.White))
+                if (mHBrush == null)
+                    new System.Drawing.Drawing2D.HatchBrush
+                    (System.Drawing.Drawing2D.HatchStyle.Divot, Color.DarkBlue, Color.White);
                 {
-                    g.FillRectangle(brush, x, y, width, height);
-                    g.DrawString(brush.ToString(), this.Font, blackBrush, x, y + 3);
+                    g.FillRectangle(mHBrush, x, y, width, height);
+                    g.DrawString(mHBrush.ToString(), this.Font, blackBrush, x, y + 3);
                     y += height;
                 }
+
+                //// HatchBrush
+                //using (Brush brush = new System.Drawing.Drawing2D.HatchBrush
+                //    (System.Drawing.Drawing2D.HatchStyle.Divot, Color.DarkBlue, Color.White))
+                //{
+                //    g.FillRectangle(brush, x, y, width, height);
+                //    g.DrawString(brush.ToString(), this.Font, blackBrush, x, y + 3);
+                //    y += height;
+                //}
 
                 //LinearGradientBrush (선형으로 쭉 그려지는 브러쉬)
                 using (Brush brush = new System.Drawing.Drawing2D.LinearGradientBrush(
@@ -286,12 +303,18 @@ namespace DrawingProject_Dll
             {
                 drawEllipse = !drawEllipse;
             }
-            drawBrushes = !drawBrushes;
+            drawBrushes = true;
+//            drawBrushes = !drawBrushes;
             Invalidate(true);
             if (drawBrushes)
             {
                 DrawHatchBrushes drawHatBrushes = new DrawHatchBrushes();
-                drawHatBrushes.ShowDialog();
+                drawHatBrushes.Selected += Selected;
+                if(drawHatBrushes.ShowDialog() == DialogResult.OK)
+                {
+                    this.Refresh();
+                }
+                
             }
         }
 
@@ -301,5 +324,11 @@ namespace DrawingProject_Dll
                 "\r\n새 창을 띄워 HatchBrushes 스타일을 보여 준다." +
                 "\r\n한번 더 클릭하면, 메인에 띄워진 그림은 지워진다.";
         }
+
+        private void Selected(object sender, HatchBrushEventArgs e)
+        {
+            mHBrush = e.mHB;
+        }
+
     }
 }
