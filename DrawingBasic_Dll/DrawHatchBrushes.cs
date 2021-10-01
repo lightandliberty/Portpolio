@@ -12,6 +12,8 @@ namespace DrawingProject_Dll
 {
     public partial class DrawHatchBrushes : Form
     {
+        public Dictionary<Rectangle, System.Drawing.Drawing2D.HatchBrush> mHatchRectangles;
+        
         public DrawHatchBrushes()
         {
             InitializeComponent();
@@ -19,7 +21,9 @@ namespace DrawingProject_Dll
 
         private void HatchBrushes_Load(object sender, EventArgs e)
         {
-
+            mHatchRectangles = new Dictionary<Rectangle, System.Drawing.Drawing2D.HatchBrush>() {
+            };
+            this.Text = "마우스로 패턴을 선택할 수 있습니다.";
         }
 
         // Size를 0,0으로 하였음로, 디자인 화면에선 Ctrl + A 키로 선택할 수 있습니다.
@@ -54,8 +58,11 @@ namespace DrawingProject_Dll
                             g.FillRectangle(solidBrush1, x, y, width, height);
                             g.DrawString(((System.Drawing.Drawing2D.HatchStyle)j+(i*4)).ToString(), font, System.Drawing.Brushes.Black, x, y + 1);
                             y += height;
-                            // 아래 칸 칠하고 글씨 씀.
+                            // 아래 칸 칠하고, 사각형을 배열에 저장.
                             g.FillRectangle(brush, x, y, width, height);
+                            // rects에 저장하고, 마지막 요소를 key로 해서 HatchBrush를 저장
+                            rects.Add(new Rectangle(x, y, width, height));
+                            mHatchRectangles.Add(rects.Last(), new System.Drawing.Drawing2D.HatchBrush((System.Drawing.Drawing2D.HatchStyle)j + (i * 4), Color.DarkBlue, Color.White));
                         };
                         x += width;
                         y -= height;
@@ -65,6 +72,21 @@ namespace DrawingProject_Dll
                 }
             };
 
+        }
+
+        public List<Rectangle> rects = new List<Rectangle>();
+        private void DrawHatchBrushes_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+            {
+                foreach(Rectangle r in rects)
+                {
+                    if(r.Contains(new Point(e.X, e.Y)))
+                    {
+                        MessageBox.Show("선택하신 Brush는 " + mHatchRectangles[r].HatchStyle.ToString() + "입니다.");
+                    }
+                }
+            }
         }
     }
 }
