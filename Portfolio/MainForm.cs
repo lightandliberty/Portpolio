@@ -82,9 +82,10 @@ namespace Portfolio
         {
             if (NeonMode)
             {
-                NeonMode = false;
-                this.BackColor = SystemColors.Control;
-                this.Invalidate(true);
+                neonCloseBtn_Click(this.neonCloseBtn, e);
+                //NeonMode = false;
+                //this.BackColor = SystemColors.Control;
+                //this.Invalidate(true);
             }
             else
                 this.Close();
@@ -132,6 +133,7 @@ namespace Portfolio
             if (NeonMode == false)
             {
                 NeonMode = true;
+                neonChangeIntervalTimer.Enabled = true;
                 using (Graphics g = this.CreateGraphics())
                 {
                     this.BackColor = Color.Black;
@@ -169,9 +171,10 @@ namespace Portfolio
             (sender as CustomControls_dll.NeonButton).ButtonColor = (CustomControls_dll.NeonButton.KeyColor)colorNum;   // 버튼의 색을 바꾼다. ButtonColor는 속성으로 mKeyColor를 변경한다.
             this.neonCloseBtn.ButtonColor = (CustomControls_dll.NeonButton.KeyColor)colorNum;   // 버튼의 색을 바꾼다. ButtonColor는 속성으로 mKeyColor를 변경한다.
             this.neonCloseBtn.Refresh();
+            this.enterNeonModeBtn.Refresh();
         }
 
-        private void enterNeonModeBtn_MouseDown(object sender, MouseEventArgs e)
+        private void EnterNeonModeBtn_MouseDown(object sender, MouseEventArgs e)
         {
             if (NeonMode)
             {
@@ -213,8 +216,15 @@ namespace Portfolio
         private void neonCloseBtn_Click(object sender, EventArgs e)
         {
             NeonMode = !NeonMode;
+            neonChangeIntervalTimer.Enabled = false;
             this.BackColor = SystemColors.Control;
             Invalidate(true);
+        }
+
+        private void NeonChangeIntervalTimer_Tick(object sender, EventArgs e)
+        {
+            EnterNeonModeBtn_MouseDown(this.enterNeonModeBtn, new MouseEventArgs(MouseButtons.Left,1,0,0,0) );
+            EnterNeonModeBtn_Click(this.enterNeonModeBtn, e);
         }
     }
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.도움말ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,6 +40,7 @@
             this.DrawingMetalBtn = new CustomControls_dll.MetalButton();
             this.enterNeonModeBtn = new CustomControls_dll.NeonButton();
             this.neonCloseBtn = new CustomControls_dll.NeonButton();
+            this.neonChangeIntervalTimer = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -136,12 +138,12 @@
             this.enterNeonModeBtn.Text = "Neon Mode";
             this.enterNeonModeBtn.UseVisualStyleBackColor = true;
             this.enterNeonModeBtn.Click += new System.EventHandler(this.EnterNeonModeBtn_Click);
-            this.enterNeonModeBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.enterNeonModeBtn_MouseDown);
+            this.enterNeonModeBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.EnterNeonModeBtn_MouseDown);
             // 
             // neonCloseBtn
             // 
             this.neonCloseBtn.ButtonColor = CustomControls_dll.NeonButton.KeyColor.Pink;
-            this.neonCloseBtn.Location = new System.Drawing.Point(676, 402);
+            this.neonCloseBtn.Location = new System.Drawing.Point(676, 340);
             this.neonCloseBtn.Name = "neonCloseBtn";
             this.neonCloseBtn.Size = new System.Drawing.Size(112, 36);
             this.neonCloseBtn.TabIndex = 11;
@@ -149,6 +151,11 @@
             this.neonCloseBtn.UseVisualStyleBackColor = true;
             this.neonCloseBtn.Visible = false;
             this.neonCloseBtn.Click += new System.EventHandler(this.neonCloseBtn_Click);
+            // 
+            // neonChangeIntervalTimer
+            // 
+            this.neonChangeIntervalTimer.Interval = 500;
+            this.neonChangeIntervalTimer.Tick += new System.EventHandler(this.NeonChangeIntervalTimer_Tick);
             // 
             // MainForm
             // 
@@ -187,5 +194,6 @@
         private CustomControls_dll.MetalButton DrawingMetalBtn;
         private CustomControls_dll.NeonButton enterNeonModeBtn;
         private CustomControls_dll.NeonButton neonCloseBtn;
+        private System.Windows.Forms.Timer neonChangeIntervalTimer;
     }
 }
