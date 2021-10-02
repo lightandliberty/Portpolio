@@ -155,6 +155,8 @@
             this.Text = "BasicDrawingForm";
             this.Load += new System.EventHandler(this.BasicDrawingForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.BasicDrawingForm_Paint);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BasicDrawingForm_MouseDown);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BasicDrawingForm_MouseUp);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
