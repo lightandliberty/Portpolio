@@ -39,6 +39,7 @@
             this.drawEllipseBtn = new CustomControls_dll.MetalButton();
             this.instructionTextBox = new System.Windows.Forms.TextBox();
             this.drawBrushesBtn = new CustomControls_dll.MetalButton();
+            this.titleLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -48,7 +49,7 @@
             this.cancelMetalBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelMetalBtn.CausesValidation = false;
             this.cancelMetalBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelMetalBtn.Location = new System.Drawing.Point(691, 399);
+            this.cancelMetalBtn.Location = new System.Drawing.Point(705, 410);
             this.cancelMetalBtn.Name = "cancelMetalBtn";
             this.cancelMetalBtn.Size = new System.Drawing.Size(81, 28);
             this.cancelMetalBtn.TabIndex = 11;
@@ -59,7 +60,7 @@
             // okMetalBtn
             // 
             this.okMetalBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.okMetalBtn.Location = new System.Drawing.Point(588, 399);
+            this.okMetalBtn.Location = new System.Drawing.Point(602, 410);
             this.okMetalBtn.Name = "okMetalBtn";
             this.okMetalBtn.Size = new System.Drawing.Size(81, 28);
             this.okMetalBtn.TabIndex = 10;
@@ -108,7 +109,7 @@
             // 
             // drawEllipseBtn
             // 
-            this.drawEllipseBtn.Location = new System.Drawing.Point(32, 120);
+            this.drawEllipseBtn.Location = new System.Drawing.Point(24, 158);
             this.drawEllipseBtn.Name = "drawEllipseBtn";
             this.drawEllipseBtn.Size = new System.Drawing.Size(112, 36);
             this.drawEllipseBtn.TabIndex = 13;
@@ -119,15 +120,15 @@
             // 
             // instructionTextBox
             // 
-            this.instructionTextBox.Location = new System.Drawing.Point(32, 39);
+            this.instructionTextBox.Location = new System.Drawing.Point(24, 81);
             this.instructionTextBox.Multiline = true;
             this.instructionTextBox.Name = "instructionTextBox";
-            this.instructionTextBox.Size = new System.Drawing.Size(740, 64);
+            this.instructionTextBox.Size = new System.Drawing.Size(747, 64);
             this.instructionTextBox.TabIndex = 14;
             // 
             // drawBrushesBtn
             // 
-            this.drawBrushesBtn.Location = new System.Drawing.Point(32, 173);
+            this.drawBrushesBtn.Location = new System.Drawing.Point(24, 208);
             this.drawBrushesBtn.Name = "drawBrushesBtn";
             this.drawBrushesBtn.Size = new System.Drawing.Size(112, 36);
             this.drawBrushesBtn.TabIndex = 15;
@@ -136,6 +137,17 @@
             this.drawBrushesBtn.Click += new System.EventHandler(this.DrawBrushesBtn_Click);
             this.drawBrushesBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawBrushesBtn_MouseMove);
             // 
+            // titleLabel
+            // 
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.Font = new System.Drawing.Font("굴림", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.titleLabel.Location = new System.Drawing.Point(326, 44);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(152, 24);
+            this.titleLabel.TabIndex = 16;
+            this.titleLabel.Text = "Basic Drawing";
+            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // BasicDrawingForm
             // 
             this.AcceptButton = this.okMetalBtn;
@@ -143,6 +155,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelMetalBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.drawBrushesBtn);
             this.Controls.Add(this.instructionTextBox);
             this.Controls.Add(this.drawEllipseBtn);
@@ -177,5 +190,6 @@
         private CustomControls_dll.MetalButton drawEllipseBtn;
         private System.Windows.Forms.TextBox instructionTextBox;
         private CustomControls_dll.MetalButton drawBrushesBtn;
+        private System.Windows.Forms.Label titleLabel;
     }
 }

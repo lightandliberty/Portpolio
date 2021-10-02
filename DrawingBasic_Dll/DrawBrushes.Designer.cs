@@ -1,6 +1,6 @@
 ﻿namespace DrawingProject_Dll
 {
-    partial class DrawHatchBrushes
+    partial class DrawBrushes
     {
         /// <summary>
         /// Required designer variable.
@@ -42,9 +42,9 @@
             this.cancelMetalBtn.TabIndex = 12;
             this.cancelMetalBtn.Text = "Cancel";
             this.cancelMetalBtn.UseVisualStyleBackColor = true;
-            this.cancelMetalBtn.Click += new System.EventHandler(this.cancelMetalBtn_Click);
+            this.cancelMetalBtn.Click += new System.EventHandler(this.CancelMetalBtn_Click);
             // 
-            // DrawHatchBrushes
+            // DrawBrushes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -52,7 +52,7 @@
             this.ClientSize = new System.Drawing.Size(384, 361);
             this.Controls.Add(this.cancelMetalBtn);
             this.Location = new System.Drawing.Point(-200, -400);
-            this.Name = "DrawHatchBrushes";
+            this.Name = "DrawBrushes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HatchBrushes";
             this.Load += new System.EventHandler(this.HatchBrushes_Load);
