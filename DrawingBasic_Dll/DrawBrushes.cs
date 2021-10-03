@@ -24,8 +24,7 @@ namespace DrawingProject_Dll
         public event HatchBrushSelectEventHandler Selected;
 
         public BasicDrawingForm.BoolListRectangle.PopupFlags selectBrushFlag;
-        public int mParentX;
-        public int mParentWidth;
+        public Rectangle mParentRect;
 
         public DrawBrushes()
         {
@@ -41,13 +40,12 @@ namespace DrawingProject_Dll
         }
 
 
-        public DrawBrushes(BasicDrawingForm.BoolListRectangle.PopupFlags popupFlag, int parentX, int parentWidth)
+        public DrawBrushes(BasicDrawingForm.BoolListRectangle.PopupFlags popupFlag, Rectangle parentRect)
         {
             InitializeComponent();
             // 선택할 브러쉬 플래그
             selectBrushFlag = popupFlag;
-            mParentX = parentX;
-            mParentWidth = parentWidth;
+            mParentRect = parentRect;
         }
 
         private void HatchBrushes_Load(object sender, EventArgs e)
@@ -104,6 +102,7 @@ namespace DrawingProject_Dll
                     break;
                 case BasicDrawingForm.BoolListRectangle.PopupFlags.TextureBrush:
                     break;
+                #region Paint이벤트 HatchBrush 나타내는 부분
                 case BasicDrawingForm.BoolListRectangle.PopupFlags.HatchBrush:
                     rect = new Rectangle(x, y, width, height);
                     // HatchBrush용 Paint
@@ -135,12 +134,14 @@ namespace DrawingProject_Dll
                         }
                     };
                     break;
+                #endregion
+                #region Paint이벤트 LinearGradientBrush 나타내는 부분
                 case BasicDrawingForm.BoolListRectangle.PopupFlags.LinearGradientBrush:
                     width = this.ClientSize.Width;
                     height = this.ClientSize.Height / 4;
                     
                     rect = new Rectangle(x, y, width, height);
-                    parentRect = new Rectangle(mParentX, y, mParentWidth, height);
+                    parentRect = new Rectangle(mParentRect.X, y, mParentRect.Width, height);
                     // LinearGradientBrush용 Paint
                     using (System.Drawing.Drawing2D.LinearGradientBrush brush = new System.Drawing.Drawing2D.LinearGradientBrush(rect, Color.White, Color.Black, System.Drawing.Drawing2D.LinearGradientMode.Horizontal))
                     {
@@ -252,7 +253,95 @@ namespace DrawingProject_Dll
                     }
 
                     break;
+                #endregion
                 case BasicDrawingForm.BoolListRectangle.PopupFlags.PathGradientBrush:
+                    // 화면 좌, 우로 4등분한 크기의 사각형
+                    width = this.ClientSize.Width / 2;
+                    height = this.ClientSize.Height / 2;
+                    rect = new Rectangle(x, y, width, height);
+                    // 브러시 저장은 parentRect로 함.
+                    parentRect = new Rectangle(mParentRect.X, mParentRect.Y, mParentRect.Width, mParentRect.Height);
+                    // 삼각형 모양의 그레디언트 브러시
+                    Point[] triPoints = new Point[]     // 위가운데, 왼쪽아래, 오른쪽아래
+                    {
+                        new Point(width/2, 0),  // 절반의 절반
+                        new Point(0, height),
+                        new Point(width, height),
+                    };
+
+                    // 삼각형 모양
+                    using (System.Drawing.Drawing2D.PathGradientBrush pathGBrush = new System.Drawing.Drawing2D.PathGradientBrush(triPoints))
+                    {
+                        g.FillRectangle(pathGBrush, rect);
+                        // 영역 저장
+                        rects.Add(rect);
+                        // 부모 폼의 사각 영역에 맞는 크기의 PathGradient브러시를 저장
+                        mPathGradientBrushRectangles[rect] = new System.Drawing.Drawing2D.PathGradientBrush(new Point[]
+                        {
+                            new Point(parentRect.X + parentRect.Width / 2, parentRect.Y),
+                            new Point(parentRect.X, parentRect.Height + parentRect.Y),
+                            new Point(parentRect.X + parentRect.Width, parentRect.Height + parentRect.Y),
+                        });
+                    }
+
+                    // 사각형 모양
+                    using (System.Drawing.Drawing2D.PathGradientBrush pathGBrush = new System.Drawing.Drawing2D.PathGradientBrush(new Point[]
+                    {
+                        // 포인트 지점을 옮기는 게 아님. 포인트는 절대 영역
+                        new Point(width,0),
+                        new Point(width, height),
+                        new Point(width * 2, height),
+                        new Point(width * 2,0),
+                    }))
+                    {
+                        rect.X += width;
+                        g.FillRectangle(pathGBrush, rect);
+                        // 영역 저장
+                        rects.Add(rect);
+                        // 부모 폼의 사각 영역에 맞는 크기의 PathGradient브러시를 저장
+                        mPathGradientBrushRectangles[rect] = new System.Drawing.Drawing2D.PathGradientBrush(new Point[]
+                        {
+                            new Point(parentRect.X, parentRect.Y),
+                            new Point(parentRect.X, parentRect.Y + parentRect.Height),
+                            new Point(parentRect.X + parentRect.Width, parentRect.Y + parentRect.Height),
+                            new Point(parentRect.X + parentRect.Width, parentRect.Y),
+                        });
+                    }
+
+                    // 다이아몬드 모양의 패스 그레디언트 브러시
+                    using (System.Drawing.Drawing2D.PathGradientBrush pathGBrush = new System.Drawing.Drawing2D.PathGradientBrush(new Point[]
+                        {
+                            new Point(width / 2, height),
+                            new Point(0, height + height / 2),
+                            new Point(width / 2, height + height),
+                            new Point(width, height + height / 2),
+                        })
+                    {
+                        // PathGradientBrush 속성까지 설정해서 생성하는 생성자
+                        WrapMode = System.Drawing.Drawing2D.WrapMode.Tile,
+                        CenterPoint = new Point(0, height + height / 2),
+                    })
+                    {
+                        rect.X -= width;
+                        rect.Y += height;
+                        g.FillRectangle(pathGBrush, rect);
+                        // 영역 저장
+                        rects.Add(rect);
+                        // 부모 폼의 사각 영역에 맞는 크기의 PathGradient브러시를 저장
+                        mPathGradientBrushRectangles[rect] = new System.Drawing.Drawing2D.PathGradientBrush(new Point[]
+                        {
+                            new Point(parentRect.X + parentRect.Width / 2, parentRect.Y + parentRect.Height),
+                            new Point(parentRect.X,                        parentRect.Y + parentRect.Height + parentRect.Height / 2),
+                            new Point(parentRect.X + parentRect.Width / 2, parentRect.Y + parentRect.Height + parentRect.Height),
+                            new Point(parentRect.X + parentRect.Width,     parentRect.Y + parentRect.Height + parentRect.Height / 2),
+                        })
+                        {
+                            WrapMode = System.Drawing.Drawing2D.WrapMode.Tile,
+                            CenterPoint = new Point(parentRect.X, parentRect.Y + parentRect.Height + parentRect.Height / 2),
+                        };
+
+                        // 
+                    }
                     break;
                 default:
                     this.DialogResult = DialogResult.Cancel;
@@ -294,6 +383,8 @@ namespace DrawingProject_Dll
                                     this.DialogResult = DialogResult.OK;
                                     break;
                                 case BasicDrawingForm.BoolListRectangle.PopupFlags.PathGradientBrush:
+                                    Selected(this, new BrushEventArgs(new BrushInfo() { brush = mPathGradientBrushRectangles[r] }));
+                                    this.DialogResult = DialogResult.OK;
                                     break;
                                 default:
                                     this.DialogResult = DialogResult.Cancel;

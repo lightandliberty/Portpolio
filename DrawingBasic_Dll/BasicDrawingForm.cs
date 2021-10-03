@@ -173,10 +173,8 @@ namespace DrawingProject_Dll
             public System.Drawing.Drawing2D.LinearGradientBrush PLinearGradientBrush { get { return mLinearGradientBrush; } set { mLinearGradientBrush = value; } }
             public System.Drawing.Drawing2D.PathGradientBrush PPathGradientBrush { get { return mPathGradientBrush; } set { mPathGradientBrush = value; } }
 
-            public int mLinearGradientBrushX;
-            public int mLinearGradientBrushY;
-            public int mLinearGradientBrushWidth;
-            public int mLinearGradientBrushHeight;
+            public Rectangle mLinearGradientBrushRect;
+            public Rectangle mPathLinearGradientBrushRect;
 
             public BoolListRectangle()
             {
@@ -308,49 +306,55 @@ namespace DrawingProject_Dll
                 //using (Brush brush = new SolidBrush(Color.DarkBlue))
                 if (boolListRectangle.PSolidBrush == null)
                     boolListRectangle.PSolidBrush = new SolidBrush(Color.DarkBlue);
+
+                // 브러쉬, x, y, 너비, 높이
+                g.FillRectangle(boolListRectangle.PSolidBrush, x, y, width, height);
+                // 문자열, 폰트, 브러쉬, 시작위치x, 시작위치y
+                g.DrawString(boolListRectangle.PSolidBrush.ToString(), this.Font, whiteBrush, x, y + 3);  // 위에서 3만큼 띄움. y값에 저장 안 함.
+                // SolidBrush 클릭 영역을 저장
+                if (boolListRectangle.isWrite)
                 {
-                    // 브러쉬, x, y, 너비, 높이
-                    g.FillRectangle(boolListRectangle.PSolidBrush, x, y, width, height);
-                    // SolidBrush 클릭 영역을 저장
-                    if (boolListRectangle.isWrite)
-                        boolListRectangle.Add(new Rectangle(x, y, width, height));
+                    boolListRectangle.Add(new Rectangle(x, y, width, height));
                     // 영역에 맞는 PopupFlags를 저장. (마지막에 추가되었으므로, 그에 맞게 브러쉬 스타일을 저장)
                     boolListRectangle.mPopupFlagsInDic[boolListRectangle.mDrawBrushesRectangles.Last()] = BoolListRectangle.PopupFlags.SolidBrush;
-                    // 문자열, 폰트, 브러쉬, 시작위치x, 시작위치y
-                    g.DrawString(boolListRectangle.PSolidBrush.ToString(), this.Font, whiteBrush, x, y + 3);  // 위에서 3만큼 띄움. y값에 저장 안 함.
-                    y += height;
                 }
+                y += height;
+
 
                 // TextureBrush
                 //using (Brush brush = new TextureBrush(Resource1.flipTest))
                 if (boolListRectangle.PTextureBrush == null)
                     boolListRectangle.PTextureBrush = new TextureBrush(Resource1.flipTest);
+
+                g.FillRectangle(boolListRectangle.PTextureBrush, x, y, width, height);
+                g.DrawString(boolListRectangle.PTextureBrush.ToString(), this.Font, blackBrush, x, y + 3);  // 위에서 3만큼 띄움. y값에 저장 안 함.
+                // TextureBrush 클릭 영역을 저장
+                if (boolListRectangle.isWrite)
                 {
-                    g.FillRectangle(boolListRectangle.PTextureBrush, x, y, width, height);
-                    // TextureBrush 클릭 영역을 저장
-                    if (boolListRectangle.isWrite)
-                        boolListRectangle.Add(new Rectangle(x, y, width, height));
+                    boolListRectangle.Add(new Rectangle(x, y, width, height));
                     // 영역에 맞는 PopupFlags를 저장. (마지막에 추가되었으므로, 그에 맞게 브러쉬 스타일을 저장)
                     boolListRectangle.mPopupFlagsInDic[boolListRectangle.mDrawBrushesRectangles.Last()] = BoolListRectangle.PopupFlags.TextureBrush;
-
-                    g.DrawString(boolListRectangle.PTextureBrush.ToString(), this.Font, blackBrush, x, y + 3);  // 위에서 3만큼 띄움. y값에 저장 안 함.
-                    y += height;
                 }
+
+                y += height;
+
 
                 // HatchBrush
                 if (boolListRectangle.PHatchBrush == null)
                     boolListRectangle.PHatchBrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Divot, Color.DarkBlue, Color.White);
+
+                g.FillRectangle(boolListRectangle.PHatchBrush, x, y, width, height);
+                g.DrawString(boolListRectangle.PHatchBrush.ToString(), this.Font, blackBrush, x, y + 3);
+                // HatchBrush 클릭 영역을 저장
+                if (boolListRectangle.isWrite)
                 {
-                    g.FillRectangle(boolListRectangle.PHatchBrush, x, y, width, height);
-                    // HatchBrush 클릭 영역을 저장
-                    if (boolListRectangle.isWrite)
-                        boolListRectangle.Add(new Rectangle(x, y, width, height));
+                    boolListRectangle.Add(new Rectangle(x, y, width, height));
                     // 영역에 맞는 PopupFlags를 저장. (마지막에 추가되었으므로, 그에 맞게 브러쉬 스타일을 저장)
                     boolListRectangle.mPopupFlagsInDic[boolListRectangle.mDrawBrushesRectangles.Last()] = BoolListRectangle.PopupFlags.HatchBrush;
-
-                    g.DrawString(boolListRectangle.PHatchBrush.ToString(), this.Font, blackBrush, x, y + 3);
-                    y += height;
                 }
+
+                y += height;
+
 
                 //// HatchBrush
                 //using (Brush brush = new System.Drawing.Drawing2D.HatchBrush
@@ -368,51 +372,65 @@ namespace DrawingProject_Dll
                 //    Color.White,
                 //    45.0f
                 //    ))
-                if(boolListRectangle.PLinearGradientBrush == null)
+
+
+                // 팝업 창에서의 x좌표와 width가 일치하지 않으므로, 인수로 넘겨줄 값을 저장한다.
+
+                if (boolListRectangle.PLinearGradientBrush == null)
+                {
                     boolListRectangle.PLinearGradientBrush = new System.Drawing.Drawing2D.LinearGradientBrush(
                     new Rectangle(x, y, width, height),
                     Color.DarkBlue,
                     Color.White,
                     45.0f
                     );
+                }
+                if (boolListRectangle.mLinearGradientBrushRect.IsEmpty)
                 {
-                    // 팝업 창에서의 x좌표와 width가 일치하지 않으므로, 인수로 넘겨줄 값을 저장한다.
-                    boolListRectangle.mLinearGradientBrushX = x;
-                    boolListRectangle.mLinearGradientBrushWidth = width;
-                    g.FillRectangle(boolListRectangle.PLinearGradientBrush, x, y, width, height);
-                    // LinearGradientBrush 클릭 영역을 저장
-                    if (boolListRectangle.isWrite)
-                        boolListRectangle.Add(new Rectangle(x, y, width, height));
+                    boolListRectangle.mLinearGradientBrushRect = new Rectangle(x, y, width, height);
+                }
+                g.FillRectangle(boolListRectangle.PLinearGradientBrush, x, y, width, height);
+                g.DrawString(boolListRectangle.PLinearGradientBrush.ToString(), this.Font, blackBrush, x, y + 3);
+                // LinearGradientBrush 클릭 영역을 저장
+                if (boolListRectangle.isWrite)
+                {
+                    boolListRectangle.Add(new Rectangle(x, y, width, height));
                     // 영역에 맞는 PopupFlags를 저장. (마지막에 추가되었으므로, 그에 맞게 브러쉬 스타일을 저장)
                     boolListRectangle.mPopupFlagsInDic[boolListRectangle.mDrawBrushesRectangles.Last()] = BoolListRectangle.PopupFlags.LinearGradientBrush;
-
-                    g.DrawString(boolListRectangle.PLinearGradientBrush.ToString(), this.Font, blackBrush, x, y + 3);
-                    y += height;
                 }
+                y += height;
 
-                // PathGradientBrush
-                Point[] points = new Point[]
-                {
-                    new Point(x,y),                       // 왼쪽 위
-                    new Point(x + width, y),              // 오른쪽 위
-                    new Point(x + width, y + height),     // 오른쪽 아래
-                    new Point(x, y + height)              // 왼쪽 아래
-                };
 
                 //using (Brush brush = new System.Drawing.Drawing2D.PathGradientBrush(points))
+
                 if (boolListRectangle.PPathGradientBrush == null)
-                    boolListRectangle.PPathGradientBrush = new System.Drawing.Drawing2D.PathGradientBrush(points);
                 {
-                    g.FillRectangle(boolListRectangle.PPathGradientBrush, x, y, width, height);
-                    // PathGradientBrush 클릭 영역을 저장
-                    if (boolListRectangle.isWrite)
-                        boolListRectangle.Add(new Rectangle(x, y, width, height));
+                    // PathGradientBrush
+                    Point[] points = new Point[]
+                    {
+                        new Point(x,y),                       // 왼쪽 위
+                        new Point(x + width, y),              // 오른쪽 위
+                        new Point(x + width, y + height),     // 오른쪽 아래
+                        new Point(x, y + height)              // 왼쪽 아래
+                    };
+                    boolListRectangle.PPathGradientBrush = new System.Drawing.Drawing2D.PathGradientBrush(points);
+                }
+                g.FillRectangle(boolListRectangle.PPathGradientBrush, x, y, width, height);
+                g.DrawString(boolListRectangle.PPathGradientBrush.ToString(), this.Font, blackBrush, x, y);
+                if (boolListRectangle.mPathLinearGradientBrushRect == Rectangle.Empty)
+                {
+                    boolListRectangle.mPathLinearGradientBrushRect = new Rectangle(x, y, width, height);
+                }
+                // PathGradientBrush 클릭 영역을 저장
+                if (boolListRectangle.isWrite)
+                {
+                    boolListRectangle.Add(new Rectangle(x, y, width, height));
                     // 영역에 맞는 PopupFlags를 저장. (마지막에 추가되었으므로, 그에 맞게 브러쉬 스타일을 저장)
                     boolListRectangle.mPopupFlagsInDic[boolListRectangle.mDrawBrushesRectangles.Last()] = BoolListRectangle.PopupFlags.PathGradientBrush;
-
-                    g.DrawString(boolListRectangle.PPathGradientBrush.ToString(), this.Font, blackBrush, x, y);
-                    //y += height;
                 }
+                //y += height;
+
+            
                 boolListRectangle.isWrite = false;
             }
         }
@@ -447,6 +465,7 @@ namespace DrawingProject_Dll
             instructionTextBox.Text = "그림을 선택하면 브러시를 바꿀 수 있습니다.";
         }
 
+        // Paint에서 설정된 mPopupFlag에 따라, 이벤트 객체에서 Brush를 캐스트해서 얻어 옴.
         private void Selected(object sender, BrushEventArgs e)
         {
             switch (boolListRectangle.mPopupFlag)
@@ -526,7 +545,7 @@ namespace DrawingProject_Dll
                     case BoolListRectangle.PopupFlags.HatchBrush:
                         drawHatBrushes = new DrawBrushes(BasicDrawingForm.BoolListRectangle.PopupFlags.HatchBrush);
                         drawHatBrushes.Selected += Selected;
-                        if (drawHatBrushes.ShowDialog() == DialogResult.OK)
+                        if (DialogResult.OK == drawHatBrushes.ShowDialog())
                         {
                             this.Refresh();
                         }
@@ -534,14 +553,20 @@ namespace DrawingProject_Dll
 
                     case BoolListRectangle.PopupFlags.LinearGradientBrush:
                         // -1안 하면 왼쪽에 검정색 선 생김.
-                        drawHatBrushes = new DrawBrushes(BasicDrawingForm.BoolListRectangle.PopupFlags.LinearGradientBrush, boolListRectangle.mLinearGradientBrushX-1, boolListRectangle.mLinearGradientBrushWidth);
+                        drawHatBrushes = new DrawBrushes(BasicDrawingForm.BoolListRectangle.PopupFlags.LinearGradientBrush, boolListRectangle.mLinearGradientBrushRect);
                         drawHatBrushes.Selected += Selected;
-                        if(drawHatBrushes.ShowDialog() == DialogResult.OK)
+                        if(DialogResult.OK == drawHatBrushes.ShowDialog())
                         {
                             this.Refresh();
                         }
                         break;
                     case BoolListRectangle.PopupFlags.PathGradientBrush:
+                        drawHatBrushes = new DrawBrushes(BasicDrawingForm.BoolListRectangle.PopupFlags.PathGradientBrush, boolListRectangle.mPathLinearGradientBrushRect);
+                        drawHatBrushes.Selected += Selected;
+                        if(DialogResult.OK == drawHatBrushes.ShowDialog())
+                        {
+                            this.Refresh();
+                        }
                         break;
 
                     // PopupFlag.None이어도 그냥 HatchBrush를 연다.
