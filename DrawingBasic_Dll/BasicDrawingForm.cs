@@ -444,9 +444,7 @@ namespace DrawingProject_Dll
 
         private void DrawBrushesBtn_MouseMove(object sender, MouseEventArgs e)
         {
-            instructionTextBox.Text = "5가지 브러쉬로 각각 사각형을 그린다." +
-                "\r\n새 창을 띄워 HatchBrushes 스타일을 보여 준다." +
-                "\r\nHatchBrush를 클릭해서 선택하면, 그 브러쉬로 바꿔서 그린다.";
+            instructionTextBox.Text = "그림을 선택하면 브러시를 바꿀 수 있습니다.";
         }
 
         private void Selected(object sender, BrushEventArgs e)
@@ -494,9 +492,35 @@ namespace DrawingProject_Dll
                 switch (boolListRectangle.PopupFlag)
                 {
                     case BoolListRectangle.PopupFlags.SolidBrush:
+                        ColorDialog colorDialog = new ColorDialog()
+                        {
+                            FullOpen = true,
+                        };
+                        if (DialogResult.OK == colorDialog.ShowDialog())
+                        {
+                            boolListRectangle.mSolidBrush = new SolidBrush(colorDialog.Color);
+                            this.Refresh();
+                        }
                         break;
 
                     case BoolListRectangle.PopupFlags.TextureBrush:
+                        OpenFileDialog openFileDialog = new OpenFileDialog()
+                        {
+//                            InitialDirectory = "c:\\",
+                            //Filter = "PicFile (*.bmp)|(*.png)|(*.jpg)",
+                        };
+                        if(DialogResult.OK == openFileDialog.ShowDialog())
+                        {
+                            string ext = openFileDialog.FileName.Substring(openFileDialog.FileName.Length - 3, 3);
+                            if (ext.Equals("png") || ext.Equals("jpg") || ext.Equals("bmp"))
+                            {
+                                boolListRectangle.PTextureBrush = new TextureBrush(new Bitmap(openFileDialog.FileName.ToString()));
+                                this.Refresh();
+                            }
+                            else
+                                MessageBox.Show("그림 파일이 아닙니다." + openFileDialog.FileName.ToString());
+                        }
+
                         break;
 
                     case BoolListRectangle.PopupFlags.HatchBrush:

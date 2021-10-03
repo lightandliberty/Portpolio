@@ -141,15 +141,53 @@ namespace DrawingProject_Dll
                     
                     rect = new Rectangle(x, y, width, height);
                     parentRect = new Rectangle(mParentX, y, mParentWidth, height);
-
                     // LinearGradientBrush용 Paint
                     using (System.Drawing.Drawing2D.LinearGradientBrush brush = new System.Drawing.Drawing2D.LinearGradientBrush(rect, Color.White, Color.Black, System.Drawing.Drawing2D.LinearGradientMode.Horizontal))
                     {
                         g.FillRectangle(brush, rect);
                         g.DrawString("Normal", font, System.Drawing.Brushes.Black, rect.X, rect.Y);
+
+                        // Factor혼합 비율과 Positions혼합 위치를 지정하는 Blend객체를 이용한 브러시
+                        System.Drawing.Drawing2D.LinearGradientBrush myBrush = new System.Drawing.Drawing2D.LinearGradientBrush(
+                            rect,
+                            Color.Blue,
+                            Color.Red,
+                            0.1f
+                            )
+                        {
+                            Blend = new System.Drawing.Drawing2D.Blend()
+                            {
+                                Factors = new float[] { 0.4f }, // Factors 원소 여러개면 에러 남.
+                                Positions = new float[] { 0.2f, 0.5f, 0.8f },
+                            }
+                        };
+
+                        // myFactors가 여러개면 에러 남.
+                        g.FillRectangle(myBrush, rect);
+                        g.DrawString("Blend test", font, System.Drawing.Brushes.Black, rect.X, rect.Y);
                         // 사각형과 그에 해당하는 브러쉬를 저장한다.
                         rects.Add(rect);
-                        mLinearGradientBrushRectangles[rect] = new System.Drawing.Drawing2D.LinearGradientBrush(parentRect, Color.White, Color.Black, System.Drawing.Drawing2D.LinearGradientMode.Horizontal) { };
+                        // Factor혼합 비율과 Positions혼합 위치를 지정하는 Blend객체를 이용한 브러시
+
+
+                        // ParentRectX와 Width를 적용하기 위해 새로 브러시를 생성
+                        System.Drawing.Drawing2D.LinearGradientBrush myParentBrush = new System.Drawing.Drawing2D.LinearGradientBrush(
+                            new Rectangle(parentRect.X+1, parentRect.Y, parentRect.Width, parentRect.Height) ,
+                            Color.Blue,
+                            Color.Red,
+                            0.1f
+                            )
+                        {
+                            Blend = new System.Drawing.Drawing2D.Blend()
+                            {
+                                Factors = new float[] { 0.4f }, // Factors 원소 여러개면 에러 남.
+                                Positions = new float[] { 0.2f, 0.5f, 0.8f },
+                            }
+                        };
+                        mLinearGradientBrushRectangles[rect] = myParentBrush;
+                        // using에서 사용한 브러시를 저장하고 싶으면 아래 주석을 해제하고 윗 줄을 주석처리하면 됨.
+                        //mLinearGradientBrushRectangles[rect] = new System.Drawing.Drawing2D.LinearGradientBrush(parentRect, Color.White, Color.Black, System.Drawing.Drawing2D.LinearGradientMode.Horizontal) { };
+
 
                         // Triangle GradientBrush로 그리기
                         rect.Y += height;
