@@ -270,18 +270,26 @@ namespace DrawingProject_Dll
                     };
 
                     // 삼각형 모양
-                    using (System.Drawing.Drawing2D.PathGradientBrush pathGBrush = new System.Drawing.Drawing2D.PathGradientBrush(triPoints))
+                    using (System.Drawing.Drawing2D.PathGradientBrush pathGBrush = new System.Drawing.Drawing2D.PathGradientBrush(triPoints)
+                    { 
+                        // PathGradientBrush 브러시 속성 지정.
+                        SurroundColors = new Color[] { Color.Red, Color.Blue }, // 색의 수가 점의 수보다 더 적을 경우, 마지막 색이 계속 사용됨.
+                    })
                     {
                         g.FillRectangle(pathGBrush, rect);
                         // 영역 저장
                         rects.Add(rect);
                         // 부모 폼의 사각 영역에 맞는 크기의 PathGradient브러시를 저장
                         mPathGradientBrushRectangles[rect] = new System.Drawing.Drawing2D.PathGradientBrush(new Point[]
-                        {
+                        {   // PathGradientBrush의 매개변수 지정
                             new Point(parentRect.X + parentRect.Width / 2, parentRect.Y),
                             new Point(parentRect.X, parentRect.Height + parentRect.Y),
                             new Point(parentRect.X + parentRect.Width, parentRect.Height + parentRect.Y),
-                        });
+                        }) 
+                        {
+                            // PathGradientBrush 브러시 속성 지정.
+                            SurroundColors = new Color[] { Color.Red, Color.Blue }, // 색의 수가 점의 수보다 더 적을 경우, 마지막 색이 계속 사용됨.
+                        };
                     }
 
                     // 사각형 모양
@@ -339,8 +347,37 @@ namespace DrawingProject_Dll
                             WrapMode = System.Drawing.Drawing2D.WrapMode.Tile,
                             CenterPoint = new Point(parentRect.X, parentRect.Y + parentRect.Height + parentRect.Height / 2),
                         };
+                    }
 
-                        // 
+                    // Point대신 GraphicPath를 이용한, 원 모양의 패스 그레디언트 브러시
+                    using (System.Drawing.Drawing2D.GraphicsPath circleGPath = new System.Drawing.Drawing2D.GraphicsPath())
+                    {
+                        // Point대신 GraphicsPath사용.(내부는 똑같을 듯)
+                        circleGPath.AddEllipse(width, height, width, height);
+                        // 브러시 생성
+                        using (System.Drawing.Drawing2D.PathGradientBrush pgBrush = new System.Drawing.Drawing2D.PathGradientBrush(circleGPath)
+                        {
+                            WrapMode = System.Drawing.Drawing2D.WrapMode.Tile,
+                            SurroundColors = new Color[] { Color.White },
+                            CenterColor = Color.Black,
+                        })
+                        // 생성한 브러시로 처리
+                        {
+                            // 원을 그림.
+                            rect.X += width;
+                            g.FillRectangle(pgBrush, rect);
+                            // 원의 사각 영역 저장
+                            rects.Add(rect);
+                            // 부모 폼의 사각 영역에 맞는 크기의 PathGradient브러시를 저장
+                            System.Drawing.Drawing2D.GraphicsPath circleInParent = new System.Drawing.Drawing2D.GraphicsPath();
+                            circleInParent.AddEllipse(parentRect.X, parentRect.Y, parentRect.Width, parentRect.Height);
+                            mPathGradientBrushRectangles[rect] = new System.Drawing.Drawing2D.PathGradientBrush(circleInParent)
+                            {
+                                WrapMode = System.Drawing.Drawing2D.WrapMode.Tile,
+                                SurroundColors = new Color[] { Color.White },
+                                CenterColor = Color.Black,
+                            };
+                        }
                     }
                     break;
                 default:
