@@ -290,6 +290,15 @@ namespace DrawingProject_Dll
                             // PathGradientBrush 브러시 속성 지정.
                             SurroundColors = new Color[] { Color.Red, Color.Blue }, // 색의 수가 점의 수보다 더 적을 경우, 마지막 색이 계속 사용됨.
                         };
+                        using (System.Drawing.Pen pen = new Pen(Color.Red))
+                        {
+                            g.DrawLines(pen, new Point[]
+                            {
+                                new Point(width/2, 0),  // 절반의 절반
+                                new Point(0, height),
+                                new Point(width, height),
+                            });
+                        }
                     }
 
                     // 사각형 모양
@@ -314,6 +323,10 @@ namespace DrawingProject_Dll
                             new Point(parentRect.X + parentRect.Width, parentRect.Y + parentRect.Height),
                             new Point(parentRect.X + parentRect.Width, parentRect.Y),
                         });
+                        using (System.Drawing.Pen pen = new Pen(Color.Red))
+                        {
+                            g.DrawRectangle(pen, new Rectangle(rect.X, rect.Y, rect.Width - 1, rect.Height)); // width로 하면 크기를 벗어나므로
+                        }
                     }
 
                     // 다이아몬드 모양의 패스 그레디언트 브러시
@@ -323,12 +336,12 @@ namespace DrawingProject_Dll
                             new Point(0, height + height / 2),
                             new Point(width / 2, height + height),
                             new Point(width, height + height / 2),
-                        })
+                        }) // PathGradientBrush 기초 초기자 리스트
                     {
                         // PathGradientBrush 속성까지 설정해서 생성하는 생성자
                         WrapMode = System.Drawing.Drawing2D.WrapMode.Tile,
                         CenterPoint = new Point(0, height + height / 2),
-                    })
+                    }) // using pathGBrush생성
                     {
                         rect.X -= width;
                         rect.Y += height;
@@ -347,7 +360,19 @@ namespace DrawingProject_Dll
                             WrapMode = System.Drawing.Drawing2D.WrapMode.Tile,
                             CenterPoint = new Point(parentRect.X, parentRect.Y + parentRect.Height + parentRect.Height / 2),
                         };
-                    }
+
+                        using (System.Drawing.Pen pen = new Pen(Color.Red))
+                        {
+                            g.DrawLines(pen, new Point[] {
+                                new Point(width / 2, height),
+                                new Point(0, height + height / 2),
+                                new Point(width / 2, height + height),
+                                new Point(width, height + height / 2),
+                                new Point(width / 2, height),
+                            });
+                        }
+
+                    } // using pathGBrush를 사용해 작업
 
                     // Point대신 GraphicPath를 이용한, 원 모양의 패스 그레디언트 브러시
                     using (System.Drawing.Drawing2D.GraphicsPath circleGPath = new System.Drawing.Drawing2D.GraphicsPath())
@@ -377,6 +402,10 @@ namespace DrawingProject_Dll
                                 SurroundColors = new Color[] { Color.White },
                                 CenterColor = Color.Black,
                             };
+                        }
+                        using(System.Drawing.Pen pen = new Pen(Color.Red))
+                        {
+                            g.DrawPath(pen, circleGPath);
                         }
                     }
                     break;
