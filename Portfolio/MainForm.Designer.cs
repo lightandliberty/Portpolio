@@ -100,7 +100,7 @@
             // 
             // BasicPropertiesBtn
             // 
-            this.BasicPropertiesBtn.Location = new System.Drawing.Point(12, 39);
+            this.BasicPropertiesBtn.Location = new System.Drawing.Point(24, 39);
             this.BasicPropertiesBtn.Name = "BasicPropertiesBtn";
             this.BasicPropertiesBtn.Size = new System.Drawing.Size(112, 36);
             this.BasicPropertiesBtn.TabIndex = 5;
@@ -110,7 +110,7 @@
             // 
             // neonButtonProjectBtn
             // 
-            this.neonButtonProjectBtn.Location = new System.Drawing.Point(12, 90);
+            this.neonButtonProjectBtn.Location = new System.Drawing.Point(24, 90);
             this.neonButtonProjectBtn.Name = "neonButtonProjectBtn";
             this.neonButtonProjectBtn.Size = new System.Drawing.Size(112, 36);
             this.neonButtonProjectBtn.TabIndex = 8;
@@ -120,7 +120,7 @@
             // 
             // DrawingMetalBtn
             // 
-            this.DrawingMetalBtn.Location = new System.Drawing.Point(12, 217);
+            this.DrawingMetalBtn.Location = new System.Drawing.Point(24, 208);
             this.DrawingMetalBtn.Name = "DrawingMetalBtn";
             this.DrawingMetalBtn.Size = new System.Drawing.Size(112, 36);
             this.DrawingMetalBtn.TabIndex = 9;

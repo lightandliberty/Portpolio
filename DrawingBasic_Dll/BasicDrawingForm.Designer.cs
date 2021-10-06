@@ -40,6 +40,7 @@
             this.instructionTextBox = new System.Windows.Forms.TextBox();
             this.drawBrushesBtn = new CustomControls_dll.MetalButton();
             this.titleLabel = new System.Windows.Forms.Label();
+            this.drawPensBtn = new CustomControls_dll.MetalButton();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -148,6 +149,17 @@
             this.titleLabel.Text = "Basic Drawing";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // drawPensBtn
+            // 
+            this.drawPensBtn.Location = new System.Drawing.Point(24, 258);
+            this.drawPensBtn.Name = "drawPensBtn";
+            this.drawPensBtn.Size = new System.Drawing.Size(112, 36);
+            this.drawPensBtn.TabIndex = 17;
+            this.drawPensBtn.Text = "DrawPens";
+            this.drawPensBtn.UseVisualStyleBackColor = true;
+            this.drawPensBtn.Click += new System.EventHandler(this.DrawPensBtn_Click);
+            this.drawPensBtn.MouseEnter += new System.EventHandler(this.DrawPensBtn_MouseEnter);
+            // 
             // BasicDrawingForm
             // 
             this.AcceptButton = this.okMetalBtn;
@@ -155,6 +167,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelMetalBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.drawPensBtn);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.drawBrushesBtn);
             this.Controls.Add(this.instructionTextBox);
@@ -191,5 +204,6 @@
         private System.Windows.Forms.TextBox instructionTextBox;
         private CustomControls_dll.MetalButton drawBrushesBtn;
         private System.Windows.Forms.Label titleLabel;
+        private CustomControls_dll.MetalButton drawPensBtn;
     }
 }

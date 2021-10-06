@@ -583,7 +583,16 @@ namespace DrawingProject_Dll
 
         }
 
+        private void DrawPensBtn_Click(object sender, EventArgs e)
+        {
+            DrawingPensForm drawingPensForm = new DrawingPensForm();
+            drawingPensForm.ShowDialog();
 
+        }
 
+        private void DrawPensBtn_MouseEnter(object sender, EventArgs e)
+        {
+            instructionTextBox.Text = "펜을 이용해 그리는 걸 시험합니다";
+        }
     }
 }
