@@ -226,6 +226,12 @@ namespace Portfolio
             EnterNeonModeBtn_MouseDown(this.enterNeonModeBtn, new MouseEventArgs(MouseButtons.Left,1,0,0,0) );
             EnterNeonModeBtn_Click(this.enterNeonModeBtn, e);
         }
+
+        private void MultiThreadBtn_Click(object sender, EventArgs e)
+        {
+            MultiThread_dll.MultiThreadForm multiThreadForm = new MultiThread_dll.MultiThreadForm();
+            multiThreadForm.ShowDialog();
+        }
     }
 
 

@@ -166,6 +166,10 @@
       <Project>{f0de3afc-5405-4a39-977a-c91654993dba}</Project>
       <Name>DrawingProject_Dll</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MultiThread_dll\MultiThread_dll.csproj">
+      <Project>{354f02d6-7560-4499-868a-91a147bb63e3}</Project>
+      <Name>MultiThread_dll</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NeonButtonProject\NeonButtonProject_Dll.csproj">
       <Project>{ced45074-4339-4bf3-b509-0039d27efa64}</Project>
       <Name>NeonButtonProject_Dll</Name>

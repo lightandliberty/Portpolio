@@ -41,6 +41,7 @@
             this.enterNeonModeBtn = new CustomControls_dll.NeonButton();
             this.neonCloseBtn = new CustomControls_dll.NeonButton();
             this.neonChangeIntervalTimer = new System.Windows.Forms.Timer(this.components);
+            this.MultiThreadBtn = new CustomControls_dll.MetalButton();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -157,12 +158,23 @@
             this.neonChangeIntervalTimer.Interval = 500;
             this.neonChangeIntervalTimer.Tick += new System.EventHandler(this.NeonChangeIntervalTimer_Tick);
             // 
+            // MultiThreadBtn
+            // 
+            this.MultiThreadBtn.Location = new System.Drawing.Point(24, 265);
+            this.MultiThreadBtn.Name = "MultiThreadBtn";
+            this.MultiThreadBtn.Size = new System.Drawing.Size(112, 36);
+            this.MultiThreadBtn.TabIndex = 12;
+            this.MultiThreadBtn.Text = "Multi Thread";
+            this.MultiThreadBtn.UseVisualStyleBackColor = true;
+            this.MultiThreadBtn.Click += new System.EventHandler(this.MultiThreadBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CloseFormBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.MultiThreadBtn);
             this.Controls.Add(this.neonCloseBtn);
             this.Controls.Add(this.enterNeonModeBtn);
             this.Controls.Add(this.DrawingMetalBtn);
@@ -195,5 +207,6 @@
         private CustomControls_dll.NeonButton enterNeonModeBtn;
         private CustomControls_dll.NeonButton neonCloseBtn;
         private System.Windows.Forms.Timer neonChangeIntervalTimer;
+        private CustomControls_dll.MetalButton MultiThreadBtn;
     }
 }
