@@ -119,7 +119,8 @@ namespace Portfolio
                 this.RawInputBtn.Visible = !mNeonMode;
                 this.DrawingMetalBtn.Visible = !mNeonMode;
                 this.neonButtonProjectBtn.Visible = !mNeonMode;
-                
+                this.MultiThreadBtn.Visible = !mNeonMode;
+
                 this.CloseFormBtn.Size = mNeonMode ? new Size(0,0) : neonCloseBtn.Size; // Visible을 false로 하면 ESC가 작동 안하므로, 크기를 줄임.
                 this.neonCloseBtn.Visible = mNeonMode;
             }
