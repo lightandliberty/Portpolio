@@ -127,13 +127,13 @@ namespace DrawingProject_Dll
 
         private void TestMBtn_Click(object sender, EventArgs e)
         {
-            int i = 0;
-            while(i < mLineCapsList_RectDic.Count)
-            {
-                System.Diagnostics.Debug.WriteLine(i.ToString() + " ");
-                System.Diagnostics.Debug.WriteLine(mLineCapsList_RectDic[i].ToString()); // Rect의 ToString()
-                i++;
-            }
+            //int i = 0;
+            //while(i < mLineCapsList_RectDic.Count)
+            //{
+            //    System.Diagnostics.Debug.WriteLine(i.ToString() + " ");
+            //    System.Diagnostics.Debug.WriteLine(mLineCapsList_RectDic[i].ToString()); // Rect의 ToString()
+            //    i++;
+            //}
         }
     }
 }
