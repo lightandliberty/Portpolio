@@ -19,14 +19,8 @@ namespace DrawingProject_Dll
 
         private void DrawingPensForm_Load(object sender, EventArgs e)
         {
-            LineCapsForm lineCapsForm = new LineCapsForm();
-            lineCapsForm.ShowDialog();
         }
 
-        private void DrawLineCapsBtn_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void CancelMetalBtn_Click(object sender, EventArgs e)
         {
@@ -37,5 +31,12 @@ namespace DrawingProject_Dll
         {
             this.DialogResult = DialogResult.OK;
         }
+
+        private void DrawLineCapsBtn_Click(object sender, EventArgs e)
+        {
+            LineCapsForm lineCapsForm = new LineCapsForm();
+            lineCapsForm.ShowDialog();
+        }
+
     }
 }

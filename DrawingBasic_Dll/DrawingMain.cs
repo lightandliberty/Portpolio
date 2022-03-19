@@ -49,5 +49,6 @@ namespace DrawingProject_Dll
         {
             this.DialogResult = DialogResult.OK;
         }
+
     }
 }

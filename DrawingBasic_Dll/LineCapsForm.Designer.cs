@@ -30,6 +30,7 @@
         {
             this.cancelMetalBtn = new CustomControls_dll.MetalButton();
             this.okMetalBtn = new CustomControls_dll.MetalButton();
+            this.testMBtn = new CustomControls_dll.MetalButton();
             this.SuspendLayout();
             // 
             // cancelMetalBtn
@@ -56,6 +57,17 @@
             this.okMetalBtn.UseVisualStyleBackColor = true;
             this.okMetalBtn.Click += new System.EventHandler(this.okMetalBtn_Click);
             // 
+            // testMBtn
+            // 
+            this.testMBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.testMBtn.Location = new System.Drawing.Point(21, 321);
+            this.testMBtn.Name = "testMBtn";
+            this.testMBtn.Size = new System.Drawing.Size(81, 28);
+            this.testMBtn.TabIndex = 24;
+            this.testMBtn.Text = "테스트";
+            this.testMBtn.UseVisualStyleBackColor = true;
+            this.testMBtn.Click += new System.EventHandler(this.TestMBtn_Click);
+            // 
             // LineCapsForm
             // 
             this.AcceptButton = this.okMetalBtn;
@@ -63,6 +75,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelMetalBtn;
             this.ClientSize = new System.Drawing.Size(384, 361);
+            this.Controls.Add(this.testMBtn);
             this.Controls.Add(this.cancelMetalBtn);
             this.Controls.Add(this.okMetalBtn);
             this.Name = "LineCapsForm";
@@ -78,5 +91,6 @@
 
         private CustomControls_dll.MetalButton cancelMetalBtn;
         private CustomControls_dll.MetalButton okMetalBtn;
+        private CustomControls_dll.MetalButton testMBtn;
     }
 }
