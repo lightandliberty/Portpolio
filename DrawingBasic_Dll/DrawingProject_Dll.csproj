@@ -45,16 +45,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BasicDrawingForm.cs">
+    <Compile Include="BasicDrawingForms\BasicDrawingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BasicDrawingForm.Designer.cs">
+    <Compile Include="BasicDrawingForms\BasicDrawingForm.Designer.cs">
       <DependentUpon>BasicDrawingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DrawingPensForm.cs">
+    <Compile Include="BasicDrawingForms\DrawPens\CompoundArray.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DrawingPensForm.Designer.cs">
+    <Compile Include="BasicDrawingForms\DrawPens\CompoundArray.Designer.cs">
+      <DependentUpon>CompoundArray.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BasicDrawingForms\DrawPens\DrawDashesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicDrawingForms\DrawPens\DrawDashesForm.Designer.cs">
+      <DependentUpon>DrawDashesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BasicDrawingForms\DrawPens\DrawingPensForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicDrawingForms\DrawPens\DrawingPensForm.Designer.cs">
       <DependentUpon>DrawingPensForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DrawingMain.cs">
@@ -63,16 +75,16 @@
     <Compile Include="DrawingMain.Designer.cs">
       <DependentUpon>DrawingMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="DrawBrushes.cs">
+    <Compile Include="BasicDrawingForms\DrawBrushes\DrawBrushes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DrawBrushes.Designer.cs">
+    <Compile Include="BasicDrawingForms\DrawBrushes\DrawBrushes.Designer.cs">
       <DependentUpon>DrawBrushes.cs</DependentUpon>
     </Compile>
-    <Compile Include="LineCapsForm.cs">
+    <Compile Include="BasicDrawingForms\DrawPens\LineCapsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LineCapsForm.Designer.cs">
+    <Compile Include="BasicDrawingForms\DrawPens\LineCapsForm.Designer.cs">
       <DependentUpon>LineCapsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,19 +102,25 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="BasicDrawingForm.resx">
+    <EmbeddedResource Include="BasicDrawingForms\BasicDrawingForm.resx">
       <DependentUpon>BasicDrawingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DrawingPensForm.resx">
+    <EmbeddedResource Include="BasicDrawingForms\DrawPens\CompoundArray.resx">
+      <DependentUpon>CompoundArray.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicDrawingForms\DrawPens\DrawDashesForm.resx">
+      <DependentUpon>DrawDashesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicDrawingForms\DrawPens\DrawingPensForm.resx">
       <DependentUpon>DrawingPensForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DrawingMain.resx">
       <DependentUpon>DrawingMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DrawBrushes.resx">
+    <EmbeddedResource Include="BasicDrawingForms\DrawBrushes\DrawBrushes.resx">
       <DependentUpon>DrawBrushes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LineCapsForm.resx">
+    <EmbeddedResource Include="BasicDrawingForms\DrawPens\LineCapsForm.resx">
       <DependentUpon>LineCapsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resource1.resx">

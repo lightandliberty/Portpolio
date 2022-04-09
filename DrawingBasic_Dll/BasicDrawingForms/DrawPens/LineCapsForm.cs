@@ -125,15 +125,5 @@ namespace DrawingProject_Dll
         }
         #endregion  OK, Cancel 버튼 끝.
 
-        private void TestMBtn_Click(object sender, EventArgs e)
-        {
-            //int i = 0;
-            //while(i < mLineCapsList_RectDic.Count)
-            //{
-            //    System.Diagnostics.Debug.WriteLine(i.ToString() + " ");
-            //    System.Diagnostics.Debug.WriteLine(mLineCapsList_RectDic[i].ToString()); // Rect의 ToString()
-            //    i++;
-            //}
-        }
     }
 }

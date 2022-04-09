@@ -55,9 +55,9 @@
             this.Name = "DrawBrushes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HatchBrushes";
-            this.Load += new System.EventHandler(this.HatchBrushes_Load);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawHatchBrushes_Paint);
-            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DrawHatchBrushes_MouseClick);
+            this.Load += new System.EventHandler(this.DrawBrushes_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawBrushes_Paint);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DrawBrushes_MouseClick);
             this.ResumeLayout(false);
 
         }

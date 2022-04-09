@@ -38,5 +38,16 @@ namespace DrawingProject_Dll
             lineCapsForm.ShowDialog();
         }
 
+        private void DrawCompoundArrayBtn_Click(object sender, EventArgs e)
+        {
+            CompoundArray ca = new CompoundArray();
+            ca.ShowDialog();
+        }
+
+        private void drawDashesBtn_Click(object sender, EventArgs e)
+        {
+            DrawDashesForm drawDashesForm = new DrawDashesForm();
+            drawDashesForm.ShowDialog();
+        }
     }
 }

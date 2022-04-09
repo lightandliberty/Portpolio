@@ -451,9 +451,9 @@ namespace DrawingProject_Dll
             // 만약 처음에 띄우지 않으려면, 아래 부분 삭제하고, MouseUp이벤트에서만 폼 띄우면 된다.
             if (drawBrushes)
             {
-                        DrawBrushes drawHatBrushes = new DrawBrushes(BasicDrawingForm.BoolListRectangle.PopupFlags.HatchBrush);
-                        drawHatBrushes.Selected += Selected;
-                        if (drawHatBrushes.ShowDialog() == DialogResult.OK)
+                        DrawBrushes drawBrushes = new DrawBrushes(BasicDrawingForm.BoolListRectangle.PopupFlags.HatchBrush);
+                        drawBrushes.Selected += Selected;
+                        if (drawBrushes.ShowDialog() == DialogResult.OK)
                         {
                             this.Refresh();
                         }

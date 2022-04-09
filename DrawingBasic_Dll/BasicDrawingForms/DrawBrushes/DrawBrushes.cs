@@ -48,7 +48,7 @@ namespace DrawingProject_Dll
             mParentRect = parentRect;
         }
 
-        private void HatchBrushes_Load(object sender, EventArgs e)
+        private void DrawBrushes_Load(object sender, EventArgs e)
         {
             switch (selectBrushFlag)
             {
@@ -84,7 +84,7 @@ namespace DrawingProject_Dll
 
 
         public List<Rectangle> rects = new List<Rectangle>();
-        private void DrawHatchBrushes_Paint(object sender, PaintEventArgs e)
+        private void DrawBrushes_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
 
@@ -420,7 +420,7 @@ namespace DrawingProject_Dll
         }
         public BrushInfo mBrushInfo;
 
-        private void DrawHatchBrushes_MouseClick(object sender, MouseEventArgs e)
+        private void DrawBrushes_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
