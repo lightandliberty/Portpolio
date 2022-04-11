@@ -35,6 +35,7 @@
             this.titleLabel = new System.Windows.Forms.Label();
             this.drawCompoundArrayBtn = new CustomControls_dll.MetalButton();
             this.drawDashesBtn = new CustomControls_dll.MetalButton();
+            this.drawPenAlignmentFormBtn = new CustomControls_dll.MetalButton();
             this.SuspendLayout();
             // 
             // drawLineCapsBtn
@@ -92,7 +93,7 @@
             // 
             // drawCompoundArrayBtn
             // 
-            this.drawCompoundArrayBtn.Location = new System.Drawing.Point(24, 259);
+            this.drawCompoundArrayBtn.Location = new System.Drawing.Point(24, 258);
             this.drawCompoundArrayBtn.Name = "drawCompoundArrayBtn";
             this.drawCompoundArrayBtn.Size = new System.Drawing.Size(112, 36);
             this.drawCompoundArrayBtn.TabIndex = 23;
@@ -110,6 +111,16 @@
             this.drawDashesBtn.UseVisualStyleBackColor = true;
             this.drawDashesBtn.Click += new System.EventHandler(this.drawDashesBtn_Click);
             // 
+            // drawPenAlignmentFormBtn
+            // 
+            this.drawPenAlignmentFormBtn.Location = new System.Drawing.Point(24, 308);
+            this.drawPenAlignmentFormBtn.Name = "drawPenAlignmentFormBtn";
+            this.drawPenAlignmentFormBtn.Size = new System.Drawing.Size(112, 36);
+            this.drawPenAlignmentFormBtn.TabIndex = 25;
+            this.drawPenAlignmentFormBtn.Text = "Draw\r\nPenAlignment";
+            this.drawPenAlignmentFormBtn.UseVisualStyleBackColor = true;
+            this.drawPenAlignmentFormBtn.Click += new System.EventHandler(this.metalButton1_Click);
+            // 
             // DrawingPensForm
             // 
             this.AcceptButton = this.okMetalBtn;
@@ -117,6 +128,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelMetalBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.drawPenAlignmentFormBtn);
             this.Controls.Add(this.drawDashesBtn);
             this.Controls.Add(this.drawCompoundArrayBtn);
             this.Controls.Add(this.titleLabel);
@@ -142,5 +154,6 @@
         private System.Windows.Forms.Label titleLabel;
         private CustomControls_dll.MetalButton drawCompoundArrayBtn;
         private CustomControls_dll.MetalButton drawDashesBtn;
+        private CustomControls_dll.MetalButton drawPenAlignmentFormBtn;
     }
 }

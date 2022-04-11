@@ -11,6 +11,8 @@ using System.Windows.Forms;
 namespace DrawingProject_Dll
 {
     // CellPaintEvent에 연결하는 방식으로 처리
+    // Pen의 .DashStyle을 설정하고,
+    // g.DrawLine(pen, x,y,width,height)으로 그리면 된다.
     public partial class DrawDashesForm : Form
     {
         public DrawDashesForm()

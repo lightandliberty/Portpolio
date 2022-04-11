@@ -69,6 +69,12 @@
     <Compile Include="BasicDrawingForms\DrawPens\DrawingPensForm.Designer.cs">
       <DependentUpon>DrawingPensForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BasicDrawingForms\DrawPens\PenAlignmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicDrawingForms\DrawPens\PenAlignmentForm.Designer.cs">
+      <DependentUpon>PenAlignmentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DrawingMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BasicDrawingForms\DrawPens\DrawingPensForm.resx">
       <DependentUpon>DrawingPensForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicDrawingForms\DrawPens\PenAlignmentForm.resx">
+      <DependentUpon>PenAlignmentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DrawingMain.resx">
       <DependentUpon>DrawingMain.cs</DependentUpon>

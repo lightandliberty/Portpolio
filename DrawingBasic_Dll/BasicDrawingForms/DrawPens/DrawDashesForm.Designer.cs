@@ -38,13 +38,14 @@ namespace DrawingProject_Dll
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.formExplainLbl = new System.Windows.Forms.Label();
             this.tlpDashes.SuspendLayout();
             this.SuspendLayout();
             // 
             // closeBtn
             // 
             this.closeBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.closeBtn.Location = new System.Drawing.Point(12, 175);
+            this.closeBtn.Location = new System.Drawing.Point(12, 212);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Size = new System.Drawing.Size(68, 41);
             this.closeBtn.TabIndex = 25;
@@ -54,7 +55,7 @@ namespace DrawingProject_Dll
             // 
             // drawDashesBtn
             // 
-            this.drawDashesBtn.Location = new System.Drawing.Point(204, 181);
+            this.drawDashesBtn.Location = new System.Drawing.Point(351, 218);
             this.drawDashesBtn.Name = "drawDashesBtn";
             this.drawDashesBtn.Size = new System.Drawing.Size(91, 28);
             this.drawDashesBtn.TabIndex = 26;
@@ -159,12 +160,22 @@ namespace DrawingProject_Dll
             this.label6.Text = " Solid";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // formExplainLbl
+            // 
+            this.formExplainLbl.AutoSize = true;
+            this.formExplainLbl.Location = new System.Drawing.Point(12, 181);
+            this.formExplainLbl.Name = "formExplainLbl";
+            this.formExplainLbl.Size = new System.Drawing.Size(294, 24);
+            this.formExplainLbl.TabIndex = 28;
+            this.formExplainLbl.Text = "Pen의 .DashStyle을 설정하고, \r\ng.DrawLine(pen, x,y,width,height)으로 그리면 된다.";
+            // 
             // DrawDashesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.closeBtn;
-            this.ClientSize = new System.Drawing.Size(454, 215);
+            this.ClientSize = new System.Drawing.Size(454, 261);
+            this.Controls.Add(this.formExplainLbl);
             this.Controls.Add(this.tlpDashes);
             this.Controls.Add(this.drawDashesBtn);
             this.Controls.Add(this.closeBtn);
@@ -173,6 +184,7 @@ namespace DrawingProject_Dll
             this.tlpDashes.ResumeLayout(false);
             this.tlpDashes.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -187,5 +199,6 @@ namespace DrawingProject_Dll
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label formExplainLbl;
     }
 }

@@ -49,5 +49,11 @@ namespace DrawingProject_Dll
             DrawDashesForm drawDashesForm = new DrawDashesForm();
             drawDashesForm.ShowDialog();
         }
+
+        private void metalButton1_Click(object sender, EventArgs e)
+        {
+            PenAlignmentForm penAlignmentForm = new PenAlignmentForm();
+            penAlignmentForm.ShowDialog();
+        }
     }
 }
