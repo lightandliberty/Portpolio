@@ -261,7 +261,8 @@ namespace CustomControls_dll
             Gray1,
             Gray2,
             Gray3,
-            Count,
+            LightGray = 13, // MetalButton색
+            Count, // 14
         }
 
         
@@ -297,7 +298,7 @@ namespace CustomControls_dll
             neonClickedPairs = new Dictionary<KeyColor, Color>();
             neonHoverPairs = new Dictionary<KeyColor, Color>();
             neonNormalPairs = new Dictionary<KeyColor, Color>();
-            
+
             // 일단 기본 네온 컬러들을 배열에 복사. (Hover(가장 어두운 색), 기본색(중간 밝은 색), 네온 색(클릭 했을 때의 가장 밝은 색))
             List<NeonColors> colorList = new List<NeonColors>()
             {
@@ -315,6 +316,7 @@ namespace CustomControls_dll
                 new NeonColors(KeyColor.Gray1, Color.FromArgb(153, 171, 187), Color.FromArgb(079, 098, 105), Color.FromArgb(206, 230, 241)),
                 new NeonColors(KeyColor.Gray2, Color.FromArgb(169, 155, 159), Color.FromArgb(085, 073, 077), Color.FromArgb(229, 215, 220)),
                 new NeonColors(KeyColor.Gray3, Color.FromArgb(217, 210, 214), Color.FromArgb(137, 127, 123), Color.FromArgb(241, 236, 243)),
+                new NeonColors(KeyColor.LightGray, Color.LightGray, Color.LightGray, Color.White) // 메탈은 그라데이션을 White->LightGray, 클릭했을 땐 LightGray ->White로 한다.
             };
 
             // 클릭 전, 마우스 위에 있을 때, 클릭했을 때의 색을 각각 지정
@@ -326,7 +328,7 @@ namespace CustomControls_dll
             colorList.Clear();
             //MessageBox.Show(neonNormalPairs.Contains(mKeyColor).ToString());
             // KeyColor로 버튼 색을 변경.
-            ButtonColor = KeyColor.Pink;
+            ButtonColor = KeyColor.Pink; // 기본색
         }
 
         // 0 ~ 255 사이의 수 리턴
@@ -337,7 +339,7 @@ namespace CustomControls_dll
                 num;
         }
 
-        // 기본 버튼 색상으로 마우스를 위에 올릴 때의 색상 및 반짝일 때의 색상을 얻는다.
+        // 미리 만들어 둔 컬러 리스트로부터, 클릭하기 전(Normal), Hover, 클릭했을 때의 색 배열에 저장할 때 사용한다.
         public void AddHoverAndNeonColorsFrom4Color(KeyColor keyColor, Color normalColor, Color hoverColor, Color clickedColor)
         {
             neonNormalPairs[keyColor] = normalColor;            // 클릭하기 전의 색
@@ -360,7 +362,7 @@ namespace CustomControls_dll
         {
             // 전달된 버튼의 색을 변경
             Graphics g = gra;
-            g.FillRectangle(
+            g.FillRectangle(                                        //   0,0 ~ 0,버튼의 높이까지 그라데이션. 컬러는 흰색 ~ neonClickedPairs[mKeyColor]에 지정된 색까지
                 new System.Drawing.Drawing2D.LinearGradientBrush(PointF.Empty, new Point(0, (sender as NeonButton).Height), Color.White, this.neonNormalPairs[mKeyColor]),
                 new RectangleF(new Point(0, 0), new Size((sender as NeonButton).Size.Width, (sender as NeonButton).Size.Height)));
             // 버튼에 표시할 Text 중앙 정렬
@@ -381,7 +383,7 @@ namespace CustomControls_dll
         {
             // 전달된 버튼의 색을 변경
             Graphics g = gra;
-            g.FillRectangle(
+            g.FillRectangle(                                         //   0,0 ~ 0,버튼의 높이까지 그라데이션. 컬러는 흰색 ~ neonClickedPairs[mKeyColor]에 지정된 색까지
                 new System.Drawing.Drawing2D.LinearGradientBrush(PointF.Empty, new Point(0, (sender as NeonButton).Height), Color.White, this.neonHoverPairs[mKeyColor]),
                 new RectangleF(new Point(0, 0), new Size((sender as NeonButton).Size.Width, (sender as NeonButton).Size.Height)));
             // 버튼에 표시할 Text 중앙 정렬
@@ -397,12 +399,13 @@ namespace CustomControls_dll
         }
 
         // 클릭할 때의 배경 색을 그라데이션으로 그리고, 글씨를 가운데로 정렬해서 밝기에 맞게 그림.
+        // 메탈일 경우, LightGray -> White로
         public void DrawThisButtonColorToClickedNeon(object sender, Graphics gra)
         {
             // 전달된 버튼의 색을 변경
             Graphics g = gra;
-            g.FillRectangle(
-                new System.Drawing.Drawing2D.LinearGradientBrush(PointF.Empty, new Point(0, (sender as NeonButton).Height), Color.White, this.neonClickedPairs[mKeyColor]),
+            g.FillRectangle(                                         //   0,0 ~ 0,버튼의 높이까지 그라데이션. 컬러는 흰색 ~ neonClickedPairs[mKeyColor]에 지정된 색까지
+                new System.Drawing.Drawing2D.LinearGradientBrush(PointF.Empty, new Point(0, (sender as NeonButton).Height), this.neonNormalPairs[mKeyColor] == Color.LightGray ? Color.LightGray : Color.White, this.neonClickedPairs[mKeyColor]),
                 new RectangleF(new Point(0, 0), new Size((sender as NeonButton).Size.Width, (sender as NeonButton).Size.Height)));
             // 버튼에 표시할 Text 중앙 정렬
             StringFormat sf = new StringFormat()

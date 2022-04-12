@@ -21,16 +21,8 @@ namespace NeonButtonProject_Dll
 
         private void NeonButtonBtn_Click(object sender, EventArgs e)
         {
-            switch (colorNum)
-            {
-                case (int)CustomControls_dll.NeonButton.KeyColor.Count:     // 색의 수에 도달하면, 인덱스를 넘어간 것이므로, 0으로 되돌림.
-                    colorNum = 0;
-                    break;
-                default:
-                    colorNum++;
-                    break;
-            }
-            (sender as CustomControls_dll.NeonButton).ButtonColor = (CustomControls_dll.NeonButton.KeyColor)colorNum;
+            colorNum = colorNum % (int)CustomControls_dll.NeonButton.KeyColor.Count; // Count인덱스가 나오지 않음.
+            (sender as CustomControls_dll.NeonButton).ButtonColor = (CustomControls_dll.NeonButton.KeyColor)colorNum++;
             //CustomControls_dll.NeonButton btn = sender as CustomControls_dll.NeonButton;
             //btn.ButtonColor = (CustomControls_dll.NeonButton.KeyColor)colorNum;
             //btn.ButtonColor = CustomControls_dll.NeonButton.KeyColor.Pink;
