@@ -17,63 +17,87 @@ namespace MultiThread_dll
             InitializeComponent();
         }
 
-        private void CancelMetalBtn(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         private void DigitsOfPiForm_Load(object sender, EventArgs e)
         {
             numDigitsUpDown.Select(0, 1);
         }
 
+        // 자리수에 엔터를 치면
         private void NumDigitsUpDown_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true;
-                CalcMetalBtn_Click(sender, EventArgs.Empty);
+                e.SuppressKeyPress = true; // 엔터키를 눌렀을 경우, 컨트롤에 반영 안 하고, 계산만 함.(사용자 입력 방지 효과)
+                Calculate();
             }
         }
 
-        // 프로그레스바 설정
-        void ShowProgress(string pi, int totalDigits, int digitsSoFar)
+        // 계산 버튼 클릭 이벤트
+        private void CalcMetalBtn_Click(object sender, EventArgs e)
+        {
+            Calculate();
+        }
+
+        /// <summary>
+        /// class System.Windows.Forms.Control에는
+        /// public object Invoke(Delegate method);
+        /// public virtual object Invoke(Delegate method, object[] args);
+        /// public IAsyncResult BeginInvoke(Delegate method);
+        /// public virtual IAsyncResult BeginInvoke(Delegate method, object[] args);
+        /// 쓰진 않지만, public virtual object EndInvoke(IAsyncResult asyncResult); 메서드가 있다.
+        /// 그러므로, 호출 스레드를 블록상태를 유지하려면 Invoke를 호출하고, 비블록 상태를 유지하려면 BeginInvoke메서드를 호출한다.
+        /// </summary>
+
+        // Delegate 형태 선언
+        delegate void ShowProgressDelegate(string pi, int totalDigits, int digitsSoFar);
+
+
+
+        // 계산하는 메서드 (메서드 호출을 단순화하기 위해, 이 한 단계를 거침)
+        private void Calculate()
+        {
+            CalcPi((int)numDigitsUpDown.Value);
+        }
+
+        // 파이 계산
+        private void CalcPi(int digits) // 계산 버튼을 클릭하면, 입력한 자리수를 매개변수로 이 메서드에 전달함
+        {
+            StringBuilder pi = new StringBuilder("3", digits + 2);  // 입력한 자리수 + 2크기로 초기 설정
+
+            // 프로그레스바와 π숫자를 레이블에 설정 (문자열, 프로그래스바 MaxValue, 현재Value)
+            ShowProgress(pi.ToString(), digits, 0);
+
+            if(digits > 0) // 자리수가 0보다 크면,
+            {
+                pi.Append("."); // StringBuilder의 기본값 3뒤에 점 "." 을 찍음.
+
+                // 0부터 자리수까지 i의 값을 9씩 증가시킴
+                for(int i = 0; i < digits; i+= 9)
+                {
+
+                    int nineDigits = NineDigitsOfPi.StartingAt(i + 1); // i+1번째 자리부터 π를 9자리씩 계산해서 nineDigits에 저장
+                    int digitCount = Math.Min(digits - i, 9); // 남은 계산해야할 자리수가 9보다 작으면 digits-i를 반환 아니면, 9를 반환. i + 1부터 시작이므로, 계산은 맞는 듯하다.
+                    string ds = string.Format("{0:D9}", nineDigits);   // i+1번째 자리부터 계산한 9자리의 π값을 정수자리수 D9형식으로 ds에 저장.
+                    // 0:D9 면 앞에 부족한 자리수를 0으로 채워서 000001329 이런 식으로 채우지만,
+                    // nineDigits에서 π를 9자리 다 구해서 정수9자리 형식으로 string ds에 저장후, digitCount의 수만큼 자르므로,
+                    // 0이 포함되지 않아 π의 자리수 표현이 잘 이루어진다.
+                    pi.Append(ds.Substring(0, digitCount));  // 표현해야 하는 남은 자리수만큼 잘라서, StringBuilder pi에 추가 (이렇게 9자리씩 남은 자리수까지 추가
+
+                    // 프로그레스바와 π숫자를 레이블에 설정 (문자열, 프로그래스바 MaxValue, 현재Value)
+                    ShowProgress(pi.ToString(), digits, i + digitCount);
+                }
+            }
+        }
+
+        // 프로그레스바와 π숫자를 레이블에 설정 (파이값str, 전체자리수, 현재 자리수
+        private void ShowProgress(string pi, int totalDigits, int digitsSoFar)
         {
             piTextBox.Text = pi;
             piProgressBar.Maximum = totalDigits;
             piProgressBar.Value = digitsSoFar;
         }
 
-        // 파이 계산
-        void CalcPi(int digits)
-        {
-            StringBuilder pi = new StringBuilder("3", digits + 2);  // 입력한 자리수 + 2크기로 초기 설정
-
-            // 진행 상태를 보여준다.
-            ShowProgress(pi.ToString(), digits, 0);
-
-            if(digits > 0)
-            {
-                pi.Append(".");
-
-                for(int i = 0; i < digits; i+= 9)
-                {
-                    int nineDigits = NineDigitsOfPi.StartingAt(i + 1);
-                    int digitCount = Math.Min(digits - i, 9);
-                    string ds = string.Format("{0:D9}", nineDigits);
-                    pi.Append(ds.Substring(0, digitCount));
-
-                    // 진행 상태를 보여준다.
-                    ShowProgress(pi.ToString(), digits, i + digitCount);
-                }
-            }
-        }
-
-
-        private void CalcMetalBtn_Click(object sender, EventArgs e)
-        {
-            CalcPi((int)numDigitsUpDown.Value);
-        }
 
         public class NineDigitsOfPi
         {
@@ -112,7 +136,7 @@ namespace MultiThread_dll
                 return a;
             }
 
-            // return (a^b) mod m
+            // return (a^b) mod m 
             public static int pow_mod(int a, int b, int m)
             {
                 int r = 1;
@@ -155,6 +179,7 @@ namespace MultiThread_dll
                 return n;
             }
 
+            // n번째 자리부터 파이를 9자리까지 계산. n은 인덱스 번호가 아니라 자리수.
             public static int StartingAt(int n)
             {
                 int av = 0;
@@ -238,6 +263,11 @@ namespace MultiThread_dll
 
                 return (int)(sum * 1e9);
             }
+        }
+
+        private void CancelMetalBtn(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }
