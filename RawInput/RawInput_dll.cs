@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace RawInput_dll
 {
+    // 실질적으로 RawInput을 받는 메서드
     public class RawInput : NativeWindow
     {
         

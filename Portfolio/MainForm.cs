@@ -30,18 +30,19 @@ namespace Portfolio
             
         }
 
-        private void RawInputBtn_Click(object sender, EventArgs e)
-        {
-            showRawInput = new ShowRawInput();
-            showRawInput.processingRawInputting._rawinput.KeyPressed += OnKeyPressed;
-            showRawInput.SetKeyboardMouseLBL += GotOrNotMouseKeyboardName;
-            showRawInput.ProcessDelegate();
-            showRawInput.ShowDialog();
-            MessageBox.Show(mKeyboardDeviceName,"키보드 장치 이름",MessageBoxButtons.OK,MessageBoxIcon.Information);
-            MessageBox.Show(mMouseDeviceName,"마우스 장치 이름", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        // 이전 RawInput 구현 부분
+        //private void RawInputBtn_Click(object sender, EventArgs e)
+        //{
+        //    showRawInput = new ShowRawInput();
+        //    showRawInput.processingRawInputting._rawinput.KeyPressed += OnKeyPressed;
+        //    showRawInput.SetKeyboardMouseLBL += GotOrNotMouseKeyboardName;
+        //    showRawInput.ProcessDelegate();
+        //    showRawInput.ShowDialog();
+        //    MessageBox.Show(mKeyboardDeviceName,"키보드 장치 이름",MessageBoxButtons.OK,MessageBoxIcon.Information);
+        //    MessageBox.Show(mMouseDeviceName,"마우스 장치 이름", MessageBoxButtons.OK, MessageBoxIcon.Information);
         
-            showRawInput.Dispose();
-        }
+        //    showRawInput.Dispose();
+        //}
 
         // showRawInput에 추가할 delegate메서드
         public void GotOrNotMouseKeyboardName(object sender, ref ShowRawInput.SetKeyboardMouseEventArgs e)
@@ -233,6 +234,46 @@ namespace Portfolio
             MultiThread_dll.MultiThreadForm multiThreadForm = new MultiThread_dll.MultiThreadForm();
             multiThreadForm.ShowDialog();
         }
+
+
+        public RawInputInfo mRawKeyboardInputInfo = null; // 키보드 정보 저장
+        public RawInputInfo mRawMouseInputInfo = null;    // 마우스 정보 저장
+        public GetRawInputForm getRawInputForm = null;
+        private void getRawInputBtn_Click(object sender, EventArgs e)
+        {
+            // 현재 키보드나 마우스 하나만 저장. (배열로 다 저장하지 않음)
+            if (mRawKeyboardInputInfo == null)
+                mRawKeyboardInputInfo = new RawInputInfo();
+            if(mRawMouseInputInfo == null)
+                mRawMouseInputInfo = new RawInputInfo();
+
+            if (getRawInputForm == null)
+            {
+                    getRawInputForm = new GetRawInputForm();
+                    getRawInputForm.GetKeyboardArgs += GetKeyboardInfoArgs;
+                    getRawInputForm.GetMouseArgs += GetMouseInfoArgs;
+            }
+
+            getRawInputForm.ShowDialog();
+
+            MessageBox.Show(mRawKeyboardInputInfo.mDeviceNameInSystem, "키보드 장치 이름", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(mRawMouseInputInfo.mDeviceNameInSystem, "마우스 장치 이름", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            getRawInputForm.Dispose();
+            getRawInputForm = null;
+        }
+
+        private void GetKeyboardInfoArgs(RawInputInfo e)
+        {
+            mRawKeyboardInputInfo = e;
+        }
+
+        private void GetMouseInfoArgs(RawInputInfo e)
+        {
+            mRawMouseInputInfo = e;
+        }
+
+
     }
 
 

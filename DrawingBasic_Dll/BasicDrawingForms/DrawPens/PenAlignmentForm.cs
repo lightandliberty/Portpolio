@@ -15,6 +15,9 @@ namespace DrawingProject_Dll
         public PenAlignmentForm()
         {
             InitializeComponent();
+            // 디자이너 모드에서 레이블의 위치를 볼 수 있게 하기 위해, 디자이너 모드에서의 레이블의 Text는 빈 칸으로 두지 않음.
+            centerLbl.Text = "";
+            insetLbl.Text = "";
         }
 
         private void closeBtn_Click(object sender, EventArgs e)
@@ -28,6 +31,8 @@ namespace DrawingProject_Dll
             int y = 10;
             int width = 200;
             int height = 100;
+            centerLbl.Text = "Center";
+            insetLbl.Text = "Inset";
 
             Size centerLblStrSize = GetStrLength(centerLbl.Text, centerLbl.Font);
             centerLbl.Location = new Point(x + width / 2 - centerLblStrSize.Width / 2, y + height / 2 - centerLblStrSize.Height/2);

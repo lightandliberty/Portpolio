@@ -12,6 +12,10 @@ using System.Diagnostics; // Debug를 위해
 
 namespace RawInput_dll
 {
+    /// <summary>
+    /// 정리해서 GetRawInputForm으로 옮김
+    /// 이 부분과 ProcessingRawInputting 부분은 없어도 되지만, 주석 등 나중에 필요할 수 있으므로, 남겨 둠.
+    /// </summary>
     public partial class ShowRawInput : Form
     {
         string mName = "";

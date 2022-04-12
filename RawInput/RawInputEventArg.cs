@@ -46,6 +46,80 @@ namespace RawInput_dll
         }
     }
 
-    
+    public class RawInputInfo
+    {
+        public string mDeviceNameInSystem = string.Empty;
+        public string mDeviceNameWithoutAmpersand = string.Empty;
+        public string mDeviceType = string.Empty;
+        public string mDeviceDesc = string.Empty;
+        public string mArgForOpenSubKey = string.Empty; // OpenSubKey() 매개변수
+        public string mRegistryKey = string.Empty;
+        public string mDeviceClass = string.Empty;
+        public string mClassGuid = string.Empty;
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("mDeviceNameInSystem         : "); sb.Append(mDeviceNameInSystem);
+            sb.Append("mDeviceNameWithoutAmpersand : "); sb.Append(mDeviceNameWithoutAmpersand);
+            sb.Append("mDeviceType                 : "); sb.Append(mDeviceType);
+            sb.Append("mDeviceDesc                 : "); sb.Append(mDeviceDesc);
+            sb.Append("mArgForOpenSubKey           : "); sb.Append(mArgForOpenSubKey);
+            sb.Append("mRegistryKey                : "); sb.Append(mRegistryKey);
+            sb.Append("mDeviceClass                : "); sb.Append(mDeviceClass);
+            sb.Append("mClassGuid                  : "); sb.Append(mClassGuid);
+            return sb.ToString();
+        }
+        public void Init(RawInputEventArg e)
+        {
+            // label2.UseMnemonic = false; // &를 표시하기 위해. Label과 Button은 &를 접근 키 문자의 접두어로 쓰므로, false로 해 줘야 &가 표시된다.
+            // &문자는 Alt키와 함께 눌러져서, 컨트롤에 바로 포커스를 줄 수 있다. &는 지역화 리소스로서 사용되고, 바로가기를 명시하기 위해 사용된다.
+
+            mDeviceNameInSystem = e.mKeyPressInfo.mDeviceName;       // 장치의 내부 이름
+            mDeviceNameWithoutAmpersand = e.mKeyPressInfo.mDeviceName.Replace("&", ""); // &을 뗀 이름. 나중에 장치의 내부 이름을 비교할 땐, &를 제거하고 비교해야 한다.
+            mDeviceType = e.mKeyPressInfo.mDeviceType;       // 장치 종류        
+            mDeviceDesc = e.mKeyPressInfo.mName;              // 장치 설명
+
+            // 장치의 내부 이름, 장치의 클래스 코드, 장치의 서브 클래스 코드, 장치의 프로토콜 코드, 장치의 레지스트리 키, 장치 설명, 장치의 로컬 머신 키
+            string[] deviceNameSplit = e.mKeyPressInfo.mDeviceName.Substring(4).Split('#');
+
+            // Registry.LocalMachine.OpenSubKey의 매개변수 openRegSb생성
+            StringBuilder openRegSb = new StringBuilder();
+            openRegSb.Append(@"System\CurrentControlSet\Enum");
+            for (int i = 0; i < deviceNameSplit.Length - 1; i++)   // {} mDeviceName의 중괄호 부분이 들어가면 안되므로, Length-1을 해줌. Length를 하면, 중괄호 부분인 [3]까지 들어감.
+            {
+                openRegSb.Append("\\"); openRegSb.Append(deviceNameSplit[i]);
+            }
+
+            // Registry.LocalMachine.OpenSubKey의 매개변수를 나누어서 담았을 경우,
+            //string classCode = deviceNameSplit[0]; string subClassCode = (deviceNameSplit[1] != null) ? deviceNameSplit[1] : ""; string protocolCode = (deviceNameSplit[2] != null) ? deviceNameSplit[2] : "";
+
+            //label14.Text = string.Format(@"System\CurrentControlSet\Enum\{0}\{1}\{2}", classCode, subClassCode, protocolCode); // 담긴 값 확인
+            mArgForOpenSubKey = openRegSb.ToString();
+            //Debug.WriteLine("deviceNameSplit.Length = " + deviceNameSplit.Length.ToString());
+
+            Microsoft.Win32.RegistryKey deviceRegistryKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(openRegSb.ToString());   // 레지스트리
+            // 나누어서 담긴 매개변수로 레지스트리 키 값을 얻을 때
+            //Microsoft.Win32.RegistryKey deviceRegistryKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(string.Format(@"System\CurrentControlSet\Enum\{0}\{1}\{2}", classCode, subClassCode, protocolCode)) ;   
+
+            mRegistryKey = deviceRegistryKey?.ToString();  // 장치 레지스트리. 장치 이름은 deviceRegistryKey.GetValue("DeviceDesc").ToString()로 읽고, deviceKey.GetValue("DeviceDesc").ToSTring().Substring(deviceKey.GetValue("DeviceDesc").ToSTring().IndexOf(';')+1);로 장치 이름 접근
+
+            // 장치 클래스. 클래스 GUID, 클래스GUID키
+            if (deviceRegistryKey != null && deviceRegistryKey.GetValue("ClassGUID") != null)
+            {
+                string classGuid = deviceRegistryKey.GetValue("ClassGUID").ToString();
+                Microsoft.Win32.RegistryKey classGuidKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Class\" + classGuid);
+                string deviceClass = (classGuidKey != null ? (string)classGuidKey.GetValue("Class") : string.Empty).ToString(); // 장치 클래스
+                mDeviceClass = deviceClass; // 장치 클래스
+                mClassGuid = classGuid;
+            }
+            else // 기존에 입력된 classGuid값, deviceClass값 초기화.
+            {
+                mDeviceClass = "";
+                mClassGuid = "";
+            }
+
+        }
+    }
+
 
 }

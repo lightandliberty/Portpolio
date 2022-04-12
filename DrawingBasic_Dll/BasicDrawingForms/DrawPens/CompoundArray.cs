@@ -48,10 +48,5 @@ namespace DrawingProject_Dll
         {
             this.Close();
         }
-
-        private void CompoundArray_Shown(object sender, EventArgs e)
-        {
-            DrawRectWithCompoundArray(this.CreateGraphics());
-        }
     }
 }

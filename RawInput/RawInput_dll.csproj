@@ -63,6 +63,12 @@
   <ItemGroup>
     <Compile Include="DataStructures.cs" />
     <Compile Include="Enumerations.cs" />
+    <Compile Include="GetRawInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GetRawInputForm.Designer.cs">
+      <DependentUpon>GetRawInputForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="KeyMapper.cs" />
     <Compile Include="PreMessageFilter.cs" />
     <Compile Include="ProcessingRawInputting.cs">
@@ -85,12 +91,25 @@
     <Compile Include="Win32.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GetRawInputForm.resx">
+      <DependentUpon>GetRawInputForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProcessingRawInputting.resx">
       <DependentUpon>ProcessingRawInputting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowRawInput.resx">
       <DependentUpon>ShowRawInput.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CustomControls_dll\CustomControls_dll.csproj">
+      <Project>{C6320FC3-6F95-487F-8F27-0ED27ABE8EE6}</Project>
+      <Name>CustomControls_dll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NeonButtonProject\NeonButtonProject_Dll.csproj">
+      <Project>{ced45074-4339-4bf3-b509-0039d27efa64}</Project>
+      <Name>NeonButtonProject_Dll</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -34,7 +34,6 @@
             this.도움말ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.버전정보ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CloseFormBtn = new CustomControls_dll.MetalButton();
-            this.RawInputBtn = new CustomControls_dll.MetalButton();
             this.BasicPropertiesBtn = new CustomControls_dll.MetalButton();
             this.neonButtonProjectBtn = new CustomControls_dll.MetalButton();
             this.DrawingMetalBtn = new CustomControls_dll.MetalButton();
@@ -42,6 +41,7 @@
             this.neonCloseBtn = new CustomControls_dll.NeonButton();
             this.neonChangeIntervalTimer = new System.Windows.Forms.Timer(this.components);
             this.MultiThreadBtn = new CustomControls_dll.MetalButton();
+            this.RawInputBtn = new CustomControls_dll.MetalButton();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,16 +88,6 @@
             this.CloseFormBtn.Text = "종료";
             this.CloseFormBtn.UseVisualStyleBackColor = true;
             this.CloseFormBtn.Click += new System.EventHandler(this.CloseFormBtn_Click);
-            // 
-            // RawInputBtn
-            // 
-            this.RawInputBtn.Location = new System.Drawing.Point(676, 90);
-            this.RawInputBtn.Name = "RawInputBtn";
-            this.RawInputBtn.Size = new System.Drawing.Size(112, 36);
-            this.RawInputBtn.TabIndex = 6;
-            this.RawInputBtn.Text = "RawInput";
-            this.RawInputBtn.UseVisualStyleBackColor = true;
-            this.RawInputBtn.Click += new System.EventHandler(this.RawInputBtn_Click);
             // 
             // BasicPropertiesBtn
             // 
@@ -168,19 +158,29 @@
             this.MultiThreadBtn.UseVisualStyleBackColor = true;
             this.MultiThreadBtn.Click += new System.EventHandler(this.MultiThreadBtn_Click);
             // 
+            // RawInputBtn
+            // 
+            this.RawInputBtn.Location = new System.Drawing.Point(676, 90);
+            this.RawInputBtn.Name = "RawInputBtn";
+            this.RawInputBtn.Size = new System.Drawing.Size(112, 36);
+            this.RawInputBtn.TabIndex = 13;
+            this.RawInputBtn.Text = "RawInput";
+            this.RawInputBtn.UseVisualStyleBackColor = true;
+            this.RawInputBtn.Click += new System.EventHandler(this.getRawInputBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CloseFormBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.RawInputBtn);
             this.Controls.Add(this.MultiThreadBtn);
             this.Controls.Add(this.neonCloseBtn);
             this.Controls.Add(this.enterNeonModeBtn);
             this.Controls.Add(this.DrawingMetalBtn);
             this.Controls.Add(this.neonButtonProjectBtn);
             this.Controls.Add(this.CloseFormBtn);
-            this.Controls.Add(this.RawInputBtn);
             this.Controls.Add(this.BasicPropertiesBtn);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -200,7 +200,6 @@
         private System.Windows.Forms.ToolStripMenuItem 도움말ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 버전정보ToolStripMenuItem;
         private CustomControls_dll.MetalButton BasicPropertiesBtn;
-        private CustomControls_dll.MetalButton RawInputBtn;
         private CustomControls_dll.MetalButton CloseFormBtn;
         private CustomControls_dll.MetalButton neonButtonProjectBtn;
         private CustomControls_dll.MetalButton DrawingMetalBtn;
@@ -208,5 +207,6 @@
         private CustomControls_dll.NeonButton neonCloseBtn;
         private System.Windows.Forms.Timer neonChangeIntervalTimer;
         private CustomControls_dll.MetalButton MultiThreadBtn;
+        private CustomControls_dll.MetalButton RawInputBtn;
     }
 }

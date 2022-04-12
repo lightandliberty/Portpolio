@@ -40,7 +40,7 @@ namespace DrawingProject_Dll
             // closeBtn
             // 
             this.closeBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.closeBtn.Location = new System.Drawing.Point(12, 367);
+            this.closeBtn.Location = new System.Drawing.Point(12, 295);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Size = new System.Drawing.Size(0, 0);
             this.closeBtn.TabIndex = 26;
@@ -50,7 +50,7 @@ namespace DrawingProject_Dll
             // 
             // drawDashesBtn
             // 
-            this.drawDashesBtn.Location = new System.Drawing.Point(304, 380);
+            this.drawDashesBtn.Location = new System.Drawing.Point(228, 303);
             this.drawDashesBtn.Name = "drawDashesBtn";
             this.drawDashesBtn.Size = new System.Drawing.Size(91, 28);
             this.drawDashesBtn.TabIndex = 27;
@@ -62,7 +62,7 @@ namespace DrawingProject_Dll
             // 
             this.centerLbl.AutoSize = true;
             this.centerLbl.BackColor = System.Drawing.Color.Transparent;
-            this.centerLbl.Location = new System.Drawing.Point(302, 283);
+            this.centerLbl.Location = new System.Drawing.Point(258, 203);
             this.centerLbl.Name = "centerLbl";
             this.centerLbl.Size = new System.Drawing.Size(42, 12);
             this.centerLbl.TabIndex = 28;
@@ -73,7 +73,7 @@ namespace DrawingProject_Dll
             // 
             this.insetLbl.AutoSize = true;
             this.insetLbl.BackColor = System.Drawing.Color.Transparent;
-            this.insetLbl.Location = new System.Drawing.Point(302, 322);
+            this.insetLbl.Location = new System.Drawing.Point(258, 242);
             this.insetLbl.Name = "insetLbl";
             this.insetLbl.Size = new System.Drawing.Size(32, 12);
             this.insetLbl.TabIndex = 29;
@@ -83,7 +83,7 @@ namespace DrawingProject_Dll
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 354);
+            this.label1.Location = new System.Drawing.Point(12, 282);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(245, 12);
             this.label1.TabIndex = 30;
@@ -92,7 +92,7 @@ namespace DrawingProject_Dll
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 339);
+            this.label2.Location = new System.Drawing.Point(12, 267);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(307, 12);
             this.label2.TabIndex = 31;
@@ -104,7 +104,7 @@ namespace DrawingProject_Dll
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.CancelButton = this.closeBtn;
-            this.ClientSize = new System.Drawing.Size(407, 420);
+            this.ClientSize = new System.Drawing.Size(323, 336);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.insetLbl);
