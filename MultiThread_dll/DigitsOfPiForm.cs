@@ -49,26 +49,43 @@ namespace MultiThread_dll
         /// 그러므로, 호출 스레드를 블록상태를 유지하려면 Invoke를 호출하고, 비블록 상태를 유지하려면 BeginInvoke메서드를 호출한다.
         /// </summary>
 
-        // Delegate 형태 선언
-        delegate void ShowProgressDelegate(string pi, int totalDigits, int digitsSoFar);
 
 
 
-        // 계산하는 메서드 (메서드 호출을 단순화하기 위해, 이 한 단계를 거침)
-        private void Calculate()
+        public class ProgressArgs : EventArgs
         {
-            CalcPi((int)numDigitsUpDown.Value);
+            string pi;
+            int totalDigits;
+            int digitsSoFar;
+            
         }
 
+        // 스레드를 생성할 커스텀 대리자 정의 (MulticastDelegate클래스로부터 상속된 .Invoke .BeginInvoke .EndInvoke를 가지고 있음)
+        delegate void CalcPiDelegate(int digits); // 스레드에서 실행할 메서드의 매개변수 형태로 정의
+
+        // 계산하는 메서드 (메서드 호출을 단순화하기 위해, 이 한 단계를 거침)
+        // 계산 버튼을 누르거나, numDigitsUpDown에 엔터를 치면 실행됨.
+        private void Calculate()
+        {
+            CalcPiDelegate calcPiDelegate = new CalcPiDelegate(CalcPi); // 커스텀 대리자 생성
+            calcPiDelegate.BeginInvoke((int)numDigitsUpDown.Value, null, null); // calcPiDelegate에 등록된 메서드 다 실행
+            
+            // CalcPi((int)numDigitsUpDown.Value); // 스레드 없이 실행할 때,
+        }
+
+        // 스레드에서 실행될 대리자 형태 선언
+        delegate void ShowProgressDelegate(string pi, int totalDigits, int digitsSoFar);
         // 파이 계산
         private void CalcPi(int digits) // 계산 버튼을 클릭하면, 입력한 자리수를 매개변수로 이 메서드에 전달함
         {
             StringBuilder pi = new StringBuilder("3", digits + 2);  // 입력한 자리수 + 2크기로 초기 설정
 
-            // 프로그레스바와 π숫자를 레이블에 설정 (문자열, 프로그래스바 MaxValue, 현재Value)
+
             ShowProgress(pi.ToString(), digits, 0);
 
-            if(digits > 0) // 자리수가 0보다 크면,
+
+
+            if (digits > 0) // 자리수가 0보다 크면,
             {
                 pi.Append("."); // StringBuilder의 기본값 3뒤에 점 "." 을 찍음.
 
@@ -85,17 +102,38 @@ namespace MultiThread_dll
                     pi.Append(ds.Substring(0, digitCount));  // 표현해야 하는 남은 자리수만큼 잘라서, StringBuilder pi에 추가 (이렇게 9자리씩 남은 자리수까지 추가
 
                     // 프로그레스바와 π숫자를 레이블에 설정 (문자열, 프로그래스바 MaxValue, 현재Value)
-                    ShowProgress(pi.ToString(), digits, i + digitCount);
+                    ShowProgress(pi.ToString(), digits, i + digitCount); // this.BeginInvoke(showProgressDelegate,new object[] { pi.ToString(), digits, i + digitCount });
+
+
+                    //ShowProgress(pi.ToString(), digits, i + digitCount);
                 }
             }
         }
 
         // 프로그레스바와 π숫자를 레이블에 설정 (파이값str, 전체자리수, 현재 자리수
+        // 컨트롤의 설정 변경 메서드
         private void ShowProgress(string pi, int totalDigits, int digitsSoFar)
         {
-            piTextBox.Text = pi;
-            piProgressBar.Maximum = totalDigits;
-            piProgressBar.Value = digitsSoFar;
+            if (this.InvokeRequired == false) // UI스레드일 경우,
+            {
+                piTextBox.Text = pi;
+                piProgressBar.Maximum = totalDigits;
+                piProgressBar.Value = digitsSoFar;
+            }
+            else
+            {
+                ShowProgressDelegate showProgressDelegate = new ShowProgressDelegate(ShowProgress); // 대리자 개체 생성
+                                                                                                    // 프로그레스바와 π숫자를 레이블에 설정 (문자열, 프로그래스바 MaxValue, 현재Value)
+                // 폼 클래스의 .BeginInvoke()메서드의 반환 값은 IAsyncResult이므로, 클래스의 인터페이스를 참조하게 되어, res의 결과가 스레드의 결과에 따라 값이 변한다. 구조체의 인터페이스 참조의 경우, 값으로 전달되어 반영되지 않으므로, 위험.
+                IAsyncResult res = this.BeginInvoke(showProgressDelegate, new object[] { pi.ToString(), totalDigits, 0 });
+                // 컨트롤 텍스트 상자에 원래 있던 문자 3을 전달하고, 진행 표시줄의 값을 전달하는 것 뿐이므로,
+                // 딱히 반환 값으로 뭘 할 건 없는 듯하다.
+                //ShowProgress(pi.ToString(), digits, i + digitCount); // 스레드 없이 실행할 때 사용했던 메서드
+                if (res.IsCompleted == false)
+                    System.Threading.Thread.Sleep(100); // 빈 Idle이 발생하므로, 이 경우, this.Invoke가 더 적절한 듯하다.
+                object methodResults = this.EndInvoke(res);
+
+            }
         }
 
 
