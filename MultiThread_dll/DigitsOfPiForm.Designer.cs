@@ -34,13 +34,15 @@
             this.calcMetalBtn = new CustomControls_dll.MetalButton();
             this.piTextBox = new System.Windows.Forms.TextBox();
             this.piProgressBar = new System.Windows.Forms.ProgressBar();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.numDigitsUpDown)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // digitsOfPiLbl
             // 
             this.digitsOfPiLbl.AutoSize = true;
-            this.digitsOfPiLbl.Location = new System.Drawing.Point(13, 15);
+            this.digitsOfPiLbl.Location = new System.Drawing.Point(12, 13);
             this.digitsOfPiLbl.Name = "digitsOfPiLbl";
             this.digitsOfPiLbl.Size = new System.Drawing.Size(65, 12);
             this.digitsOfPiLbl.TabIndex = 0;
@@ -48,7 +50,7 @@
             // 
             // numDigitsUpDown
             // 
-            this.numDigitsUpDown.Location = new System.Drawing.Point(96, 11);
+            this.numDigitsUpDown.Location = new System.Drawing.Point(95, 9);
             this.numDigitsUpDown.Maximum = new decimal(new int[] {
             2000000000,
             0,
@@ -64,7 +66,7 @@
             this.cancelMetalBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelMetalBtn.CausesValidation = false;
             this.cancelMetalBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelMetalBtn.Location = new System.Drawing.Point(122, 9);
+            this.cancelMetalBtn.Location = new System.Drawing.Point(121, 7);
             this.cancelMetalBtn.Name = "cancelMetalBtn";
             this.cancelMetalBtn.Size = new System.Drawing.Size(0, 0);
             this.cancelMetalBtn.TabIndex = 24;
@@ -75,7 +77,7 @@
             // calcMetalBtn
             // 
             this.calcMetalBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.calcMetalBtn.Location = new System.Drawing.Point(165, 7);
+            this.calcMetalBtn.Location = new System.Drawing.Point(164, 5);
             this.calcMetalBtn.Name = "calcMetalBtn";
             this.calcMetalBtn.Size = new System.Drawing.Size(81, 28);
             this.calcMetalBtn.TabIndex = 23;
@@ -85,37 +87,50 @@
             // 
             // piTextBox
             // 
-            this.piTextBox.Location = new System.Drawing.Point(0, 41);
+            this.piTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.piTextBox.Location = new System.Drawing.Point(0, 43);
             this.piTextBox.Multiline = true;
             this.piTextBox.Name = "piTextBox";
             this.piTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.piTextBox.Size = new System.Drawing.Size(258, 217);
+            this.piTextBox.Size = new System.Drawing.Size(258, 215);
             this.piTextBox.TabIndex = 25;
             // 
             // piProgressBar
             // 
+            this.piProgressBar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.piProgressBar.Location = new System.Drawing.Point(0, 258);
+            this.piProgressBar.Maximum = 1;
             this.piProgressBar.Name = "piProgressBar";
             this.piProgressBar.Size = new System.Drawing.Size(258, 23);
             this.piProgressBar.TabIndex = 27;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.digitsOfPiLbl);
+            this.panel1.Controls.Add(this.numDigitsUpDown);
+            this.panel1.Controls.Add(this.calcMetalBtn);
+            this.panel1.Controls.Add(this.cancelMetalBtn);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(258, 43);
+            this.panel1.TabIndex = 28;
+            // 
             // DigitsOfPiForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.CancelButton = this.cancelMetalBtn;
             this.ClientSize = new System.Drawing.Size(258, 281);
-            this.Controls.Add(this.piProgressBar);
             this.Controls.Add(this.piTextBox);
-            this.Controls.Add(this.cancelMetalBtn);
-            this.Controls.Add(this.calcMetalBtn);
-            this.Controls.Add(this.numDigitsUpDown);
-            this.Controls.Add(this.digitsOfPiLbl);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.piProgressBar);
             this.Name = "DigitsOfPiForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DigitsOfPiForm";
-            this.Load += new System.EventHandler(this.DigitsOfPiForm_Load);
+            this.Shown += new System.EventHandler(this.DigitsOfPiForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.numDigitsUpDown)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,5 +144,6 @@
         private CustomControls_dll.MetalButton calcMetalBtn;
         private System.Windows.Forms.TextBox piTextBox;
         private System.Windows.Forms.ProgressBar piProgressBar;
+        private System.Windows.Forms.Panel panel1;
     }
 }
