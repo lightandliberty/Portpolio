@@ -273,7 +273,6 @@ namespace Portfolio
             mRawMouseInputInfo = e;
         }
 
-
     }
 
 

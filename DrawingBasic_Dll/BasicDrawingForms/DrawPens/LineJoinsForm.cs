@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
+using System.Drawing;
 
 namespace DrawingProject_Dll
 {
@@ -155,6 +157,50 @@ namespace DrawingProject_Dll
             DrawRects(this.CreateGraphics());
             for (int i = 0; i < labels.Length; i++)
                 labels[i].Visible = true;
+        }
+
+        private void drawJoins2Btn_Click(object sender, EventArgs e)
+        {
+            Graphics g = this.CreateGraphics();
+            // 지정된 열거형의 모든 이름을 string으로 저장.
+            string[] joinNames = Enum.GetNames(typeof(System.Drawing.Drawing2D.LineJoin));
+
+            int x = 0;
+            int y = 0;
+            int width = this.ClientRectangle.Width / 2;
+            int height = (this.ClientRectangle.Height-80) / ((joinNames.Length / 2));
+            // 브러시와 펜을 각각 이미 있는 펜과 브러시로 설정.
+            Brush blackBrush = Brushes.Black;
+            Pen blackPen = System.Drawing.Pens.Black;
+            Pen whitePen = System.Drawing.Pens.White;
+
+            // 각각의 Enum이름에 맞게, 그림
+            foreach(string joinName in joinNames)
+            {
+                using (Pen pen = new Pen(Color.Black, 12) ){
+                    // Enum.Parse(바꿀 타입, 타입의 string이름) 을 바꿀 타입으로 한번 더 형변환 해야 함.
+                    pen.LineJoin = (LineJoin)Enum.Parse(typeof(LineJoin), joinName);
+                    g.DrawRectangle(pen, new Rectangle(x + 20, y + 20, width - 40, height - 40));
+                    g.DrawRectangle(whitePen, new Rectangle(x + 20, y + 20, width - 40, height - 40));
+
+                    // 레이블 말고, 직접 DrawString으로 그림
+                    StringFormat format = new StringFormat();
+                    format.Alignment = StringAlignment.Center;
+                    format.LineAlignment = StringAlignment.Center;
+                    // 가로, 세로 가운데 정렬로 문자를 그림
+                    g.DrawString(joinName, this.Font, blackBrush, new Rectangle(x, y, width, height), format);
+
+                    x += width;
+                    // 시작 x위치가 사각형을 그릴 여유가 없으면, 줄을 바꿈.
+                    if(x > this.ClientRectangle.Width - width)
+                    {
+                        y += height;
+                        x = 0;
+                    }
+                }
+
+            }
+
         }
     }
 }
