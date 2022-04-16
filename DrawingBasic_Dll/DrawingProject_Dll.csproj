@@ -69,6 +69,12 @@
     <Compile Include="BasicDrawingForms\DrawPens\DrawingPensForm.Designer.cs">
       <DependentUpon>DrawingPensForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BasicDrawingForms\DrawPens\LineJoinsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicDrawingForms\DrawPens\LineJoinsForm.Designer.cs">
+      <DependentUpon>LineJoinsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BasicDrawingForms\DrawPens\PenAlignmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BasicDrawingForms\DrawPens\DrawingPensForm.resx">
       <DependentUpon>DrawingPensForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicDrawingForms\DrawPens\LineJoinsForm.resx">
+      <DependentUpon>LineJoinsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BasicDrawingForms\DrawPens\PenAlignmentForm.resx">
       <DependentUpon>PenAlignmentForm.cs</DependentUpon>

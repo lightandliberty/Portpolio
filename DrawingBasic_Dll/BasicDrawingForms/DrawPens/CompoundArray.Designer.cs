@@ -75,6 +75,7 @@ namespace DrawingProject_Dll
             this.Controls.Add(this.closeBtn);
             this.Controls.Add(this.drawRectBtn);
             this.Name = "CompoundArray";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CompoundArray";
             this.Load += new System.EventHandler(this.CompoundArray_Load);
             this.ResumeLayout(false);

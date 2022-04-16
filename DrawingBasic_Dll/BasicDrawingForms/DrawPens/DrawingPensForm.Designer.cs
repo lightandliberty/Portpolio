@@ -36,6 +36,7 @@
             this.drawCompoundArrayBtn = new CustomControls_dll.MetalButton();
             this.drawDashesBtn = new CustomControls_dll.MetalButton();
             this.drawPenAlignmentFormBtn = new CustomControls_dll.MetalButton();
+            this.drawLineJoinBtn = new CustomControls_dll.MetalButton();
             this.SuspendLayout();
             // 
             // drawLineCapsBtn
@@ -119,7 +120,17 @@
             this.drawPenAlignmentFormBtn.TabIndex = 25;
             this.drawPenAlignmentFormBtn.Text = "Draw\r\nPenAlignment";
             this.drawPenAlignmentFormBtn.UseVisualStyleBackColor = true;
-            this.drawPenAlignmentFormBtn.Click += new System.EventHandler(this.metalButton1_Click);
+            this.drawPenAlignmentFormBtn.Click += new System.EventHandler(this.drawPenAlignmentFormBtn_Click);
+            // 
+            // drawLineJoinBtn
+            // 
+            this.drawLineJoinBtn.Location = new System.Drawing.Point(24, 358);
+            this.drawLineJoinBtn.Name = "drawLineJoinBtn";
+            this.drawLineJoinBtn.Size = new System.Drawing.Size(112, 36);
+            this.drawLineJoinBtn.TabIndex = 26;
+            this.drawLineJoinBtn.Text = "Draw LineJoins";
+            this.drawLineJoinBtn.UseVisualStyleBackColor = true;
+            this.drawLineJoinBtn.Click += new System.EventHandler(this.drawLineJoinBtn_Click);
             // 
             // DrawingPensForm
             // 
@@ -128,6 +139,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelMetalBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.drawLineJoinBtn);
             this.Controls.Add(this.drawPenAlignmentFormBtn);
             this.Controls.Add(this.drawDashesBtn);
             this.Controls.Add(this.drawCompoundArrayBtn);
@@ -155,5 +167,6 @@
         private CustomControls_dll.MetalButton drawCompoundArrayBtn;
         private CustomControls_dll.MetalButton drawDashesBtn;
         private CustomControls_dll.MetalButton drawPenAlignmentFormBtn;
+        private CustomControls_dll.MetalButton drawLineJoinBtn;
     }
 }

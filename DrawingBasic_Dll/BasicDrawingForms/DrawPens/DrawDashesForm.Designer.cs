@@ -98,6 +98,7 @@ namespace DrawingProject_Dll
             this.label2.TabIndex = 1;
             this.label2.Text = " Dash";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label2.Visible = false;
             // 
             // label1
             // 
@@ -110,6 +111,7 @@ namespace DrawingProject_Dll
             this.label1.TabIndex = 0;
             this.label1.Text = " Custom";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Visible = false;
             // 
             // label3
             // 
@@ -122,6 +124,7 @@ namespace DrawingProject_Dll
             this.label3.TabIndex = 2;
             this.label3.Text = " DashDot";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.Visible = false;
             // 
             // label4
             // 
@@ -134,6 +137,7 @@ namespace DrawingProject_Dll
             this.label4.TabIndex = 3;
             this.label4.Text = " DashDotDot";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label4.Visible = false;
             // 
             // label5
             // 
@@ -146,6 +150,7 @@ namespace DrawingProject_Dll
             this.label5.TabIndex = 4;
             this.label5.Text = " Dot";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label5.Visible = false;
             // 
             // label6
             // 
@@ -159,6 +164,7 @@ namespace DrawingProject_Dll
             this.label6.TabIndex = 0;
             this.label6.Text = " Solid";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label6.Visible = false;
             // 
             // formExplainLbl
             // 
@@ -180,7 +186,9 @@ namespace DrawingProject_Dll
             this.Controls.Add(this.drawDashesBtn);
             this.Controls.Add(this.closeBtn);
             this.Name = "DrawDashesForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DrawDashesForm";
+            this.Load += new System.EventHandler(this.DrawDashesForm_Load);
             this.tlpDashes.ResumeLayout(false);
             this.tlpDashes.PerformLayout();
             this.ResumeLayout(false);

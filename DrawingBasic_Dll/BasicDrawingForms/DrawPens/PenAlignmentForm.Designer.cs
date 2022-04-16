@@ -112,6 +112,7 @@ namespace DrawingProject_Dll
             this.Controls.Add(this.drawDashesBtn);
             this.Controls.Add(this.closeBtn);
             this.Name = "PenAlignmentForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "PenAlignmentForm";
             this.ResumeLayout(false);
             this.PerformLayout();

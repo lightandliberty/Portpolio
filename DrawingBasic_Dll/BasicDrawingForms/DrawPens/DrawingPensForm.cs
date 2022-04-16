@@ -50,10 +50,16 @@ namespace DrawingProject_Dll
             drawDashesForm.ShowDialog();
         }
 
-        private void metalButton1_Click(object sender, EventArgs e)
+        private void drawPenAlignmentFormBtn_Click(object sender, EventArgs e)
         {
             PenAlignmentForm penAlignmentForm = new PenAlignmentForm();
             penAlignmentForm.ShowDialog();
+        }
+
+        private void drawLineJoinBtn_Click(object sender, EventArgs e)
+        {
+            LineJoinsForm lineJoinsForm = new LineJoinsForm();
+            lineJoinsForm.ShowDialog();
         }
     }
 }

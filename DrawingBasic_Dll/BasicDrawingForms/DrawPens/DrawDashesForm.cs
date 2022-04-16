@@ -20,6 +20,15 @@ namespace DrawingProject_Dll
             InitializeComponent();
         }
 
+        public Label[] labels;
+
+        private void DrawDashesForm_Load(object sender, EventArgs e)
+        {
+            // 한번에 Visible변경을 위해,
+            labels = new Label[6] { label1, label2, label3, label4, label5, label6 };
+        }
+
+
         private void closeBtn_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -85,14 +94,19 @@ namespace DrawingProject_Dll
             {
                 this.tlpDashes.CellPaint -= new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.tlpDashes_CellPaint);
                 isAddCellPaintEvent = false;
+                for (int i = 0; i < labels.Length; i++)
+                    labels[i].Visible = false;
             }
             else
             {
                 this.tlpDashes.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.tlpDashes_CellPaint);
                 isAddCellPaintEvent = true;
+                for (int i = 0; i < labels.Length; i++)
+                    labels[i].Visible = true;
             }
             tlpDashes.Invalidate();
 
         }
+
     }
 }

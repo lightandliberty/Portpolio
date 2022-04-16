@@ -172,6 +172,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.CloseFormBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.RawInputBtn);
@@ -186,6 +187,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
