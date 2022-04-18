@@ -594,5 +594,10 @@ namespace DrawingProject_Dll
         {
             instructionTextBox.Text = "펜을 이용해 그리는 걸 시험합니다";
         }
+
+        private void drawFigureBtn_Click(object sender, EventArgs e)
+        {
+            (new DrawFigure_MainForm()).ShowDialog();
+        }
     }
 }

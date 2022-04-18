@@ -57,7 +57,7 @@
     <Compile Include="BasicDrawingForms\DrawPens\CompoundArray.Designer.cs">
       <DependentUpon>CompoundArray.cs</DependentUpon>
     </Compile>
-    <Compile Include="BasicDrawingForms\DrawPens\DrawAbout.cs">
+    <Compile Include="BasicDrawingForms\DrawPens\DrawAboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BasicDrawingForms\DrawPens\DrawDashesForm.cs">
@@ -102,6 +102,15 @@
     <Compile Include="BasicDrawingForms\DrawPens\LineCapsForm.Designer.cs">
       <DependentUpon>LineCapsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Figure\DrawFigure_MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Figure\DrawFigure_MainForm.Designer.cs">
+      <DependentUpon>DrawFigure_MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Figure\Shapes.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -123,8 +132,8 @@
     <EmbeddedResource Include="BasicDrawingForms\DrawPens\CompoundArray.resx">
       <DependentUpon>CompoundArray.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BasicDrawingForms\DrawPens\DrawAbout.resx">
-      <DependentUpon>DrawAbout.cs</DependentUpon>
+    <EmbeddedResource Include="BasicDrawingForms\DrawPens\DrawAboutForm.resx">
+      <DependentUpon>DrawAboutForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BasicDrawingForms\DrawPens\DrawDashesForm.resx">
       <DependentUpon>DrawDashesForm.cs</DependentUpon>
@@ -147,6 +156,12 @@
     <EmbeddedResource Include="BasicDrawingForms\DrawPens\LineCapsForm.resx">
       <DependentUpon>LineCapsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Figure\DrawFigure_MainForm.resx">
+      <DependentUpon>DrawFigure_MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Figure\Shapes.resx">
+      <DependentUpon>Shapes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resource1.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
@@ -155,5 +170,6 @@
   <ItemGroup>
     <None Include="Resources\flipTest.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

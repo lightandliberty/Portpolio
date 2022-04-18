@@ -9,7 +9,7 @@ using System.Drawing;
 
 namespace DrawingProject_Dll
 {
-        public class DrawAbout : System.Windows.Forms.Form
+        public class DrawAboutForm : System.Windows.Forms.Form
         {
             #region Windows Form Designer generated code
             /// <summary>
@@ -100,7 +100,7 @@ namespace DrawingProject_Dll
 
 
         // 생성자
-        public DrawAbout()
+        public DrawAboutForm()
         {
             InitializeComponent();
         }

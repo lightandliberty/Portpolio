@@ -59,7 +59,7 @@ namespace DrawingProject_Dll
 
         private void drawAboutBtn_Click(object sender, EventArgs e)
         {
-            (new DrawAbout()).ShowDialog();
+            (new DrawAboutForm()).ShowDialog();
         }
     }
 }
