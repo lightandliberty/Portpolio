@@ -57,6 +57,9 @@
     <Compile Include="BasicDrawingForms\DrawPens\CompoundArray.Designer.cs">
       <DependentUpon>CompoundArray.cs</DependentUpon>
     </Compile>
+    <Compile Include="BasicDrawingForms\DrawPens\DrawAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="BasicDrawingForms\DrawPens\DrawDashesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BasicDrawingForms\DrawPens\CompoundArray.resx">
       <DependentUpon>CompoundArray.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicDrawingForms\DrawPens\DrawAbout.resx">
+      <DependentUpon>DrawAbout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BasicDrawingForms\DrawPens\DrawDashesForm.resx">
       <DependentUpon>DrawDashesForm.cs</DependentUpon>

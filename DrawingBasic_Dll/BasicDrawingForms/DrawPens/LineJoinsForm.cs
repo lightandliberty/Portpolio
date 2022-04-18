@@ -17,6 +17,7 @@ namespace DrawingProject_Dll
         public LineJoinsForm()
         {
             InitializeComponent();
+            this.SetStyle(ControlStyles.ResizeRedraw, true); // 사이즈가 변하면 다시 그림
         }
 
         private void LineJoinsForm_Load(object sender, EventArgs e)
@@ -39,7 +40,7 @@ namespace DrawingProject_Dll
             int y = 20;
             int width = this.ClientSize.Width/2-20 > 0 ? this.ClientSize.Width / 2 - 40 : 80;
             int height = width / 2;
-            int space = 3;
+            int space = 35;
             rects = new Rectangle[] // 윗 줄부터 두 개씩
             {
                 new Rectangle(x                  ,y                             , width, height), // 왼쪽위
@@ -161,8 +162,10 @@ namespace DrawingProject_Dll
 
         private void drawJoins2Btn_Click(object sender, EventArgs e)
         {
+            for (int i = 0; i < labels.Length; i++)
+                labels[i].Visible = false;
             Graphics g = this.CreateGraphics();
-            // 지정된 열거형의 모든 이름을 string으로 저장.
+            // 열거형의 모든 이름을 string으로 저장.
             string[] joinNames = Enum.GetNames(typeof(System.Drawing.Drawing2D.LineJoin));
 
             int x = 0;

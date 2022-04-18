@@ -88,6 +88,5 @@ namespace Portfolio
 		private System.Windows.Forms.Label instructionLbl;
 		private CustomControls_dll.MetalButton drawJoinsBtn;
 		private CustomControls_dll.MetalButton closeBtn;
-
     }
 }

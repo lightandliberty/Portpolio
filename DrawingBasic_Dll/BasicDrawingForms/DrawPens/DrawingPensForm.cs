@@ -34,32 +34,32 @@ namespace DrawingProject_Dll
 
         private void DrawLineCapsBtn_Click(object sender, EventArgs e)
         {
-            LineCapsForm lineCapsForm = new LineCapsForm();
-            lineCapsForm.ShowDialog();
+            (new LineCapsForm()).ShowDialog();
         }
 
         private void DrawCompoundArrayBtn_Click(object sender, EventArgs e)
         {
-            CompoundArray ca = new CompoundArray();
-            ca.ShowDialog();
+            (new CompoundArray()).ShowDialog();
         }
 
         private void drawDashesBtn_Click(object sender, EventArgs e)
         {
-            DrawDashesForm drawDashesForm = new DrawDashesForm();
-            drawDashesForm.ShowDialog();
+            (new DrawDashesForm()).ShowDialog();
         }
 
         private void drawPenAlignmentFormBtn_Click(object sender, EventArgs e)
         {
-            PenAlignmentForm penAlignmentForm = new PenAlignmentForm();
-            penAlignmentForm.ShowDialog();
+            (new PenAlignmentForm()).ShowDialog();
         }
 
         private void drawLineJoinBtn_Click(object sender, EventArgs e)
         {
-            LineJoinsForm lineJoinsForm = new LineJoinsForm();
-            lineJoinsForm.ShowDialog();
+            (new LineJoinsForm()).ShowDialog();
+        }
+
+        private void drawAboutBtn_Click(object sender, EventArgs e)
+        {
+            (new DrawAbout()).ShowDialog();
         }
     }
 }

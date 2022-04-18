@@ -37,9 +37,9 @@ namespace DrawingProject_Dll
             // 
             // drawJoinsBtn
             // 
-            this.drawJoinsBtn.Location = new System.Drawing.Point(180, 267);
+            this.drawJoinsBtn.Location = new System.Drawing.Point(155, 267);
             this.drawJoinsBtn.Name = "drawJoinsBtn";
-            this.drawJoinsBtn.Size = new System.Drawing.Size(91, 28);
+            this.drawJoinsBtn.Size = new System.Drawing.Size(104, 28);
             this.drawJoinsBtn.TabIndex = 28;
             this.drawJoinsBtn.Text = "Draw Joins";
             this.drawJoinsBtn.UseVisualStyleBackColor = true;
@@ -66,11 +66,11 @@ namespace DrawingProject_Dll
             // 
             // drawJoins2Btn
             // 
-            this.drawJoins2Btn.Location = new System.Drawing.Point(281, 267);
+            this.drawJoins2Btn.Location = new System.Drawing.Point(268, 267);
             this.drawJoins2Btn.Name = "drawJoins2Btn";
-            this.drawJoins2Btn.Size = new System.Drawing.Size(91, 28);
+            this.drawJoins2Btn.Size = new System.Drawing.Size(104, 28);
             this.drawJoins2Btn.TabIndex = 30;
-            this.drawJoins2Btn.Text = "Draw Joins2";
+            this.drawJoins2Btn.Text = "Type으로 Draw";
             this.drawJoins2Btn.UseVisualStyleBackColor = true;
             this.drawJoins2Btn.Click += new System.EventHandler(this.drawJoins2Btn_Click);
             // 

@@ -37,6 +37,7 @@
             this.drawDashesBtn = new CustomControls_dll.MetalButton();
             this.drawPenAlignmentFormBtn = new CustomControls_dll.MetalButton();
             this.drawLineJoinBtn = new CustomControls_dll.MetalButton();
+            this.drawAboutBtn = new CustomControls_dll.MetalButton();
             this.SuspendLayout();
             // 
             // drawLineCapsBtn
@@ -132,6 +133,16 @@
             this.drawLineJoinBtn.UseVisualStyleBackColor = true;
             this.drawLineJoinBtn.Click += new System.EventHandler(this.drawLineJoinBtn_Click);
             // 
+            // drawAboutBtn
+            // 
+            this.drawAboutBtn.Location = new System.Drawing.Point(24, 406);
+            this.drawAboutBtn.Name = "drawAboutBtn";
+            this.drawAboutBtn.Size = new System.Drawing.Size(112, 36);
+            this.drawAboutBtn.TabIndex = 27;
+            this.drawAboutBtn.Text = "Draw About";
+            this.drawAboutBtn.UseVisualStyleBackColor = true;
+            this.drawAboutBtn.Click += new System.EventHandler(this.drawAboutBtn_Click);
+            // 
             // DrawingPensForm
             // 
             this.AcceptButton = this.okMetalBtn;
@@ -139,6 +150,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelMetalBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.drawAboutBtn);
             this.Controls.Add(this.drawLineJoinBtn);
             this.Controls.Add(this.drawPenAlignmentFormBtn);
             this.Controls.Add(this.drawDashesBtn);
@@ -168,5 +180,6 @@
         private CustomControls_dll.MetalButton drawDashesBtn;
         private CustomControls_dll.MetalButton drawPenAlignmentFormBtn;
         private CustomControls_dll.MetalButton drawLineJoinBtn;
+        private CustomControls_dll.MetalButton drawAboutBtn;
     }
 }
