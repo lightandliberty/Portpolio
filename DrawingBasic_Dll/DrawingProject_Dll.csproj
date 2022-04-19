@@ -114,6 +114,9 @@
     <Compile Include="Figure\DrawFigure_MainForm.Designer.cs">
       <DependentUpon>DrawFigure_MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Figure\Path.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Figure\Shapes.cs">
       <SubType>Form</SubType>
     </Compile>

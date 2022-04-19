@@ -46,5 +46,10 @@ namespace DrawingProject_Dll
         {
             (new SmoothingModes()).ShowDialog();
         }
+
+        private void drawPathBtn_Click(object sender, EventArgs e)
+        {
+            (new Path()).ShowDialog();
+        }
     }
 }

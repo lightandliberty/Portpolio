@@ -37,6 +37,7 @@ namespace DrawingProject_Dll
             this.drawCurveBtn = new CustomControls_dll.MetalButton();
             this.drawBeziersBtn = new CustomControls_dll.MetalButton();
             this.drawSmoothingModesBtn = new CustomControls_dll.MetalButton();
+            this.drawPathBtn = new CustomControls_dll.MetalButton();
             this.SuspendLayout();
             // 
             // drawFigureBtn
@@ -122,6 +123,16 @@ namespace DrawingProject_Dll
             this.drawSmoothingModesBtn.UseVisualStyleBackColor = true;
             this.drawSmoothingModesBtn.Click += new System.EventHandler(this.drawSmoothingModesBtn_Click);
             // 
+            // drawPathBtn
+            // 
+            this.drawPathBtn.Location = new System.Drawing.Point(24, 326);
+            this.drawPathBtn.Name = "drawPathBtn";
+            this.drawPathBtn.Size = new System.Drawing.Size(112, 36);
+            this.drawPathBtn.TabIndex = 26;
+            this.drawPathBtn.Text = "Draw Path";
+            this.drawPathBtn.UseVisualStyleBackColor = true;
+            this.drawPathBtn.Click += new System.EventHandler(this.drawPathBtn_Click);
+            // 
             // DrawFigure_MainForm
             // 
             this.AcceptButton = this.okMetalBtn;
@@ -129,6 +140,7 @@ namespace DrawingProject_Dll
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelMetalBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.drawPathBtn);
             this.Controls.Add(this.drawSmoothingModesBtn);
             this.Controls.Add(this.drawBeziersBtn);
             this.Controls.Add(this.drawCurveBtn);
@@ -155,5 +167,6 @@ namespace DrawingProject_Dll
         private CustomControls_dll.MetalButton drawCurveBtn;
         private CustomControls_dll.MetalButton drawBeziersBtn;
         private CustomControls_dll.MetalButton drawSmoothingModesBtn;
+        private CustomControls_dll.MetalButton drawPathBtn;
     }
 }
