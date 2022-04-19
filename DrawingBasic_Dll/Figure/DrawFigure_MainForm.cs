@@ -31,5 +31,20 @@ namespace DrawingProject_Dll
         {
             (new Shapes()).ShowDialog();
         }
+
+        private void drawCurveBtn_Click(object sender, EventArgs e)
+        {
+            (new Curves()).ShowDialog();
+        }
+
+        private void drawBeziersBtn_Click(object sender, EventArgs e)
+        {
+            (new Beziers()).ShowDialog();
+        }
+
+        private void drawSmoothingModesBtn_Click(object sender, EventArgs e)
+        {
+            (new SmoothingModes()).ShowDialog();
+        }
     }
 }

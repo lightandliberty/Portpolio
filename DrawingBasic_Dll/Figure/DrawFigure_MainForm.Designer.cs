@@ -34,6 +34,9 @@ namespace DrawingProject_Dll
             this.cancelMetalBtn = new CustomControls_dll.MetalButton();
             this.okMetalBtn = new CustomControls_dll.MetalButton();
             this.titleLabel = new System.Windows.Forms.Label();
+            this.drawCurveBtn = new CustomControls_dll.MetalButton();
+            this.drawBeziersBtn = new CustomControls_dll.MetalButton();
+            this.drawSmoothingModesBtn = new CustomControls_dll.MetalButton();
             this.SuspendLayout();
             // 
             // drawFigureBtn
@@ -89,6 +92,36 @@ namespace DrawingProject_Dll
             this.titleLabel.Text = "Drawing Figures";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // drawCurveBtn
+            // 
+            this.drawCurveBtn.Location = new System.Drawing.Point(24, 200);
+            this.drawCurveBtn.Name = "drawCurveBtn";
+            this.drawCurveBtn.Size = new System.Drawing.Size(112, 36);
+            this.drawCurveBtn.TabIndex = 23;
+            this.drawCurveBtn.Text = "Draw Curves";
+            this.drawCurveBtn.UseVisualStyleBackColor = true;
+            this.drawCurveBtn.Click += new System.EventHandler(this.drawCurveBtn_Click);
+            // 
+            // drawBeziersBtn
+            // 
+            this.drawBeziersBtn.Location = new System.Drawing.Point(24, 242);
+            this.drawBeziersBtn.Name = "drawBeziersBtn";
+            this.drawBeziersBtn.Size = new System.Drawing.Size(112, 36);
+            this.drawBeziersBtn.TabIndex = 24;
+            this.drawBeziersBtn.Text = "Draw Beziers";
+            this.drawBeziersBtn.UseVisualStyleBackColor = true;
+            this.drawBeziersBtn.Click += new System.EventHandler(this.drawBeziersBtn_Click);
+            // 
+            // drawSmoothingModesBtn
+            // 
+            this.drawSmoothingModesBtn.Location = new System.Drawing.Point(24, 284);
+            this.drawSmoothingModesBtn.Name = "drawSmoothingModesBtn";
+            this.drawSmoothingModesBtn.Size = new System.Drawing.Size(112, 36);
+            this.drawSmoothingModesBtn.TabIndex = 25;
+            this.drawSmoothingModesBtn.Text = "Draw Smoothing Modes";
+            this.drawSmoothingModesBtn.UseVisualStyleBackColor = true;
+            this.drawSmoothingModesBtn.Click += new System.EventHandler(this.drawSmoothingModesBtn_Click);
+            // 
             // DrawFigure_MainForm
             // 
             this.AcceptButton = this.okMetalBtn;
@@ -96,6 +129,9 @@ namespace DrawingProject_Dll
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelMetalBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.drawSmoothingModesBtn);
+            this.Controls.Add(this.drawBeziersBtn);
+            this.Controls.Add(this.drawCurveBtn);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.cancelMetalBtn);
             this.Controls.Add(this.okMetalBtn);
@@ -116,5 +152,8 @@ namespace DrawingProject_Dll
         private CustomControls_dll.MetalButton cancelMetalBtn;
         private CustomControls_dll.MetalButton okMetalBtn;
         private System.Windows.Forms.Label titleLabel;
+        private CustomControls_dll.MetalButton drawCurveBtn;
+        private CustomControls_dll.MetalButton drawBeziersBtn;
+        private CustomControls_dll.MetalButton drawSmoothingModesBtn;
     }
 }
