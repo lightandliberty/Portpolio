@@ -50,7 +50,7 @@ namespace DrawingProject_Dll
             // 
             this.instructionLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.instructionLbl.AutoSize = true;
-            this.instructionLbl.Location = new System.Drawing.Point(12, 277);
+            this.instructionLbl.Location = new System.Drawing.Point(12, 267);
             this.instructionLbl.Name = "instructionLbl";
             this.instructionLbl.Size = new System.Drawing.Size(0, 12);
             this.instructionLbl.TabIndex = 32;
@@ -58,7 +58,7 @@ namespace DrawingProject_Dll
             // drawPath2Btn
             // 
             this.drawPath2Btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.drawPath2Btn.Location = new System.Drawing.Point(223, 261);
+            this.drawPath2Btn.Location = new System.Drawing.Point(118, 295);
             this.drawPath2Btn.Name = "drawPath2Btn";
             this.drawPath2Btn.Size = new System.Drawing.Size(99, 28);
             this.drawPath2Btn.TabIndex = 31;
@@ -160,16 +160,16 @@ namespace DrawingProject_Dll
             int x = 10;
             int y = 10;
             int width = this.ClientSize.Width - 20;
-            int height = this.ClientSize.Height - 115; // 아래 여백 -115
+            int height = this.ClientSize.Height - 120; // 아래 여백 -120
             rect = new Rectangle(x, y, width, height);
         }
 
         public void InitHorizontalRect()
         {
             int x = 10;
-            int y = (this.ClientRectangle.Height - 115)/2;
+            int y = (this.ClientRectangle.Height - 120)/2;
             int width = this.ClientSize.Width - 20;
-            int height = (this.ClientSize.Height - 115)/2/2; // (아래 여백 -115 ) / 2
+            int height = (this.ClientSize.Height - 120) /2/2; // (아래 여백 -115 ) / 2
             rect = new Rectangle(x, y, width, height);
         }
 
@@ -247,7 +247,7 @@ namespace DrawingProject_Dll
             GraphicsPath path = GetClosedBezierPath(rect, new Point[4] {
                 new Point(20,20),
                 new Point(this.ClientRectangle.Width - 20, 20),
-                new Point(20,this.ClientRectangle.Height - 100),
+                new Point(20,this.ClientRectangle.Height - 120),
                 new Point(this.ClientRectangle.Width - 20, this.ClientRectangle.Height - 100),
                 }))
             {

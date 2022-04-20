@@ -42,6 +42,7 @@
             this.titleLabel = new System.Windows.Forms.Label();
             this.drawPensBtn = new CustomControls_dll.MetalButton();
             this.drawFigureBtn = new CustomControls_dll.MetalButton();
+            this.drawImageBtn = new CustomControls_dll.MetalButton();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -171,6 +172,16 @@
             this.drawFigureBtn.UseVisualStyleBackColor = true;
             this.drawFigureBtn.Click += new System.EventHandler(this.drawFigureBtn_Click);
             // 
+            // drawImageBtn
+            // 
+            this.drawImageBtn.Location = new System.Drawing.Point(24, 358);
+            this.drawImageBtn.Name = "drawImageBtn";
+            this.drawImageBtn.Size = new System.Drawing.Size(112, 36);
+            this.drawImageBtn.TabIndex = 19;
+            this.drawImageBtn.Text = "Draw Image";
+            this.drawImageBtn.UseVisualStyleBackColor = true;
+            this.drawImageBtn.Click += new System.EventHandler(this.drawImageBtn_Click);
+            // 
             // BasicDrawingForm
             // 
             this.AcceptButton = this.okMetalBtn;
@@ -178,6 +189,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelMetalBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.drawImageBtn);
             this.Controls.Add(this.drawFigureBtn);
             this.Controls.Add(this.drawPensBtn);
             this.Controls.Add(this.titleLabel);
@@ -218,5 +230,6 @@
         private System.Windows.Forms.Label titleLabel;
         private CustomControls_dll.MetalButton drawPensBtn;
         private CustomControls_dll.MetalButton drawFigureBtn;
+        private CustomControls_dll.MetalButton drawImageBtn;
     }
 }

@@ -599,5 +599,10 @@ namespace DrawingProject_Dll
         {
             (new DrawFigure_MainForm()).ShowDialog();
         }
+
+        private void drawImageBtn_Click(object sender, EventArgs e)
+        {
+            (new DrawImage_MainForm()).ShowDialog();
+        }
     }
 }

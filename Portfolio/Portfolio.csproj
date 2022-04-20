@@ -141,9 +141,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SampleForm.resx">
-      <DependentUpon>SampleForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Portfolio_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
