@@ -87,6 +87,9 @@ namespace DrawingProject_Dll
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Path";
             this.Load += new System.EventHandler(this.Path_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Path_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Path_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Path_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,6 +136,8 @@ namespace DrawingProject_Dll
             {
                 g.FillPath(Brushes.Yellow, path);
                 g.DrawPath(Pens.Black, path);
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.Region = new Region(path);
             }
 
             this.Paint -= PathForm_Paint;
@@ -149,6 +154,8 @@ namespace DrawingProject_Dll
             {
                 g.FillPath(Brushes.Yellow, path);
                 g.DrawPath(Pens.Black, path);
+                this.Region = new Region(path);
+
             }
         }
 
@@ -167,5 +174,27 @@ namespace DrawingProject_Dll
             return path;
         }
 
+        Point beforeClicked;
+
+        private void Path_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left)
+                return;
+            beforeClicked = new Point(e.X, e.Y);
+        }
+
+        private void Path_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (beforeClicked == Point.Empty)
+                return;
+            // 현재 위치 - 이전에 클릭했던 위치 = 움직인 위치가 되고, 마우스가 계속 눌려 있으므로, 현재 위치는 다시 이전 위치가 되므로, 창이 움직임
+            this.Location = new Point(this.Left + e.X - beforeClicked.X, this.Top + e.Y - beforeClicked.Y);
+        }
+
+        private void Path_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            beforeClicked = Point.Empty;
+        }
     }
 }

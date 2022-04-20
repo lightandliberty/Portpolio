@@ -38,6 +38,7 @@ namespace DrawingProject_Dll
             this.drawBeziersBtn = new CustomControls_dll.MetalButton();
             this.drawSmoothingModesBtn = new CustomControls_dll.MetalButton();
             this.drawPathBtn = new CustomControls_dll.MetalButton();
+            this.drawPath2 = new CustomControls_dll.MetalButton();
             this.SuspendLayout();
             // 
             // drawFigureBtn
@@ -133,6 +134,16 @@ namespace DrawingProject_Dll
             this.drawPathBtn.UseVisualStyleBackColor = true;
             this.drawPathBtn.Click += new System.EventHandler(this.drawPathBtn_Click);
             // 
+            // drawPath2
+            // 
+            this.drawPath2.Location = new System.Drawing.Point(24, 368);
+            this.drawPath2.Name = "drawPath2";
+            this.drawPath2.Size = new System.Drawing.Size(112, 36);
+            this.drawPath2.TabIndex = 27;
+            this.drawPath2.Text = "Draw Path2";
+            this.drawPath2.UseVisualStyleBackColor = true;
+            this.drawPath2.Click += new System.EventHandler(this.drawPath2_Click);
+            // 
             // DrawFigure_MainForm
             // 
             this.AcceptButton = this.okMetalBtn;
@@ -140,6 +151,7 @@ namespace DrawingProject_Dll
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelMetalBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.drawPath2);
             this.Controls.Add(this.drawPathBtn);
             this.Controls.Add(this.drawSmoothingModesBtn);
             this.Controls.Add(this.drawBeziersBtn);
@@ -168,5 +180,6 @@ namespace DrawingProject_Dll
         private CustomControls_dll.MetalButton drawBeziersBtn;
         private CustomControls_dll.MetalButton drawSmoothingModesBtn;
         private CustomControls_dll.MetalButton drawPathBtn;
+        private CustomControls_dll.MetalButton drawPath2;
     }
 }

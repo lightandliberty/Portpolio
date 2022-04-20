@@ -68,6 +68,8 @@ namespace BasicProperties_dll
         private void TransparentForm_MouseMove(object sender, MouseEventArgs e)
         {
             if (downPoint == Point.Empty) return;
+            // 마우스의 현재 좌표e.X - 이전 좌표downPoint.X = 이동한 X좌표
+            // 이동한 좌표위치를 반영한 후엔, 현재 좌표의 위치가 이전 좌표의 위치가 되고, 현재 좌표의 위치가 다시 현재 좌표의 위치가 되서, 전체 위치는 변하지 않음.
             // 이동한 후의 위치 = 이동한 포인터의 위치 + 폼의 왼쪽 경계선 위치.(이동한 거리 + 폼의 왼쪽 위 좌표)
             Point location = new Point(this.Left + e.X - downPoint.X, this.Top + e.Y - downPoint.Y);
             this.Location = location;

@@ -117,6 +117,9 @@
     <Compile Include="Figure\Path.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Figure\Path2.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Figure\Shapes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +173,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Figure\DrawFigure_MainForm.resx">
       <DependentUpon>DrawFigure_MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Figure\Path.resx">
+      <DependentUpon>Path.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Figure\Path2.resx">
+      <DependentUpon>Path2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Figure\Shapes.resx">
       <DependentUpon>Shapes.cs</DependentUpon>

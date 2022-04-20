@@ -51,5 +51,10 @@ namespace DrawingProject_Dll
         {
             (new Path()).ShowDialog();
         }
+
+        private void drawPath2_Click(object sender, EventArgs e)
+        {
+            (new Path2()).ShowDialog();
+        }
     }
 }
