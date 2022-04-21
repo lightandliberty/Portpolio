@@ -31,5 +31,10 @@ namespace DrawingProject_Dll
         {
             (new ScalingVsClipping()).ShowDialog();
         }
+
+        private void drawPanningBtn_Click(object sender, EventArgs e)
+        {
+            (new Panning()).ShowDialog();
+        }
     }
 }
