@@ -63,6 +63,7 @@ namespace DrawingProject_Dll
             // 
             this.instructionLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.instructionLbl.AutoSize = true;
+            this.instructionLbl.ForeColor = System.Drawing.Color.White;
             this.instructionLbl.Location = new System.Drawing.Point(12, 307);
             this.instructionLbl.Name = "instructionLbl";
             this.instructionLbl.Size = new System.Drawing.Size(157, 24);
@@ -95,6 +96,7 @@ namespace DrawingProject_Dll
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Location = new System.Drawing.Point(47, 53);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(252, 201);
@@ -148,6 +150,7 @@ namespace DrawingProject_Dll
             this.moveRightBtn.TabIndex = 37;
             this.moveRightBtn.Text = "→";
             this.moveRightBtn.UseVisualStyleBackColor = true;
+            this.moveRightBtn.Click += new System.EventHandler(this.moveRightBtn_Click);
             this.moveRightBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.moveRightBtn_MouseDown);
             this.moveRightBtn.MouseLeave += new System.EventHandler(this.moveDownBtn_MouseLeave);
             this.moveRightBtn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.moveBtn_MouseUp);
@@ -160,7 +163,7 @@ namespace DrawingProject_Dll
             // Panning
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.CancelButton = this.closeBtn;
             this.ClientSize = new System.Drawing.Size(347, 354);
             this.Controls.Add(this.moveRightBtn);
@@ -208,8 +211,8 @@ namespace DrawingProject_Dll
         public void InitRect()
         {
             if(offset == null) offset = new Size();
-            int x = 10;
-            int y = 10;
+            int x = 0;
+            int y = 0;
             int width = this.ClientSize.Width - 20;
             int height = this.ClientSize.Height - 100; // 아래 여백 -100
             
@@ -295,16 +298,18 @@ namespace DrawingProject_Dll
             switch(currentBtn)
             {
                 case ButtonState.UP:
-                    offset.Height -= srcRect.Y + offset.Height > 0 ? 1 : 0;
+                    offset.Height -= 10;
+                    //offset.Height -= srcRect.Y + offset.Height > 0 ? 1 : 0;
                     break;
                 case ButtonState.DOWN:
-                    offset.Height += 1;
+                    offset.Height += 10;
                     break;
                 case ButtonState.LEFT:
-                    offset.Width -= srcRect.X + offset.Width > 0 ? 1 : 0;
+                    offset.Width -= 10;
+                    //offset.Width -= srcRect.X + offset.Width > 0 ? 1 : 0;
                     break;
                 case ButtonState.RIGHT:
-                    offset.Width += 1;
+                    offset.Width += 10;
                     break;
                 case ButtonState.NONE:
                 default:
@@ -325,6 +330,11 @@ namespace DrawingProject_Dll
         {
             currentBtn = ButtonState.NONE;
             timer1.Stop();
+        }
+
+        private void moveRightBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
     
