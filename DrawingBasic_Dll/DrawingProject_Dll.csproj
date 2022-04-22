@@ -87,6 +87,9 @@
     <Compile Include="BasicDrawingForms\Image\Panning.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="BasicDrawingForms\Image\Skewing.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DrawingMain.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -35,6 +35,7 @@ namespace DrawingProject_Dll
             this.titleLabel = new System.Windows.Forms.Label();
             this.drawScalingClippingBtn = new CustomControls_dll.MetalButton();
             this.drawPanningBtn = new CustomControls_dll.MetalButton();
+            this.drawSkewingBtn = new CustomControls_dll.MetalButton();
             this.SuspendLayout();
             // 
             // instructionTextBox
@@ -100,6 +101,16 @@ namespace DrawingProject_Dll
             this.drawPanningBtn.UseVisualStyleBackColor = true;
             this.drawPanningBtn.Click += new System.EventHandler(this.drawPanningBtn_Click);
             // 
+            // drawSkewingBtn
+            // 
+            this.drawSkewingBtn.Location = new System.Drawing.Point(24, 242);
+            this.drawSkewingBtn.Name = "drawSkewingBtn";
+            this.drawSkewingBtn.Size = new System.Drawing.Size(166, 36);
+            this.drawSkewingBtn.TabIndex = 25;
+            this.drawSkewingBtn.Text = "Draw Skewing";
+            this.drawSkewingBtn.UseVisualStyleBackColor = true;
+            this.drawSkewingBtn.Click += new System.EventHandler(this.drawSkewingBtn_Click);
+            // 
             // DrawImage_MainForm
             // 
             this.AcceptButton = this.okMetalBtn;
@@ -107,6 +118,7 @@ namespace DrawingProject_Dll
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelMetalBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.drawSkewingBtn);
             this.Controls.Add(this.drawPanningBtn);
             this.Controls.Add(this.drawScalingClippingBtn);
             this.Controls.Add(this.titleLabel);
@@ -129,5 +141,6 @@ namespace DrawingProject_Dll
         private System.Windows.Forms.Label titleLabel;
         private CustomControls_dll.MetalButton drawScalingClippingBtn;
         private CustomControls_dll.MetalButton drawPanningBtn;
+        private CustomControls_dll.MetalButton drawSkewingBtn;
     }
 }

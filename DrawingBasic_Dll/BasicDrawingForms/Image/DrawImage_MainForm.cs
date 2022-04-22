@@ -36,5 +36,10 @@ namespace DrawingProject_Dll
         {
             (new Panning()).ShowDialog();
         }
+
+        private void drawSkewingBtn_Click(object sender, EventArgs e)
+        {
+            (new Skewing()).ShowDialog();
+        }
     }
 }
