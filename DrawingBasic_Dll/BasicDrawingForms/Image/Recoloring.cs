@@ -213,8 +213,9 @@ namespace DrawingProject_Dll
             {
                 ColorMap[] colorMap = new ColorMap[1];    // DrawImage()메서드의 인수가 ImageAttributes인데, ImageAttributes.SetRemapTable()의 인수가 ColorMap[]배열이므로,
                 colorMap[0] = new ColorMap();
-                colorMap[0].OldColor = Color.FromArgb(0, 255, 0); // Color.Lime; // Just Color Picker로 추출해서 지정해도 됨.
-                colorMap[0].NewColor = Color.White;
+//                colorMap[0].OldColor = Color.FromArgb(0, 255, 0); // Color.Lime; // Just Color Picker로 추출해서 지정해도 됨.
+                colorMap[0].OldColor = bmp.GetPixel(0, bmp.Height -1); // 이미지의 좌측 하단 픽셀의 색을 얻음
+                colorMap[0].NewColor = Color.LightSkyBlue;
                 ImageAttributes attr = new ImageAttributes();   // DrawImage()에 인수로 넘길 ImageAttributes의 SetRemapTable 설정을 위해,
                 attr.SetRemapTable(colorMap);   // ColorMap[]을 인수로 넘김
 
