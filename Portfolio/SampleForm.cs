@@ -45,7 +45,7 @@ namespace _ProjectName_
             // 
             // instructionLbl
             // 
-            this.instructionLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.instructionLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.instructionLbl.AutoSize = true;
             this.instructionLbl.Location = new System.Drawing.Point(10, 290);
             this.instructionLbl.Name = "instructionLbl";

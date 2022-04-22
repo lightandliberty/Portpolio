@@ -41,5 +41,15 @@ namespace DrawingProject_Dll
         {
             (new Skewing()).ShowDialog();
         }
+
+        private void drawRotatingFlippingBtn_Click(object sender, EventArgs e)
+        {
+            (new RotatingFlipping()).ShowDialog();
+        }
+
+        private void drawRecoloringBtn_Click(object sender, EventArgs e)
+        {
+            (new Recoloring()).ShowDialog();
+        }
     }
 }

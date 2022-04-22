@@ -36,6 +36,8 @@ namespace DrawingProject_Dll
             this.drawScalingClippingBtn = new CustomControls_dll.MetalButton();
             this.drawPanningBtn = new CustomControls_dll.MetalButton();
             this.drawSkewingBtn = new CustomControls_dll.MetalButton();
+            this.drawRotatingFlippingBtn = new CustomControls_dll.MetalButton();
+            this.drawRecoloringBtn = new CustomControls_dll.MetalButton();
             this.SuspendLayout();
             // 
             // instructionTextBox
@@ -111,6 +113,26 @@ namespace DrawingProject_Dll
             this.drawSkewingBtn.UseVisualStyleBackColor = true;
             this.drawSkewingBtn.Click += new System.EventHandler(this.drawSkewingBtn_Click);
             // 
+            // drawRotatingFlippingBtn
+            // 
+            this.drawRotatingFlippingBtn.Location = new System.Drawing.Point(24, 284);
+            this.drawRotatingFlippingBtn.Name = "drawRotatingFlippingBtn";
+            this.drawRotatingFlippingBtn.Size = new System.Drawing.Size(166, 36);
+            this.drawRotatingFlippingBtn.TabIndex = 26;
+            this.drawRotatingFlippingBtn.Text = "Draw Rotating & Flipping";
+            this.drawRotatingFlippingBtn.UseVisualStyleBackColor = true;
+            this.drawRotatingFlippingBtn.Click += new System.EventHandler(this.drawRotatingFlippingBtn_Click);
+            // 
+            // drawRecoloringBtn
+            // 
+            this.drawRecoloringBtn.Location = new System.Drawing.Point(24, 326);
+            this.drawRecoloringBtn.Name = "drawRecoloringBtn";
+            this.drawRecoloringBtn.Size = new System.Drawing.Size(166, 36);
+            this.drawRecoloringBtn.TabIndex = 27;
+            this.drawRecoloringBtn.Text = "Draw Recoloring";
+            this.drawRecoloringBtn.UseVisualStyleBackColor = true;
+            this.drawRecoloringBtn.Click += new System.EventHandler(this.drawRecoloringBtn_Click);
+            // 
             // DrawImage_MainForm
             // 
             this.AcceptButton = this.okMetalBtn;
@@ -118,6 +140,8 @@ namespace DrawingProject_Dll
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelMetalBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.drawRecoloringBtn);
+            this.Controls.Add(this.drawRotatingFlippingBtn);
             this.Controls.Add(this.drawSkewingBtn);
             this.Controls.Add(this.drawPanningBtn);
             this.Controls.Add(this.drawScalingClippingBtn);
@@ -142,5 +166,7 @@ namespace DrawingProject_Dll
         private CustomControls_dll.MetalButton drawScalingClippingBtn;
         private CustomControls_dll.MetalButton drawPanningBtn;
         private CustomControls_dll.MetalButton drawSkewingBtn;
+        private CustomControls_dll.MetalButton drawRotatingFlippingBtn;
+        private CustomControls_dll.MetalButton drawRecoloringBtn;
     }
 }

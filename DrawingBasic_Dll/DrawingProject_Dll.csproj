@@ -87,6 +87,12 @@
     <Compile Include="BasicDrawingForms\Image\Panning.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="BasicDrawingForms\Image\Recoloring.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicDrawingForms\Image\RoatatingFlipping.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="BasicDrawingForms\Image\Skewing.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +190,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BasicDrawingForms\Image\Panning.resx">
       <DependentUpon>Panning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicDrawingForms\Image\Recoloring.resx">
+      <DependentUpon>Recoloring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicDrawingForms\Image\RoatatingFlipping.resx">
+      <DependentUpon>RoatatingFlipping.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DrawingMain.resx">
       <DependentUpon>DrawingMain.cs</DependentUpon>
