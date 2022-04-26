@@ -70,7 +70,7 @@ namespace CustomControls_dll
         }
 
         // .FillPath로 칠하는데, AntiAlias를 설정해서 칠하고, 다시 설정을 원래대로 돌려 놓음.
-        public static void GetRoundedRectangleAntiAliasFill(Graphics g, Brush rectBrush, Rectangle rect, int radius)
+        public static void FillRoundedRectangleAntiAlias(Graphics g, Brush rectBrush, Rectangle rect, int radius)
         {
             // 둥근 사각형 path를 얻어, AntiAlias로 칠하고, Graphics개체의 AntiAlias 설정을 원래대로 돌려 놓는다.
             GraphicsPath path = GetRoundedRectanglePath(rect, radius);
@@ -81,7 +81,7 @@ namespace CustomControls_dll
         }
 
         // 패스 개체의 윤곽선을 그리는 메서드
-        public static void GetRoundedRectangleAntiAliasDraw(Graphics g, Pen pen, Rectangle rect, int radius)
+        public static void DrawRoundedRectangleAntiAlias(Graphics g, Pen pen, Rectangle rect, int radius)
         {
             GraphicsPath path = GetRoundedRectanglePath(rect, radius);
             SmoothingMode savedMode = g.SmoothingMode;

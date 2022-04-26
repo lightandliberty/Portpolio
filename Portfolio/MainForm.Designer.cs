@@ -42,6 +42,8 @@
             this.neonChangeIntervalTimer = new System.Windows.Forms.Timer(this.components);
             this.MultiThreadBtn = new CustomControls_dll.MetalButton();
             this.RawInputBtn = new CustomControls_dll.MetalButton();
+            this.shadowButton1 = new CustomControls_dll.ShadowButton();
+            this.shadowButton2 = new CustomControls_dll.ShadowButton();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -168,13 +170,68 @@
             this.RawInputBtn.UseVisualStyleBackColor = true;
             this.RawInputBtn.Click += new System.EventHandler(this.getRawInputBtn_Click);
             // 
+            // shadowButton1
+            // 
+            this.shadowButton1.BackColor = System.Drawing.Color.Transparent;
+            this.shadowButton1.BackgroundGradientMode = CustomControls_dll.PanelGradientMode.Vertical;
+            this.shadowButton1.EdgeWidth = 0;
+            this.shadowButton1.EndColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.shadowButton1.FlatAppearance.BorderSize = 0;
+            this.shadowButton1.FlatBorderColor = System.Drawing.Color.ForestGreen;
+            this.shadowButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.shadowButton1.FocusScaleHeight = 0.85F;
+            this.shadowButton1.FocusScaleWidth = 0.95F;
+            this.shadowButton1.Location = new System.Drawing.Point(188, 90);
+            this.shadowButton1.Name = "shadowButton1";
+            this.shadowButton1.NeonColor = CustomControls_dll.NeonColor.Pink;
+            this.shadowButton1.RectRadius = 20;
+            this.shadowButton1.ShadowColor = System.Drawing.Color.DimGray;
+            this.shadowButton1.ShadowShift = 20;
+            this.shadowButton1.ShadowStyle = CustomControls_dll.ShadowMode.ForwardDiagonal;
+            this.shadowButton1.Size = new System.Drawing.Size(186, 73);
+            this.shadowButton1.StartColor = System.Drawing.Color.ForestGreen;
+            this.shadowButton1.Style = CustomControls_dll.BevelStyle.Raised;
+            this.shadowButton1.TabIndex = 14;
+            this.shadowButton1.Text = "Shadow Button";
+            this.shadowButton1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(32)))), ((int)(((byte)(51)))));
+            this.shadowButton1.UseVisualStyleBackColor = false;
+            // 
+            // shadowButton2
+            // 
+            this.shadowButton2.BackColor = System.Drawing.Color.Transparent;
+            this.shadowButton2.BackgroundGradientMode = CustomControls_dll.PanelGradientMode.Vertical;
+            this.shadowButton2.EdgeWidth = -5;
+            this.shadowButton2.EndColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(20)))), ((int)(((byte)(190)))));
+            this.shadowButton2.FlatAppearance.BorderSize = 0;
+            this.shadowButton2.FlatBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(20)))), ((int)(((byte)(190)))));
+            this.shadowButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.shadowButton2.FocusScaleHeight = 0.65F;
+            this.shadowButton2.FocusScaleWidth = 0.77F;
+            this.shadowButton2.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.shadowButton2.Location = new System.Drawing.Point(188, 171);
+            this.shadowButton2.Name = "shadowButton2";
+            this.shadowButton2.NeonColor = CustomControls_dll.NeonColor.Pink;
+            this.shadowButton2.RectRadius = 20;
+            this.shadowButton2.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(20)))), ((int)(((byte)(190)))));
+            this.shadowButton2.ShadowShift = 20;
+            this.shadowButton2.ShadowStyle = CustomControls_dll.ShadowMode.Surrounded;
+            this.shadowButton2.Size = new System.Drawing.Size(227, 106);
+            this.shadowButton2.StartColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(20)))), ((int)(((byte)(190)))));
+            this.shadowButton2.Style = CustomControls_dll.BevelStyle.Neon;
+            this.shadowButton2.TabIndex = 15;
+            this.shadowButton2.Text = "Neon";
+            this.shadowButton2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(32)))), ((int)(((byte)(51)))));
+            this.shadowButton2.UseVisualStyleBackColor = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(32)))), ((int)(((byte)(51)))));
             this.CancelButton = this.CloseFormBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.shadowButton2);
+            this.Controls.Add(this.shadowButton1);
             this.Controls.Add(this.RawInputBtn);
             this.Controls.Add(this.MultiThreadBtn);
             this.Controls.Add(this.neonCloseBtn);
@@ -211,5 +268,7 @@
         private System.Windows.Forms.Timer neonChangeIntervalTimer;
         private CustomControls_dll.MetalButton MultiThreadBtn;
         private CustomControls_dll.MetalButton RawInputBtn;
+        private CustomControls_dll.ShadowButton shadowButton1;
+        private CustomControls_dll.ShadowButton shadowButton2;
     }
 }
