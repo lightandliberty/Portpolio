@@ -48,12 +48,12 @@ namespace DrawingProject_Dll
             this.instructionLbl = new System.Windows.Forms.Label();
             this.drawRecoloringBtn = new CustomControls_dll.MetalButton();
             this.closeBtn = new CustomControls_dll.MetalButton();
-            this.bottomPn = new ResizePanel();
+            this.bottomPn = new DrawingProject_Dll.Recoloring.ResizePanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.leftPn = new ResizePanel();
+            this.leftPn = new DrawingProject_Dll.Recoloring.ResizePanel();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rightPn = new ResizePanel();
+            this.rightPn = new DrawingProject_Dll.Recoloring.ResizePanel();
             this.bottomPn.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -109,7 +109,7 @@ namespace DrawingProject_Dll
             this.groupBox1.Size = new System.Drawing.Size(178, 276);
             this.groupBox1.TabIndex = 34;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Original Colors";
             // 
             // leftPn
             // 
@@ -137,7 +137,7 @@ namespace DrawingProject_Dll
             this.groupBox2.Size = new System.Drawing.Size(217, 276);
             this.groupBox2.TabIndex = 36;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Text = "Mapped Colors";
             // 
             // rightPn
             // 

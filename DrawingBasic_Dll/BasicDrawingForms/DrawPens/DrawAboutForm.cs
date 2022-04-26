@@ -155,7 +155,29 @@ namespace DrawingProject_Dll
             format.LineAlignment = StringAlignment.Center;  // Width가 350일 때, 폰트의 크기는 18의 비율로, 크기에 비례
             g.DrawString("Ain't graphics\r\ncool?", new Font(this.Font.Name, rect.Width * 18 / 350), Brushes.Black, rect, format);
 
+            rect.Inflate(-50, -50);
+            rect.X = 0;
+            rect.Y = 0;
+            g.Clear(SystemColors.Control);
+            Color redColor = Color.Red;
+            for (int i = 0; i < 15; i++)
+            {
+                g.FillRectangle(new SolidBrush(redColor), rect);
+                rect.X += 15;
+                redColor = ControlPaint.Light(redColor);
+            }
+            rect.X = 0;
+            rect.Y += rect.Height;
+            redColor = Color.Red;
+            for (int i = 0; i < 15; i++)
+            {
+                g.FillRectangle(new SolidBrush(redColor), rect);
+                rect.X += 15;
+                redColor = ControlPaint.Dark(redColor);
+            }
         }
+
+
 
         private void DrawAbout_SizeChanged(object sender, EventArgs e)
         {

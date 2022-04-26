@@ -345,6 +345,7 @@ namespace DrawingProject_Dll
                     {
                         rect.X -= width;
                         rect.Y += height;
+                        pathGBrush.FocusScales = new PointF(0.95f, 0.5f);
                         g.FillRectangle(pathGBrush, rect);
                         // 영역 저장
                         rects.Add(rect);

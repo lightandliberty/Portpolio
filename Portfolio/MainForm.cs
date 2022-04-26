@@ -30,6 +30,19 @@ namespace Portfolio
             
         }
 
+        //private const int CS_DropShadow = 0x00020000;
+        //protected override CreateParams CreateParams
+        //{
+        //    get
+        //    {
+        //        CreateParams cp = base.CreateParams;
+        //        cp.ClassStyle |= CS_DropShadow;
+        //        return cp;
+        //    }
+        //}
+
+
+
         // 이전 RawInput 구현 부분
         //private void RawInputBtn_Click(object sender, EventArgs e)
         //{
@@ -40,7 +53,7 @@ namespace Portfolio
         //    showRawInput.ShowDialog();
         //    MessageBox.Show(mKeyboardDeviceName,"키보드 장치 이름",MessageBoxButtons.OK,MessageBoxIcon.Information);
         //    MessageBox.Show(mMouseDeviceName,"마우스 장치 이름", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        
+
         //    showRawInput.Dispose();
         //}
 
