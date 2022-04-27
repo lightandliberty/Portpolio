@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Runtime.InteropServices;   // [DllImport("shlwapi.dll")] 사용을 위해
+
 
 namespace CustomControls_dll
 {
@@ -16,7 +18,8 @@ namespace CustomControls_dll
         Lowered,    // 안으로 패인 버튼 스타일
         Raised,     // 위로 솟은 버튼 스타일
         Flat,        // 얇은 테두리
-        Neon
+        Neon,
+        GradientNeon,
     }
 
     public enum ShadowMode  // 그림자 방향
@@ -36,10 +39,51 @@ namespace CustomControls_dll
     }
 
     // 네온 버튼은 EdgeWidth를 -5로 하는 게 좋음. 그럼 버튼의 크기가 커짐. 아니면, ShadowShift만큼 크기를 줄이는 메서드 부분에, 5만큼 키우면 될 듯.
-    public enum NeonColor
+
+    public enum NeonColor : int
     {
-        Pink = 0,
-        None
+        BrightChartreuse = 0,
+        BrightGreen,
+        BrightMagenta,
+        BrightPink,
+        BrightPurple,
+        BrightRed,
+        BrightSaffron,
+        BrightScarlet,
+        BrightTeal,
+        ElectricCrimson,
+        ElectricCyan,
+        ElectricFlamingo,
+        ElectricGreen,
+        ElectricIndigo,
+        ElectricLine,
+        ElectricOrange,
+        ElectricPink,
+        ElectricPurple,
+        ElectricRed,
+        ElectricSheep,
+        ElectricViolet,
+        ElectricYellow,
+        FluorescentGreen,
+        FluorescentOrange,
+        FluorescentPink,
+        FluorescentRed,
+        FluorescentRedOrange,
+        FluorescentTurquoise,
+        FluorescentYellow,
+        LightNeonPink,
+        NeonBlue,
+        NeonCarrot,
+        NeonFuchsia,
+        NeonGreen,
+        NeonPink,
+        NeonPurple,
+        NeonRed,
+        NeonYellow,
+        PinkishRedNeon,
+        Pink,   // 39가지 네온 색에는 포함되지 않음
+        Count,
+        None,
     }
 
     public interface IShadowBtn
@@ -78,17 +122,15 @@ namespace CustomControls_dll
         private float mFocusScaleHeight = 0.85f;
         private Color mTextColor = Color.FromArgb(58, 32, 51);
         private NeonColor mNeonColor = NeonColor.None;
-        private Color mNeonClickColor;
-        private Color mNeonHoverEdgeColor;
 
         private const int decreaseShadowWidthHeight = 10;    // 그림자의 너비, 높이 감소. (기본값 10) -로 하면, 그림자의 너비,높이가 늘어남
-//        private Color mMainColor;
         private Color mStartEdgeColor;
         private Color mEndEdgeColor;
 
 
         private bool isLeftMouseButtonDown = false; // 버튼 클릭 이벤트에 사용할 flag
         private bool isMouseHover = false;
+        public Dictionary<NeonColor, Color> neonColorDic;
 
         #endregion 멤버 끝
 
@@ -126,7 +168,7 @@ namespace CustomControls_dll
             {
                 mStyle = value;
                 // 네온 설정일 경우, 네온 효과를 위해서 FocusScale등 몇몇 초기 설정을 바꿈.
-                if (value == BevelStyle.Neon)  // 네온으로 설정했을 때, 멤버 변수의 설정을 변경
+                if (value == BevelStyle.Neon || value == BevelStyle.GradientNeon)  // 네온으로 설정했을 때, 멤버 변수의 설정을 변경
                 {
                     mEdgeWidth = 5;
                     mFocusScaleWidth = 0.77f;
@@ -154,26 +196,12 @@ namespace CustomControls_dll
             set
             {
                 mNeonColor = value;
-                if (mStyle != BevelStyle.Neon)
+                if (mStyle != BevelStyle.Neon && mStyle != BevelStyle.GradientNeon)
                     return;
-                switch (value)
-                {
-                    // Pink를 골랐으면,
-                    case NeonColor.Pink:
-                        mShadowColor = Color.FromArgb(255, 20, 190);
-                        mStartColor = Color.FromArgb(255, 20, 190);
-                        mEndColor = Color.FromArgb(255, 20, 190);
-                        mTextColor = Color.FromArgb(58, 32, 51);
-                        mNeonClickColor = ControlPaint.LightLight(mStartColor);
-                        mNeonHoverEdgeColor = ControlPaint.Dark(mStartColor);
-                        break;
-                    default: // Enum에 혹시 없으면 Pink값으로 설정
-                        mShadowColor = Color.FromArgb(255, 20, 190);
-                        mStartColor = Color.FromArgb(255, 20, 190);
-                        mEndColor = Color.FromArgb(255, 20, 190);
-                        mTextColor = Color.FromArgb(58, 32, 51);
-                        break;
-                }
+                if (value == NeonColor.None || value == NeonColor.Count)
+                    return;
+                mEndColor = mStartColor = mShadowColor = neonColorDic[mNeonColor]; // 설정한 색으로 설정
+                mTextColor = Color.FromArgb(58, 32, 51);
             }
         }
 
@@ -184,10 +212,11 @@ namespace CustomControls_dll
         {
             SetShadowBtnFormStyle();
             AddMouseEvent();
+            InitNeonColorDic();
         }
 
-        
-        private void SetShadowBtnFormStyle()
+
+    private void SetShadowBtnFormStyle()
         {
             this.Size = new Size(200, 50);
 //            this.Paint += this.Button_Paint;
@@ -241,7 +270,7 @@ namespace CustomControls_dll
                     break;
                 case ShadowMode.Surrounded:
                     bevelX = mShadowShift;               // 왼쪽 위로 그림자가 그려져 있고, 버튼을 그림자 평행이동만큼 오른쪽으로 옮김
-                    bevelY = Style == BevelStyle.Neon ? mShadowShift : mShadowShift + mEdgeWidth;  // Neon버튼일 경우, 버튼을 더 아래로 내려서 그리진 않음.
+                    bevelY = (Style == BevelStyle.Neon || Style == BevelStyle.GradientNeon) ? mShadowShift : mShadowShift + mEdgeWidth;  // Neon버튼일 경우, 버튼을 더 아래로 내려서 그리진 않음.
                     //bevelY = mShadowShift + mEdgeWidth;  // 왼쪽 위로 그림자라 그려져 잇고, 버튼을 그림자 평행이동만큼 아래로 옮김. 버튼의 모서리 길이만큼 더 내림(굳이 안 해도 될 것 같긴 하지만)
                     bevelWidth = Width - (2 * mShadowShift) - 1;    // 그림자 이동 거리의 두배만큼 너비 축소
                     bevelHeight = Height - (2 * mShadowShift) - 1;  // 그림자 이동 거리의 두배만큼 높이 축소
@@ -270,6 +299,7 @@ namespace CustomControls_dll
                     DrawFlatBtn(g, bevelRect);
                     break;
                 case BevelStyle.Neon:
+                case BevelStyle.GradientNeon:
                     DrawNeonBtn(g, bevelRect);
                     break;
             }
@@ -319,10 +349,14 @@ namespace CustomControls_dll
             // GraphicsPath개체를 그림
             using (PathGradientBrush shadowBrush = new PathGradientBrush(shadowPath)) // 주위 점들(path개체)을 PathGradientBrush에 전달해서 패스 그라데이션 브러시 생성
             {
-                if(Style == BevelStyle.Neon) shadowBrush.Blend = GetNeonBlend(shadowRect);
+                if(Style == BevelStyle.Neon || Style == BevelStyle.GradientNeon) shadowBrush.Blend = GetNeonBlend(shadowRect);
                 // 진하게 표시될 영역(위치) 설정
                 shadowBrush.CenterPoint = new PointF(shadowRect.Width / 2, shadowRect.Height / 2);  // 이 영역은 나중에 .FocusScales에서 0.95f, 0.85f로 확대됨.
-                shadowBrush.CenterColor = mShadowColor;
+                // Neon버튼이 아닐 경우, 일반 그림자 색으로 칠하고, Neon일 경우, 클릭했을 때의 색으로 그림자 색을 바꾼다.
+                Color shadowColor = Style != BevelStyle.Neon ? mShadowColor : isLeftMouseButtonDown ? ControlPaint.Light(ControlPaint.LightLight(mStartColor)) : isMouseHover ? ControlPaint.Light(mStartColor) : mStartColor;
+                // 클릭했을 때, 색이 변하지 않게 하려면,
+                // Color shadowColor = mShadowColor;
+                shadowBrush.CenterColor = shadowColor;
                 // 그라데이션은 패스의 끝점의 SurroundColors에서 CenterPoint의 CenterColor로 진행되는데, CenterPoint의 가로,세로 크기를 지정한다.
                 // 이걸 지정하지 않으면, CenterPoint와의 거리가 너무 멀어, 그림자그라데이션이 진행되지 않으므로, 포커스를 최대한 키워서 그림자의 그라데이션을 표현한다.
                 shadowBrush.FocusScales = new PointF(mFocusScaleWidth, mFocusScaleHeight);
@@ -454,10 +488,11 @@ namespace CustomControls_dll
             
             Rectangle rectWithoutBevel = bevelRect;
             Color startColor = isLeftMouseButtonDown ? ControlPaint.Light(ControlPaint.LightLight(mStartColor)) : isMouseHover ? ControlPaint.Light(mStartColor) :  mStartColor;
-//            if (isLeftMouseButtonDown) startColor = ControlPaint.Light(startColor);
+            // 그라데이션 네온일 경우만, 그라데이션으로 네온 색을 표시
+            Color endColor = Style == BevelStyle.GradientNeon ? mEndColor : isLeftMouseButtonDown ? ControlPaint.Light(ControlPaint.LightLight(mStartColor)) : isMouseHover ? ControlPaint.Light(mStartColor) : mEndColor;
             // 안쪽 사각형을 다시 그림. (그라데이션 브러시)
             // bevelRect로 해도 되지만, 코드를 읽기 쉽게 하기 위해 이름을 topRect로 바꿈.
-            using (LinearGradientBrush topGradientBrush = new LinearGradientBrush(rectWithoutBevel, startColor, mEndColor, (LinearGradientMode)this.BackgroundGradientMode))
+            using (LinearGradientBrush topGradientBrush = new LinearGradientBrush(rectWithoutBevel, startColor, endColor, (LinearGradientMode)this.BackgroundGradientMode))
                 RoundedRectangle.FillRoundedRectangleAntiAlias(g, topGradientBrush, rectWithoutBevel, mRectRadius);   // FillPath로 색칠
         }
 
@@ -490,6 +525,7 @@ namespace CustomControls_dll
                         rectWithShadowBlend.Factors = new float[] { 0f, 0f, .2f, .9f };   // 끝 점의 섞이는 비율
                         break;
                     case BevelStyle.Neon:
+                    case BevelStyle.GradientNeon:
                         rectWithShadowBlend.Positions = new float[] { 0.0f, .2f, .4f, .6f, .8f, 1.0f };
                         rectWithShadowBlend.Factors = new float[] { 0f, .2f, .4f, .6f, .8f, 1f };   // 끝 점의 섞이는 비율
                         break;
@@ -510,10 +546,21 @@ namespace CustomControls_dll
 
 
 
+        public int hue = 0;
         public void Button_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
+            {
                 isLeftMouseButtonDown = true;
+
+
+                ////mEndColor = mShadowColor = mStartColor = SimpleColorTransforms.HsLtoRgb(hue, 1, 0.51);
+                //mEndColor = mShadowColor = mStartColor = SimpleColorTransforms.HsLtoRgb(hue, 1, 0.51);
+                //hue += 10;
+                //hue %= 360;
+                //System.Diagnostics.Debug.WriteLine(hue);
+            }
+
             Invalidate();
         }
 
@@ -551,6 +598,55 @@ namespace CustomControls_dll
             MouseLeave -= new EventHandler(Button_MouseLeave);
             Paint -= new PaintEventHandler(Button_Paint);
             base.Dispose(disposing);
+        }
+
+        private void InitNeonColorDic()
+        {
+            neonColorDic = new Dictionary<NeonColor, Color>();
+            // ARGB 16진수 코드를 사용하는 경우 Color col = System.Windows.Media.ColorConverter.ConvertFromString("#FFDFD991") as Color;
+            // 또는 col = (Color) ColorConverter.ConvertFromString("#FFDFD991"); 를 사용해야 함.
+
+
+            neonColorDic[NeonColor.BrightChartreuse] =      System.Drawing.ColorTranslator.FromHtml("#dfff11");
+            neonColorDic[NeonColor.BrightGreen] =           System.Drawing.ColorTranslator.FromHtml("#66ff00");
+            neonColorDic[NeonColor.BrightMagenta] =         System.Drawing.ColorTranslator.FromHtml("#ff08e8");
+            neonColorDic[NeonColor.BrightPink] =            System.Drawing.ColorTranslator.FromHtml("#fe01b1");
+            neonColorDic[NeonColor.BrightPurple] =          System.Drawing.ColorTranslator.FromHtml("#be03fd");
+            neonColorDic[NeonColor.BrightRed] =             System.Drawing.ColorTranslator.FromHtml("#ff000d");
+            neonColorDic[NeonColor.BrightSaffron] =         System.Drawing.ColorTranslator.FromHtml("#ffcf09");
+            neonColorDic[NeonColor.BrightScarlet] =         System.Drawing.ColorTranslator.FromHtml("#fc0e34");
+            neonColorDic[NeonColor.BrightTeal] =            System.Drawing.ColorTranslator.FromHtml("#01f9c6");
+            neonColorDic[NeonColor.ElectricCrimson] =       System.Drawing.ColorTranslator.FromHtml("#ff003f");
+            neonColorDic[NeonColor.ElectricCyan] =          System.Drawing.ColorTranslator.FromHtml("#0ff0fc");
+            neonColorDic[NeonColor.ElectricFlamingo] =      System.Drawing.ColorTranslator.FromHtml("#fc74fd");
+            neonColorDic[NeonColor.ElectricGreen] =         System.Drawing.ColorTranslator.FromHtml("#21fc0d");
+            neonColorDic[NeonColor.ElectricIndigo] =        System.Drawing.ColorTranslator.FromHtml("#6600ff");
+            neonColorDic[NeonColor.ElectricLine] =          System.Drawing.ColorTranslator.FromHtml("#ccff00");
+            neonColorDic[NeonColor.ElectricOrange] =        System.Drawing.ColorTranslator.FromHtml("#ff3503");
+            neonColorDic[NeonColor.ElectricPink] =          System.Drawing.ColorTranslator.FromHtml("#ff0490");
+            neonColorDic[NeonColor.ElectricPurple] =        System.Drawing.ColorTranslator.FromHtml("#bf00ff");
+            neonColorDic[NeonColor.ElectricRed] =           System.Drawing.ColorTranslator.FromHtml("#e60000");
+            neonColorDic[NeonColor.ElectricSheep] =         System.Drawing.ColorTranslator.FromHtml("#55ffff");
+            neonColorDic[NeonColor.ElectricViolet] =        System.Drawing.ColorTranslator.FromHtml("#8f00f1");
+            neonColorDic[NeonColor.ElectricYellow] =        System.Drawing.ColorTranslator.FromHtml("#fffc00");
+            neonColorDic[NeonColor.FluorescentGreen] =      System.Drawing.ColorTranslator.FromHtml("#08ff08");
+            neonColorDic[NeonColor.FluorescentOrange] =     System.Drawing.ColorTranslator.FromHtml("#ffcf00");
+            neonColorDic[NeonColor.FluorescentPink] =       System.Drawing.ColorTranslator.FromHtml("#fe1493");
+            neonColorDic[NeonColor.FluorescentRed] =        System.Drawing.ColorTranslator.FromHtml("#ff5555");
+            neonColorDic[NeonColor.FluorescentRedOrange] =  System.Drawing.ColorTranslator.FromHtml("#fc8427");
+            neonColorDic[NeonColor.FluorescentTurquoise] =  System.Drawing.ColorTranslator.FromHtml("#00fdff");
+            neonColorDic[NeonColor.FluorescentYellow] =     System.Drawing.ColorTranslator.FromHtml("#ccff02");
+            neonColorDic[NeonColor.LightNeonPink] =         System.Drawing.ColorTranslator.FromHtml("#ff11ff");
+            neonColorDic[NeonColor.NeonBlue] =              System.Drawing.ColorTranslator.FromHtml("#04d9ff");
+            neonColorDic[NeonColor.NeonCarrot] =            System.Drawing.ColorTranslator.FromHtml("#ff9933");
+            neonColorDic[NeonColor.NeonFuchsia] =           System.Drawing.ColorTranslator.FromHtml("#fe4164");
+            neonColorDic[NeonColor.NeonGreen] =             System.Drawing.ColorTranslator.FromHtml("#39ff14");
+            neonColorDic[NeonColor.NeonPink] =              System.Drawing.ColorTranslator.FromHtml("#fe019a");
+            neonColorDic[NeonColor.NeonPurple] =            System.Drawing.ColorTranslator.FromHtml("#bc13fe");
+            neonColorDic[NeonColor.NeonRed] =               System.Drawing.ColorTranslator.FromHtml("#ff073a");
+            neonColorDic[NeonColor.NeonYellow] =            System.Drawing.ColorTranslator.FromHtml("#cfff04");
+            neonColorDic[NeonColor.PinkishRedNeon] =        System.Drawing.ColorTranslator.FromHtml("#ff0055");
+            neonColorDic[NeonColor.Pink] =                  Color.FromArgb(255, 20, 190);
         }
 
     }

@@ -289,7 +289,60 @@ namespace Portfolio
         private void MainForm_Load(object sender, EventArgs e)
         {
         }
+
+        private void shadowButton2_Click(object sender, EventArgs e)
+        {
+            int num = (int)(shadowButton2.NeonColor+1) % (int)CustomControls_dll.NeonColor.Count;
+            System.Diagnostics.Debug.WriteLine(num.ToString());
+            shadowButton2.NeonColor = (CustomControls_dll.NeonColor)num;
+            shadowButton2.Text = ((CustomControls_dll.NeonColor)num).ToString();
+        }
+
+        //public int hue = 0;
+        //int shownum = 0;
+        //private void hslColorPn_Click(object sender, EventArgs e)
+        //{
+        //    //List<int> hueList = new List<int>();
+        //    ////int hslColor = ColorHLSToRGB(317, 100, 54); // Hue, Luminance, Saturation
+        //    //// lu는 0 ~ 240
+        //    ////for (int hue = 0; hue <= 360; hue++)
+        //    //int hue = (int)(317.0f / 360.0f * 240.0f);
+        //    //int lu = (int)(100 / 100 * 240);
+        //    //for (int sat = 11; sat <= 361; sat++)
+        //    //{
+        //    //    int hslColor = ColorHLSToRGB(hue, lu, sat); // Hue, Luminance, Saturation
+        //    //    hslColorPn.BackColor = ColorTranslator.FromWin32(hslColor);
+        //    //    hslColorPn.Refresh();
+        //    //    System.Diagnostics.Debug.WriteLine(sat.ToString());
+        //    //    System.Diagnostics.Debug.WriteLine(hslColor.ToString());
+        //    //    if(!hueList.Contains(hslColor))
+        //    //        hueList.Add(hslColor);
+        //    //    else
+        //    //        break;
+        //    //}
+
+        //    shownum = shownum % 3;
+        //    switch(shownum)
+        //    {
+        //        case 0:
+        //            hslColorPn.BackColor = SimpleColorTransforms.HsLtoRgb(hue, 1, 0.51);
+        //            hslColorPn.Refresh();
+        //            break;
+        //        case 1:
+        //            hslColorPn.BackColor = ControlPaint.Light(SimpleColorTransforms.HsLtoRgb(hue, 1, 0.51));
+        //            hslColorPn.Refresh();
+        //            break;
+        //        case 2:
+        //            hslColorPn.BackColor = ControlPaint.Light(ControlPaint.LightLight(SimpleColorTransforms.HsLtoRgb(hue, 1, 0.51)));
+        //            hslColorPn.Refresh();
+        //            hue += 10;
+        //            break;
+        //    }
+        //    shownum++;
+        //}
     }
 
 
 }
+
+
