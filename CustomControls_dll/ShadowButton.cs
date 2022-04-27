@@ -9,6 +9,9 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;   // [DllImport("shlwapi.dll")] 사용을 위해
 
+/// <summary>
+/// 그림자를 그리고, 버튼 종류별 그리는 메서드를 호출하면, 모서리를 그리고(네온 버튼 제외), 버튼의 윗면을 그린다.
+/// </summary>
 
 namespace CustomControls_dll
 {
@@ -419,6 +422,7 @@ namespace CustomControls_dll
 
         #endregion protected override
 
+        #region 메인 Paint 메서드 (그림자를 그리고, 버튼 종류별 그리는 메서드를 호출하면, 모서리를 그리고(네온 버튼 제외), 버튼의 윗면을 그린다.)
         // 버튼을 그림 (그림자를 그리고, 버튼의 영역을 얻어온 후 그림)
         private void PaintShadowBtn(Graphics g)
         {
@@ -491,9 +495,9 @@ namespace CustomControls_dll
                 sf);
 
         }
+        #endregion 메인 Paint 메서드. 끝.
 
-
-        // 그림자를 그림. (PaintShadowBtn의 일부)
+        #region 그림자 그리는 메서드
         private void DrawShadow(Graphics g)
         {
             Rectangle shadowRect = new Rectangle();
@@ -538,54 +542,56 @@ namespace CustomControls_dll
                 g.FillPath(shadowBrush, shadowPath);              // 그림자는 AntiAlias없는 듯
             }
         }
+        #endregion 그림자 그리는 메서드. 끝.
 
-        // 모서리 포함한 사각 영역을 그림
-        protected virtual void FillRectangleWithEdges(Graphics g, ref Rectangle rectWithEdge)
+        #region 네온 버튼의 그림자를 번지게 그리는 혼합 비율을 설정하는 메서드
+        public Blend GetNeonBlend(Rectangle rectWithShadow) // 확장성을 위해, Lowered와 Raised도 일단 넣어 두었다.
         {
-            Rectangle lgbRect = rectWithEdge;
+            Rectangle lgbRect = rectWithShadow;
             lgbRect.Inflate(1, 1);  // LinearGradientBrush 생성에 쓰일 lgbRect의 크기를 좌,우로 1씩 확대
 
             // Blend생성
-            Blend rectWithEdgeBlend = new Blend();
+            Blend rectWithShadowBlend = new Blend();
             if (mRectRadius >= 150)  // 모서리의 반경이 아주 크면, 좀 더 세분해서 그라데이션
             {
-                rectWithEdgeBlend.Positions = new float[] { 0.0f, .2f, .4f, .6f, .8f, 1.0f };
-                rectWithEdgeBlend.Factors = new float[] { 0f, 0f, .2f, .4f, 1f, 1f };   // 끝 점의 섞이는 비율
+                rectWithShadowBlend.Positions = new float[] { 0.0f, .2f, .4f, .6f, .8f, 1.0f };
+                rectWithShadowBlend.Factors = new float[] { 0f, 0f, .2f, .4f, 1f, 1f };   // 끝 점의 섞이는 비율
             }
             else
             {
                 switch (Style)
                 {
                     case BevelStyle.Lowered:
-                        rectWithEdgeBlend.Positions = new float[] { 0f, .49f, .52f, 1f };   // 0, 중간앞, 중간뒤, 끝
-                        rectWithEdgeBlend.Factors   = new float[] { 0f,  .6f, .99f, 1f };   // 끝 점의 섞이는 비율
+                        rectWithShadowBlend.Positions = new float[] { 0f, .49f, .52f, 1f };   // 0, 중간앞, 중간뒤, 끝
+                        rectWithShadowBlend.Factors = new float[] { 0f, .6f, .99f, 1f };   // 끝 점의 섞이는 비율
                         break;
                     case BevelStyle.Raised:
-                        rectWithEdgeBlend.Positions = new float[] { 0f, .45f, .51f, 1f };   // 0, 중간앞, 중간뒤, 끝
-                        rectWithEdgeBlend.Factors   = new float[] { 0f,   0f,  .2f, 1f };   // 끝 점의 섞이는 비율
+                        rectWithShadowBlend.Positions = new float[] { 0f, .45f, .51f, 1f };   // 0, 중간앞, 중간뒤, 끝
+                        rectWithShadowBlend.Factors = new float[] { 0f, 0f, .2f, 1f };   // 끝 점의 섞이는 비율
+                        break;
+                    case BevelStyle.Flat:
+                        rectWithShadowBlend.Positions = new float[] { 0f, .45f, .51f, 1f };   // 0, 중간앞, 중간뒤, 끝
+                        rectWithShadowBlend.Factors = new float[] { 0f, 0f, .2f, .9f };   // 끝 점의 섞이는 비율
+                        break;
+                    case BevelStyle.Neon:
+                    case BevelStyle.GradientNeon:
+                        rectWithShadowBlend.Positions = new float[] { 0.0f, .2f, .4f, .6f, .8f, 1.0f };
+                        rectWithShadowBlend.Factors = new float[] { 0f, .2f, .4f, .6f, .8f, 1f };   // 끝 점의 섞이는 비율
                         break;
                 }
             }
 
-            // 그라데이션 설정한 브러시 생성
-            using(LinearGradientBrush rectBrushWithEdge = new LinearGradientBrush(lgbRect, mStartEdgeColor, mEndEdgeColor, LinearGradientMode.ForwardDiagonal))
-            {
-                // 브러시에 혼합 지점과 비율을 설정
-                rectBrushWithEdge.Blend = rectWithEdgeBlend;
-                RoundedRectangle.FillRoundedRectangleAntiAlias(g, rectBrushWithEdge, rectWithEdge, mRectRadius);    // 모서리가 포함된 사각 영역을 동그랗게 그림
-            }
+            return rectWithShadowBlend;
+
+            // 아래처럼 LinearGradientBrush에 .Blend속성에 저장후, 그 브러시로 그리면 됨.
+            //    rectBrushWithEdge.Blend = rectWithShadowBlend;
         }
+        #endregion 네온 버튼의 그림자를 번지게 그리는 혼합 비율을 설정하는 메서드
 
 
-        // 모서리를 포함하지 않는 사각 영역을 그림
-        protected virtual void FillRectangleWithoutEdges(Graphics g, Rectangle rectWithoutEdge)
-        {
-            using (Brush rectBrushWithoutEdge = new LinearGradientBrush(rectWithoutEdge, mStartColor, mEndColor, (LinearGradientMode)this.BackgroundGradientMode))
-            {
-                RoundedRectangle.FillRoundedRectangleAntiAlias(g, rectBrushWithoutEdge, rectWithoutEdge, mRectRadius);
-            }
-        }
 
+
+        #region 종류별로 버튼을 그리는 메서드. (그림자를 그리고 이 메서드가 호출됨.)
         // mStartEdgeColor -> mEndEdgeColor 바깥쪽 사각형(모서리 포함)을 그림
         // mStartColor -> mEndColor         안쪽 사각형(모서리 제외)를 그림
         // 낮게 패인 버튼을 그림
@@ -658,9 +664,9 @@ namespace CustomControls_dll
             // 네온 버튼의 경우, 어차피 확대해서 그리므로, 모서리 부분을 그리진 않음.
             bevelRect.Inflate(mEdgeWidth, mEdgeWidth);
 
-            
+
             Rectangle rectWithoutBevel = bevelRect;
-            Color startColor = isLeftMouseButtonDown ? ControlPaint.Light(ControlPaint.LightLight(mStartColor)) : isMouseHover ? ControlPaint.Light(mStartColor) :  mStartColor;
+            Color startColor = isLeftMouseButtonDown ? ControlPaint.Light(ControlPaint.LightLight(mStartColor)) : isMouseHover ? ControlPaint.Light(mStartColor) : mStartColor;
             // 그라데이션 네온일 경우만, 그라데이션으로 네온 색을 표시
             Color endColor = Style == BevelStyle.GradientNeon ? mEndColor : isLeftMouseButtonDown ? ControlPaint.Light(ControlPaint.LightLight(mStartColor)) : isMouseHover ? ControlPaint.Light(mStartColor) : mEndColor;
             // 안쪽 사각형을 다시 그림. (그라데이션 브러시)
@@ -669,47 +675,57 @@ namespace CustomControls_dll
                 RoundedRectangle.FillRoundedRectangleAntiAlias(g, topGradientBrush, rectWithoutBevel, mRectRadius);   // FillPath로 색칠
         }
 
-        public Blend GetNeonBlend(Rectangle rectWithShadow) // 확장성을 위해, Lowered와 Raised도 일단 넣어 두었다.
+        #endregion 종류별로 버튼을 그리는 메서드. (그림자를 그리고 이 메서드가 호출됨). 끝.
+
+
+
+        #region 모서리 그리는 메서드(그림자 그리고 바로 다음에 그림. 네온 버튼에선 안 쓰임)
+        protected virtual void FillRectangleWithEdges(Graphics g, ref Rectangle rectWithEdge)
         {
-            Rectangle lgbRect = rectWithShadow;
+            Rectangle lgbRect = rectWithEdge;
             lgbRect.Inflate(1, 1);  // LinearGradientBrush 생성에 쓰일 lgbRect의 크기를 좌,우로 1씩 확대
 
             // Blend생성
-            Blend rectWithShadowBlend = new Blend();
+            Blend rectWithEdgeBlend = new Blend();
             if (mRectRadius >= 150)  // 모서리의 반경이 아주 크면, 좀 더 세분해서 그라데이션
             {
-                rectWithShadowBlend.Positions = new float[] { 0.0f, .2f, .4f, .6f, .8f, 1.0f };
-                rectWithShadowBlend.Factors = new float[] { 0f, 0f, .2f, .4f, 1f, 1f };   // 끝 점의 섞이는 비율
+                rectWithEdgeBlend.Positions = new float[] { 0.0f, .2f, .4f, .6f, .8f, 1.0f };
+                rectWithEdgeBlend.Factors = new float[] { 0f, 0f, .2f, .4f, 1f, 1f };   // 끝 점의 섞이는 비율
             }
             else
             {
                 switch (Style)
                 {
                     case BevelStyle.Lowered:
-                        rectWithShadowBlend.Positions = new float[] { 0f, .49f, .52f, 1f };   // 0, 중간앞, 중간뒤, 끝
-                        rectWithShadowBlend.Factors = new float[] { 0f, .6f, .99f, 1f };   // 끝 점의 섞이는 비율
+                        rectWithEdgeBlend.Positions = new float[] { 0f, .49f, .52f, 1f };   // 0, 중간앞, 중간뒤, 끝
+                        rectWithEdgeBlend.Factors = new float[] { 0f, .6f, .99f, 1f };   // 끝 점의 섞이는 비율
                         break;
                     case BevelStyle.Raised:
-                        rectWithShadowBlend.Positions = new float[] { 0f, .45f, .51f, 1f };   // 0, 중간앞, 중간뒤, 끝
-                        rectWithShadowBlend.Factors = new float[] { 0f, 0f, .2f, 1f };   // 끝 점의 섞이는 비율
-                        break;
-                    case BevelStyle.Flat:
-                        rectWithShadowBlend.Positions = new float[] { 0f, .45f, .51f, 1f };   // 0, 중간앞, 중간뒤, 끝
-                        rectWithShadowBlend.Factors = new float[] { 0f, 0f, .2f, .9f };   // 끝 점의 섞이는 비율
-                        break;
-                    case BevelStyle.Neon:
-                    case BevelStyle.GradientNeon:
-                        rectWithShadowBlend.Positions = new float[] { 0.0f, .2f, .4f, .6f, .8f, 1.0f };
-                        rectWithShadowBlend.Factors = new float[] { 0f, .2f, .4f, .6f, .8f, 1f };   // 끝 점의 섞이는 비율
+                        rectWithEdgeBlend.Positions = new float[] { 0f, .45f, .51f, 1f };   // 0, 중간앞, 중간뒤, 끝
+                        rectWithEdgeBlend.Factors = new float[] { 0f, 0f, .2f, 1f };   // 끝 점의 섞이는 비율
                         break;
                 }
             }
 
-            return rectWithShadowBlend;
-
-            // 아래처럼 LinearGradientBrush에 .Blend속성에 저장후, 그 브러시로 그리면 됨.
-            //    rectBrushWithEdge.Blend = rectWithShadowBlend;
+            // 그라데이션 설정한 브러시 생성
+            using (LinearGradientBrush rectBrushWithEdge = new LinearGradientBrush(lgbRect, mStartEdgeColor, mEndEdgeColor, LinearGradientMode.ForwardDiagonal))
+            {
+                // 브러시에 혼합 지점과 비율을 설정
+                rectBrushWithEdge.Blend = rectWithEdgeBlend;
+                RoundedRectangle.FillRoundedRectangleAntiAlias(g, rectBrushWithEdge, rectWithEdge, mRectRadius);    // 모서리가 포함된 사각 영역을 동그랗게 그림
+            }
         }
+        #endregion 모서리 그리는 메서드(그림자 그리고 바로 다음에 그림. 네온 버튼에선 안 쓰임)
+
+        #region 실제 버튼을 그리는 메서드. (모서리 그린 다음 호출)
+        protected virtual void FillRectangleWithoutEdges(Graphics g, Rectangle rectWithoutEdge)
+        {
+            using (Brush rectBrushWithoutEdge = new LinearGradientBrush(rectWithoutEdge, mStartColor, mEndColor, (LinearGradientMode)this.BackgroundGradientMode))
+            {
+                RoundedRectangle.FillRoundedRectangleAntiAlias(g, rectBrushWithoutEdge, rectWithoutEdge, mRectRadius);
+            }
+        }
+        #endregion 실제 버튼을 그리는 메서드. (모서리 그린 다음 호출)
 
 
 
