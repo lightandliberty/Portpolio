@@ -10,6 +10,7 @@ using System.Drawing.Drawing2D;
 
 namespace CustomControls_dll
 {
+    #region enum, interface 정의
     public enum BevelStyle  // 경사면 스타일
     {
         Lowered,    // 안으로 패인 버튼 스타일
@@ -56,9 +57,11 @@ namespace CustomControls_dll
         Color ShadowColor { get; set; }                             //"그림자 색                                         "
 
     }
+    #endregion enum, interface 정의 끝
 
     public class ShadowButton : Button, IShadowBtn
     {
+        #region 멤버
         private PanelGradientMode mBackgroundGradientMode = PanelGradientMode.Vertical;       // "배경 그라데이션 타입(대각선, 가로방향,세로방향)   "
         private int mRectRadius                           = 20;                               // "모서리의 둥근 반지름                              "
         private Color mStartColor                         = Color.FromArgb(232,238,249);      // "그라데이션 시작 색                                "
@@ -75,6 +78,8 @@ namespace CustomControls_dll
         private float mFocusScaleHeight = 0.85f;
         private Color mTextColor = Color.FromArgb(58, 32, 51);
         private NeonColor mNeonColor = NeonColor.None;
+        private Color mNeonClickColor;
+        private Color mNeonHoverEdgeColor;
 
         private const int decreaseShadowWidthHeight = 10;    // 그림자의 너비, 높이 감소. (기본값 10) -로 하면, 그림자의 너비,높이가 늘어남
 //        private Color mMainColor;
@@ -83,7 +88,11 @@ namespace CustomControls_dll
 
 
         private bool isLeftMouseButtonDown = false; // 버튼 클릭 이벤트에 사용할 flag
+        private bool isMouseHover = false;
 
+        #endregion 멤버 끝
+
+        #region 속성들
         [Browsable(true), Category("Shadow Button"), Description("배경 그라데이션 타입(대각선, 가로방향,세로방향)")]
         public PanelGradientMode BackgroundGradientMode { get { return mBackgroundGradientMode; } set { mBackgroundGradientMode = value; Invalidate(); } }      
         [Browsable(true), Category("Shadow Button"), Description("모서리의 둥근 반지름")]
@@ -109,14 +118,17 @@ namespace CustomControls_dll
         public float FocusScaleHeight { get => mFocusScaleHeight; set { mFocusScaleHeight = value > 1f ? 1f : value < 0f ? 0f : value; Invalidate(); } }   // 0f ~ 1f사이
         [Browsable(true), Category("Shadow Button"), Description("텍스트 글자색")]
         public Color TextColor { get => mTextColor; set { mTextColor = value; Invalidate(); } }   // 0f ~ 1f사이
+        
+
         [Browsable(true), Category("Shadow Button"), Description("버튼 모서리(경사면) 스타일 (함몰, 솟음, 평평, 네온)")]
         public BevelStyle Style { get { return mStyle; } 
             set 
             {
                 mStyle = value;
+                // 네온 설정일 경우, 네온 효과를 위해서 FocusScale등 몇몇 초기 설정을 바꿈.
                 if (value == BevelStyle.Neon)  // 네온으로 설정했을 때, 멤버 변수의 설정을 변경
                 {
-                    mEdgeWidth = -5;
+                    mEdgeWidth = 5;
                     mFocusScaleWidth = 0.77f;
                     mFocusScaleHeight = 0.65f;
                     mRectRadius = 20;
@@ -135,6 +147,8 @@ namespace CustomControls_dll
                 Invalidate(); 
             }}
         
+        // 네온 버튼의 색을 지정하면, 그에 맞는 그라데이션 색 들을 자동으로 색에 맞게 설정한다.
+        // 나중에 지정하도록 바꿀 듯하다. 클릭했을 때의 색도 
         [Browsable(true), Category("Shadow Button"), Description("네온 버튼의 색 지정")]
         public NeonColor NeonColor { get => mNeonColor;
             set
@@ -150,6 +164,8 @@ namespace CustomControls_dll
                         mStartColor = Color.FromArgb(255, 20, 190);
                         mEndColor = Color.FromArgb(255, 20, 190);
                         mTextColor = Color.FromArgb(58, 32, 51);
+                        mNeonClickColor = ControlPaint.LightLight(mStartColor);
+                        mNeonHoverEdgeColor = ControlPaint.Dark(mStartColor);
                         break;
                     default: // Enum에 혹시 없으면 Pink값으로 설정
                         mShadowColor = Color.FromArgb(255, 20, 190);
@@ -161,23 +177,44 @@ namespace CustomControls_dll
             }
         }
 
+        #endregion 속성들. 끝
+
+        #region 생성자
         public ShadowButton()
         {
             SetShadowBtnFormStyle();
-//            AddMouseEvent();
+            AddMouseEvent();
         }
 
         
         private void SetShadowBtnFormStyle()
         {
             this.Size = new Size(200, 50);
-            this.Paint += this.Button_Paint;
+//            this.Paint += this.Button_Paint;
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);    // 화면에 직접 그리지 않고, 먼저 버퍼에 그리므로, 깜빡이가 줄어 듦.
             SetStyle(ControlStyles.UserPaint, true);                // 운영체제에서 컨트롤을 그리지 않고, 자체에서 컨트롤을 그림
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);     // WM_ERASEBKGND 메시지 무시
             SetStyle(ControlStyles.ResizeRedraw, true);             // 크기가 변하면 자동으로 다시 그림
             SetStyle(ControlStyles.Selectable, true);               // 컨트롤이 포커스를 받을 수 있음.
             SetStyle(ControlStyles.SupportsTransparentBackColor, true); // 알파 구성요소가 255미만인 Control.BackColor를 수락. 버튼의 배경색에 TransParent색을 넣을 수 있음
+        }
+
+        private void AddMouseEvent()
+        {
+            this.MouseDown += new MouseEventHandler(Button_MouseDown);
+            this.MouseUp += new MouseEventHandler(Button_MouseUp);
+            this.MouseEnter += new EventHandler(Button_MouseEnter);
+            this.MouseLeave += new EventHandler(Button_MouseLeave);
+        }
+
+
+        #endregion 생성자. 끝.
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            //base.OnPaint(e);
+            base.OnPaintBackground(e);
+            PaintShadowBtn(e.Graphics);
         }
 
         // 버튼을 그림 (그림자를 그리고, 버튼의 영역을 얻어온 후 그림)
@@ -253,49 +290,7 @@ namespace CustomControls_dll
         }
 
 
-        public Blend GetNeonBlend(Rectangle rectWithShadow) // 확장성을 위해, Lowered와 Raised도 일단 넣어 두었다.
-        {
-            Rectangle lgbRect = rectWithShadow;
-            lgbRect.Inflate(1, 1);  // LinearGradientBrush 생성에 쓰일 lgbRect의 크기를 좌,우로 1씩 확대
-
-            // Blend생성
-            Blend rectWithShadowBlend = new Blend();
-            if (mRectRadius >= 150)  // 모서리의 반경이 아주 크면, 좀 더 세분해서 그라데이션
-            {
-                rectWithShadowBlend.Positions = new float[] { 0.0f, .2f, .4f, .6f, .8f, 1.0f };
-                rectWithShadowBlend.Factors = new float[] { 0f, 0f, .2f, .4f, 1f, 1f };   // 끝 점의 섞이는 비율
-            }
-            else
-            {
-                switch (Style)
-                {
-                    case BevelStyle.Lowered:
-                        rectWithShadowBlend.Positions = new float[] { 0f, .49f, .52f, 1f };   // 0, 중간앞, 중간뒤, 끝
-                        rectWithShadowBlend.Factors = new float[] { 0f, .6f, .99f, 1f };   // 끝 점의 섞이는 비율
-                        break;
-                    case BevelStyle.Raised:
-                        rectWithShadowBlend.Positions = new float[] { 0f, .45f, .51f, 1f };   // 0, 중간앞, 중간뒤, 끝
-                        rectWithShadowBlend.Factors = new float[] { 0f, 0f, .2f, 1f };   // 끝 점의 섞이는 비율
-                        break;
-                    case BevelStyle.Flat:
-                        rectWithShadowBlend.Positions = new float[] { 0f, .45f, .51f, 1f };   // 0, 중간앞, 중간뒤, 끝
-                        rectWithShadowBlend.Factors = new float[] { 0f, 0f, .2f, .9f };   // 끝 점의 섞이는 비율
-                        break;
-                    case BevelStyle.Neon:
-                        rectWithShadowBlend.Positions = new float[] { 0.0f, .2f, .4f, .6f, .8f, 1.0f };
-                        rectWithShadowBlend.Factors   = new float[] {  0f,  .2f, .4f, .6f, .8f,  1f };   // 끝 점의 섞이는 비율
-                        break;
-                }
-            }
-
-            return rectWithShadowBlend;
-
-            // 아래처럼 LinearGradientBrush에 .Blend속성에 저장후, 그 브러시로 그리면 됨.
-            //    rectBrushWithEdge.Blend = rectWithShadowBlend;
-        }
-
-
-        // 그림자를 그림
+        // 그림자를 그림. (PaintShadowBtn의 일부)
         private void DrawShadow(Graphics g)
         {
             Rectangle shadowRect = new Rectangle();
@@ -448,65 +443,99 @@ namespace CustomControls_dll
         // 그림자를 그린 후, 네온 버튼을 그릴 때, (Flat과 그리는 게 거의 비슷)
         private void DrawNeonBtn(Graphics g, Rectangle bevelRect)
         {
-            // 바깥쪽 사각형을 먼저 그리고,
-            using (Brush bevelGradientBrush = new SolidBrush(mFlatBorderColor))
-            {
-                RoundedRectangle.FillRoundedRectangleAntiAlias(g, bevelGradientBrush, bevelRect, mRectRadius);
-            }
+            //// 바깥쪽 사각형을 먼저 그리고, (단색 브러시)
+            //using (Brush bevelSolidBrush = new SolidBrush(mFlatBorderColor))
+            //    RoundedRectangle.FillRoundedRectangleAntiAlias(g, bevelSolidBrush, bevelRect, mRectRadius);  // FillPath로 색칠
             // bevel(모서리) 부분을 제외.(안쪽 사각형 영역이 됨)
-            bevelRect.Inflate(-mEdgeWidth, -mEdgeWidth);
+
+            // 네온 버튼의 경우, 어차피 확대해서 그리므로, 모서리 부분을 그리진 않음.
+            bevelRect.Inflate(mEdgeWidth, mEdgeWidth);
+
+            
             Rectangle rectWithoutBevel = bevelRect;
-            // 안쪽 사각형을 다시 그림. // bevelRect로 해도 되지만, 코드를 읽기 쉽게 하기 위해 이름을 topRect로 바꿈.
-            using (LinearGradientBrush topGradientBrush = new LinearGradientBrush(rectWithoutBevel, mStartColor, mEndColor, (LinearGradientMode)this.BackgroundGradientMode))
-            {
-                RoundedRectangle.FillRoundedRectangleAntiAlias(g, topGradientBrush, rectWithoutBevel, mRectRadius);
-            }
+            Color startColor = isLeftMouseButtonDown ? ControlPaint.Light(ControlPaint.LightLight(mStartColor)) : isMouseHover ? ControlPaint.Light(mStartColor) :  mStartColor;
+//            if (isLeftMouseButtonDown) startColor = ControlPaint.Light(startColor);
+            // 안쪽 사각형을 다시 그림. (그라데이션 브러시)
+            // bevelRect로 해도 되지만, 코드를 읽기 쉽게 하기 위해 이름을 topRect로 바꿈.
+            using (LinearGradientBrush topGradientBrush = new LinearGradientBrush(rectWithoutBevel, startColor, mEndColor, (LinearGradientMode)this.BackgroundGradientMode))
+                RoundedRectangle.FillRoundedRectangleAntiAlias(g, topGradientBrush, rectWithoutBevel, mRectRadius);   // FillPath로 색칠
         }
 
-        public void Button_Paint(object sender, PaintEventArgs e)
+        public Blend GetNeonBlend(Rectangle rectWithShadow) // 확장성을 위해, Lowered와 Raised도 일단 넣어 두었다.
         {
-            if (isLeftMouseButtonDown == true)         // 마우스 버튼이 눌렸으면
+            Rectangle lgbRect = rectWithShadow;
+            lgbRect.Inflate(1, 1);  // LinearGradientBrush 생성에 쓰일 lgbRect의 크기를 좌,우로 1씩 확대
+
+            // Blend생성
+            Blend rectWithShadowBlend = new Blend();
+            if (mRectRadius >= 150)  // 모서리의 반경이 아주 크면, 좀 더 세분해서 그라데이션
             {
-                //                PaintClickedBtn(sender, e.Graphics);    // 클릭했을 때의 Paint
-                PaintShadowBtn(e.Graphics);
+                rectWithShadowBlend.Positions = new float[] { 0.0f, .2f, .4f, .6f, .8f, 1.0f };
+                rectWithShadowBlend.Factors = new float[] { 0f, 0f, .2f, .4f, 1f, 1f };   // 끝 점의 섞이는 비율
             }
             else
             {
-                //                PaintBtn(sender, e.Graphics);           // 클릭 안 했을 때의 Paint
-                PaintShadowBtn(e.Graphics);
+                switch (Style)
+                {
+                    case BevelStyle.Lowered:
+                        rectWithShadowBlend.Positions = new float[] { 0f, .49f, .52f, 1f };   // 0, 중간앞, 중간뒤, 끝
+                        rectWithShadowBlend.Factors = new float[] { 0f, .6f, .99f, 1f };   // 끝 점의 섞이는 비율
+                        break;
+                    case BevelStyle.Raised:
+                        rectWithShadowBlend.Positions = new float[] { 0f, .45f, .51f, 1f };   // 0, 중간앞, 중간뒤, 끝
+                        rectWithShadowBlend.Factors = new float[] { 0f, 0f, .2f, 1f };   // 끝 점의 섞이는 비율
+                        break;
+                    case BevelStyle.Flat:
+                        rectWithShadowBlend.Positions = new float[] { 0f, .45f, .51f, 1f };   // 0, 중간앞, 중간뒤, 끝
+                        rectWithShadowBlend.Factors = new float[] { 0f, 0f, .2f, .9f };   // 끝 점의 섞이는 비율
+                        break;
+                    case BevelStyle.Neon:
+                        rectWithShadowBlend.Positions = new float[] { 0.0f, .2f, .4f, .6f, .8f, 1.0f };
+                        rectWithShadowBlend.Factors = new float[] { 0f, .2f, .4f, .6f, .8f, 1f };   // 끝 점의 섞이는 비율
+                        break;
+                }
             }
+
+            return rectWithShadowBlend;
+
+            // 아래처럼 LinearGradientBrush에 .Blend속성에 저장후, 그 브러시로 그리면 됨.
+            //    rectBrushWithEdge.Blend = rectWithShadowBlend;
         }
 
 
-        private void AddMouseEvent()
+        public void Button_Paint(object sender, PaintEventArgs e)
         {
-            this.MouseDown += new MouseEventHandler(Button_MouseDown);
-            this.MouseUp += new MouseEventHandler(Button_MouseUp);
-            this.MouseLeave += new EventHandler(Button_MouseLeave);
+                PaintShadowBtn(e.Graphics); // 메인 페인트 메서드
         }
+
+
 
         public void Button_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
-            {
                 isLeftMouseButtonDown = true;
-                PaintClickedBtn(sender, (sender as ShadowButton).CreateGraphics()); // 클릭했을 때의 Paint
-            }
+            Invalidate();
         }
 
         public void Button_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
-            {
                 isLeftMouseButtonDown = false;
-                PaintBtn(sender, (sender as ShadowButton).CreateGraphics());        // 클릭 안 했을 때의 Paint
-            }
+            Invalidate();
+        }
+
+        public void Button_MouseEnter(object sender, EventArgs e)
+        {
+            isMouseHover = true;
+            //            mEndColor = Color.Transparent;
+            //PaintShadowBtn(this.CreateGraphics());
+            Invalidate();
         }
 
         public void Button_MouseLeave(object sender, EventArgs e)
         {
             isLeftMouseButtonDown = false;
-            PaintBtn(sender, (sender as ShadowButton).CreateGraphics());
+            isMouseHover = false;
         }
 
 
@@ -523,53 +552,6 @@ namespace CustomControls_dll
             Paint -= new PaintEventHandler(Button_Paint);
             base.Dispose(disposing);
         }
-
-        #region 클릭했을 때, 클릭 안했을 때 버튼색을 메탈색으로 설정
-        public static void PaintBtn(object sender, Graphics g)
-        {
-
-            // 전달된 버튼의 색을 변경
-            g.FillRectangle(
-                // 브러시
-                new System.Drawing.Drawing2D.LinearGradientBrush(PointF.Empty, new Point(0, (sender as ShadowButton).Height), Color.White, Color.LightGray),
-                // 버튼의 영역
-                new RectangleF(new Point(0, 0), new Size((sender as ShadowButton).Size.Width, (sender as ShadowButton).Size.Height)));
-
-            // 버튼에 표시할 Text 중앙 정렬
-            StringFormat sf = new StringFormat()
-            {
-                LineAlignment = StringAlignment.Center,
-                Alignment = StringAlignment.Center,
-            };
-            
-            // 버튼의 글자를 그림
-            g.DrawString((sender as ShadowButton).Text,
-                new Font((sender as ShadowButton).Font.Name, 10), System.Drawing.Brushes.Black,
-                new Rectangle(new Point(0, 0), new Size((sender as ShadowButton).Size.Width, (sender as ShadowButton).Size.Height)),
-                sf);
-        }
-
-        // 
-        public static void PaintClickedBtn(object sender, Graphics g)
-        {
-            // 전달된 버튼의 색을 변경
-            g.FillRectangle(
-                new System.Drawing.Drawing2D.LinearGradientBrush(PointF.Empty, new Point(0, (sender as ShadowButton).Height), Color.LightGray, Color.White),
-                new RectangleF(new Point(0, 0), new Size((sender as ShadowButton).Size.Width, (sender as ShadowButton).Size.Height)));
-            // 버튼에 표시할 Text 중앙 정렬
-            StringFormat sf = new StringFormat()
-            {
-                LineAlignment = StringAlignment.Center,
-                Alignment = StringAlignment.Center
-            };
-            g.DrawString((sender as ShadowButton).Text,
-                new Font((sender as ShadowButton).Font.Name, 10), System.Drawing.Brushes.Black,
-                new Rectangle(new Point(0, 0), new Size((sender as ShadowButton).Size.Width, (sender as ShadowButton).Size.Height)),
-                sf);
-        }
-        #endregion 버튼색을 메탈색으로 설정. 끝.
-
-
 
     }
 

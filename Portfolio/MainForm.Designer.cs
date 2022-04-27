@@ -200,7 +200,7 @@
             // 
             this.shadowButton2.BackColor = System.Drawing.Color.Transparent;
             this.shadowButton2.BackgroundGradientMode = CustomControls_dll.PanelGradientMode.Vertical;
-            this.shadowButton2.EdgeWidth = -5;
+            this.shadowButton2.EdgeWidth = 5;
             this.shadowButton2.EndColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(20)))), ((int)(((byte)(190)))));
             this.shadowButton2.FlatAppearance.BorderSize = 0;
             this.shadowButton2.FlatBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(20)))), ((int)(((byte)(190)))));
@@ -208,7 +208,7 @@
             this.shadowButton2.FocusScaleHeight = 0.65F;
             this.shadowButton2.FocusScaleWidth = 0.77F;
             this.shadowButton2.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.shadowButton2.Location = new System.Drawing.Point(188, 171);
+            this.shadowButton2.Location = new System.Drawing.Point(188, 195);
             this.shadowButton2.Name = "shadowButton2";
             this.shadowButton2.NeonColor = CustomControls_dll.NeonColor.Pink;
             this.shadowButton2.RectRadius = 20;
