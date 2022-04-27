@@ -44,7 +44,6 @@
             this.RawInputBtn = new CustomControls_dll.MetalButton();
             this.shadowButton1 = new CustomControls_dll.ShadowButton();
             this.shadowButton2 = new CustomControls_dll.ShadowButton();
-            this.hslColorPn = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -225,14 +224,6 @@
             this.shadowButton2.UseVisualStyleBackColor = false;
             this.shadowButton2.Click += new System.EventHandler(this.shadowButton2_Click);
             // 
-            // hslColorPn
-            // 
-            this.hslColorPn.BackColor = System.Drawing.Color.White;
-            this.hslColorPn.Location = new System.Drawing.Point(459, 124);
-            this.hslColorPn.Name = "hslColorPn";
-            this.hslColorPn.Size = new System.Drawing.Size(171, 127);
-            this.hslColorPn.TabIndex = 16;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -240,7 +231,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(32)))), ((int)(((byte)(51)))));
             this.CancelButton = this.CloseFormBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.hslColorPn);
             this.Controls.Add(this.shadowButton2);
             this.Controls.Add(this.shadowButton1);
             this.Controls.Add(this.RawInputBtn);
@@ -281,6 +271,5 @@
         private CustomControls_dll.MetalButton RawInputBtn;
         private CustomControls_dll.ShadowButton shadowButton1;
         private CustomControls_dll.ShadowButton shadowButton2;
-        private System.Windows.Forms.Panel hslColorPn;
     }
 }

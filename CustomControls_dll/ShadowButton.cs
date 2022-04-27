@@ -82,6 +82,150 @@ namespace CustomControls_dll
         NeonYellow,
         PinkishRedNeon,
         Pink,   // 39가지 네온 색에는 포함되지 않음
+        Noname0,
+        Noname1,
+        Noname2,
+        Noname3,
+        Noname4,
+        Noname5,
+        Noname6,
+        Noname7,
+        Noname8,
+        Noname9,
+        Noname10,
+        Noname11,
+        Noname12,
+        Noname13,
+        Noname14,
+        Noname15,
+        Noname16,
+        Noname17,
+        Noname18,
+        Noname19,
+        Noname20,
+        Noname21,
+        Noname22,
+        Noname23,
+        Noname24,
+        Noname25,
+        Noname26,
+        Noname27,
+        Noname28,
+        Noname29,
+        Noname30,
+        Noname31,
+        Noname32,
+        Noname33,
+        Noname34,
+        Noname35,
+        NonameLight0,
+        NonameLight1,
+        NonameLight2,
+        NonameLight3,
+        NonameLight4,
+        NonameLight5,
+        NonameLight6,
+        NonameLight7,
+        NonameLight8,
+        NonameLight9,
+        NonameLight10,
+        NonameLight11,
+        NonameLight12,
+        NonameLight13,
+        NonameLight14,
+        NonameLight15,
+        NonameLight16,
+        NonameLight17,
+        NonameLight18,
+        NonameLight19,
+        NonameLight20,
+        NonameLight21,
+        NonameLight22,
+        NonameLight23,
+        NonameLight24,
+        NonameLight25,
+        NonameLight26,
+        NonameLight27,
+        NonameLight28,
+        NonameLight29,
+        NonameLight30,
+        NonameLight31,
+        NonameLight32,
+        NonameLight33,
+        NonameLight34,
+        NonameLight35,
+        Noname2XLight0,
+        Noname2XLight1,
+        Noname2XLight2,
+        Noname2XLight3,
+        Noname2XLight4,
+        Noname2XLight5,
+        Noname2XLight6,
+        Noname2XLight7,
+        Noname2XLight8,
+        Noname2XLight9,
+        Noname2XLight10,
+        Noname2XLight11,
+        Noname2XLight12,
+        Noname2XLight13,
+        Noname2XLight14,
+        Noname2XLight15,
+        Noname2XLight16,
+        Noname2XLight17,
+        Noname2XLight18,
+        Noname2XLight19,
+        Noname2XLight20,
+        Noname2XLight21,
+        Noname2XLight22,
+        Noname2XLight23,
+        Noname2XLight24,
+        Noname2XLight25,
+        Noname2XLight26,
+        Noname2XLight27,
+        Noname2XLight28,
+        Noname2XLight29,
+        Noname2XLight30,
+        Noname2XLight31,
+        Noname2XLight32,
+        Noname2XLight33,
+        Noname2XLight34,
+        Noname2XLight35,
+        Noname3XLight0,
+        Noname3XLight1,
+        Noname3XLight2,
+        Noname3XLight3,
+        Noname3XLight4,
+        Noname3XLight5,
+        Noname3XLight6,
+        Noname3XLight7,
+        Noname3XLight8,
+        Noname3XLight9,
+        Noname3XLight10,
+        Noname3XLight11,
+        Noname3XLight12,
+        Noname3XLight13,
+        Noname3XLight14,
+        Noname3XLight15,
+        Noname3XLight16,
+        Noname3XLight17,
+        Noname3XLight18,
+        Noname3XLight19,
+        Noname3XLight20,
+        Noname3XLight21,
+        Noname3XLight22,
+        Noname3XLight23,
+        Noname3XLight24,
+        Noname3XLight25,
+        Noname3XLight26,
+        Noname3XLight27,
+        Noname3XLight28,
+        Noname3XLight29,
+        Noname3XLight30,
+        Noname3XLight31,
+        Noname3XLight32,
+        Noname3XLight33,
+        Noname3XLight34,
+        Noname3XLight35,
         Count,
         None,
     }
@@ -131,6 +275,8 @@ namespace CustomControls_dll
         private bool isLeftMouseButtonDown = false; // 버튼 클릭 이벤트에 사용할 flag
         private bool isMouseHover = false;
         public Dictionary<NeonColor, Color> neonColorDic;
+        
+        
 
         #endregion 멤버 끝
 
@@ -211,7 +357,6 @@ namespace CustomControls_dll
         public ShadowButton()
         {
             SetShadowBtnFormStyle();
-            AddMouseEvent();
             InitNeonColorDic();
         }
 
@@ -228,16 +373,42 @@ namespace CustomControls_dll
             SetStyle(ControlStyles.SupportsTransparentBackColor, true); // 알파 구성요소가 255미만인 Control.BackColor를 수락. 버튼의 배경색에 TransParent색을 넣을 수 있음
         }
 
-        private void AddMouseEvent()
-        {
-            this.MouseDown += new MouseEventHandler(Button_MouseDown);
-            this.MouseUp += new MouseEventHandler(Button_MouseUp);
-            this.MouseEnter += new EventHandler(Button_MouseEnter);
-            this.MouseLeave += new EventHandler(Button_MouseLeave);
-        }
 
 
         #endregion 생성자. 끝.
+
+        #region protected override
+
+        protected override void OnMouseUp(MouseEventArgs e)
+        {
+            base.OnMouseUp(e);
+            if (e.Button != MouseButtons.Left) return;
+            isLeftMouseButtonDown = false;
+
+        }
+
+
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+            base.OnMouseDown(e);
+            if (e.Button != MouseButtons.Left) return;
+            isLeftMouseButtonDown = true;
+
+        }
+
+        protected override void OnMouseEnter(EventArgs e)
+        {
+            base.OnMouseEnter(e);
+            isMouseHover = true;
+        }
+
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            base.OnMouseLeave(e);
+            isLeftMouseButtonDown = false;
+            isMouseHover = false;
+        }
+
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -245,6 +416,8 @@ namespace CustomControls_dll
             base.OnPaintBackground(e);
             PaintShadowBtn(e.Graphics);
         }
+
+        #endregion protected override
 
         // 버튼을 그림 (그림자를 그리고, 버튼의 영역을 얻어온 후 그림)
         private void PaintShadowBtn(Graphics g)
@@ -539,66 +712,12 @@ namespace CustomControls_dll
         }
 
 
-        public void Button_Paint(object sender, PaintEventArgs e)
-        {
-                PaintShadowBtn(e.Graphics); // 메인 페인트 메서드
-        }
-
-
-
-        public int hue = 0;
-        public void Button_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                isLeftMouseButtonDown = true;
-
-
-                ////mEndColor = mShadowColor = mStartColor = SimpleColorTransforms.HsLtoRgb(hue, 1, 0.51);
-                //mEndColor = mShadowColor = mStartColor = SimpleColorTransforms.HsLtoRgb(hue, 1, 0.51);
-                //hue += 10;
-                //hue %= 360;
-                //System.Diagnostics.Debug.WriteLine(hue);
-            }
-
-            Invalidate();
-        }
-
-        public void Button_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-                isLeftMouseButtonDown = false;
-            Invalidate();
-        }
-
-        public void Button_MouseEnter(object sender, EventArgs e)
-        {
-            isMouseHover = true;
-            //            mEndColor = Color.Transparent;
-            //PaintShadowBtn(this.CreateGraphics());
-            Invalidate();
-        }
-
-        public void Button_MouseLeave(object sender, EventArgs e)
-        {
-            isLeftMouseButtonDown = false;
-            isMouseHover = false;
-        }
-
 
         ~ShadowButton()
         {
             this.Dispose();
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            MouseDown -= new MouseEventHandler(Button_MouseDown);
-            MouseUp -= new MouseEventHandler(Button_MouseUp);
-            MouseLeave -= new EventHandler(Button_MouseLeave);
-            Paint -= new PaintEventHandler(Button_Paint);
-            base.Dispose(disposing);
-        }
 
         private void InitNeonColorDic()
         {
@@ -647,6 +766,51 @@ namespace CustomControls_dll
             neonColorDic[NeonColor.NeonYellow] =            System.Drawing.ColorTranslator.FromHtml("#cfff04");
             neonColorDic[NeonColor.PinkishRedNeon] =        System.Drawing.ColorTranslator.FromHtml("#ff0055");
             neonColorDic[NeonColor.Pink] =                  Color.FromArgb(255, 20, 190);
+
+            string[] neonColorNames = Enum.GetNames(typeof(NeonColor));
+
+            int hue = 0;
+            foreach (string neonColorName in neonColorNames)
+            {
+                NeonColor neonColorEnum = (NeonColor)Enum.Parse(typeof(NeonColor), neonColorName);
+                if((int)neonColorEnum >= (int)NeonColor.Noname0 && (int)neonColorEnum <= (int)NeonColor.Noname35)    // Noname0 ~ Noname35까지
+                {
+                    neonColorDic[neonColorEnum] = SimpleColorTransforms.HsLtoRgb(hue, 1, 0.51);
+                    System.Diagnostics.Debug.WriteLine(hue.ToString());
+                    hue += 10;
+                    if (hue == 360) hue = 0; // hue가 0 ~ 350까지 저장
+                }
+                else if((int)neonColorEnum >= (int)NeonColor.NonameLight0 && (int)neonColorEnum <= (int)NeonColor.NonameLight35)    // NonameLight0 ~ NonameLight35까지
+                {
+                    neonColorDic[neonColorEnum] = ControlPaint.Light(SimpleColorTransforms.HsLtoRgb(hue, 1, 0.51));
+                    System.Diagnostics.Debug.WriteLine(hue.ToString());
+                    hue += 10;
+                    if (hue == 360) hue = 0; // hue가 0 ~ 350까지 저장
+                }
+                else if((int)neonColorEnum >= (int)NeonColor.Noname2XLight0 && (int)neonColorEnum <= (int)NeonColor.Noname2XLight35)    // Noname2XLight0 ~ Noname2XLight35까지
+                {
+                    neonColorDic[neonColorEnum] = ControlPaint.LightLight(SimpleColorTransforms.HsLtoRgb(hue, 1, 0.51));
+                    System.Diagnostics.Debug.WriteLine(hue.ToString());
+                    hue += 10;
+                    if (hue == 360) hue = 0; // hue가 0 ~ 350까지 저장
+                }
+                // 더 밝게 해서, 다시 저장했다.
+                else if((int)neonColorEnum >= (int)NeonColor.Noname3XLight0 && (int)neonColorEnum <= (int)NeonColor.Noname3XLight35)    // NonNoname3XLightame0 ~ Noname3XLight까지
+                {
+                    neonColorDic[neonColorEnum] = ControlPaint.Light(ControlPaint.LightLight(SimpleColorTransforms.HsLtoRgb(hue, 1, 0.51)));
+                    System.Diagnostics.Debug.WriteLine(hue.ToString());
+                    hue += 10;
+                }
+            }
+
+            // 새로운 버튼색을 테스트해서 저장하려면 아래 주석을 해제하고, 테스트하면 된다.
+            ////mEndColor = mShadowColor = mStartColor = SimpleColorTransforms.HsLtoRgb(hue, 1, 0.51);
+            //mEndColor = mShadowColor = mStartColor = SimpleColorTransforms.HsLtoRgb(hue, 1, 0.51);
+            //hue += 10;
+            //hue %= 360;
+            //System.Diagnostics.Debug.WriteLine(hue);
+
+
         }
 
     }
