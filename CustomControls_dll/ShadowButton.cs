@@ -292,20 +292,20 @@ namespace CustomControls_dll
         public Color StartColor       { get { return mStartColor; } set { mStartColor = value; Invalidate(); } }                                
         [Browsable(true), Category("Shadow Button"), Description("그라데이션 끝 색")]
         public Color EndColor         { get { return mEndColor; } set { mEndColor = value; Invalidate(); } }                                  
-        [Browsable(true), Category("Shadow Button"), Description("모서리의 너비")]
+        [Browsable(true), Category("Shadow Button"), Description("모서리의 너비. 네온: 5가 적당")]
         public int EdgeWidth          { get { return mEdgeWidth; } set { mEdgeWidth = value; Invalidate(); } }                                   
         [Browsable(true), Category("Shadow Button"), Description("Flat일 경우, 테두리 색")]
         public Color FlatBorderColor  { get { return mFlatBorderColor; } set { mFlatBorderColor = value; Invalidate(); } }
-        [Browsable(true), Category("Shadow Button"), Description("그림자 스타일 (대각, 둘러싼, 아래)")]
+        [Browsable(true), Category("Shadow Button"), Description("그림자 스타일 (대각, 둘러싼, 아래). 네온:둘러싼이 적당.")]
         public ShadowMode ShadowStyle { get { return mShadowStyle; } set { mShadowStyle = value; Invalidate(); } }
-        [Browsable(true), Category("Shadow Button"), Description("그림자 평행이동 거리")]
+        [Browsable(true), Category("Shadow Button"), Description("그림자 평행이동 거리. 네온:20이 적당.")]
         public int ShadowShift        { get { return mShadowShift; } set { mShadowShift = value; Invalidate(); } }                                 
         [Browsable(true), Category("Shadow Button"), Description("그림자 색")]
         public Color ShadowColor      { get { return mShadowColor; } set { mShadowColor = value; Invalidate(); } }
 
-        [Browsable(true), Category("Shadow Button"), Description("그림자 그라데이션 고정색 가로 비율")]
+        [Browsable(true), Category("Shadow Button"), Description("그림자 그라데이션 고정색 가로 비율. 네온: 0.77f, 일반: 0.95f")]
         public float FocusScaleWidth { get => mFocusScaleWidth; set { mFocusScaleWidth = value > 1f ? 1f : value < 0f ? 0f : value; Invalidate(); } }      // 0f ~ 1f사이
-        [Browsable(true), Category("Shadow Button"), Description("그림자 그라데이션 고정색 세로 비율")]
+        [Browsable(true), Category("Shadow Button"), Description("그림자 그라데이션 고정색 세로 비율. 네온: 0.65f, 일반: 0.85f")]
         public float FocusScaleHeight { get => mFocusScaleHeight; set { mFocusScaleHeight = value > 1f ? 1f : value < 0f ? 0f : value; Invalidate(); } }   // 0f ~ 1f사이
         [Browsable(true), Category("Shadow Button"), Description("텍스트 글자색")]
         public Color TextColor { get => mTextColor; set { mTextColor = value; Invalidate(); } }   // 0f ~ 1f사이
@@ -326,15 +326,15 @@ namespace CustomControls_dll
                     mShadowShift = 20;
                     mShadowStyle = ShadowMode.Surrounded;
                 }   
-                else
-                {
-                    mEdgeWidth = 0;
-                    mFocusScaleWidth = 0.95f;
-                    mFocusScaleHeight = 0.85f;
-                    mRectRadius = 20;
-                    mShadowShift = 20;
-                    mShadowStyle = ShadowMode.ForwardDiagonal;
-                }
+                //else
+                //{
+                //    mEdgeWidth = 3;
+                //    mFocusScaleWidth = 0.95f;
+                //    mFocusScaleHeight = 0.85f;
+                //    mRectRadius = 20;
+                //    mShadowShift = 10;
+                //    mShadowStyle = ShadowMode.ForwardDiagonal;
+                //}
                 Invalidate(); 
             }}
         
@@ -387,6 +387,7 @@ namespace CustomControls_dll
             base.OnMouseUp(e);
             if (e.Button != MouseButtons.Left) return;
             isLeftMouseButtonDown = false;
+            this.Refresh();
 
         }
 
@@ -396,22 +397,21 @@ namespace CustomControls_dll
             base.OnMouseDown(e);
             if (e.Button != MouseButtons.Left) return;
             isLeftMouseButtonDown = true;
-
+            this.Refresh();
         }
 
         protected override void OnMouseEnter(EventArgs e)
         {
-            base.OnMouseEnter(e);
+            // base.OnMouseEnter(e);
             isMouseHover = true;
         }
 
         protected override void OnMouseLeave(EventArgs e)
         {
-            base.OnMouseLeave(e);
+            // base.OnMouseLeave(e);
             isLeftMouseButtonDown = false;
             isMouseHover = false;
         }
-
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -467,19 +467,48 @@ namespace CustomControls_dll
             switch(Style)
             {
                 case BevelStyle.Lowered:
-                    DrawLoweredBtn(g, bevelRect);
+                    if (isLeftMouseButtonDown) DrawRaisedBtn(g, bevelRect); else DrawLoweredBtn(g, bevelRect);
                     break;
                 case BevelStyle.Raised:
-                    DrawRaisedBtn(g, bevelRect);
+                    if (isLeftMouseButtonDown) DrawLoweredBtn(g, bevelRect); else DrawRaisedBtn(g, bevelRect);
                     break;
                 case BevelStyle.Flat:
+                    Color oldColor = mStartColor;
+                    mStartColor = mEndColor;
+                    mEndColor = oldColor;
                     DrawFlatBtn(g, bevelRect);
+                    mEndColor = mStartColor;
+                    mStartColor = oldColor;
                     break;
                 case BevelStyle.Neon:
                 case BevelStyle.GradientNeon:
                     DrawNeonBtn(g, bevelRect);
                     break;
             }
+
+            //switch(Style)
+            //{
+            //    case BevelStyle.Lowered:
+            //        //if (isLeftMouseButtonDown) DrawRaisedBtn(g, bevelRect); else DrawLoweredBtn(g, bevelRect);
+            //        DrawLoweredBtn(g, bevelRect);
+            //        break;
+            //    case BevelStyle.Raised:
+            //        //if(isLeftMouseButtonDown) DrawLoweredBtn(g, bevelRect); else DrawRaisedBtn(g, bevelRect);
+            //        DrawRaisedBtn(g, bevelRect);
+            //        break;
+            //    case BevelStyle.Flat:
+            //        //Color oldColor = mStartColor;
+            //        //mStartColor = mEndColor;
+            //        //mEndColor = oldColor;
+            //        DrawFlatBtn(g, bevelRect);
+            //        //mEndColor = mStartColor;
+            //        //mStartColor = oldColor;
+            //        break;
+            //    case BevelStyle.Neon:
+            //    case BevelStyle.GradientNeon:
+            //        DrawNeonBtn(g, bevelRect);
+            //        break;
+            //}
 
             // 버튼에 표시할 Text 중앙 정렬
             StringFormat sf = new StringFormat()
@@ -530,7 +559,7 @@ namespace CustomControls_dll
                 // 진하게 표시될 영역(위치) 설정
                 shadowBrush.CenterPoint = new PointF(shadowRect.Width / 2, shadowRect.Height / 2);  // 이 영역은 나중에 .FocusScales에서 0.95f, 0.85f로 확대됨.
                 // Neon버튼이 아닐 경우, 일반 그림자 색으로 칠하고, Neon일 경우, 클릭했을 때의 색으로 그림자 색을 바꾼다.
-                Color shadowColor = Style != BevelStyle.Neon ? mShadowColor : isLeftMouseButtonDown ? ControlPaint.Light(ControlPaint.LightLight(mStartColor)) : isMouseHover ? ControlPaint.Light(mStartColor) : mStartColor;
+                Color shadowColor = (Style != BevelStyle.Neon && Style != BevelStyle.GradientNeon) ? mShadowColor : isLeftMouseButtonDown ? ControlPaint.Light(ControlPaint.LightLight(mStartColor)) : isMouseHover ? ControlPaint.Light(mStartColor) : mStartColor;
                 // 클릭했을 때, 색이 변하지 않게 하려면,
                 // Color shadowColor = mShadowColor;
                 shadowBrush.CenterColor = shadowColor;
@@ -828,6 +857,7 @@ namespace CustomControls_dll
 
 
         }
+
 
     }
 
