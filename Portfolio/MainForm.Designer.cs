@@ -172,25 +172,26 @@
             // shadowButton1
             // 
             this.shadowButton1.BackgroundGradientMode = CustomControls_dll.PanelGradientMode.Vertical;
-            this.shadowButton1.EdgeWidth = 2;
-            this.shadowButton1.EndColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(192)))), ((int)(((byte)(234)))));
+            this.shadowButton1.EdgeWidth = 5;
+            this.shadowButton1.EndColor = System.Drawing.Color.Magenta;
             this.shadowButton1.FlatBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.shadowButton1.FocusScaleHeight = 0.85F;
-            this.shadowButton1.FocusScaleWidth = 0.95F;
-            this.shadowButton1.Location = new System.Drawing.Point(395, 193);
+            this.shadowButton1.FocusScaleHeight = 0.65F;
+            this.shadowButton1.FocusScaleWidth = 0.77F;
+            this.shadowButton1.Location = new System.Drawing.Point(321, 147);
             this.shadowButton1.Name = "shadowButton1";
-            this.shadowButton1.NeonColor = CustomControls_dll.NeonColor.None;
+            this.shadowButton1.NeonColor = System.Drawing.Color.Magenta;
             this.shadowButton1.RectRadius = 20;
-            this.shadowButton1.ShadowColor = System.Drawing.Color.DimGray;
-            this.shadowButton1.ShadowShift = 0;
-            this.shadowButton1.ShadowStyle = CustomControls_dll.ShadowMode.ForwardDiagonal;
-            this.shadowButton1.Size = new System.Drawing.Size(200, 50);
-            this.shadowButton1.StartColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
-            this.shadowButton1.Style = CustomControls_dll.BevelStyle.Flat;
+            this.shadowButton1.ShadowColor = System.Drawing.Color.Magenta;
+            this.shadowButton1.ShadowShift = 20;
+            this.shadowButton1.ShadowStyle = CustomControls_dll.ShadowMode.Surrounded;
+            this.shadowButton1.Size = new System.Drawing.Size(221, 87);
+            this.shadowButton1.StartColor = System.Drawing.Color.Magenta;
+            this.shadowButton1.Style = CustomControls_dll.BevelStyle.Neon;
             this.shadowButton1.TabIndex = 14;
             this.shadowButton1.Text = "shadowButton1";
             this.shadowButton1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(32)))), ((int)(((byte)(51)))));
             this.shadowButton1.UseVisualStyleBackColor = true;
+            this.shadowButton1.Click += new System.EventHandler(this.shadowButton1_Click);
             // 
             // MainForm
             // 

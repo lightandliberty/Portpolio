@@ -290,15 +290,17 @@ namespace Portfolio
         {
         }
 
-        //public int mNeonColorNum = 0;
-        //private void shadowButton2_Click(object sender, EventArgs e)
-        //{
-        //    mNeonColorNum %= (int)NeonColor.Count;
-        //    //System.Diagnostics.Debug.WriteLine(num.ToString());
-        //    neonSBtn.NeonColor = Common.neonColorDic[(NeonColor)mNeonColorNum];
-        //    neonSBtn.Text = ((NeonColor)mNeonColorNum).ToString() + "\r\n"+ Common.neonColorDic[(NeonColor)mNeonColorNum].ToString();
-        //    mNeonColorNum++;
-        //}
+        public int mNeonColorNum = 0;
+        private void shadowButton1_Click(object sender, EventArgs e)
+        {
+            mNeonColorNum %= (int)NeonColors.Count;
+            //System.Diagnostics.Debug.WriteLine(num.ToString());
+            (sender as CustomControls_dll.ShadowButton).NeonColor = Global.neonColorDic[(NeonColors)mNeonColorNum];
+            (sender as CustomControls_dll.ShadowButton).Text = ((NeonColors)mNeonColorNum).ToString() + "\r\n" + Global.neonColorDic[(NeonColors)mNeonColorNum].ToString();
+            mNeonColorNum++;
+
+        }
+
 
 
     }
