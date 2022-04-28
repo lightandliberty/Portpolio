@@ -43,7 +43,9 @@
             this.MultiThreadBtn = new CustomControls_dll.MetalButton();
             this.RawInputBtn = new CustomControls_dll.MetalButton();
             this.shadowButton1 = new CustomControls_dll.ShadowButton();
+            this.shadowPanel1 = new CustomControls_dll.ShadowPanel();
             this.menuStrip1.SuspendLayout();
+            this.shadowPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -92,7 +94,7 @@
             // 
             // BasicPropertiesBtn
             // 
-            this.BasicPropertiesBtn.Location = new System.Drawing.Point(24, 39);
+            this.BasicPropertiesBtn.Location = new System.Drawing.Point(13, 27);
             this.BasicPropertiesBtn.Name = "BasicPropertiesBtn";
             this.BasicPropertiesBtn.Size = new System.Drawing.Size(112, 36);
             this.BasicPropertiesBtn.TabIndex = 5;
@@ -102,7 +104,7 @@
             // 
             // neonButtonProjectBtn
             // 
-            this.neonButtonProjectBtn.Location = new System.Drawing.Point(24, 90);
+            this.neonButtonProjectBtn.Location = new System.Drawing.Point(13, 69);
             this.neonButtonProjectBtn.Name = "neonButtonProjectBtn";
             this.neonButtonProjectBtn.Size = new System.Drawing.Size(112, 36);
             this.neonButtonProjectBtn.TabIndex = 8;
@@ -112,7 +114,7 @@
             // 
             // DrawingMetalBtn
             // 
-            this.DrawingMetalBtn.Location = new System.Drawing.Point(24, 208);
+            this.DrawingMetalBtn.Location = new System.Drawing.Point(13, 188);
             this.DrawingMetalBtn.Name = "DrawingMetalBtn";
             this.DrawingMetalBtn.Size = new System.Drawing.Size(112, 36);
             this.DrawingMetalBtn.TabIndex = 9;
@@ -151,7 +153,7 @@
             // 
             // MultiThreadBtn
             // 
-            this.MultiThreadBtn.Location = new System.Drawing.Point(24, 265);
+            this.MultiThreadBtn.Location = new System.Drawing.Point(13, 230);
             this.MultiThreadBtn.Name = "MultiThreadBtn";
             this.MultiThreadBtn.Size = new System.Drawing.Size(112, 36);
             this.MultiThreadBtn.TabIndex = 12;
@@ -171,27 +173,54 @@
             // 
             // shadowButton1
             // 
+            this.shadowButton1.BackColor = System.Drawing.Color.Transparent;
             this.shadowButton1.BackgroundGradientMode = CustomControls_dll.PanelGradientMode.Vertical;
             this.shadowButton1.EdgeWidth = 5;
             this.shadowButton1.EndColor = System.Drawing.Color.Magenta;
             this.shadowButton1.FlatBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.shadowButton1.FocusScaleHeight = 0.65F;
             this.shadowButton1.FocusScaleWidth = 0.77F;
-            this.shadowButton1.Location = new System.Drawing.Point(321, 147);
+            this.shadowButton1.Location = new System.Drawing.Point(277, 141);
             this.shadowButton1.Name = "shadowButton1";
             this.shadowButton1.NeonColor = System.Drawing.Color.Magenta;
             this.shadowButton1.RectRadius = 20;
             this.shadowButton1.ShadowColor = System.Drawing.Color.Magenta;
             this.shadowButton1.ShadowShift = 20;
             this.shadowButton1.ShadowStyle = CustomControls_dll.ShadowMode.Surrounded;
-            this.shadowButton1.Size = new System.Drawing.Size(221, 87);
+            this.shadowButton1.Size = new System.Drawing.Size(281, 99);
             this.shadowButton1.StartColor = System.Drawing.Color.Magenta;
             this.shadowButton1.Style = CustomControls_dll.BevelStyle.Neon;
             this.shadowButton1.TabIndex = 14;
             this.shadowButton1.Text = "shadowButton1";
             this.shadowButton1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(32)))), ((int)(((byte)(51)))));
-            this.shadowButton1.UseVisualStyleBackColor = true;
+            this.shadowButton1.UseVisualStyleBackColor = false;
             this.shadowButton1.Click += new System.EventHandler(this.shadowButton1_Click);
+            // 
+            // shadowPanel1
+            // 
+            this.shadowPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.shadowPanel1.BackgroundGradientMode = CustomControls_dll.PanelGradientMode.Vertical;
+            this.shadowPanel1.Controls.Add(this.BasicPropertiesBtn);
+            this.shadowPanel1.Controls.Add(this.neonButtonProjectBtn);
+            this.shadowPanel1.Controls.Add(this.DrawingMetalBtn);
+            this.shadowPanel1.Controls.Add(this.MultiThreadBtn);
+            this.shadowPanel1.EdgeWidth = 2;
+            this.shadowPanel1.EndColor = System.Drawing.Color.Pink;
+            this.shadowPanel1.FlatBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.shadowPanel1.FocusScaleHeight = 0.85F;
+            this.shadowPanel1.FocusScaleWidth = 0.95F;
+            this.shadowPanel1.Location = new System.Drawing.Point(12, 39);
+            this.shadowPanel1.Name = "shadowPanel1";
+            this.shadowPanel1.NeonColor = System.Drawing.Color.Pink;
+            this.shadowPanel1.RectRadius = 20;
+            this.shadowPanel1.ShadowColor = System.Drawing.Color.DimGray;
+            this.shadowPanel1.ShadowShift = 10;
+            this.shadowPanel1.ShadowStyle = CustomControls_dll.ShadowMode.ForwardDiagonal;
+            this.shadowPanel1.Size = new System.Drawing.Size(154, 306);
+            this.shadowPanel1.StartColor = System.Drawing.Color.White;
+            this.shadowPanel1.Style = CustomControls_dll.BevelStyle.Flat;
+            this.shadowPanel1.TabIndex = 15;
+            this.shadowPanel1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(32)))), ((int)(((byte)(51)))));
             // 
             // MainForm
             // 
@@ -201,14 +230,11 @@
             this.CancelButton = this.CloseFormBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.shadowButton1);
+            this.Controls.Add(this.shadowPanel1);
             this.Controls.Add(this.RawInputBtn);
-            this.Controls.Add(this.MultiThreadBtn);
             this.Controls.Add(this.neonCloseBtn);
             this.Controls.Add(this.enterNeonModeBtn);
-            this.Controls.Add(this.DrawingMetalBtn);
-            this.Controls.Add(this.neonButtonProjectBtn);
             this.Controls.Add(this.CloseFormBtn);
-            this.Controls.Add(this.BasicPropertiesBtn);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
@@ -218,6 +244,7 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.shadowPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,5 +265,6 @@
         private CustomControls_dll.MetalButton MultiThreadBtn;
         private CustomControls_dll.MetalButton RawInputBtn;
         private CustomControls_dll.ShadowButton shadowButton1;
+        private CustomControls_dll.ShadowPanel shadowPanel1;
     }
 }

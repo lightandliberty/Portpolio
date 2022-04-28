@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;   // [DllImport("shlwapi.dll")] 사용을 위해
 
+
 /// <summary>
 /// 그림자를 그리고, 버튼 종류별 그리는 메서드를 호출하면, 모서리를 그리고(네온 버튼 제외), 버튼의 윗면을 그린다.
 /// </summary>
@@ -16,20 +17,19 @@ using System.Runtime.InteropServices;   // [DllImport("shlwapi.dll")] 사용을 
 namespace CustomControls_dll
 {
 
-
-    public class ShadowButton : Button, IShadowBtn
+    public class ShadowPanel : Panel, IShadowBtn
     {
         #region 멤버
         private PanelGradientMode mBackgroundGradientMode = PanelGradientMode.Vertical;       // "배경 그라데이션 타입(대각선, 가로방향,세로방향)   "
-        private int mRectRadius                           = 20;                               // "모서리의 둥근 반지름                              "
-        private Color mStartColor                         = Color.FromArgb(232,238,249);      // "그라데이션 시작 색                                "
-        private Color mEndColor                           = Color.FromArgb(168, 192, 234);    // "그라데이션 끝 색                                  "
-        private BevelStyle mStyle                         = BevelStyle.Flat;                  // "버튼 모서리(경사면) 스타일 (함몰, 솟음, 평평)     "
-        private int mEdgeWidth                            = 2;                                // "모서리의 너비                                     "
-        private Color mFlatBorderColor                    = Color.FromArgb(102, 102, 102);    // "Flat일 경우, 테두리 색                            "
-        private ShadowMode mShadowStyle                   = ShadowMode.ForwardDiagonal;       // "그림자 스타일 (대각, 둘러싼, 아래)                "
-        private int mShadowShift                          = 0;                                // "그림자 평행이동 거리                              "
-        private Color mShadowColor                        = Color.DimGray;                    // "그림자 색                                         "
+        private int mRectRadius = 20;                               // "모서리의 둥근 반지름                              "
+        private Color mStartColor = Color.FromArgb(232, 238, 249);      // "그라데이션 시작 색                                "
+        private Color mEndColor = Color.FromArgb(168, 192, 234);    // "그라데이션 끝 색                                  "
+        private BevelStyle mStyle = BevelStyle.Flat;                  // "버튼 모서리(경사면) 스타일 (함몰, 솟음, 평평)     "
+        private int mEdgeWidth = 2;                                // "모서리의 너비                                     "
+        private Color mFlatBorderColor = Color.FromArgb(102, 102, 102);    // "Flat일 경우, 테두리 색                            "
+        private ShadowMode mShadowStyle = ShadowMode.ForwardDiagonal;       // "그림자 스타일 (대각, 둘러싼, 아래)                "
+        private int mShadowShift = 0;                                // "그림자 평행이동 거리                              "
+        private Color mShadowColor = Color.DimGray;                    // "그림자 색                                         "
 
 
         private float mFocusScaleWidth = 0.95f;
@@ -43,41 +43,43 @@ namespace CustomControls_dll
 
         private bool isLeftMouseButtonDown = false; // 버튼 클릭 이벤트에 사용할 flag
         private bool isMouseHover = false;
-        
+
 
         #endregion 멤버 끝
 
         #region 속성들
-        [Browsable(true), Category("Shadow Button"), Description("배경 그라데이션 타입(대각선, 가로방향,세로방향)")]
-        public PanelGradientMode BackgroundGradientMode { get { return mBackgroundGradientMode; } set { mBackgroundGradientMode = value; Invalidate(); } }      
-        [Browsable(true), Category("Shadow Button"), Description("모서리의 둥근 반지름")]
-        public int RectRadius         { get { return mRectRadius; } set { mRectRadius = value; Invalidate(); } }                                
-        [Browsable(true), Category("Shadow Button"), Description("그라데이션 시작 색")]
-        public Color StartColor       { get { return mStartColor; } set { mStartColor = value; Invalidate(); } }                                
-        [Browsable(true), Category("Shadow Button"), Description("그라데이션 끝 색")]
-        public Color EndColor         { get { return mEndColor; } set { mEndColor = value; Invalidate(); } }                                  
-        [Browsable(true), Category("Shadow Button"), Description("모서리의 너비. 네온: 5가 적당")]
-        public int EdgeWidth          { get { return mEdgeWidth; } set { mEdgeWidth = value; Invalidate(); } }                                   
-        [Browsable(true), Category("Shadow Button"), Description("Flat일 경우, 테두리 색")]
-        public Color FlatBorderColor  { get { return mFlatBorderColor; } set { mFlatBorderColor = value; Invalidate(); } }
-        [Browsable(true), Category("Shadow Button"), Description("그림자 스타일 (대각, 둘러싼, 아래). 네온:둘러싼이 적당.")]
+        [Browsable(true), Category("Shadow Panel"), Description("배경 그라데이션 타입(대각선, 가로방향,세로방향)")]
+        public PanelGradientMode BackgroundGradientMode { get { return mBackgroundGradientMode; } set { mBackgroundGradientMode = value; Invalidate(); } }
+        [Browsable(true), Category("Shadow Panel"), Description("모서리의 둥근 반지름")]
+        public int RectRadius { get { return mRectRadius; } set { mRectRadius = value; Invalidate(); } }
+        [Browsable(true), Category("Shadow Panel"), Description("그라데이션 시작 색")]
+        public Color StartColor { get { return mStartColor; } set { mStartColor = value; Invalidate(); } }
+        [Browsable(true), Category("Shadow Panel"), Description("그라데이션 끝 색")]
+        public Color EndColor { get { return mEndColor; } set { mEndColor = value; Invalidate(); } }
+        [Browsable(true), Category("Shadow Panel"), Description("모서리의 너비. 네온: 5가 적당")]
+        public int EdgeWidth { get { return mEdgeWidth; } set { mEdgeWidth = value; Invalidate(); } }
+        [Browsable(true), Category("Shadow Panel"), Description("Flat일 경우, 테두리 색")]
+        public Color FlatBorderColor { get { return mFlatBorderColor; } set { mFlatBorderColor = value; Invalidate(); } }
+        [Browsable(true), Category("Shadow Panel"), Description("그림자 스타일 (대각, 둘러싼, 아래). 네온:둘러싼이 적당.")]
         public ShadowMode ShadowStyle { get { return mShadowStyle; } set { mShadowStyle = value; Invalidate(); } }
-        [Browsable(true), Category("Shadow Button"), Description("그림자 평행이동 거리. 네온:20이 적당.")]
-        public int ShadowShift        { get { return mShadowShift; } set { mShadowShift = value; Invalidate(); } }                                 
-        [Browsable(true), Category("Shadow Button"), Description("그림자 색")]
-        public Color ShadowColor      { get { return mShadowColor; } set { mShadowColor = value; Invalidate(); } }
+        [Browsable(true), Category("Shadow Panel"), Description("그림자 평행이동 거리. 네온:20이 적당.")]
+        public int ShadowShift { get { return mShadowShift; } set { mShadowShift = value; Invalidate(); } }
+        [Browsable(true), Category("Shadow Panel"), Description("그림자 색")]
+        public Color ShadowColor { get { return mShadowColor; } set { mShadowColor = value; Invalidate(); } }
 
-        [Browsable(true), Category("Shadow Button"), Description("그림자 그라데이션 고정색 가로 비율. 네온: 0.77f, 일반: 0.95f")]
+        [Browsable(true), Category("Shadow Panel"), Description("그림자 그라데이션 고정색 가로 비율. 네온: 0.77f, 일반: 0.95f")]
         public float FocusScaleWidth { get => mFocusScaleWidth; set { mFocusScaleWidth = value > 1f ? 1f : value < 0f ? 0f : value; Invalidate(); } }      // 0f ~ 1f사이
-        [Browsable(true), Category("Shadow Button"), Description("그림자 그라데이션 고정색 세로 비율. 네온: 0.65f, 일반: 0.85f")]
+        [Browsable(true), Category("Shadow Panel"), Description("그림자 그라데이션 고정색 세로 비율. 네온: 0.65f, 일반: 0.85f")]
         public float FocusScaleHeight { get => mFocusScaleHeight; set { mFocusScaleHeight = value > 1f ? 1f : value < 0f ? 0f : value; Invalidate(); } }   // 0f ~ 1f사이
-        [Browsable(true), Category("Shadow Button"), Description("텍스트 글자색")]
+        [Browsable(true), Category("Shadow Panel"), Description("텍스트 글자색")]
         public Color TextColor { get => mTextColor; set { mTextColor = value; Invalidate(); } }   // 0f ~ 1f사이
-        
 
-        [Browsable(true), Category("Shadow Button"), Description("버튼 모서리(경사면) 스타일 (함몰, 솟음, 평평, 네온)")]
-        public BevelStyle Style { get { return mStyle; } 
-            set 
+
+        [Browsable(true), Category("Shadow Panel"), Description("버튼 모서리(경사면) 스타일 (함몰, 솟음, 평평, 네온)")]
+        public BevelStyle Style
+        {
+            get { return mStyle; }
+            set
             {
                 mStyle = value;
                 // 네온 설정일 경우, 네온 효과를 위해서 FocusScale등 몇몇 초기 설정을 바꿈.
@@ -89,7 +91,7 @@ namespace CustomControls_dll
                     mRectRadius = 20;
                     mShadowShift = 20;
                     mShadowStyle = ShadowMode.Surrounded;
-                }   
+                }
                 //else
                 //{
                 //    mEdgeWidth = 3;
@@ -99,13 +101,16 @@ namespace CustomControls_dll
                 //    mShadowShift = 10;
                 //    mShadowStyle = ShadowMode.ForwardDiagonal;
                 //}
-                Invalidate(); 
-            }}
-        
+                Invalidate();
+            }
+        }
+
         // 네온 버튼의 색을 지정하면, 그에 맞는 그라데이션 색 들을 자동으로 색에 맞게 설정한다.
         // 나중에 지정하도록 바꿀 듯하다. 클릭했을 때의 색도 
-        [Browsable(true), Category("Shadow Button"), Description("네온 버튼의 색 지정")]
-        public Color NeonColor { get => mNeonColor;
+        [Browsable(true), Category("Shadow Panel"), Description("네온 버튼의 색 지정")]
+        public Color NeonColor
+        {
+            get => mNeonColor;
             set
             {
                 mNeonColor = value;
@@ -116,16 +121,16 @@ namespace CustomControls_dll
         #endregion 속성들. 끝
 
         #region 생성자
-        public ShadowButton()
+        public ShadowPanel()
         {
-            SetShadowBtnFormStyle();
+            SetShadowPanelFormStyle();
         }
 
 
-    private void SetShadowBtnFormStyle()
+        private void SetShadowPanelFormStyle()
         {
             this.Size = new Size(200, 50);
-//            this.Paint += this.Button_Paint;
+            //            this.Paint += this.Button_Paint;
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);    // 화면에 직접 그리지 않고, 먼저 버퍼에 그리므로, 깜빡이가 줄어 듦.
             SetStyle(ControlStyles.UserPaint, true);                // 운영체제에서 컨트롤을 그리지 않고, 자체에서 컨트롤을 그림
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);     // WM_ERASEBKGND 메시지 무시
@@ -175,14 +180,14 @@ namespace CustomControls_dll
         {
             //base.OnPaint(e);
             base.OnPaintBackground(e);
-            PaintShadowBtn(e.Graphics);
+            PaintShadowPanel(e.Graphics);
         }
 
         #endregion protected override
 
         #region 메인 Paint 메서드 (그림자를 그리고, 버튼 종류별 그리는 메서드를 호출하면, 모서리를 그리고(네온 버튼 제외), 버튼의 윗면을 그린다.)
         // 버튼을 그림 (그림자를 그리고, 버튼의 영역을 얻어온 후 그림)
-        private void PaintShadowBtn(Graphics g)
+        private void PaintShadowPanel(Graphics g)
         {
             Rectangle bevelRect = new Rectangle();
 
@@ -195,7 +200,7 @@ namespace CustomControls_dll
             int bevelY = 0;
             int bevelWidth = 0;
             int bevelHeight = 0;
-            switch(mShadowStyle)
+            switch (mShadowStyle)
             {
                 // 그림자 스타일에 따라, 사각형의 위치와 크기를 조절.
                 case ShadowMode.ForwardDiagonal:
@@ -222,13 +227,13 @@ namespace CustomControls_dll
             // 그림자를 그릴 땐, 그림자 스타일에 따라그리지만,
             // 버튼을 그릴 땐, 버튼의 스타일에 따라 그림.
             // 그림자를 그렸으므로, 버튼을 그림.
-            switch(Style)
+            switch (Style)
             {
                 case BevelStyle.Lowered:
-                    if (isLeftMouseButtonDown) DrawRaisedBtn(g, bevelRect); else DrawLoweredBtn(g, bevelRect);
+                    if (isLeftMouseButtonDown) DrawRaisedPn(g, bevelRect); else DrawLoweredPn(g, bevelRect);
                     break;
                 case BevelStyle.Raised:
-                    if (isLeftMouseButtonDown) DrawLoweredBtn(g, bevelRect); else DrawRaisedBtn(g, bevelRect);
+                    if (isLeftMouseButtonDown) DrawLoweredPn(g, bevelRect); else DrawRaisedPn(g, bevelRect);
                     break;
                 case BevelStyle.Flat:
                     if (isLeftMouseButtonDown)
@@ -236,46 +241,24 @@ namespace CustomControls_dll
                         Color oldColor = mStartColor;
                         mStartColor = mEndColor;
                         mEndColor = oldColor;
-                        DrawFlatBtn(g, bevelRect);
+                        DrawFlatPn(g, bevelRect);
                         mEndColor = mStartColor;
                         mStartColor = oldColor;
                     }
                     else
-                        DrawFlatBtn(g, bevelRect);
+                        DrawFlatPn(g, bevelRect);
+
                     break;
                 case BevelStyle.Neon:
                     mEndColor = mStartColor = mShadowColor = mNeonColor;
-                    DrawNeonBtn(g, bevelRect);
+                    DrawNeonPn(g, bevelRect);
                     break;
                 case BevelStyle.GradientNeon:
                     mStartColor = mShadowColor = mNeonColor;
-                    DrawNeonBtn(g, bevelRect);
+                    DrawNeonPn(g, bevelRect);
                     break;
             }
 
-            //switch(Style)
-            //{
-            //    case BevelStyle.Lowered:
-            //        //if (isLeftMouseButtonDown) DrawRaisedBtn(g, bevelRect); else DrawLoweredBtn(g, bevelRect);
-            //        DrawLoweredBtn(g, bevelRect);
-            //        break;
-            //    case BevelStyle.Raised:
-            //        //if(isLeftMouseButtonDown) DrawLoweredBtn(g, bevelRect); else DrawRaisedBtn(g, bevelRect);
-            //        DrawRaisedBtn(g, bevelRect);
-            //        break;
-            //    case BevelStyle.Flat:
-            //        //Color oldColor = mStartColor;
-            //        //mStartColor = mEndColor;
-            //        //mEndColor = oldColor;
-            //        DrawFlatBtn(g, bevelRect);
-            //        //mEndColor = mStartColor;
-            //        //mStartColor = oldColor;
-            //        break;
-            //    case BevelStyle.Neon:
-            //    case BevelStyle.GradientNeon:
-            //        DrawNeonBtn(g, bevelRect);
-            //        break;
-            //}
 
             // 버튼에 표시할 Text 중앙 정렬
             StringFormat sf = new StringFormat()
@@ -298,7 +281,7 @@ namespace CustomControls_dll
         {
             Rectangle shadowRect = new Rectangle();
             GraphicsPath shadowPath;
-            switch(mShadowStyle)
+            switch (mShadowStyle)
             {
                 // 둥근 사각형 Path에 전달할 사각 영역(둥글기 전 영역)
                 case ShadowMode.ForwardDiagonal:
@@ -322,7 +305,7 @@ namespace CustomControls_dll
             // GraphicsPath개체를 그림
             using (PathGradientBrush shadowBrush = new PathGradientBrush(shadowPath)) // 주위 점들(path개체)을 PathGradientBrush에 전달해서 패스 그라데이션 브러시 생성
             {
-                if(Style == BevelStyle.Neon || Style == BevelStyle.GradientNeon) shadowBrush.Blend = GetNeonBlend(shadowRect);
+                if (Style == BevelStyle.Neon || Style == BevelStyle.GradientNeon) shadowBrush.Blend = GetNeonBlend(shadowRect);
                 // 진하게 표시될 영역(위치) 설정
                 shadowBrush.CenterPoint = new PointF(shadowRect.Width / 2, shadowRect.Height / 2);  // 이 영역은 나중에 .FocusScales에서 0.95f, 0.85f로 확대됨.
                 // Neon버튼이 아닐 경우, 일반 그림자 색으로 칠하고, Neon일 경우, 클릭했을 때의 색으로 그림자 색을 바꾼다.
@@ -391,7 +374,7 @@ namespace CustomControls_dll
         // mStartEdgeColor -> mEndEdgeColor 바깥쪽 사각형(모서리 포함)을 그림
         // mStartColor -> mEndColor         안쪽 사각형(모서리 제외)를 그림
         // 낮게 패인 버튼을 그림
-        private void DrawLoweredBtn(Graphics g, Rectangle bevelRect)
+        private void DrawLoweredPn(Graphics g, Rectangle bevelRect)
         {
             float darknessBegin = mStartColor.GetSaturation();   // 채도를 반환 (채도의 0%는 무채색) HSV모델의 반지름에 해당.
             float darknessEnd = mEndColor.GetSaturation();       // 채도를 반환 (채도의 0%는 무채색) (채도 는 무채색을 섞는 비율에 따라 달라짐)
@@ -411,7 +394,7 @@ namespace CustomControls_dll
         }
 
         // 솟은 버튼을 그림
-        private void DrawRaisedBtn(Graphics g, Rectangle bevelRect)
+        private void DrawRaisedPn(Graphics g, Rectangle bevelRect)
         {
             // 필요하지는 않지만, 원본에 있던 내용이라 남겨 둠.
             //float darknessBegin = mStartColor.GetSaturation();
@@ -432,7 +415,7 @@ namespace CustomControls_dll
         }
 
         // Flat스타일을 그릴 때 사용
-        private void DrawFlatBtn(Graphics g, Rectangle bevelRect)
+        private void DrawFlatPn(Graphics g, Rectangle bevelRect)
         {
             // 바깥쪽 사각형을 먼저 그리고,
             using (Brush bevelGradientBrush = new SolidBrush(mFlatBorderColor))
@@ -450,7 +433,7 @@ namespace CustomControls_dll
         }
 
         // 그림자를 그린 후, 네온 버튼을 그릴 때, (Flat과 그리는 게 거의 비슷)
-        private void DrawNeonBtn(Graphics g, Rectangle bevelRect)
+        private void DrawNeonPn(Graphics g, Rectangle bevelRect)
         {
             //// 바깥쪽 사각형을 먼저 그리고, (단색 브러시)
             //using (Brush bevelSolidBrush = new SolidBrush(mFlatBorderColor))
@@ -460,6 +443,7 @@ namespace CustomControls_dll
             // 네온 버튼의 경우, 어차피 확대해서 그리므로, 모서리 부분을 그리진 않음.
             bevelRect.Inflate(mEdgeWidth, mEdgeWidth);
 
+            
 
             Rectangle rectWithoutBevel = bevelRect;
             Color startColor = isLeftMouseButtonDown ? ControlPaint.Light(ControlPaint.LightLight(mStartColor)) : isMouseHover ? ControlPaint.Light(mStartColor) : mStartColor;
@@ -525,7 +509,7 @@ namespace CustomControls_dll
 
 
 
-        ~ShadowButton()
+        ~ShadowPanel()
         {
             this.Dispose();
         }
