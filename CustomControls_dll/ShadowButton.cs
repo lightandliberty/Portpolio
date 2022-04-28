@@ -134,6 +134,27 @@ namespace CustomControls_dll
             SetStyle(ControlStyles.SupportsTransparentBackColor, true); // 알파 구성요소가 255미만인 Control.BackColor를 수락. 버튼의 배경색에 TransParent색을 넣을 수 있음
         }
 
+        public void SetBtnInit()
+        {
+            if (mStyle == BevelStyle.Neon || mStyle == BevelStyle.GradientNeon)  // 네온으로 설정했을 때, 멤버 변수의 설정을 변경
+            {
+                mEdgeWidth = 5;
+                mFocusScaleWidth = 0.77f;
+                mFocusScaleHeight = 0.65f;
+                mRectRadius = 20;
+                mShadowShift = 20;
+                mShadowStyle = ShadowMode.Surrounded;
+            }
+            else
+            {
+                mEdgeWidth = 3;
+                mFocusScaleWidth = 0.95f;
+                mFocusScaleHeight = 0.85f;
+                mRectRadius = 20;
+                mShadowShift = 10;
+                mShadowStyle = ShadowMode.ForwardDiagonal;
+            }
+        }
 
 
         #endregion 생성자. 끝.
@@ -185,6 +206,11 @@ namespace CustomControls_dll
         private void PaintShadowBtn(Graphics g)
         {
             Rectangle bevelRect = new Rectangle();
+
+            if (mStyle == BevelStyle.Neon)
+                mEndColor = mStartColor = mShadowColor = mNeonColor;
+            else if (mStyle == BevelStyle.GradientNeon)
+                mStartColor = mShadowColor = mNeonColor;
 
             // 밑바탕에 그림자를 먼저 그림
             if (mShadowShift > 0)    // 그림자 위치가 버튼의 위치와 다르면, 그림자를 그림.
@@ -244,11 +270,7 @@ namespace CustomControls_dll
                         DrawFlatBtn(g, bevelRect);
                     break;
                 case BevelStyle.Neon:
-                    mEndColor = mStartColor = mShadowColor = mNeonColor;
-                    DrawNeonBtn(g, bevelRect);
-                    break;
                 case BevelStyle.GradientNeon:
-                    mStartColor = mShadowColor = mNeonColor;
                     DrawNeonBtn(g, bevelRect);
                     break;
             }

@@ -40,6 +40,7 @@ namespace CustomControls_dll
         private Color mStartEdgeColor;
         private Color mEndEdgeColor;
         private Color mNeonColor = Color.Pink;
+        private string mTextStr = string.Empty;
 
         private bool isLeftMouseButtonDown = false; // 버튼 클릭 이벤트에 사용할 flag
         private bool isMouseHover = false;
@@ -73,6 +74,8 @@ namespace CustomControls_dll
         public float FocusScaleHeight { get => mFocusScaleHeight; set { mFocusScaleHeight = value > 1f ? 1f : value < 0f ? 0f : value; Invalidate(); } }   // 0f ~ 1f사이
         [Browsable(true), Category("Shadow Panel"), Description("텍스트 글자색")]
         public Color TextColor { get => mTextColor; set { mTextColor = value; Invalidate(); } }   // 0f ~ 1f사이
+        [Browsable(true), Category("Shadow Panel"), Description("텍스트 글자")]
+        public string TextString { get => mTextStr; set { mTextStr = value; Invalidate(); } }   // 0f ~ 1f사이
 
 
         [Browsable(true), Category("Shadow Panel"), Description("버튼 모서리(경사면) 스타일 (함몰, 솟음, 평평, 네온)")]
@@ -83,15 +86,15 @@ namespace CustomControls_dll
             {
                 mStyle = value;
                 // 네온 설정일 경우, 네온 효과를 위해서 FocusScale등 몇몇 초기 설정을 바꿈.
-                if (value == BevelStyle.Neon || value == BevelStyle.GradientNeon)  // 네온으로 설정했을 때, 멤버 변수의 설정을 변경
-                {
-                    mEdgeWidth = 5;
-                    mFocusScaleWidth = 0.77f;
-                    mFocusScaleHeight = 0.65f;
-                    mRectRadius = 20;
-                    mShadowShift = 20;
-                    mShadowStyle = ShadowMode.Surrounded;
-                }
+                //if (value == BevelStyle.Neon || value == BevelStyle.GradientNeon)  // 네온으로 설정했을 때, 멤버 변수의 설정을 변경
+                //{
+                //    mEdgeWidth = 5;
+                //    mFocusScaleWidth = 0.77f;
+                //    mFocusScaleHeight = 0.65f;
+                //    mRectRadius = 20;
+                //    mShadowShift = 20;
+                //    mShadowStyle = ShadowMode.Surrounded;
+                //}
                 //else
                 //{
                 //    mEdgeWidth = 3;
@@ -139,7 +142,27 @@ namespace CustomControls_dll
             SetStyle(ControlStyles.SupportsTransparentBackColor, true); // 알파 구성요소가 255미만인 Control.BackColor를 수락. 버튼의 배경색에 TransParent색을 넣을 수 있음
         }
 
-
+        public void SetPanelInit()
+        {
+            if (mStyle == BevelStyle.Neon || mStyle == BevelStyle.GradientNeon)  // 네온으로 설정했을 때, 멤버 변수의 설정을 변경
+            {
+                mEdgeWidth = 5;
+                mFocusScaleWidth = 0.77f;
+                mFocusScaleHeight = 0.65f;
+                mRectRadius = 20;
+                mShadowShift = 20;
+                mShadowStyle = ShadowMode.Surrounded;
+            }
+            else
+            {
+                mEdgeWidth = 3;
+                mFocusScaleWidth = 0.95f;
+                mFocusScaleHeight = 0.85f;
+                mRectRadius = 20;
+                mShadowShift = 10;
+                mShadowStyle = ShadowMode.ForwardDiagonal;
+            }
+        }
 
         #endregion 생성자. 끝.
 
@@ -250,11 +273,7 @@ namespace CustomControls_dll
 
                     break;
                 case BevelStyle.Neon:
-                    mEndColor = mStartColor = mShadowColor = mNeonColor;
-                    DrawNeonPn(g, bevelRect);
-                    break;
                 case BevelStyle.GradientNeon:
-                    mStartColor = mShadowColor = mNeonColor;
                     DrawNeonPn(g, bevelRect);
                     break;
             }
@@ -268,7 +287,7 @@ namespace CustomControls_dll
             };
 
             // 버튼의 글자를 그림
-            g.DrawString(this.Text,
+            g.DrawString(this.mTextStr,
                 new Font(this.Font.Name, this.Font.Size), new SolidBrush(mTextColor),
                 bevelRect,
                 sf);
