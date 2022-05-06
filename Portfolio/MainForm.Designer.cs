@@ -140,7 +140,7 @@
             // neonCloseBtn
             // 
             this.neonCloseBtn.ButtonColor = CustomControls_dll.NeonButton.KeyColor.Pink;
-            this.neonCloseBtn.Location = new System.Drawing.Point(676, 340);
+            this.neonCloseBtn.Location = new System.Drawing.Point(676, 401);
             this.neonCloseBtn.Name = "neonCloseBtn";
             this.neonCloseBtn.Size = new System.Drawing.Size(112, 36);
             this.neonCloseBtn.TabIndex = 11;
